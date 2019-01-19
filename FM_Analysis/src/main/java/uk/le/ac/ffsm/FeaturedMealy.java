@@ -3,6 +3,9 @@ package uk.le.ac.ffsm;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import org.prop4j.Node;
 
@@ -21,7 +24,14 @@ public class FeaturedMealy<I,O>
 
 	private static final String TRUE_STRING = "TRUE";
 	private IFeatureModel featureModel;
+	private ConditionalState<ConditionalTransition<I,O>> initialState;
+	private Map<I, Node> conditionalInputs;
 
+	public FeaturedMealy(Alphabet<I> inputAlphabet, IFeatureModel fm, Map<I, Node> condInp) {
+		this(inputAlphabet,fm);
+		setConditionalInputs(condInp);
+	}
+	
 	public FeaturedMealy(Alphabet<I> inputAlphabet, IFeatureModel fm) {
 		this(inputAlphabet);
 		this.featureModel = fm;
@@ -43,6 +53,30 @@ public class FeaturedMealy<I,O>
 	public IFeatureModel getFeatureModel() {
 		return featureModel;
 	}
+	
+	public Map<I, Node> getConditionalInputs() {
+		return conditionalInputs;
+	}
+	
+	public void setConditionalInputs(Map<I, Node> conditionalInputs) {
+		this.conditionalInputs = new HashMap<>(conditionalInputs);
+	}
+	
+	
+	public ConditionalState<ConditionalTransition<I, O>> getInitialState() {
+		return this.initialState;
+	}
+	
+	public void setInitialState(ConditionalState<ConditionalTransition<I, O>> initialState) {
+		getInitialStates().clear();
+		super.setInitial(initialState,true);
+		this.initialState = initialState;
+	}
+	
+    @Override
+    public void setInitial(ConditionalState<ConditionalTransition<I, O>> state, boolean initial) {
+    	setInitialState(state);
+    }
 	
     @Override
     public ConditionalState<ConditionalTransition<I,O>> getSuccessor(ConditionalTransition<I,O> transition) {
