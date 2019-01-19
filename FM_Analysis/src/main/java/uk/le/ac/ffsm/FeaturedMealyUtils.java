@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -12,24 +13,30 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import java.util.stream.IntStream;
 
 import org.prop4j.And;
+import org.prop4j.Literal;
 import org.prop4j.Node;
 import org.prop4j.NodeReader;
 import org.prop4j.NodeWriter;
 import org.prop4j.NodeWriter.Notation;
 
 import org.prop4j.Not;
+import org.prop4j.Or;
 
 import de.ovgu.featureide.fm.core.base.IConstraint;
+import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.IFeatureModelFactory;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
+
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.impl.Alphabets;
 
@@ -39,6 +46,83 @@ public class FeaturedMealyUtils {
 	private static final long MIN_CONFIGURATIONS = 10;
 	public static IFeatureModelFactory fact = FMFactoryManager.getDefaultFactory();
 	
+	public static FeaturedMealy<String,String> readFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
+			Pattern kissLine = Pattern.compile(
+					"\\s*"
+					+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
+					+ "\\s+--\\s+"+
+					"\\s*"
+					+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
+					+ "\\s*/\\s*"
+					+ "(\\S+)"
+					+ "\\s+->\\s+"
+					+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
+					);
+	
+			BufferedReader br = new BufferedReader(new FileReader(f_ffsm));
+	
+			NodeReader nodeReader = new NodeReader();
+			nodeReader.activateTextualSymbols();
+			FeaturedMealy<String, String> ffsm = null;
+			
+			if(br.ready()){
+				String line = null;
+				Map<String, Node> cInps = mapConditionalInputs(fm);
+				List<String> abc = new ArrayList<>(cInps.keySet());
+				Collections.sort(abc);
+				Alphabet<String> alphabet = Alphabets.fromCollection(abc);
+				ffsm = new FeaturedMealy<>(alphabet,fm,cInps);
+				
+				ConditionalState<ConditionalTransition<String,String>> s0 = null;
+				Map<Integer,ConditionalState<ConditionalTransition<String,String>>> statesMap = new HashMap<>();
+				Map<String,Integer> statesId = new HashMap<>();
+				int stateId = 0;
+				while(br.ready()){
+					line = br.readLine();
+					Matcher m = kissLine.matcher(line);
+					if(m.matches()){
+						String[] tr = new String[7];
+						IntStream.range(1, tr.length+1).forEach(idx-> tr[idx-1] = m.group(idx));
+						
+						/* Conditional state origin */
+						if(!statesId.containsKey(tr[0])) statesId.put(tr[0],stateId++);
+						
+						Integer si = statesId.get(tr[0]); 
+						Node si_c = nodeReader.stringToNode(tr[1]);
+						if(!statesMap.containsKey(si)) {
+							statesMap.put(si,ffsm.addState(si_c));
+							if(s0==null) {
+								s0 = statesMap.get(si);
+							}
+						}
+						
+						/* Conditional Input */
+						String in = tr[2];
+						Node in_c = nodeReader.stringToNode(tr[3]);
+						
+						/* Output */
+						String out = tr[4];
+						
+						/* Conditional state destination */
+						if(!statesId.containsKey(tr[5])) statesId.put(tr[5],stateId++);
+						Integer sj = statesId.get(tr[5]);
+						Node sj_c = nodeReader.stringToNode(tr[6]);
+						if(!statesMap.containsKey(sj)) {
+							statesMap.put(sj,ffsm.addState(sj_c));
+						}
+						
+						ffsm.addTransition(statesMap.get(si), in, statesMap.get(sj), out,in_c);
+					}
+				}
+				
+				ffsm.setInitialState(s0);
+			}
+			
+			br.close();
+	
+			return ffsm;
+		}
+
 	// https://github.com/vhfragal/ConFTGen-tool/blob/450dd0a0e408be6b42e223d41154eab2269427f3/work_neon_ubu/br.icmc.ffsm.ui.base/src/br/usp/icmc/feature/logic/FFSMProperties.java#L2384
 	public static <I, O> boolean isDeterministic(FeaturedMealy<I,O> ffsm){
 		FeatureModel fm = (FeatureModel) ffsm.getFeatureModel().clone();
@@ -86,9 +170,12 @@ public class FeaturedMealyUtils {
 			List<Node> notAnds = new ArrayList<>(); 
 			for (I inputIdx : alphabet) {
 				Collection<ConditionalTransition<I,O>> outTrs = ffsm.getTransitions(cState,inputIdx);
-				if(outTrs.isEmpty()) return false;
+				if(outTrs.isEmpty()) {
+					return false;
+				}
+				notAnds.add(ffsm.getConditionalInputs().get(inputIdx));
 				for (ConditionalTransition<I,O> tr : outTrs) {
-					notAnds.add(new Not(new And(tr.getCondition(),tr.getSuccessor().getCondition()))); // input and destination conditions
+					notAnds.add(new Not(new And(tr.getSuccessor().getCondition()))); // input and destination conditions
 				}				
 			}
 			IConstraint and_notAnds = fact.createConstraint(fm, new And(notAnds));
@@ -106,16 +193,156 @@ public class FeaturedMealyUtils {
 
 	}
 	
-	public static <I, O> boolean isInitiallyConnected(FeaturedMealy<I,O> ffsm){
-		ConditionalState<ConditionalTransition<I,O>> s0 = ((ConditionalState<ConditionalTransition<I,O>>) (ffsm.getInitialStates().toArray())[0]);
+	public static <I,O> boolean isInitiallyConnected(FeaturedMealy<I,O> ffsm){
+		Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid = null;
+		allValid = getAllValidPaths(ffsm);
+		
+		for(ConditionalState<ConditionalTransition<I, O>> cstate : ffsm.getStates()){
+			if(!ffsm.getInitialStates().contains(cstate)){
+				if(allValid.get(cstate) == null || allValid.get(cstate).size() <= 0){
+					return false; //there is no path for this state 
+				} 
+			}
+		}
+		
+		//remove invalid paths
+		boolean epath = check_valid_paths(ffsm,allValid);			
+		// if a state has no path that reach it
+		if(!epath){
+			return false;
+		}
+		
+		//check reachability of products
+		Set<ConditionalState<ConditionalTransition<I, O>>> uncovStates = null;
+		uncovStates = check_product_coverage(ffsm.getFeatureModel(),allValid);
+		if(uncovStates.size()!=0){				
+			return false;
+		}
+		
+		//reduce redundant paths
+		// TODO check why reduce_redundant_paths is buggy?
+		//reduce_redundant_paths(ffsm,allValid); 
+		
+		//reduce set of paths
+		for(ConditionalState<ConditionalTransition<I, O>> s: allValid.keySet()){
+			if(!ffsm.getInitialState().equals(s)){
+				reduce_state_cover(s,allValid);
+			}
+		}	
+		
+		//check reachability of products 2
+		uncovStates = check_product_coverage(ffsm.getFeatureModel(),allValid);
+		if(uncovStates.size()!=0){				
+			return false;
+		}
+					
+		//generate table with conditional inputs
+		Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> condQSet =  null; 
+		condQSet = create_state_cover_set(ffsm,allValid);
+		
+		return true;
+	}
+	
+	private static <I,O> void 
+			reduce_state_cover(
+				ConditionalState<ConditionalTransition<I, O>> s,
+				Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	private static <I,O> Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> 
+		create_state_cover_set(
+			FeaturedMealy<I, O> ffsm,
+			Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static <I,O> void 
+		reduce_redundant_paths(
+				FeaturedMealy<I, O> ffsm,
+				Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
+		
+		IFeatureModel fm = ffsm.getFeatureModel().clone();
+		
+		new_state:for(ConditionalState<ConditionalTransition<I, O>> s: allValid.keySet()){
+			if(!ffsm.getInitialState().equals(s)){
+				List<List<ConditionalTransition<I, O>>> checked_paths = new ArrayList<>();
+				List<List<ConditionalTransition<I, O>>> valid_paths = new ArrayList<>();
+				List<List<ConditionalTransition<I, O>>> original_paths = new ArrayList<>(allValid.get(s));
+				List<Node> checked_cond = new ArrayList<>();
+				
+				new_path:for(List<ConditionalTransition<I, O>> path : original_paths){
+					List<Node> path_nodes = new ArrayList<>();
+					for(ConditionalTransition<I, O>ft: path){
+//						path_cond.add(new And(ft.getPredecessor().getCondition(),ft.getCondition(),ft.getSuccessor()));
+						path_nodes.add(ffsm.getConditionalInputs().get(ft.getInput()));
+						path_nodes.add(ft.getPredecessor().getCondition());
+						path_nodes.add(ft.getCondition());
+						path_nodes.add(ft.getSuccessor().getCondition());
+					}
+					Node path_cond = new And(path_nodes);
+					//check if this path has a cond prefix of another path
+					int i=0;
+					for(Node ccond : checked_cond){
+						if(check_cond_prefix(fm,path_cond, ccond)){
+							allValid.get(s).remove(path);
+							continue new_path;
+						}
+						if(check_cond_prefix(fm,ccond, path_cond)){
+							allValid.get(s).remove(checked_paths.get(i));
+							valid_paths.remove(checked_paths.get(i));
+						}						
+						i++;
+					}					
+					checked_cond.add(path_cond);
+					checked_paths.add(path);
+					valid_paths.add(path);
+					if(check_path_coverage(fm,s, valid_paths)){
+						// remove the rest
+						allValid.get(s).clear();
+						allValid.get(s).addAll(valid_paths);						
+						continue new_state;
+					}
+				}			
+			}
+		}
+	}
+
+	private static boolean check_cond_prefix(IFeatureModel featModel, Node cond_prefix, Node cond_seq) {
+		IFeatureModel fm = featModel.clone();
+		Configuration conf =  null;
+		
+		IConstraint andC1C2 = fact.createConstraint(fm, new And(cond_prefix,cond_seq));
+		fm.addConstraint(andC1C2);
+		
+		conf = new Configuration(fm);
+		boolean sat_andC1C2 = (conf.number(MIN_CONFIGURATIONS)!=0);
+		
+		IConstraint andC1notC2 = fact.createConstraint(fm, new And(cond_prefix, new Not(cond_seq)));
+		fm.addConstraint(andC1notC2);
+		
+		conf = new Configuration(fm);
+		boolean sat_andC1notC2 = (conf.number(MIN_CONFIGURATIONS)!=0);
+		
+		if(sat_andC1C2 && !sat_andC1notC2){
+			return true;
+		}
+		return false;	
+	}
+
+	private static <I,O> Map<ConditionalState<ConditionalTransition<I,O>>, List<List<ConditionalTransition<I,O>>>> 
+			getAllValidPaths(FeaturedMealy<I,O> ffsm){
+		Map<ConditionalState<ConditionalTransition<I,O>>, List<List<ConditionalTransition<I,O>>>> allPaths = new HashMap<ConditionalState<ConditionalTransition<I,O>>,List<List<ConditionalTransition<I,O>>>>();
+
+		ConditionalState<ConditionalTransition<I,O>> s0 = ffsm.getInitialState();
+		
 		Set<ConditionalTransition<I,O>> no_loop_tr = new HashSet<>();
 		for (ConditionalState<ConditionalTransition<I,O>> state : ffsm.getStates()) {
 			for (I input : ffsm.getInputAlphabet()) {
-				Collection<ConditionalTransition<I,O>> trs = ffsm.getTransitions(state, input);
-				for (ConditionalTransition<I,O> tr : trs) {
-					if(!tr.getPredecessor().equals(tr.getSuccessor()))  
-						no_loop_tr.add(tr);
+				for (ConditionalTransition<I,O> tr : ffsm.getTransitions(state, input)) {
+					if(!tr.getPredecessor().equals(tr.getSuccessor())) no_loop_tr.add(tr);
 				}
 			}			
 		}
@@ -125,9 +352,10 @@ public class FeaturedMealyUtils {
 		if((ffsm.getInitialStates().size() == 1)) {
 			nfound_fc.remove(s0);
 			found_fc.add(s0);			
-		} else return false;
+		} else {
+			return allPaths;
+		}
 
-		Map<ConditionalState<ConditionalTransition<I,O>>, List<List<ConditionalTransition<I,O>>>> allPaths = new HashMap<ConditionalState<ConditionalTransition<I,O>>,List<List<ConditionalTransition<I,O>>>>();
 		nfound_fc.forEach(cState -> allPaths.put(cState, new ArrayList<>()));
 		
 		for (I input : ffsm.getInputAlphabet()) {
@@ -151,8 +379,7 @@ public class FeaturedMealyUtils {
 				rec_find_paths(ffsm,cs,covered_fc,no_loop_tr,allPaths);
 			}				
 		}
-		return false;
-		
+		return allPaths;
 	}
 	
 
@@ -170,7 +397,7 @@ public class FeaturedMealyUtils {
 			if(no_loop_tr.contains(currTr) && !ffsm.getInitialStates().contains(currTr.getSuccessor())){				
 				List<List<ConditionalTransition<I,O>>> c_paths = new ArrayList<>(allPaths.get(currTr.getSuccessor()));
 				List<List<ConditionalTransition<I,O>>> lc_paths = allPaths.get(current);
-				if(check_path_coverage(ffsm,currTr.getSuccessor(), c_paths)){
+				if(check_path_coverage(ffsm.getFeatureModel(),currTr.getSuccessor(), c_paths)){
 					if(!covered_fc.contains(currTr.getSuccessor())){
 						covered_fc.add(currTr.getSuccessor());
 					}
@@ -205,20 +432,46 @@ public class FeaturedMealyUtils {
 	}
 
 
-	private static <I, O> boolean check_valid_path(FeaturedMealy<I, O> ffsm,
+	private static <I,O> boolean check_valid_paths(
+			FeaturedMealy<I, O> ffsm,
+//			IFeatureModel fm,
+			Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
+		
+		for(ConditionalState<ConditionalTransition<I, O>> state: allValid.keySet()){
+			List<List<ConditionalTransition<I, O>>> aux_paths = new ArrayList<>(allValid.get(state));
+			for(List<ConditionalTransition<I, O>> path : aux_paths){					
+				if(!check_valid_path(ffsm, path)) {
+					allValid.get(state).remove(path);
+				}
+			}				
+		}
+		
+		for(ConditionalState<ConditionalTransition<I, O>> state: allValid.keySet()){
+			if(allValid.get(state).size() < 1){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static <I, O> boolean check_valid_path(
+			FeaturedMealy<I, O> ffsm,
+//			IFeatureModel featModel,
 			List<ConditionalTransition<I,O>> new_path) {
 		
-		FeatureModel fm = (FeatureModel) ffsm.getFeatureModel().clone();
+//		IFeatureModel fm = featModel.clone();
+		IFeatureModel fm = ffsm.getFeatureModel().clone();
 		ArrayList<Node> pathClause = new ArrayList<>();
 
 		IConstraint stateConstr = fact.createConstraint(fm, new_path.get(new_path.size()-1).getSuccessor().getCondition());
-		fm.addConstraint(stateConstr); // check origin condition;
 		for (ConditionalTransition<I,O> path : new_path){
+			pathClause.add(path.getPredecessor().getCondition());
 			pathClause.add(path.getPredecessor().getCondition());
 			pathClause.add(path.getCondition());
 		}
 		IConstraint andPathConstrs = fact.createConstraint(fm, new And(pathClause));
-		fm.addConstraint(stateConstr);  fm.addConstraint(andPathConstrs); 
+		fm.addConstraint(stateConstr);
+		fm.addConstraint(andPathConstrs); 
 		Configuration conf = new Configuration(fm);
 		if(conf.number(MIN_CONFIGURATIONS)==0) {
 			return false;
@@ -227,13 +480,13 @@ public class FeaturedMealyUtils {
 	}
 
 	private static <I,O> boolean check_path_coverage(
-			FeaturedMealy<I, O> ffsm,
-			ConditionalState<ConditionalTransition<I,O>> successor, 
+			IFeatureModel fm_par,
+			ConditionalState<ConditionalTransition<I,O>> state, 
 			List<List<ConditionalTransition<I,O>>> list) {
 		
-		FeatureModel fm = (FeatureModel) ffsm.getFeatureModel().clone();
+		FeatureModel fm = (FeatureModel) fm_par.clone();
 		List<Node> pathClause = new ArrayList<>();
-		IConstraint stateConstr = fact.createConstraint(fm, successor.getCondition());
+		IConstraint stateConstr = fact.createConstraint(fm, state.getCondition());
 		for (List<ConditionalTransition<I,O>> path : list){
 			List<Node> notAndClauses = new ArrayList<>();
 			for (ConditionalTransition<I,O> condTr : path) {
@@ -252,109 +505,60 @@ public class FeaturedMealyUtils {
 		return true;
 	}
 
+	private static <I,O> Set<ConditionalState<ConditionalTransition<I, O>>> 
+			check_product_coverage(
+					//FeaturedMealy<I, O> ffsm,
+					IFeatureModel featModel,
+					Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
+		// TODO Auto-generated method stub
+		Set<ConditionalState<ConditionalTransition<I, O>>> uncovStates = new HashSet<>() ;
+		
+		//check_path_coverage
+		for(ConditionalState<ConditionalTransition<I, O>> state: allValid.keySet()){
+			if(allValid.get(state) != null){
+				if(!check_path_coverage(featModel, state, allValid.get(state))) {
+					uncovStates.add(state);
+				}
+			}			
+		}
+		return uncovStates;
+	}
+
 	public static <I, O> boolean isMinimal(FeaturedMealy<I,O> ffsm){
 		return false;
 
 	}
 
-	public static FeaturedMealy<String,String> readFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
-		Pattern kissLine = Pattern.compile(
-				"\\s*"
-				+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
-				+ "\\s+--\\s+"+
-				"\\s*"
-				+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
-				+ "\\s*/\\s*"
-				+ "(\\S+)"
-				+ "\\s+->\\s+"
-				+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
-				);
-
-		BufferedReader br = new BufferedReader(new FileReader(f_ffsm));
-
+	public static List<String> getAlphabetFromFeature(IFeature feat) {
+		List<String> abc = new ArrayList<>();
+		String descr = feat.getProperty().getDescription();
+		descr=descr.replaceFirst("^Inputs=\\{", "").replaceFirst("\\}$", "");
+		if(descr.length()==0) return abc;
+		String[] inputs = descr.split(";");
+		for (String in : inputs) {
+			abc.add(in);
+		}
+		return abc;
+	}
+	
+	public static Map<String, Node> mapConditionalInputs(IFeatureModel featModel) {
 		NodeReader nodeReader = new NodeReader();
 		nodeReader.activateTextualSymbols();
-		FeaturedMealy<String, String> ffsm = null;
-		
-		if(br.ready()){
-			String line = br.readLine();
-			String[] inputSymbols = line.split(";");
-			HashSet<String> abcSet = new HashSet<>();
-			List<String> abc = new ArrayList<>();
-			for (String ic : inputSymbols) {
-				String[] ic_split = ic.split("@");
-				if(abcSet.add(ic_split[0])) {
-					abc.add(ic_split[0]);
-				}
- 			}
-			Collections.sort(abc);
-//			Collections.reverse(abc);
-			Alphabet<String> alphabet = Alphabets.fromCollection(abc);
-			ffsm = new FeaturedMealy<>(alphabet,fm);
+		Map<String,Node> conditionalInputs = new HashMap<>();
+		Map<String,Set<Node>> inputCondSet = new HashMap<>();
+		List<String> inputs = getAlphabetFromFeature(featModel.getStructure().getRoot().getFeature());
+		for (String key : inputs) {
+			String[] in_cond = key.split("@");
+			in_cond[1] = in_cond[1].replaceAll("^\\[", "").replaceAll("\\]$", "");
+			inputCondSet.putIfAbsent(in_cond[0], new HashSet<>());
 			
-			ConditionalState<ConditionalTransition<String,String>> s0 = null;
-			Map<Integer,ConditionalState<ConditionalTransition<String,String>>> statesMap = new HashMap<>();
-			while(br.ready()){
-				line = br.readLine();
-				Matcher m = kissLine.matcher(line);
-				if(m.matches()){
-					String[] tr = new String[7];
-					IntStream.range(1, tr.length+1).forEach(idx-> tr[idx-1] = m.group(idx));
-					
-					/* Conditional state origin */
-					Integer si = Integer.valueOf(tr[0]); 
-					Node si_c = nodeReader.stringToNode(tr[1]);
-					if(!statesMap.containsKey(si)) {
-						statesMap.put(si,ffsm.addState(si_c));
-						if(s0==null) s0 = statesMap.get(si);
-					}
-					
-					/* Conditional Input */
-					String in = tr[2];
-					Node in_c = nodeReader.stringToNode(tr[3]);
-					
-					/* Output */
-					String out = tr[4];
-					
-					/* Conditional state destination */
-					Integer sj = Integer.valueOf(tr[5]);
-					Node sj_c = nodeReader.stringToNode(tr[6]);
-					if(!statesMap.containsKey(sj)) {
-						statesMap.put(sj,ffsm.addState(sj_c));
-					}
-					
-					ffsm.addTransition(statesMap.get(si), in, statesMap.get(sj), out,in_c);
-				}
-			}
-			
-			ffsm.setInitial(s0,true);
-			/*
-			Collection<ConditionalTransition<String>> condTr = null;
-			int totTrs = 0; 
-			for (ConditionalState<ConditionalTransition<String>> state : ffsm.getStates()) {
-				for (String input : ffsm.getInputAlphabet()) {
-					condTr = ffsm.getTransitions(state, input);
-					totTrs+=condTr.size();
-					for (ConditionalTransition<String> tr : condTr) {
-						System.out.println(String.format("%d@[%s] -- %s@[%s] / %s -> %d@[%s]", 
-								state.getId(),
-								formatNode(state.getCondition()),
-								input,
-								formatNode(tr.getCondition()),
-								tr.getOutput(),
-								tr.getSuccessor().getId(),
-								formatNode(ffsm.getState(tr.getSuccessor().getId()).getCondition())
-								));
-					}
-				}
-			}
-			System.out.println(condTr); System.out.println(condTr.size()); System.out.println(totTrs);
-			*/
+			inputCondSet.get(in_cond[0]).add(nodeReader.stringToNode(in_cond[1]));
+		}
+		for (String key : inputCondSet.keySet()) {
+			conditionalInputs.put(key, new Or(inputCondSet.get(key)));			
 		}
 		
-		br.close();
-
-		return ffsm;
+		return conditionalInputs;
 	}
 	public static String formatNode(Node n) {
 		NodeWriter nw = new NodeWriter(n);

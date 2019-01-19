@@ -12,13 +12,13 @@ import org.prop4j.NodeWriter.Notation;
 import org.sat4j.specs.TimeoutException;
 
 import de.ovgu.featureide.fm.core.base.IConstraint;
-import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.IFeatureModelFactory;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import de.ovgu.featureide.fm.core.base.impl.Feature;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
+import net.automatalib.visualization.Visualization;
 import uk.le.ac.ffsm.FeaturedMealy;
 import uk.le.ac.ffsm.FeaturedMealyUtils;
 
@@ -26,39 +26,44 @@ public class FFSMAnalysis {
 
 	public static void main(String[] args) {
 		try {
-			File f_fm = new File("Benchmark_SPL/agm/feature_models/example_agm.xml");
-			File f_ffsm = new File("./Benchmark_SPL/agm/ffsms/ffsm_agm.txt");
-
+			String spl_name = "bcs2";
+			File f_fm = new File("Benchmark_SPL/"+spl_name+"/feature_models/example_"+spl_name+".xml");
+			File f_ffsm = new File("./Benchmark_SPL/"+spl_name+ "/ffsms/ffsm_"+spl_name+".txt");
+			String checking_str = null;
+			
 			IFeatureModel fm = FeatureModelManager.load(f_fm.toPath()).getObject();
 			FeaturedMealy<String,String> ffsm = FeaturedMealyUtils.readFeaturedMealy(f_ffsm, fm);
 
-			System.out.print("COMPLETENESS CHECK: ");
+			checking_str = "COMPLETENESS CHECK: ";
 			boolean is_complt = FeaturedMealyUtils.isComplete(ffsm);
 			if(is_complt) {
-				System.out.println("OK");
-			}else System.err.println("NOK!");
+				System.out.println(checking_str + "OK");
+			}else System.err.println(checking_str +"NOK!");
 
-			System.out.print("DETERMINISTIC CHECK: ");
+			checking_str = ("DETERMINISTIC CHECK: ");
 			boolean is_determ = FeaturedMealyUtils.isDeterministic(ffsm);
 			if(is_determ){
-				System.out.println("OK");
-				System.out.print("INIT. CONNECTED CHECK: ");
+				System.out.println(checking_str + "OK");
+				checking_str = ("INIT. CONNECTED CHECK: ");
 				boolean is_iniCon = FeaturedMealyUtils.isInitiallyConnected(ffsm);	
 				if(is_iniCon){
-					System.out.println("OK");
-					System.out.print("MINIMAL CHECK: ");
+					System.out.println(checking_str + "OK");
+					checking_str = ("MINIMAL CHECK: ");
 					boolean is_minmal = FeaturedMealyUtils.isMinimal(ffsm);
 					if(is_minmal){					
-						System.out.print("MINIMAL CHECK: ");
-
-					}else System.err.println("NOK!");
-				}else System.err.println("NOK!");
-			}else System.err.println("NOK!");
-
+						System.out.println(checking_str + "OK");
+					}else System.err.println(checking_str +"NOK!");
+				}else System.err.println(checking_str +"NOK!");
+			}else System.err.println(checking_str +"NOK!");
 
 
-
-			//testMethods(fm,ffsm);
+			FFSMVisualizationHelper<String,String> ffsm_viz = new FFSMVisualizationHelper<>(ffsm);
+			ffsm_viz.setPlotSelfloops(false);
+			Visualization.visualize(ffsm, ffsm.getInputAlphabet(),ffsm_viz);
+			
+			if(spl_name.equals("agm")) {
+				testMethods(fm,ffsm);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,7 +87,7 @@ public class FFSMAnalysis {
 
 		NodeWriter nodeWriter = new NodeWriter(constraint.getNode());
 
-		//		nodeWriter.setNotation(Notation.PREFIX);
+		//		nodeWriter.setNotation(Notation.PREFIX);setpl
 		nodeWriter.setSymbols(NodeWriter.textualSymbols);
 
 		NodeReader nodeReader = new NodeReader();
@@ -91,6 +96,7 @@ public class FFSMAnalysis {
 		Node node = nodeReader.stringToNode("(W and N)");
 		nodeWriter.setNotation(Notation.PREFIX);
 		System.out.println(Arrays.toString(NodeWriter.logicalSymbols));
+		System.out.println(node.toString());
 
 		nodeWriter.setEnforceBrackets(true);
 		nodeWriter.setEnquoteWhitespace(true);
