@@ -44,11 +44,11 @@ public class FFSMVisualizationHelper<I,O>
 
 		final StringBuilder labelBuilder = new StringBuilder();
 		labelBuilder.append(String.valueOf(edge.getInput()));
-		labelBuilder.append(" @ ");
-		labelBuilder.append(" [ ");
+		labelBuilder.append("@");
+		labelBuilder.append("[");
 		labelBuilder.append(edge.getTransition().getCondition().toString());
-		labelBuilder.append(" ] ");
-		labelBuilder.append(" / ");
+		labelBuilder.append("]");
+		labelBuilder.append("/");
 		O output = edge.getTransition().getOutput();
 		if (output != null) {
 			labelBuilder.append(String.valueOf(output));
@@ -65,10 +65,10 @@ public class FFSMVisualizationHelper<I,O>
 		}
 		final StringBuilder labelBuilder = new StringBuilder();
 		labelBuilder.append(String.valueOf(node.getId()));
-		labelBuilder.append(" @ ");
-		labelBuilder.append(" [ ");
+		labelBuilder.append("@");
+		labelBuilder.append("[");
 		labelBuilder.append(node.getCondition().toString());
-		labelBuilder.append(" ] ");
+		labelBuilder.append("]");
 		properties.put(NodeAttrs.LABEL, labelBuilder.toString());
 		return super.getNodeProperties(node, properties);
 	}
