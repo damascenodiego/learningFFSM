@@ -212,6 +212,7 @@ public class MealyUtils {
 
 		return mealym;
 	}
+	
 
 
 	public CompactMealy<String, Word<String>> buildOmegaMealyMachine(DefaultQuery<String, Word<String>> query) throws Exception {

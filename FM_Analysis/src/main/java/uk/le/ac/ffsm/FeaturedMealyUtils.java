@@ -36,17 +36,34 @@ import de.ovgu.featureide.fm.core.base.IFeatureModelFactory;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
-
+import net.automatalib.automata.transout.impl.compact.CompactMealy;
 import net.automatalib.words.Alphabet;
+import net.automatalib.words.Word;
+import net.automatalib.words.WordBuilder;
 import net.automatalib.words.impl.Alphabets;
+import uk.le.ac.fsm.MealyUtils;
 
 public class FeaturedMealyUtils {
+	
+	public static final Word<String> OMEGA_SYMBOL = Word.fromLetter("Ω");
 	
 	private static final long MAX_CONFIGURATIONS = 100000;
 	private static final long MIN_CONFIGURATIONS = 10;
 	public static IFeatureModelFactory fact = FMFactoryManager.getDefaultFactory();
 	
-	public static FeaturedMealy<String,String> readFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
+	private static FeaturedMealyUtils instance;
+	
+	private FeaturedMealyUtils() { }
+	
+	public static FeaturedMealyUtils getInstance() {
+		if(instance == null){
+			FeaturedMealyUtils.instance = new FeaturedMealyUtils();
+		}
+		return instance;
+	}
+	
+	
+	public FeaturedMealy<String,String> readFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
 			Pattern kissLine = Pattern.compile(
 					"\\s*"
 					+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
@@ -122,9 +139,112 @@ public class FeaturedMealyUtils {
 	
 			return ffsm;
 		}
+	
+	public ProductMealy<String, Word<String>> loadProductMachine(File f, IFeatureModel fm) throws Exception {
+
+		Pattern kissLine = Pattern.compile("\\s*(\\S+)\\s+--\\s+(\\S+)\\s*/\\s*(\\S+)\\s+->\\s+(\\S+)\\s*");
+
+		BufferedReader br = new BufferedReader(new FileReader(f));
+
+		List<String[]> trs = new ArrayList<String[]>();
+
+		HashSet<String> abcSet = new HashSet<>();
+		List<String> abc = new ArrayList<>();
+
+		//		int count = 0;
+		String configuration = br.readLine();
+		String[] configurations_split = configuration.split(" ");
+
+		while(br.ready()){
+			String line = br.readLine();
+			Matcher m = kissLine.matcher(line);
+			if(m.matches()){
+				//				System.out.println(m.group(0));
+				//				System.out.println(m.group(1));
+				//				System.out.println(m.group(2));
+				//				System.out.println(m.group(3));
+				//				System.out.println(m.group(4));
+
+				String[] tr = new String[4];
+				tr[0] = m.group(1);
+				tr[1] = m.group(2); 
+				if(!abcSet.contains(tr[1])){
+					abcSet.add(tr[1]);
+					abc.add(tr[1]);					
+				}
+				tr[2] = m.group(3);
+				tr[3] = m.group(4);
+				trs.add(tr);
+			}
+			//			count++;
+		}
+
+		br.close();
+		
+		NodeReader nodeReader = new NodeReader();
+		nodeReader.activateTextualSymbols();
+		
+		List<Node> configuration_list = new ArrayList<>();
+		for (String string : configurations_split) {
+			configuration_list.add(nodeReader.stringToNode(string));
+		}
+
+		Collections.sort(abc);
+		Alphabet<String> alphabet = Alphabets.fromCollection(abc);
+		ProductMealy<String, Word<String>> mealym = new ProductMealy<String, Word<String>>(alphabet,fm,configuration_list);
+ 
+		Map<String,Integer> states = new HashMap<String,Integer>();
+		Integer si=null,sf=null;
+
+		Map<String,Word<String>> words = new HashMap<String,Word<String>>();		
+
+
+		WordBuilder<String> aux = new WordBuilder<>();
+
+		aux.clear();
+		aux.append(OMEGA_SYMBOL);
+		words.put(OMEGA_SYMBOL.toString(), aux.toWord());
+
+		Integer s0 = null;
+
+		for (String[] tr : trs) {
+			if(!states.containsKey(tr[0])) states.put(tr[0], mealym.addState());
+			if(!states.containsKey(tr[3])) states.put(tr[3], mealym.addState());
+
+			si = states.get(tr[0]);
+			if(s0==null) s0 = si;
+			sf = states.get(tr[3]);
+
+			if(!words.containsKey(tr[1])){
+				aux.clear();
+				aux.add(tr[1]);
+				words.put(tr[1], aux.toWord());
+			}
+			if(!words.containsKey(tr[2])){
+				aux.clear();
+				aux.add(tr[2]);
+				words.put(tr[2], aux.toWord());
+			}
+			mealym.addTransition(si, words.get(tr[1]).toString(), sf, words.get(tr[2]));
+		}
+
+		for (Integer st : mealym.getStates()) {
+			for (String in : alphabet) {
+				//				System.out.println(mealym.getTransition(st, in));
+				if(mealym.getTransition(st, in)==null){
+					mealym.addTransition(st, in, st, OMEGA_SYMBOL);
+				}
+			}
+		}
+
+
+		mealym.setInitialState(s0);
+
+		return mealym;
+	}
 
 	// https://github.com/vhfragal/ConFTGen-tool/blob/450dd0a0e408be6b42e223d41154eab2269427f3/work_neon_ubu/br.icmc.ffsm.ui.base/src/br/usp/icmc/feature/logic/FFSMProperties.java#L2384
-	public static <I, O> boolean isDeterministic(FeaturedMealy<I,O> ffsm){
+	public  <I, O> boolean isDeterministic(FeaturedMealy<I,O> ffsm){
 		FeatureModel fm = (FeatureModel) ffsm.getFeatureModel().clone();
 
 		Alphabet<I> alphabet = ffsm.getInputAlphabet();
@@ -158,7 +278,7 @@ public class FeaturedMealyUtils {
 		return true;
 	}
 
-	public static <I, O> boolean isComplete(FeaturedMealy<I,O> ffsm){
+	public  <I, O> boolean isComplete(FeaturedMealy<I,O> ffsm){
 		FeatureModel fm = (FeatureModel) ffsm.getFeatureModel().clone();
 
 		Alphabet<I> alphabet = ffsm.getInputAlphabet();
@@ -193,7 +313,7 @@ public class FeaturedMealyUtils {
 
 	}
 	
-	public static <I,O> boolean isInitiallyConnected(FeaturedMealy<I,O> ffsm){
+	public  <I,O> boolean isInitiallyConnected(FeaturedMealy<I,O> ffsm){
 		Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid = null;
 		allValid = getAllValidPaths(ffsm);
 		
@@ -243,7 +363,7 @@ public class FeaturedMealyUtils {
 		return true;
 	}
 	
-	private static <I,O> void 
+	private  <I,O> void 
 			reduce_state_cover(
 				ConditionalState<ConditionalTransition<I, O>> s,
 				Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
@@ -251,7 +371,7 @@ public class FeaturedMealyUtils {
 		
 	}
 
-	private static <I,O> Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> 
+	private  <I,O> Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> 
 		create_state_cover_set(
 			FeaturedMealy<I, O> ffsm,
 			Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
@@ -259,7 +379,7 @@ public class FeaturedMealyUtils {
 		return null;
 	}
 
-	private static <I,O> void 
+	private  <I,O> void 
 		reduce_redundant_paths(
 				FeaturedMealy<I, O> ffsm,
 				Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
@@ -310,7 +430,7 @@ public class FeaturedMealyUtils {
 		}
 	}
 
-	private static boolean check_cond_prefix(IFeatureModel featModel, Node cond_prefix, Node cond_seq) {
+	private  boolean check_cond_prefix(IFeatureModel featModel, Node cond_prefix, Node cond_seq) {
 		IFeatureModel fm = featModel.clone();
 		Configuration conf =  null;
 		
@@ -332,7 +452,7 @@ public class FeaturedMealyUtils {
 		return false;	
 	}
 
-	private static <I,O> Map<ConditionalState<ConditionalTransition<I,O>>, List<List<ConditionalTransition<I,O>>>> 
+	private  <I,O> Map<ConditionalState<ConditionalTransition<I,O>>, List<List<ConditionalTransition<I,O>>>> 
 			getAllValidPaths(FeaturedMealy<I,O> ffsm){
 		Map<ConditionalState<ConditionalTransition<I,O>>, List<List<ConditionalTransition<I,O>>>> allPaths = new HashMap<ConditionalState<ConditionalTransition<I,O>>,List<List<ConditionalTransition<I,O>>>>();
 
@@ -383,7 +503,7 @@ public class FeaturedMealyUtils {
 	}
 	
 
-	private static <I,O> void rec_find_paths(
+	private  <I,O> void rec_find_paths(
 			FeaturedMealy<I, O> ffsm, 
 			ConditionalState<ConditionalTransition<I,O>> current,
 			List<ConditionalState<ConditionalTransition<I,O>>> covered_fc, 
@@ -432,7 +552,7 @@ public class FeaturedMealyUtils {
 	}
 
 
-	private static <I,O> boolean check_valid_paths(
+	private  <I,O> boolean check_valid_paths(
 			FeaturedMealy<I, O> ffsm,
 //			IFeatureModel fm,
 			Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
@@ -454,7 +574,7 @@ public class FeaturedMealyUtils {
 		return true;
 	}
 
-	private static <I, O> boolean check_valid_path(
+	private  <I, O> boolean check_valid_path(
 			FeaturedMealy<I, O> ffsm,
 //			IFeatureModel featModel,
 			List<ConditionalTransition<I,O>> new_path) {
@@ -479,7 +599,7 @@ public class FeaturedMealyUtils {
 		return true;
 	}
 
-	private static <I,O> boolean check_path_coverage(
+	private  <I,O> boolean check_path_coverage(
 			IFeatureModel fm_par,
 			ConditionalState<ConditionalTransition<I,O>> state, 
 			List<List<ConditionalTransition<I,O>>> list) {
@@ -505,7 +625,7 @@ public class FeaturedMealyUtils {
 		return true;
 	}
 
-	private static <I,O> Set<ConditionalState<ConditionalTransition<I, O>>> 
+	private  <I,O> Set<ConditionalState<ConditionalTransition<I, O>>> 
 			check_product_coverage(
 					//FeaturedMealy<I, O> ffsm,
 					IFeatureModel featModel,
@@ -524,12 +644,12 @@ public class FeaturedMealyUtils {
 		return uncovStates;
 	}
 
-	public static <I, O> boolean isMinimal(FeaturedMealy<I,O> ffsm){
+	public  <I, O> boolean isMinimal(FeaturedMealy<I,O> ffsm){
 		return false;
 
 	}
 
-	public static List<String> getAlphabetFromFeature(IFeature feat) {
+	public  List<String> getAlphabetFromFeature(IFeature feat) {
 		List<String> abc = new ArrayList<>();
 		String descr = feat.getProperty().getDescription();
 		descr=descr.replaceFirst("^Inputs=\\{", "").replaceFirst("\\}$", "");
@@ -541,7 +661,7 @@ public class FeaturedMealyUtils {
 		return abc;
 	}
 	
-	public static Map<String, Node> mapConditionalInputs(IFeatureModel featModel) {
+	public  Map<String, Node> mapConditionalInputs(IFeatureModel featModel) {
 		NodeReader nodeReader = new NodeReader();
 		nodeReader.activateTextualSymbols();
 		Map<String,Node> conditionalInputs = new HashMap<>();
@@ -560,7 +680,7 @@ public class FeaturedMealyUtils {
 		
 		return conditionalInputs;
 	}
-	public static String formatNode(Node n) {
+	public  String formatNode(Node n) {
 		NodeWriter nw = new NodeWriter(n);
 //		nw.setNotation(Notation.INFIX);
 		nw.setNotation(Notation.PREFIX);

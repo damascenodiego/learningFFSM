@@ -32,24 +32,24 @@ public class FFSMAnalysis {
 			String checking_str = null;
 			
 			IFeatureModel fm = FeatureModelManager.load(f_fm.toPath()).getObject();
-			FeaturedMealy<String,String> ffsm = FeaturedMealyUtils.readFeaturedMealy(f_ffsm, fm);
+			FeaturedMealy<String,String> ffsm = FeaturedMealyUtils.getInstance().readFeaturedMealy(f_ffsm, fm);
 
 			checking_str = "COMPLETENESS CHECK: ";
-			boolean is_complt = FeaturedMealyUtils.isComplete(ffsm);
+			boolean is_complt = FeaturedMealyUtils.getInstance().isComplete(ffsm);
 			if(is_complt) {
 				System.out.println(checking_str + "OK");
 			}else System.err.println(checking_str +"NOK!");
 
 			checking_str = ("DETERMINISTIC CHECK: ");
-			boolean is_determ = FeaturedMealyUtils.isDeterministic(ffsm);
+			boolean is_determ = FeaturedMealyUtils.getInstance().isDeterministic(ffsm);
 			if(is_determ){
 				System.out.println(checking_str + "OK");
 				checking_str = ("INIT. CONNECTED CHECK: ");
-				boolean is_iniCon = FeaturedMealyUtils.isInitiallyConnected(ffsm);	
+				boolean is_iniCon = FeaturedMealyUtils.getInstance().isInitiallyConnected(ffsm);	
 				if(is_iniCon){
 					System.out.println(checking_str + "OK");
 					checking_str = ("MINIMAL CHECK: ");
-					boolean is_minmal = FeaturedMealyUtils.isMinimal(ffsm);
+					boolean is_minmal = FeaturedMealyUtils.getInstance().isMinimal(ffsm);
 					if(is_minmal){					
 						System.out.println(checking_str + "OK");
 					}else System.err.println(checking_str +"NOK!");
