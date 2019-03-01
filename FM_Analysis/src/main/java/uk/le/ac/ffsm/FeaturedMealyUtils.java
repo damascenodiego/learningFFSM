@@ -63,7 +63,7 @@ public class FeaturedMealyUtils {
 	}
 	
 	
-	public FeaturedMealy<String,String> readFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
+	public FeaturedMealy<String, Word<String>> loadFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
 			Pattern kissLine = Pattern.compile(
 					"\\s*"
 					+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
@@ -80,7 +80,7 @@ public class FeaturedMealyUtils {
 	
 			NodeReader nodeReader = new NodeReader();
 			nodeReader.activateTextualSymbols();
-			FeaturedMealy<String, String> ffsm = null;
+			FeaturedMealy<String, Word<String>> ffsm = null;
 			
 			if(br.ready()){
 				String line = null;
@@ -90,8 +90,8 @@ public class FeaturedMealyUtils {
 				Alphabet<String> alphabet = Alphabets.fromCollection(abc);
 				ffsm = new FeaturedMealy<>(alphabet,fm,cInps);
 				
-				ConditionalState<ConditionalTransition<String,String>> s0 = null;
-				Map<Integer,ConditionalState<ConditionalTransition<String,String>>> statesMap = new HashMap<>();
+				ConditionalState<ConditionalTransition<String,Word<String>>> s0 = null;
+				Map<Integer,ConditionalState<ConditionalTransition<String,Word<String>>>> statesMap = new HashMap<>();
 				Map<String,Integer> statesId = new HashMap<>();
 				int stateId = 0;
 				while(br.ready()){
@@ -118,7 +118,8 @@ public class FeaturedMealyUtils {
 						Node in_c = nodeReader.stringToNode(tr[3]);
 						
 						/* Output */
-						String out = tr[4];
+						Word<String> out = Word.epsilon();
+						out=out.append(tr[4]);
 						
 						/* Conditional state destination */
 						if(!statesId.containsKey(tr[5])) statesId.put(tr[5],stateId++);

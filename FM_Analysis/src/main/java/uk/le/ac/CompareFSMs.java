@@ -55,12 +55,17 @@ public class CompareFSMs {
 			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_5.txt");
 			ProductMealy<String, Word<String>> fsm2 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm2,fm);
 			
-			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa(fsm1);
-			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa(fsm2);
+			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(fsm1);
+			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(fsm2);
+			
+//			File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
+//			FeaturedMealy<String, Word<String>> ffsm1 = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
+//			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(ffsm1);
+//			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(ffsm1);
 			
 			//plotModels(m_nfa1,m_nfa2);
 			
-			double K = 0.5;
+			double K = 0.75;
 			//double K = 1;
 			
 			RealVector pairsToScore = computeScores(m_nfa1,m_nfa2,K);

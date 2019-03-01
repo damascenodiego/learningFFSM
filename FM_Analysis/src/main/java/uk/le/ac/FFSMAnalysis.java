@@ -19,6 +19,7 @@ import de.ovgu.featureide.fm.core.base.impl.Feature;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 import net.automatalib.visualization.Visualization;
+import net.automatalib.words.Word;
 import uk.le.ac.ffsm.FeaturedMealy;
 import uk.le.ac.ffsm.FeaturedMealyUtils;
 
@@ -32,7 +33,7 @@ public class FFSMAnalysis {
 			String checking_str = null;
 			
 			IFeatureModel fm = FeatureModelManager.load(f_fm.toPath()).getObject();
-			FeaturedMealy<String,String> ffsm = FeaturedMealyUtils.getInstance().readFeaturedMealy(f_ffsm, fm);
+			FeaturedMealy<String,Word<String>> ffsm = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm, fm);
 
 			checking_str = "COMPLETENESS CHECK: ";
 			boolean is_complt = FeaturedMealyUtils.getInstance().isComplete(ffsm);
@@ -57,7 +58,7 @@ public class FFSMAnalysis {
 			}else System.err.println(checking_str +"NOK!");
 
 
-			FFSMVisualizationHelper<String,String> ffsm_viz = new FFSMVisualizationHelper<>(ffsm);
+			FFSMVisualizationHelper<String,Word<String>> ffsm_viz = new FFSMVisualizationHelper<>(ffsm);
 			ffsm_viz.setPlotSelfloops(false);
 			Visualization.visualize(ffsm, ffsm.getInputAlphabet(),ffsm_viz);
 			

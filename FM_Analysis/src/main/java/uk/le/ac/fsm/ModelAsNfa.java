@@ -66,11 +66,11 @@ public class ModelAsNfa<I, O> {
 				
 				transitionsOut.putIfAbsent(s1, new LinkedHashMap<>());
 				transitionsOut.get(s1).putIfAbsent(inputSymbol.toString(), new LinkedHashSet<>());
-				transitionsOut.get(s1).get(inputSymbol).add(s2);
+				transitionsOut.get(s1).get(inputSymbol.toString()).add(s2);
 				
 				transitionsIn .putIfAbsent(s2, new LinkedHashMap<>());
 				transitionsIn .get(s2).putIfAbsent(inputSymbol.toString(), new LinkedHashSet<>());
-				transitionsIn .get(s2).get(inputSymbol).add(s1);
+				transitionsIn .get(s2).get(inputSymbol.toString()).add(s1);
 				
 				for (ConditionalTransition<I, O> tr : the_ffsm.getTransitions(state, inputSymbol)) {
 					if(!model2nfa.containsKey(the_ffsm.getStateId(tr.getSuccessor())))  {
@@ -83,11 +83,11 @@ public class ModelAsNfa<I, O> {
 					
 					transitionsOut.putIfAbsent(s2, new LinkedHashMap<>());
 					transitionsOut.get(s2).putIfAbsent(outputSymbol.toString(), new LinkedHashSet<>());
-					transitionsOut.get(s2).get(outputSymbol).add(s3);
+					transitionsOut.get(s2).get(outputSymbol.toString()).add(s3);
 					
 					transitionsIn .putIfAbsent(s3, new LinkedHashMap<>());
 					transitionsIn .get(s3).putIfAbsent(outputSymbol.toString(), new LinkedHashSet<>());
-					transitionsIn .get(s3).get(outputSymbol).add(s2);
+					transitionsIn .get(s3).get(outputSymbol.toString()).add(s2);
 				}
 				
 			}
