@@ -38,7 +38,7 @@ public class FFSMVisualizationHelper<I,O>
 			return false;
 		}
 		
-		if(src.equals(tgt)) {
+		if(!this.plotSelfloops && src.equals(tgt)) {
 			return false;
 		}
 
@@ -67,7 +67,7 @@ public class FFSMVisualizationHelper<I,O>
 		labelBuilder.append(String.valueOf(node.getId()));
 		labelBuilder.append("@");
 		labelBuilder.append("[");
-		labelBuilder.append(node.getCondition().toString());
+		labelBuilder.append(((node.getCondition()==null)?"null":node.getCondition()).toString());
 		labelBuilder.append("]");
 		properties.put(NodeAttrs.LABEL, labelBuilder.toString());
 		return super.getNodeProperties(node, properties);

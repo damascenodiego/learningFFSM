@@ -1,6 +1,7 @@
 package uk.le.ac;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -18,24 +19,27 @@ import org.apache.commons.math3.linear.DecompositionSolver;
 import org.apache.commons.math3.linear.LUDecomposition;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
+import org.prop4j.Node;
+import org.prop4j.NodeReader;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
-import edu.uci.ics.jung.visualization.VisualizationViewer;
 import net.automatalib.automata.MutableAutomaton;
 import net.automatalib.automata.fsa.impl.FastNFA;
 import net.automatalib.automata.fsa.impl.FastNFAState;
-import net.automatalib.automata.transout.impl.compact.CompactMealy;
-import net.automatalib.serialization.dot.DefaultDOTVisualizationHelper;
+import net.automatalib.automata.graphs.TransitionEdge;
+import net.automatalib.serialization.dot.DOTVisualizationHelper;
 import net.automatalib.serialization.dot.GraphDOT;
-import net.automatalib.util.automata.fsa.NFAs;
 import net.automatalib.visualization.Visualization;
+import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
+import net.automatalib.words.impl.Alphabets;
 import uk.le.ac.fsm.ModelAsNfa;
+import uk.le.ac.ffsm.ConditionalState;
+import uk.le.ac.ffsm.ConditionalTransition;
 import uk.le.ac.ffsm.FeaturedMealy;
 import uk.le.ac.ffsm.FeaturedMealyUtils;
 import uk.le.ac.ffsm.ProductMealy;
-import uk.le.ac.fsm.MealyUtils;
 
 public class CompareFSMs {
 
@@ -51,13 +55,10 @@ public class CompareFSMs {
 			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_5.txt");
 			ProductMealy<String, Word<String>> fsm2 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm2,fm);
 			
-			ModelAsNfa m_nfa1 = new ModelAsNfa(fsm1);
-			ModelAsNfa m_nfa2 = new ModelAsNfa(fsm2);
+			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa(fsm1);
+			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa(fsm2);
 			
-			//Visualization.visualize(fsm1,fsm1.getInputAlphabet());
-			//Visualization.visualize(m_nfa1.getNfa(),m_nfa1.getNfa().getInputAlphabet());
-			//Visualization.visualize(fsm2,fsm2.getInputAlphabet());
-			//Visualization.visualize(m_nfa2.getNfa(),m_nfa2.getNfa().getInputAlphabet());
+			//plotModels(m_nfa1,m_nfa2);
 			
 			double K = 0.5;
 			//double K = 1;
@@ -66,87 +67,175 @@ public class CompareFSMs {
 			Set<List<FastNFAState>> kPairs = identifyLandmaks(pairsToScore,m_nfa1,m_nfa2);
 			Set<List<FastNFAState>> nPairs = surr(kPairs, m_nfa1, m_nfa2);
 			
+			Set<FastNFAState> checked = new HashSet<>();
 			while (!nPairs.isEmpty()) {
 				while (!nPairs.isEmpty()) {
 					List<FastNFAState> A_B = pickHighest(nPairs,pairsToScore, m_nfa1, m_nfa2);
-					kPairs.add(A_B);
-					removeConflicts(nPairs,A_B);
+					kPairs.add(A_B); 
+					checked.addAll(A_B);
+					removeConflicts(nPairs,checked);
 				}
 				nPairs = surr(kPairs, m_nfa1, m_nfa2);
+				removeConflicts(nPairs,checked);
 			}
 			
 			kPairs.forEach(pair ->System.out.println(pair.get(0).getId()+","+pair.get(1).getId()));
 			
-			FeaturedMealy<String, String> ffsm = makeFFSM(m_nfa1,m_nfa2,kPairs);
+			//FeaturedMealy<String, String> ffsm = makeFFSM(m_nfa1,m_nfa2,kPairs,fm);
+			//Visualization.visualize(ffsm,ffsm.getInputAlphabet(), new FFSMVisualizationHelper<>(ffsm));
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static FeaturedMealy<String, String> makeFFSM(ModelAsNfa nfa0, ModelAsNfa nfa1,
-			Set<List<FastNFAState>> kPairs) {
-		List<List<Integer>> toVisit = new ArrayList<>();
-		toVisit.add(new ArrayList<>());
-		toVisit.get(0).add(0);
-		toVisit.get(0).add(0);
+	private static void plotModels(ModelAsNfa<String,Word<String>> m_nfa1, ModelAsNfa<String,Word<String>> m_nfa2) throws IOException {
+		DOTVisualizationHelper helper = new NFAVisualizationHelper();
+		Visualization.visualize(m_nfa1.getNfa(),m_nfa1.getNfa().getInputAlphabet(),helper);
+		GraphDOT.write(m_nfa1.getNfa(),m_nfa1.getNfa().getInputAlphabet(), System.out, helper);
 		
-		Set<List<Integer>> visited = new HashSet<>();
-		
-		while (!toVisit.isEmpty()) {
-			List<Integer> pair = toVisit.remove(0);
-			visited.add(pair);
+		Visualization.visualize(m_nfa2.getNfa(),m_nfa2.getNfa().getInputAlphabet(),helper);
+		GraphDOT.write(m_nfa2.getNfa(),m_nfa2.getNfa().getInputAlphabet(), System.out, helper);
+	}
 
-			Integer model_s0 = pair.get(0);
-			Integer model_s1 = pair.get(1);
+//	private static FeaturedMealy<String, String> makeFFSM(ModelAsNfa<String,Word<String>>nfa0, ModelAsNfa<String,Word<String>> nfa1,
+//			Set<List<FastNFAState>> kPairs, IFeatureModel fm) {
+//		
+//		Map<FastNFAState,FastNFAState> kPairs_nfa0 = new HashMap<>();
+//		Map<FastNFAState,FastNFAState> kPairs_nfa1 = new HashMap<>();
+//		
+//		for (List<FastNFAState> pair : kPairs) {
+//			kPairs_nfa0.put(pair.get(0), pair.get(1));
+//			kPairs_nfa1.put(pair.get(1), pair.get(0));
+//		}
+//		
+//		Alphabet<String> alphabet = Alphabets.fromCollection(createAlphabet(nfa0,nfa1));
+//		FeaturedMealy<String, String> ffsm = new FeaturedMealy<>(alphabet,fm);
+//		ConditionalState<ConditionalTransition<String, String>> s0 = ffsm.addInitialState();
+//		
+//		s0.setCondition(createInitialCondition(nfa0,nfa1));
+//		
+//		Map<FastNFAState,ConditionalState<ConditionalTransition<String, String>>> nfa0ToFFSM = new HashMap<>();
+//		nfa0ToFFSM.put(nfa0.getNfa().getState(0), s0);
+//
+//		Map<FastNFAState,ConditionalState<ConditionalTransition<String, String>>> nfa1ToFFSM = new HashMap<>();
+//		nfa1ToFFSM.put(nfa1.getNfa().getState(0), s0);
+//		
+//		for (FastNFAState state : nfa0.getNfa2model().keySet()) {
+//			Set<List<Integer>> transitions = getTransitions(state.getId(),nfa0.getModel(),nfa0);
+//			for (List<Integer> transition : transitions) {
+//				FastNFAState si = nfa0.getNfa().getState(transition.get(0));
+//				if(!nfa0ToFFSM.containsKey(si)){
+//					nfa0ToFFSM.put(si, ffsm.addState());
+//					nfa1ToFFSM.put(kPairs_nfa0.get(si), nfa0ToFFSM.get(si));
+//				}
+//				
+//				FastNFAState sj = nfa0.getNfa().getState(transition.get(4));
+//				if(!nfa0ToFFSM.containsKey(sj)){
+//					nfa0ToFFSM.put(sj, ffsm.addState());
+//					nfa1ToFFSM.put(kPairs_nfa0.get(sj), nfa0ToFFSM.get(sj));
+//				}
+//				
+//				
+//				ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa0ToFFSM.get(si);
+//				ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa0ToFFSM.get(sj);
+//				
+//				String ffsm_in = nfa0.getNfa().getInputAlphabet().getSymbol(transition.get(1));
+//				String ffsm_out = nfa0.getNfa().getInputAlphabet().getSymbol(transition.get(3));
+//				
+//				NodeReader nodeReader = new NodeReader();
+//				nodeReader.activateTextualSymbols();
+//				
+//				ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, nodeReader.stringToNode("A"));
+//			}
+//		}
+//
+//		
+//		for (FastNFAState state : nfa1.getNfa2model().keySet()) {
+//			Set<List<Integer>> transitions = getTransitions(state.getId(),nfa1.getModel(),nfa1);
+//			for (List<Integer> transition : transitions) {
+//				FastNFAState si = nfa1.getNfa().getState(transition.get(0));
+//				if(!nfa1ToFFSM.containsKey(si)){
+//					nfa1ToFFSM.put(si, ffsm.addState());
+//					nfa0ToFFSM.put(kPairs_nfa1.get(si), nfa1ToFFSM.get(si));
+//				}
+//				
+//				FastNFAState sj = nfa1.getNfa().getState(transition.get(4));
+//				if(!nfa1ToFFSM.containsKey(sj)){
+//					nfa1ToFFSM.put(sj, ffsm.addState());
+//					nfa0ToFFSM.put(kPairs_nfa1.get(sj), nfa1ToFFSM.get(sj));
+//				}
+//				
+//				
+//				ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa1ToFFSM.get(si);
+//				ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa1ToFFSM.get(sj);
+//				
+//				String ffsm_in = nfa1.getNfa().getInputAlphabet().getSymbol(transition.get(1));
+//				String ffsm_out = nfa1.getNfa().getInputAlphabet().getSymbol(transition.get(3));
+//				
+//				NodeReader nodeReader = new NodeReader();
+//				nodeReader.activateTextualSymbols();
+//				
+//				ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, nodeReader.stringToNode("B"));
+//			}
+//		}
+//
+//		return ffsm;
+//	}
 
-			
-			Set<List<String>> tr_s0 = getTransitions(model_s0,nfa0.getModel(),nfa0);
-			Set<List<String>> tr_s1 = getTransitions(model_s1,nfa1.getModel(),nfa1);
-			
-			Set<List<String>> added   = getAdded(tr_s0,tr_s1,nfa0,nfa1,kPairs);
-			Set<List<String>> removed = getRemoved(tr_s0,tr_s1,nfa0,nfa1,kPairs);
-			Set<List<String>> matched = getMatched(tr_s0,tr_s1,nfa0,nfa1,kPairs);
-			System.out.println("");
-			
-		}
-		
+	private static Node createInitialCondition(ModelAsNfa<String,Word<String>> nfa0, ModelAsNfa<String,Word<String>> nfa1) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private static Set<List<String>> getRemoved(Set<List<String>> tr_s0, Set<List<String>> tr_s1,
-			ModelAsNfa nfa0, ModelAsNfa nfa1, Set<List<FastNFAState>> kPairs) {
+	private static Collection<String> createAlphabet(
+			ModelAsNfa<String,Word<String>> nfa0, 
+			ModelAsNfa<String,Word<String>> nfa1) {
+		Set<String> abcSet = new HashSet<>();
+		
+		abcSet.addAll(nfa0.getModel().getInputAlphabet());
+		abcSet.addAll(nfa1.getModel().getInputAlphabet());
+		
+		List<String> abc = new ArrayList<>(abcSet);
+		Collections.sort(abc);
+		return abc;
+	}
+
+	private static Set<List<String>> getRemoved( Set<List<String>> tr_s0, Set<List<String>> tr_s1,
+			ModelAsNfa<String,Word<String>> nfa0, ModelAsNfa<String,Word<String>> nfa1, 
+			Set<List<FastNFAState>> kPairs) {
 		List<List<String>> toCheck_s0 = new ArrayList<>(tr_s0);
 		List<List<String>> toCheck_s1 = new ArrayList<>(tr_s1);
 		
 		Set<List<String>> trsRemoved = new LinkedHashSet<>();
 		
-		List<FastNFAState> toSearch = new ArrayList<>();
-		toSearch.add(null);toSearch.add(null);
-		
-		while (!toCheck_s0.isEmpty()) {
-			List<String> item_s0 = toCheck_s0.remove(0);
-			for (List<String> item_s1 : toCheck_s1) {
-
-				toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(0))));
-				toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(0))));
-				if(kPairs.contains(toSearch)) {
-					//toSearch.set(0, nfa0.getNfa().getState(item_s0.get(2)));
-					//toSearch.set(1, nfa1.getNfa().getState(item_s1.get(2)));
-					if(kPairs.contains(toSearch)) {
-						toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(4))));
-						toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(4))));
-						if(kPairs.contains(toSearch)) {
-							if(!(item_s0.get(1).equals(item_s1.get(1)) || !item_s0.get(3).equals(item_s1.get(3)))) {
-								trsRemoved.add(item_s0);
-								toCheck_s1.remove(item_s1);
-								continue;
-							}
-						}
-					}
-				}
-			}	
-		}
+//		List<FastNFAState> toSearch = new ArrayList<>();
+//		toSearch.add(null);toSearch.add(null);
+//		
+//		while (!toCheck_s0.isEmpty()) {
+//			List<String> item_s0 = toCheck_s0.remove(0);
+//			for (List<String> item_s1 : toCheck_s1) {
+//
+//				toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(0))));
+//				toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(0))));
+//				if(kPairs.contains(toSearch)) {
+//					//toSearch.set(0, nfa0.getNfa().getState(item_s0.get(2)));
+//					//toSearch.set(1, nfa1.getNfa().getState(item_s1.get(2)));
+//					if(kPairs.contains(toSearch)) {
+//						toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(4))));
+//						toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(4))));
+//						if(kPairs.contains(toSearch)) {
+//							if(!(item_s0.get(1).equals(item_s1.get(1)) || !item_s0.get(3).equals(item_s1.get(3)))) {
+//								trsRemoved.add(item_s0);
+//								toCheck_s1.remove(item_s1);
+//								continue;
+//							}
+//						}
+//					}
+//				}
+//			}	
+//		}
 		
 		
 		return trsRemoved;
@@ -154,80 +243,86 @@ public class CompareFSMs {
 
 
 	private static Set<List<String>> getAdded(Set<List<String>> tr_s1, Set<List<String>> tr_s0,
-			ModelAsNfa nfa1, ModelAsNfa nfa0, Set<List<FastNFAState>> kPairs) {
+			ModelAsNfa<String,Word<String>> nfa1, ModelAsNfa<String,Word<String>> nfa0, Set<List<FastNFAState>> kPairs) {
 		List<List<String>> toCheck_s0 = new ArrayList<>(tr_s0);
 		List<List<String>> toCheck_s1 = new ArrayList<>(tr_s1);
 		
 		Set<List<String>> trsAdded = new LinkedHashSet<>();
 		
-		List<FastNFAState> toSearch = new ArrayList<>();
-		toSearch.add(null);toSearch.add(null);
-		
-		while (!toCheck_s0.isEmpty()) {
-			List<String> item_s0 = toCheck_s0.remove(0);
-			for (List<String> item_s1 : toCheck_s1) {
-
-				toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(0))));
-				toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(0))));
-				if(kPairs.contains(toSearch)) {
-					//toSearch.set(0, nfa0.getNfa().getState(item_s0.get(2)));
-					//toSearch.set(1, nfa1.getNfa().getState(item_s1.get(2)));
-					if(kPairs.contains(toSearch)) {
-						toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(4))));
-						toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(4))));
-						if(kPairs.contains(toSearch)) {
-							if(!(item_s0.get(1).equals(item_s1.get(1)) || !item_s0.get(3).equals(item_s1.get(3)))) {
-								trsAdded.add(item_s0);
-								toCheck_s1.remove(item_s1);
-								continue;
-							}
-						}
-					}
-				}
-			}	
-		}
+//		List<FastNFAState> toSearch = new ArrayList<>();
+//		toSearch.add(null);toSearch.add(null);
+//		
+//		FastNFAState item2Search = null;
+//		while (!toCheck_s0.isEmpty()) {
+//			List<String> item_s0 = toCheck_s0.remove(0);
+//			for (List<String> item_s1 : toCheck_s1) {
+//				
+//				item2Search = nfa0.getNfa().getState(Integer.valueOf(item_s0.get(0)));
+//				toSearch.set(0, item2Search);
+//				
+//				item2Search = nfa1.getNfa().getState(Integer.valueOf(item_s1.get(0)));
+//				toSearch.set(1, item2Search);
+//				if(kPairs.contains(toSearch)) {
+//					//toSearch.set(0, nfa0.getNfa().getState(item_s0.get(2)));
+//					//toSearch.set(1, nfa1.getNfa().getState(item_s1.get(2)));
+//					if(kPairs.contains(toSearch)) {
+//						item2Search = nfa0.getNfa().getState(Integer.valueOf(item_s0.get(4)));
+//						toSearch.set(0, item2Search);
+//						item2Search = nfa1.getNfa().getState(Integer.valueOf(item_s1.get(4)));
+//						toSearch.set(1, item2Search);
+//						if(kPairs.contains(toSearch)) {
+//							if(!(item_s0.get(1).equals(item_s1.get(1)) || !item_s0.get(3).equals(item_s1.get(3)))) {
+//								trsAdded.add(item_s0);
+//								toCheck_s1.remove(item_s1);
+//								continue;
+//							}
+//						}
+//					}
+//				}
+//			}	
+//		}
 		
 		return trsAdded;
 	}
 	
 	private static Set<List<String>> getMatched(Set<List<String>> tr_s0, Set<List<String>> tr_s1,
-			ModelAsNfa nfa0, ModelAsNfa nfa1, Set<List<FastNFAState>> kPairs) {
+			ModelAsNfa<String,Word<String>> nfa0, ModelAsNfa<String,Word<String>> nfa1, Set<List<FastNFAState>> kPairs) {
 		List<List<String>> toCheck_s0 = new ArrayList<>(tr_s0);
 		List<List<String>> toCheck_s1 = new ArrayList<>(tr_s1);
 		
 		Set<List<String>> trsMatched = new LinkedHashSet<>();
 		
-		List<FastNFAState> toSearch = new ArrayList<>();
-		toSearch.add(null);toSearch.add(null);
-		
-		while (!toCheck_s0.isEmpty()) {
-			List<String> item_s0 = toCheck_s0.remove(0);
-			for (List<String> item_s1 : toCheck_s1) {
-				if(!(item_s0.get(1).equals(item_s1.get(1)) && item_s0.get(3).equals(item_s1.get(3)))) continue;
-
-				toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(0))));
-				toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(0))));
-				if(kPairs.contains(toSearch)) {
-					//toSearch.set(0, nfa0.getNfa().getState(item_s0.get(2)));
-					//toSearch.set(1, nfa1.getNfa().getState(item_s1.get(2)));
-					if(kPairs.contains(toSearch)) {
-						toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(4))));
-						toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(4))));
-						if(kPairs.contains(toSearch)) {
-							toCheck_s1.remove(item_s1);
-							trsMatched.add(item_s0);
-							break;
-						}
-					}
-				}
-			}	
-		}
+//		List<FastNFAState> toSearch = new ArrayList<>();
+//		toSearch.add(null);toSearch.add(null);
+//		
+//		while (!toCheck_s0.isEmpty()) {
+//			List<String> item_s0 = toCheck_s0.remove(0);
+//			for (List<String> item_s1 : toCheck_s1) {
+//				if(!(item_s0.get(1).equals(item_s1.get(1)) && item_s0.get(3).equals(item_s1.get(3)))) continue;
+//
+//				toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(0))));
+//				toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(0))));
+//				if(kPairs.contains(toSearch)) {
+//					//toSearch.set(0, nfa0.getNfa().getState(item_s0.get(2)));
+//					//toSearch.set(1, nfa1.getNfa().getState(item_s1.get(2)));
+//					if(kPairs.contains(toSearch)) {
+//						toSearch.set(0, nfa0.getNfa().getState(Integer.valueOf(item_s0.get(4))));
+//						toSearch.set(1, nfa1.getNfa().getState(Integer.valueOf(item_s1.get(4))));
+//						if(kPairs.contains(toSearch)) {
+//							toCheck_s1.remove(item_s1);
+//							trsMatched.add(item_s0);
+//							break;
+//						}
+//					}
+//				}
+//			}	
+//		}
 		
 		return trsMatched;
 	}
 
-	private static Set<List<String>> getTransitions(Integer si, ProductMealy<String, String> mealy, ModelAsNfa model_as_nfa) {
-		Set<List<String>> trs = new LinkedHashSet<>();
+	private static Set<List<Integer>> getTransitions(Integer si, ProductMealy<String, String> mealy, ModelAsNfa model_as_nfa) {
+		Set<List<Integer>> trs = new LinkedHashSet<>();
 		
 		FastNFA<String> nfa = model_as_nfa.getNfa();
 		FastNFAState st_ini = nfa.getState(si);
@@ -240,12 +335,12 @@ public class CompareFSMs {
 					int outputIdx = nfa.getInputAlphabet().getSymbolIndex(output);
 					if(st_mid.getTransitions(outputIdx)==null) continue;
 					for (FastNFAState st_end : st_mid.getTransitions(outputIdx)) {
-						List<String> a_tr = new ArrayList<>();
-						a_tr.add(Integer.toString(st_ini.getId()));
-						a_tr.add(input);
-						a_tr.add(Integer.toString(st_mid.getId()));
-						a_tr.add(output);
-						a_tr.add(Integer.toString(st_end.getId()));
+						List<Integer> a_tr = new ArrayList<>();
+						a_tr.add((st_ini.getId()));
+						a_tr.add(inputIdx);
+						a_tr.add((st_mid.getId()));
+						a_tr.add(outputIdx);
+						a_tr.add((st_end.getId()));
 						trs.add(a_tr);
 					}
 				}	
@@ -254,18 +349,19 @@ public class CompareFSMs {
 		return trs;
 	}
 	
-	private static Set<List<String>> getTransitions(Integer model_s0, FeaturedMealy<String, String> mealy, ModelAsNfa nfa) {
-		Set<List<String>> trs = new LinkedHashSet<>();
+	
+	private static Set<List<Integer>> getTransitions(Integer model_s0, FeaturedMealy<String, String> mealy, ModelAsNfa nfa) {
+		Set<List<Integer>> trs = new LinkedHashSet<>();
 		
 		return trs;
 	}
 	
-	private static Set<List<String>> getTransitions(Integer s0, MutableAutomaton model, ModelAsNfa nfa) {
+	private static Set<List<Integer>> getTransitions(Integer s0, MutableAutomaton model, ModelAsNfa nfa) {
 		if(model instanceof FeaturedMealy) return getTransitions(s0,(FeaturedMealy<String,String> )model,nfa);
 		return getTransitions(s0,(ProductMealy<String,String> )model,nfa);
 	}
 
-	private static void removeConflicts(Set<List<FastNFAState>> nPairs, List<FastNFAState> a_B) {
+	private static void removeConflicts(Set<List<FastNFAState>> nPairs, Set<FastNFAState> a_B) {
 		Set<List<FastNFAState>> toRemove = new HashSet<>();
 		for (List<FastNFAState> pair : nPairs) {
 			if (a_B.contains(pair.get(0)) || a_B.contains(pair.get(1))) {
@@ -276,7 +372,7 @@ public class CompareFSMs {
 		
 	}
 
-	private static Set<List<FastNFAState>> identifyLandmaks(RealVector pairsToScore, ModelAsNfa nfa1, ModelAsNfa nfa2) {
+	private static Set<List<FastNFAState>> identifyLandmaks(RealVector pairsToScore, ModelAsNfa<String,Word<String>> nfa1, ModelAsNfa<String,Word<String>> nfa2) {
 		Set<List<FastNFAState>> outPairs = new LinkedHashSet<>();
 		List<FastNFAState> kPairs = new ArrayList<>();
 		kPairs.add(nfa1.getNfa().getState(0));
@@ -285,7 +381,7 @@ public class CompareFSMs {
 		return outPairs;
 	}
 
-	private static Set<List<FastNFAState>> surr(Set<List<FastNFAState>> kPairs, ModelAsNfa nfa1, ModelAsNfa nfa2) {
+	private static Set<List<FastNFAState>> surr(Set<List<FastNFAState>> kPairs, ModelAsNfa<String,Word<String>> nfa1, ModelAsNfa<String,Word<String>> nfa2) {
 		Set<List<FastNFAState>> outPairs = new LinkedHashSet<>();
 		
 		for (List<FastNFAState> pair : kPairs) {
@@ -322,7 +418,7 @@ public class CompareFSMs {
 		return outPairs;
 	}
 
-	private static RealVector computeScores(ModelAsNfa nfa1, ModelAsNfa nfa2, double K) {
+	private static RealVector computeScores(ModelAsNfa<String,Word<String>> nfa1, ModelAsNfa<String,Word<String>> nfa2, double K) {
 		
 		List<FastNFAState> lst_nfa1 = new ArrayList<>(nfa1.getNfa().getStates());
 		List<FastNFAState> lst_nfa2 = new ArrayList<>(nfa2.getNfa().getStates());

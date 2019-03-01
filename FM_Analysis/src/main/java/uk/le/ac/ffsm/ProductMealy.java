@@ -4,17 +4,20 @@ import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import net.automatalib.automata.transout.impl.compact.CompactMealy;
+import net.automatalib.automata.transout.impl.compact.CompactMealyTransition;
 import net.automatalib.words.Alphabet;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.prop4j.Node;
 import org.prop4j.NodeReader;
 
-public class ProductMealy<I,O> extends CompactMealy<I, O> {
+public class ProductMealy<I,O> extends CompactMealy<I, O> implements IConfigurableFSM<I,O>{
 
 	private static final long serialVersionUID = -5631683009867401872L;
 	
@@ -41,8 +44,42 @@ public class ProductMealy<I,O> extends CompactMealy<I, O> {
 		root.getStructure().addChild(newChild.getStructure());
 		newChild.getStructure().setMandatory(true);
 	}
-	public Collection<Node> getConfiguration() {
-		return Collections.unmodifiableCollection(configuration);
+	
+	@Override
+	public List<Node> getConfiguration() {
+		return Collections.unmodifiableList(configuration);
+	}
+	
+	public void setConfiguration(List<Node> configuration) {
+		this.configuration = configuration;
+	}
+
+	@Override
+	public Map<I,List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input, O output, Integer sj){
+		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
+		for (CompactMealyTransition<O> tr : super.getTransitions(si, input)) {
+			if(tr.getOutput().equals(output) & sj.equals(tr.getSuccId())) {
+				tr_match.putIfAbsent(input, new ArrayList<>());
+				SimplifiedTransition<I, O> simplyTr = new SimplifiedTransition<I,O>(si, input, output, sj);
+				simplyTr.setTransition(tr);
+				tr_match.get(input).add(simplyTr);
+			}
+		}
+		return tr_match;
+	}
+	
+	@Override
+	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si) {
+		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
+		for (I input : getInputAlphabet()) {
+			for (CompactMealyTransition<O> tr : super.getTransitions(si, input)) {
+				tr_match.putIfAbsent(input, new ArrayList<>());
+				SimplifiedTransition<I, O> simplyTr = new SimplifiedTransition<I,O>(si, input, tr.getOutput(), tr.getSuccId());
+				simplyTr.setTransition(tr);
+				tr_match.get(input).add(simplyTr);
+			}
+		}
+		return tr_match;
 	}
 
 }

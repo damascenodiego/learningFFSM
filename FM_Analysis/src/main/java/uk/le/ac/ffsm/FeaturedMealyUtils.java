@@ -188,7 +188,7 @@ public class FeaturedMealyUtils {
 		for (String string : configurations_split) {
 			configuration_list.add(nodeReader.stringToNode(string));
 		}
-
+		
 		Collections.sort(abc);
 		Alphabet<String> alphabet = Alphabets.fromCollection(abc);
 		ProductMealy<String, Word<String>> mealym = new ProductMealy<String, Word<String>>(alphabet,fm,configuration_list);

@@ -28,7 +28,9 @@ public class ConditionalState<T> extends AbstractFastNondetState<T> {
 
     @Override
 	public String toString() {
-		return this.id+"@["+this.condition.toString()+"]";
+    	
+		Node node = this.condition;
+		return this.id+"@["+((node==null)?"null":node.toString())+"]";
 	}
     
     @Override
