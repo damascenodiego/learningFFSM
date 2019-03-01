@@ -1,4 +1,4 @@
-AGM A M L C R V Y P N S
+AGM	A	M	L	C	R	V	Y	P	N	S
 1 -- a/_1() -> 2
 1 -- c/_0() -> 1
 1 -- d/_0() -> 1
