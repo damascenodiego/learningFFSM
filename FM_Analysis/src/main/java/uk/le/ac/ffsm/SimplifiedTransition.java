@@ -61,4 +61,61 @@ public class SimplifiedTransition<I,O> {
 		this.transition = transition;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((condition == null) ? 0 : condition.hashCode());
+		result = prime * result + ((in == null) ? 0 : in.hashCode());
+		result = prime * result + ((out == null) ? 0 : out.hashCode());
+		result = prime * result + ((si == null) ? 0 : si.hashCode());
+		result = prime * result + ((sj == null) ? 0 : sj.hashCode());
+		result = prime * result + ((transition == null) ? 0 : transition.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof SimplifiedTransition))
+			return false;
+		SimplifiedTransition other = (SimplifiedTransition) obj;
+		if (condition == null) {
+			if (other.condition != null)
+				return false;
+		} else if (!condition.equals(other.condition))
+			return false;
+		if (in == null) {
+			if (other.in != null)
+				return false;
+		} else if (!in.equals(other.in))
+			return false;
+		if (out == null) {
+			if (other.out != null)
+				return false;
+		} else if (!out.equals(other.out))
+			return false;
+		if (si == null) {
+			if (other.si != null)
+				return false;
+		} else if (!si.equals(other.si))
+			return false;
+		if (sj == null) {
+			if (other.sj != null)
+				return false;
+		} else if (!sj.equals(other.sj))
+			return false;
+		if (transition == null) {
+			if (other.transition != null)
+				return false;
+		} else if (!transition.equals(other.transition))
+			return false;
+		return true;
+	}
+	
+	
+
 }

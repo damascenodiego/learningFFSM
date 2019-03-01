@@ -192,7 +192,7 @@ public class FeaturedMealy<I,O>
 		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
 		ConditionalState<ConditionalTransition<I, O>> statei = getState(si);
 		for (I input : getInputAlphabet()) {
-			for (ConditionalTransition<I, O> tr : super.getTransitions(statei, input)) {
+			for (ConditionalTransition<I, O> tr : getTransitions(statei, input)) {
 				tr_match.putIfAbsent(input, new ArrayList<>());
 				SimplifiedTransition<I, O> simplyTr = new SimplifiedTransition<I,O>(tr.getPredecessor().getId(), tr.getInput(), tr.getOutput(), tr.getSuccessor().getId());
 				simplyTr.setTransition(tr);

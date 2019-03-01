@@ -189,25 +189,4 @@ public class ModelAsNfa<I, O> {
 		return transitionsOut;
 	}
 	
-	public Set<List<Integer>> getModelTransitionsOut(int stateIdx, String inputIdx){
-		Set<List<Integer>> transitionsIdx = new LinkedHashSet<>();
-		if(model instanceof CompactMealy) {
-			CompactMealy<String, String> parsed = (CompactMealy<String, String>) model;
-			for (Integer stateId : parsed.getStates()) {
-				for (String input : parsed.getInputAlphabet()) {
-					for (CompactMealyTransition<String> tr : parsed.getTransitions(stateId, input)) {
-						List<Integer> tr_lst = new ArrayList<>();
-						tr_lst.add(getModel2nfa().get(stateId).getId());
-						tr_lst.add(nfa.getInputAlphabet().getSymbolIndex(input));
-						tr_lst.add(nfa.getInputAlphabet().getSymbolIndex(tr.getOutput()));
-						tr_lst.add(getModel2nfa().get(tr.getSuccId()).getId());
-						transitionsIdx.add(tr_lst);
-					}
-				}
-				
-			}
-		}
-		return transitionsIdx;
-	}
-	
 }

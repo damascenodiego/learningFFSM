@@ -154,7 +154,7 @@ public class FeaturedMealyUtils {
 
 		//		int count = 0;
 		String configuration = br.readLine();
-		String[] configurations_split = configuration.split(" ");
+		String[] configurations_split = configuration.split("\t");
 
 		while(br.ready()){
 			String line = br.readLine();

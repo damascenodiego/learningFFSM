@@ -1,6 +1,8 @@
 package uk.le.ac;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.FilterWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,8 +21,11 @@ import org.apache.commons.math3.linear.DecompositionSolver;
 import org.apache.commons.math3.linear.LUDecomposition;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
+import org.prop4j.And;
+import org.prop4j.Literal;
 import org.prop4j.Node;
 import org.prop4j.NodeReader;
+import org.prop4j.Or;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
@@ -31,6 +36,7 @@ import net.automatalib.automata.graphs.TransitionEdge;
 import net.automatalib.serialization.dot.DOTVisualizationHelper;
 import net.automatalib.serialization.dot.GraphDOT;
 import net.automatalib.visualization.Visualization;
+import net.automatalib.visualization.VisualizationHelper;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.impl.Alphabets;
@@ -40,6 +46,7 @@ import uk.le.ac.ffsm.ConditionalTransition;
 import uk.le.ac.ffsm.FeaturedMealy;
 import uk.le.ac.ffsm.FeaturedMealyUtils;
 import uk.le.ac.ffsm.ProductMealy;
+import uk.le.ac.ffsm.SimplifiedTransition;
 
 public class CompareFSMs {
 
@@ -58,14 +65,14 @@ public class CompareFSMs {
 			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(fsm1);
 			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(fsm2);
 			
-//			File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
-//			FeaturedMealy<String, Word<String>> ffsm1 = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
+			File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
+			FeaturedMealy<String, Word<String>> ffsm_orig = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
 //			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(ffsm1);
 //			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(ffsm1);
 			
 			//plotModels(m_nfa1,m_nfa2);
 			
-			double K = 0.75;
+			double K = 0.50;
 			//double K = 1;
 			
 			RealVector pairsToScore = computeScores(m_nfa1,m_nfa2,K);
@@ -86,8 +93,26 @@ public class CompareFSMs {
 			
 			kPairs.forEach(pair ->System.out.println(pair.get(0).getId()+","+pair.get(1).getId()));
 			
-			//FeaturedMealy<String, String> ffsm = makeFFSM(m_nfa1,m_nfa2,kPairs,fm);
-			//Visualization.visualize(ffsm,ffsm.getInputAlphabet(), new FFSMVisualizationHelper<>(ffsm));
+			FeaturedMealy<String, String> ffsm = makeFFSM(m_nfa1,m_nfa2,kPairs,fm);
+			
+			VisualizationHelper helper   = new NFAVisualizationHelper();
+			
+			Visualization.visualize(m_nfa1.getNfa(),m_nfa1.getNfa().getInputAlphabet(),helper);
+			Visualization.visualize(m_nfa2.getNfa(),m_nfa2.getNfa().getInputAlphabet(),helper);
+			
+			Visualization.visualize(fsm1,fsm1.getInputAlphabet());
+			Visualization.visualize(fsm2,fsm2.getInputAlphabet());
+			
+			helper = new FFSMVisualizationHelper<>(ffsm);
+			Visualization.visualize(ffsm,ffsm.getInputAlphabet(), helper);
+			
+			helper = new FFSMVisualizationHelper<>(ffsm_orig);
+			Visualization.visualize(ffsm_orig,ffsm_orig.getInputAlphabet(), helper);
+			
+			
+			
+			
+			
 			
 			
 		} catch (Exception e) {
@@ -104,90 +129,128 @@ public class CompareFSMs {
 		GraphDOT.write(m_nfa2.getNfa(),m_nfa2.getNfa().getInputAlphabet(), System.out, helper);
 	}
 
-//	private static FeaturedMealy<String, String> makeFFSM(ModelAsNfa<String,Word<String>>nfa0, ModelAsNfa<String,Word<String>> nfa1,
-//			Set<List<FastNFAState>> kPairs, IFeatureModel fm) {
-//		
-//		Map<FastNFAState,FastNFAState> kPairs_nfa0 = new HashMap<>();
-//		Map<FastNFAState,FastNFAState> kPairs_nfa1 = new HashMap<>();
-//		
-//		for (List<FastNFAState> pair : kPairs) {
-//			kPairs_nfa0.put(pair.get(0), pair.get(1));
-//			kPairs_nfa1.put(pair.get(1), pair.get(0));
-//		}
-//		
-//		Alphabet<String> alphabet = Alphabets.fromCollection(createAlphabet(nfa0,nfa1));
-//		FeaturedMealy<String, String> ffsm = new FeaturedMealy<>(alphabet,fm);
-//		ConditionalState<ConditionalTransition<String, String>> s0 = ffsm.addInitialState();
-//		
-//		s0.setCondition(createInitialCondition(nfa0,nfa1));
-//		
-//		Map<FastNFAState,ConditionalState<ConditionalTransition<String, String>>> nfa0ToFFSM = new HashMap<>();
-//		nfa0ToFFSM.put(nfa0.getNfa().getState(0), s0);
-//
-//		Map<FastNFAState,ConditionalState<ConditionalTransition<String, String>>> nfa1ToFFSM = new HashMap<>();
-//		nfa1ToFFSM.put(nfa1.getNfa().getState(0), s0);
-//		
-//		for (FastNFAState state : nfa0.getNfa2model().keySet()) {
-//			Set<List<Integer>> transitions = getTransitions(state.getId(),nfa0.getModel(),nfa0);
-//			for (List<Integer> transition : transitions) {
-//				FastNFAState si = nfa0.getNfa().getState(transition.get(0));
-//				if(!nfa0ToFFSM.containsKey(si)){
-//					nfa0ToFFSM.put(si, ffsm.addState());
-//					nfa1ToFFSM.put(kPairs_nfa0.get(si), nfa0ToFFSM.get(si));
-//				}
-//				
-//				FastNFAState sj = nfa0.getNfa().getState(transition.get(4));
-//				if(!nfa0ToFFSM.containsKey(sj)){
-//					nfa0ToFFSM.put(sj, ffsm.addState());
-//					nfa1ToFFSM.put(kPairs_nfa0.get(sj), nfa0ToFFSM.get(sj));
-//				}
-//				
-//				
-//				ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa0ToFFSM.get(si);
-//				ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa0ToFFSM.get(sj);
-//				
-//				String ffsm_in = nfa0.getNfa().getInputAlphabet().getSymbol(transition.get(1));
-//				String ffsm_out = nfa0.getNfa().getInputAlphabet().getSymbol(transition.get(3));
-//				
-//				NodeReader nodeReader = new NodeReader();
-//				nodeReader.activateTextualSymbols();
-//				
-//				ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, nodeReader.stringToNode("A"));
+	private static <I> FeaturedMealy<String, String> makeFFSM(ModelAsNfa<String,Word<String>>nfa0, ModelAsNfa<String,Word<String>> nfa1,
+			Set<List<FastNFAState>> kPairs, IFeatureModel fm) {
+		
+		Map<Integer,FastNFAState> kPairs_nfa0to1 = new HashMap<>();
+		
+		for (List<FastNFAState> pair : kPairs) {
+			kPairs_nfa0to1.put(pair.get(0).getId(), pair.get(1));
+		}
+		
+		Map<Integer,ConditionalState<ConditionalTransition<String, String>>> nfa0ToFFSM = new HashMap<>();
+		Map<Integer,ConditionalState<ConditionalTransition<String, String>>> nfa1ToFFSM = new HashMap<>();
+		
+		Alphabet<String> alphabet = Alphabets.fromCollection(createAlphabet(nfa0,nfa1));
+		FeaturedMealy<String, String> ffsm = new FeaturedMealy<>(alphabet,fm);
+		ConditionalState<ConditionalTransition<String, String>> s0 = ffsm.addInitialState();
+
+		nfa0ToFFSM.put(nfa0.getNfa().getState(0).getId(), s0);
+		nfa1ToFFSM.put(nfa1.getNfa().getState(0).getId(), s0);
+		
+		Set<Node> feat0 = new LinkedHashSet<>(nfa0.getModel().getConfiguration());
+		Set<Node> feat1 = new LinkedHashSet<>(nfa1.getModel().getConfiguration());
+		
+		feat0.removeAll(nfa1.getModel().getConfiguration());
+		feat1.removeAll(nfa0.getModel().getConfiguration());
+		
+		Set<Node> feat_common = new LinkedHashSet<>(nfa0.getModel().getConfiguration());
+		feat_common.retainAll(nfa1.getModel().getConfiguration());
+		
+		s0.setCondition(new And(feat_common));
+//		s0.setCondition(new And("A","B"));
+		
+		for (FastNFAState si : nfa0.getNfa2model().keySet()) {
+			Integer modelIdx = nfa0.getNfa2model().get(si);
+			Map<String, List<SimplifiedTransition<String, Word<String>>>> transitions = nfa0.getModel().getSimplifiedTransitions(modelIdx);
+			if(!nfa0ToFFSM.containsKey(si.getId())){
+				ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
+				//newState.setCondition(new And(feat0));
+				newState.setCondition(new Literal("True"));
+				nfa0ToFFSM.put(si.getId(), newState);
+				nfa1ToFFSM.put(kPairs_nfa0to1.get(si.getId()).getId(), newState);
+			}
+			ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa0ToFFSM.get(si.getId());
+			for (String input : transitions.keySet()) {
+				for (SimplifiedTransition<String, Word<String>> simpleTr : transitions.get(input)) {
+					FastNFAState sj = nfa0.getModel2nfa().get(simpleTr.getSj());
+					modelIdx=sj.getId();
+					if(!nfa0ToFFSM.containsKey(modelIdx)){
+						ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
+						//newState.setCondition(new And(feat0));
+						newState.setCondition(new Literal("True"));
+						nfa0ToFFSM.put(modelIdx, newState);
+						nfa1ToFFSM.put(kPairs_nfa0to1.get(modelIdx).getId(), newState);
+					}
+					String ffsm_in  = simpleTr.getIn();
+					String ffsm_out = simpleTr.getOut().toString();
+					ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa0ToFFSM.get(modelIdx);
+					
+					Node cond = new Literal("True");
+					if(!feat0.isEmpty()) cond = new And(feat0);
+					ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, cond);
+					//ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, new And("A"));
+					
+				}
+			}
+		}
+		
+		for (FastNFAState si : nfa1.getNfa2model().keySet()) {
+			Integer modelIdx = nfa1.getNfa2model().get(si);
+			Map<String, List<SimplifiedTransition<String, Word<String>>>> transitions = nfa1.getModel().getSimplifiedTransitions(modelIdx);
+			if(!nfa1ToFFSM.containsKey(si.getId())){
+				ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
+				//newState.setCondition(new And(feat1));
+				newState.setCondition(new Literal("True"));
+				nfa1ToFFSM.put(si.getId(), newState);
+			}
+			ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa1ToFFSM.get(si.getId());
+//			if(!ffsm_si.getCondition().equals(new And(feat1)) 
+//					&& ffsm_si.getCondition().getUniqueContainedFeatures().containsAll(feat1)) {
+//				ffsm_si.setCondition(new Or(ffsm_si.getCondition(),new And(feat1)));
 //			}
-//		}
-//
-//		
-//		for (FastNFAState state : nfa1.getNfa2model().keySet()) {
-//			Set<List<Integer>> transitions = getTransitions(state.getId(),nfa1.getModel(),nfa1);
-//			for (List<Integer> transition : transitions) {
-//				FastNFAState si = nfa1.getNfa().getState(transition.get(0));
-//				if(!nfa1ToFFSM.containsKey(si)){
-//					nfa1ToFFSM.put(si, ffsm.addState());
-//					nfa0ToFFSM.put(kPairs_nfa1.get(si), nfa1ToFFSM.get(si));
-//				}
-//				
-//				FastNFAState sj = nfa1.getNfa().getState(transition.get(4));
-//				if(!nfa1ToFFSM.containsKey(sj)){
-//					nfa1ToFFSM.put(sj, ffsm.addState());
-//					nfa0ToFFSM.put(kPairs_nfa1.get(sj), nfa1ToFFSM.get(sj));
-//				}
-//				
-//				
-//				ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa1ToFFSM.get(si);
-//				ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa1ToFFSM.get(sj);
-//				
-//				String ffsm_in = nfa1.getNfa().getInputAlphabet().getSymbol(transition.get(1));
-//				String ffsm_out = nfa1.getNfa().getInputAlphabet().getSymbol(transition.get(3));
-//				
-//				NodeReader nodeReader = new NodeReader();
-//				nodeReader.activateTextualSymbols();
-//				
-//				ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, nodeReader.stringToNode("B"));
-//			}
-//		}
-//
-//		return ffsm;
-//	}
+//			ffsm_si.setCondition(new And(nfa1.getModel().getConfiguration()));
+			for (String input : transitions.keySet()) {
+				for (SimplifiedTransition<String, Word<String>> simpleTr : transitions.get(input)) {
+					FastNFAState sj = nfa1.getModel2nfa().get(simpleTr.getSj());
+					modelIdx=sj.getId();
+					if(!nfa1ToFFSM.containsKey(modelIdx)){
+						ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
+						newState.setCondition(new And(feat1));
+						nfa1ToFFSM.put(modelIdx, newState);
+					}
+					String ffsm_in  = simpleTr.getIn();
+					String ffsm_out = simpleTr.getOut().toString();
+					ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa1ToFFSM.get(modelIdx);
+					
+					
+//					Map<String, List<SimplifiedTransition<String, String>>> trs_matching = ffsm.getSimplifiedTransitions(ffsm_si.getId(), ffsm_in, ffsm_out, ffsm_sj.getId());
+//					if(trs_matching.isEmpty()) {
+						Node cond = new Literal("True");
+						if(!feat1.isEmpty()) cond = new And(feat1);
+						ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, cond);
+//					}else {
+//						List<SimplifiedTransition<String, String>> tr = new ArrayList<>(trs_matching.values()).get(0);
+//						
+//					}
+					
+				}
+			}
+		}
+		
+		return ffsm;
+	}
+
+	private static void updateCondition(ConditionalState<ConditionalTransition<String, String>> ffsm_si,
+			List<Node> configuration) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static Node makeCondition(ModelAsNfa<String, Word<String>> nfa0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	private static Node createInitialCondition(ModelAsNfa<String,Word<String>> nfa0, ModelAsNfa<String,Word<String>> nfa1) {
 		// TODO Auto-generated method stub

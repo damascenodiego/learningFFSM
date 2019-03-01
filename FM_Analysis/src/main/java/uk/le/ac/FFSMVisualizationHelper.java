@@ -46,7 +46,7 @@ public class FFSMVisualizationHelper<I,O>
 		labelBuilder.append(String.valueOf(edge.getInput()));
 		labelBuilder.append("@");
 		labelBuilder.append("[");
-		labelBuilder.append(edge.getTransition().getCondition().toString());
+		labelBuilder.append(((edge.getTransition().getCondition()==null)?"TRUE":edge.getTransition().getCondition()).toString());
 		labelBuilder.append("]");
 		labelBuilder.append("/");
 		O output = edge.getTransition().getOutput();
