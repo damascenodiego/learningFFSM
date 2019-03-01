@@ -1,0 +1,47 @@
+digraph g {
+
+	s0 [shape="circle" label="0@[TRUE]"];
+	s1 [shape="circle" label="1@[W]"];
+	s2 [shape="circle" label="2@[N]"];
+	s3 [shape="circle" label="3@[B]"];
+	s4 [shape="circle" label="4@[TRUE]"];
+	s5 [shape="circle" label="5@[S]"];
+	s0 -> s2 [label="a@[TRUE]/_1()"];
+	s0 -> s1 [label="a@[TRUE]/_1()"];
+	s0 -> s3 [label="a@[TRUE]/_1()"];
+	s0 -> s0 [label="b@[-W]/_0()"];
+	s0 -> s4 [label="b@[W]/_1()"];
+	s0 -> s0 [label="c@[W & -S]/_1()"];
+	s0 -> s0 [label="c@[-W | S]/_0()"];
+	s0 -> s0 [label="d@[S]/_0()"];
+	s1 -> s1 [label="a@[TRUE]/_0()"];
+	s1 -> s4 [label="b@[TRUE]/_1()"];
+	s1 -> s4 [label="c@[S]/_1()"];
+	s1 -> s1 [label="c@[-S]/_0()"];
+	s1 -> s5 [label="d@[S]/_1()"];
+	s2 -> s2 [label="a@[TRUE]/_0()"];
+	s2 -> s4 [label="b@[TRUE]/_1()"];
+	s2 -> s0 [label="c@[TRUE]/_1()"];
+	s2 -> s4 [label="d@[S]/_1()"];
+	s3 -> s3 [label="a@[TRUE]/_0()"];
+	s3 -> s4 [label="b@[TRUE]/_1()"];
+	s3 -> s3 [label="c@[TRUE]/_0()"];
+	s3 -> s4 [label="d@[S]/_1()"];
+	s4 -> s2 [label="a@[TRUE]/_1()"];
+	s4 -> s3 [label="a@[TRUE]/_1()"];
+	s4 -> s1 [label="a@[TRUE]/_1()"];
+	s4 -> s4 [label="b@[TRUE]/_0()"];
+	s4 -> s0 [label="c@[TRUE]/_1()"];
+	s4 -> s5 [label="d@[B]/_0()"];
+	s4 -> s5 [label="d@[N]/_1()"];
+	s5 -> s1 [label="a@[TRUE]/_1()"];
+	s5 -> s3 [label="a@[TRUE]/_1()"];
+	s5 -> s2 [label="a@[TRUE]/_1()"];
+	s5 -> s5 [label="b@[W]/_0()"];
+	s5 -> s5 [label="b@[-W]/_1()"];
+	s5 -> s5 [label="c@[TRUE]/_0()"];
+	s5 -> s5 [label="d@[TRUE]/_0()"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+}
