@@ -1,3 +1,4 @@
+R	S	W	sH	wL	(not sL)	(not wH)	(not pW)
 s1_w1 -- weather/noRain() -> s1_w1
 s1_w1 -- non/ok()*ok() -> s1_w1
 s1_w1 -- little/ok()*ok() -> s2_w1

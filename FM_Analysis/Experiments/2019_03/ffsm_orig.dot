@@ -9,15 +9,15 @@ digraph g {
 	s0 -> s2 [label="a@[TRUE]/_1()"];
 	s0 -> s1 [label="a@[TRUE]/_1()"];
 	s0 -> s3 [label="a@[TRUE]/_1()"];
-	s0 -> s0 [label="b@[-W]/_0()"];
+	s0 -> s0 [label="b@[(not W)]/_0()"];
 	s0 -> s4 [label="b@[W]/_1()"];
-	s0 -> s0 [label="c@[W & -S]/_1()"];
-	s0 -> s0 [label="c@[-W | S]/_0()"];
+	s0 -> s0 [label="c@[(and W (not S))]/_1()"];
+	s0 -> s0 [label="c@[(or (not W) S)]/_0()"];
 	s0 -> s0 [label="d@[S]/_0()"];
 	s1 -> s1 [label="a@[TRUE]/_0()"];
 	s1 -> s4 [label="b@[TRUE]/_1()"];
 	s1 -> s4 [label="c@[S]/_1()"];
-	s1 -> s1 [label="c@[-S]/_0()"];
+	s1 -> s1 [label="c@[(not S)]/_0()"];
 	s1 -> s5 [label="d@[S]/_1()"];
 	s2 -> s2 [label="a@[TRUE]/_0()"];
 	s2 -> s4 [label="b@[TRUE]/_1()"];
@@ -38,7 +38,7 @@ digraph g {
 	s5 -> s3 [label="a@[TRUE]/_1()"];
 	s5 -> s2 [label="a@[TRUE]/_1()"];
 	s5 -> s5 [label="b@[W]/_0()"];
-	s5 -> s5 [label="b@[-W]/_1()"];
+	s5 -> s5 [label="b@[(not W)]/_1()"];
 	s5 -> s5 [label="c@[TRUE]/_0()"];
 	s5 -> s5 [label="d@[TRUE]/_0()"];
 

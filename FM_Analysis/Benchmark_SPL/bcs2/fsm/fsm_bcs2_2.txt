@@ -1,3 +1,4 @@
+BCS	DS	PW	FP	WIN	SEC	ManPW	CLS	(not AL)	(not AutPW)
 1 -- in7/out2() -> 2
 1 -- in2/out0() -> 1
 1 -- in3/out0() -> 1
