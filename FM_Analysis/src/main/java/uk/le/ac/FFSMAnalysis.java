@@ -33,7 +33,7 @@ public class FFSMAnalysis {
 			String checking_str = null;
 			
 			IFeatureModel fm = FeatureModelManager.load(f_fm.toPath()).getObject();
-			FeaturedMealy<String,Word<String>> ffsm = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm, fm);
+			FeaturedMealy<String,String> ffsm = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm, fm);
 
 			checking_str = "COMPLETENESS CHECK: ";
 			boolean is_complt = FeaturedMealyUtils.getInstance().isComplete(ffsm);
@@ -58,9 +58,9 @@ public class FFSMAnalysis {
 			}else System.err.println(checking_str +"NOK!");
 
 
-			FFSMVisualizationHelper<String,Word<String>> ffsm_viz = new FFSMVisualizationHelper<>(ffsm);
-			ffsm_viz.setPlotSelfloops(false);
-			Visualization.visualize(ffsm, ffsm.getInputAlphabet(),ffsm_viz);
+//			FFSMVisualizationHelper<String,Word<String>> ffsm_viz = new FFSMVisualizationHelper<>(ffsm);
+//			ffsm_viz.setPlotSelfloops(false);
+//			Visualization.visualize(ffsm, ffsm.getInputAlphabet(),ffsm_viz);
 			
 			if(spl_name.equals("agm")) {
 				testMethods(fm,ffsm);

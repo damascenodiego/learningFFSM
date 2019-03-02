@@ -1,26 +1,19 @@
 digraph g {
-
-	s0 [shape="circle" label="0@[(or (and AGM A M L C R V Y P B (not S)) (and AGM A M L C R V Y P B S))]"];
+	edge [lblstyle="above, sloped"];
+	s0 [shape="circle" label="0@[(or (and AGM A M L C R V Y P B (not S)) (and AGM A M L C R V Y P W (not S)))]"];
 	s1 [shape="circle" label="1@[True]"];
 	s2 [shape="circle" label="2@[True]"];
-	s3 [shape="circle" label="3@[(and S)]"];
-	s0 -> s1 [label="a@[(or (and (not S)) (and S))]/_1()"];
-	s0 -> s0 [label="b@[(or (and (not S)) (and S))]/_0()"];
-	s0 -> s0 [label="c@[(or (and (not S)) (and S))]/_0()"];
-	s0 -> s0 [label="d@[(and S)]/_0()"];
-	s1 -> s1 [label="a@[(or (and (not S)) (and S))]/_0()"];
-	s1 -> s2 [label="b@[(or (and (not S)) (and S))]/_1()"];
-	s1 -> s1 [label="c@[(or (and (not S)) (and S))]/_0()"];
-	s1 -> s2 [label="d@[(and S)]/_1()"];
-	s2 -> s1 [label="a@[(or (and (not S)) (and S))]/_1()"];
-	s2 -> s2 [label="b@[(or (and (not S)) (and S))]/_0()"];
-	s2 -> s0 [label="c@[(or (and (not S)) (and S))]/_1()"];
-	s2 -> s3 [label="d@[(and S)]/_0()"];
-	s3 -> s1 [label="a@[(and S)]/_1()"];
-	s3 -> s3 [label="b@[(and S)]/_1()"];
-	s3 -> s3 [label="c@[(and S)]/_0()"];
-	s3 -> s3 [label="d@[(and S)]/_0()"];
-
-__start0 [label="" shape="none" width="0" height="0"];
-__start0 -> s0;
+	s0 -> s1 [label="a / _1() [B | W]"];
+	s0 -> s0 [label="b / _0() [B]"];
+	s0 -> s2 [label="b / _1() [W]"];
+	s0 -> s0 [label="c / _0() [B]"];
+	s0 -> s0 [label="c / _1() [W]"];
+	s1 -> s1 [label="a / _0() [B | W]"];
+	s1 -> s2 [label="b / _1() [B | W]"];
+	s1 -> s1 [label="c / _0() [B | W]"];
+	s2 -> s1 [label="a / _1() [B | W]"];
+	s2 -> s2 [label="b / _0() [B | W]"];
+	s2 -> s0 [label="c / _1() [B | W]"];
+	__start0 [label="" shape="none" width="0" height="0"];
+	__start0 -> s0;
 }

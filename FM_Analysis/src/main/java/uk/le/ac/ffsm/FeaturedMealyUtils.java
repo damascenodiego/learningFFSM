@@ -1,8 +1,10 @@
 package uk.le.ac.ffsm;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import java.util.ArrayList;
@@ -36,7 +38,9 @@ import de.ovgu.featureide.fm.core.base.IFeatureModelFactory;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
+import net.automatalib.automata.base.fast.AbstractFastMutableNondet;
 import net.automatalib.automata.transout.impl.compact.CompactMealy;
+import net.automatalib.automata.transout.impl.compact.CompactMealyTransition;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
@@ -63,7 +67,7 @@ public class FeaturedMealyUtils {
 	}
 	
 	
-	public FeaturedMealy<String, Word<String>> loadFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
+	public FeaturedMealy<String, String> loadFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
 			Pattern kissLine = Pattern.compile(
 					"\\s*"
 					+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
@@ -80,7 +84,7 @@ public class FeaturedMealyUtils {
 	
 			NodeReader nodeReader = new NodeReader();
 			nodeReader.activateTextualSymbols();
-			FeaturedMealy<String, Word<String>> ffsm = null;
+			FeaturedMealy<String, String> ffsm = null;
 			
 			if(br.ready()){
 				String line = null;
@@ -90,8 +94,8 @@ public class FeaturedMealyUtils {
 				Alphabet<String> alphabet = Alphabets.fromCollection(abc);
 				ffsm = new FeaturedMealy<>(alphabet,fm,cInps);
 				
-				ConditionalState<ConditionalTransition<String,Word<String>>> s0 = null;
-				Map<Integer,ConditionalState<ConditionalTransition<String,Word<String>>>> statesMap = new HashMap<>();
+				ConditionalState<ConditionalTransition<String,String>> s0 = null;
+				Map<Integer,ConditionalState<ConditionalTransition<String,String>>> statesMap = new HashMap<>();
 				Map<String,Integer> statesId = new HashMap<>();
 				int stateId = 0;
 				while(br.ready()){
@@ -118,8 +122,7 @@ public class FeaturedMealyUtils {
 						Node in_c = nodeReader.stringToNode(tr[3]);
 						
 						/* Output */
-						Word<String> out = Word.epsilon();
-						out=out.append(tr[4]);
+						String out = tr[4];
 						
 						/* Conditional state destination */
 						if(!statesId.containsKey(tr[5])) statesId.put(tr[5],stateId++);
@@ -140,6 +143,30 @@ public class FeaturedMealyUtils {
 	
 			return ffsm;
 		}
+	
+	public void saveFFSM(FeaturedMealy<String, String> ffsm, File f) throws Exception {
+		
+		BufferedWriter bw = new BufferedWriter(new FileWriter(f));	
+		bw.write("digraph g {\n");
+		bw.write("	edge [lblstyle=\"above, sloped\"];\n");
+		for (ConditionalState<ConditionalTransition<String, String>> si : ffsm.getStates()) {
+			bw.write(String.format("	s%d [shape=\"circle\" label=\"%s\"];\n", si.getId(), si.toString()));
+		}
+		for (ConditionalState<ConditionalTransition<String, String>> si : ffsm.getStates()) {
+			for (String in : ffsm.getInputAlphabet()) {
+				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
+					bw.write(String.format("	s%d -> s%d [label=\"%s / %s [%s]\"];\n", tr.getPredecessor().getId(), tr.getSuccessor().getId(), tr.getInput().toString(),tr.getOutput().toString(),tr.getCondition().toString()));
+				}
+					
+			}
+				
+		}
+		
+		bw.write("	__start0 [label=\"\" shape=\"none\" width=\"0\" height=\"0\"];\n");
+		bw.write("	__start0 -> s"+ffsm.getInitialState().getId()+";\n");
+		bw.write("}");
+		bw.close();
+	}
 	
 	public ProductMealy<String, Word<String>> loadProductMachine(File f, IFeatureModel fm) throws Exception {
 

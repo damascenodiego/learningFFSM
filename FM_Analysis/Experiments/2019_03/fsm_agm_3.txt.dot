@@ -3,23 +3,15 @@ digraph g {
 	s0 [shape="circle" label="0"];
 	s1 [shape="circle" label="1"];
 	s2 [shape="circle" label="2"];
-	s3 [shape="circle" label="3"];
 	s0 -> s1 [label="a / _1()"];
-	s0 -> s0 [label="b / _0()"];
-	s0 -> s0 [label="c / _0()"];
-	s0 -> s0 [label="d / _0()"];
+	s0 -> s2 [label="b / _1()"];
+	s0 -> s0 [label="c / _1()"];
 	s1 -> s1 [label="a / _0()"];
 	s1 -> s2 [label="b / _1()"];
 	s1 -> s1 [label="c / _0()"];
-	s1 -> s2 [label="d / _1()"];
 	s2 -> s1 [label="a / _1()"];
 	s2 -> s2 [label="b / _0()"];
 	s2 -> s0 [label="c / _1()"];
-	s2 -> s3 [label="d / _0()"];
-	s3 -> s1 [label="a / _1()"];
-	s3 -> s3 [label="b / _1()"];
-	s3 -> s3 [label="c / _0()"];
-	s3 -> s3 [label="d / _0()"];
 
 __start0 [label="" shape="none" width="0" height="0"];
 __start0 -> s0;

@@ -1,28 +1,22 @@
 package uk.le.ac;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.prop4j.Node;
 
 import net.automatalib.automata.MutableAutomaton;
-import net.automatalib.automata.graphs.TransitionEdge;
-import net.automatalib.automata.transout.TransitionOutputAutomaton;
-import net.automatalib.automata.visualization.AutomatonVisualizationHelper;
+import net.automatalib.serialization.dot.DOTVisualizationHelper;
 import uk.le.ac.ffsm.ConditionalState;
 import uk.le.ac.ffsm.ConditionalTransition;
+import uk.le.ac.ffsm.FeaturedMealyUtils;
 
-public class FFSMVisualizationHelper<I,O> 
-			extends AutomatonVisualizationHelper<
-				ConditionalState<ConditionalTransition<I,O>>, 
-				I, 
-				ConditionalTransition<I,O>, 
-				MutableAutomaton<ConditionalState<ConditionalTransition<I,O>>, I, ConditionalTransition<I,O>, Node, O>> {
+public class FFSMVisualizationHelper<I,O> implements DOTVisualizationHelper<ConditionalState<ConditionalTransition<I, O>>, ConditionalTransition<I, O>>{
 
 	private boolean plotSelfloops;
 
 	public FFSMVisualizationHelper(
 			MutableAutomaton<ConditionalState<ConditionalTransition<I, O>>, I, ConditionalTransition<I, O>, Node, O> automaton) {
-		super(automaton);
 		 this.plotSelfloops = true;
 	}
 	
@@ -31,13 +25,25 @@ public class FFSMVisualizationHelper<I,O>
 		this.plotSelfloops = plotSelfloops;
 	}
 	
+	
+	@Override
+	public boolean getNodeProperties(ConditionalState<ConditionalTransition<I, O>> node,
+			Map<String, String> properties) {
+		final StringBuilder labelBuilder = new StringBuilder();
+		labelBuilder.append(String.valueOf(node.getId()));
+		labelBuilder.append("@");
+		labelBuilder.append("[");
+		labelBuilder.append(((node.getCondition()==null)?"null":FeaturedMealyUtils.getInstance().formatNode(node.getCondition())));
+		labelBuilder.append("]");
+		properties.put(NodeAttrs.LABEL, labelBuilder.toString());
+		return true;
+	}
+
 
 	@Override
-	public boolean getEdgeProperties(ConditionalState<ConditionalTransition<I, O>> src, TransitionEdge<I, ConditionalTransition<I,O>> edge, ConditionalState<ConditionalTransition<I, O>> tgt, Map<String, String> properties) {
-		if (!super.getEdgeProperties(src, edge, tgt, properties)) {
-			return false;
-		}
-		
+	public boolean getEdgeProperties(ConditionalState<ConditionalTransition<I, O>> src,
+			ConditionalTransition<I, O> edge, ConditionalState<ConditionalTransition<I, O>> tgt,
+			Map<String, String> properties) {
 		if(!this.plotSelfloops && src.equals(tgt)) {
 			return false;
 		}
@@ -46,31 +52,29 @@ public class FFSMVisualizationHelper<I,O>
 		labelBuilder.append(String.valueOf(edge.getInput()));
 		labelBuilder.append("@");
 		labelBuilder.append("[");
-		labelBuilder.append(((edge.getTransition().getCondition()==null)?"TRUE":edge.getTransition().getCondition()).toString());
+		labelBuilder.append(((edge.getCondition()==null)?"TRUE":FeaturedMealyUtils.getInstance().formatNode(edge.getCondition())));
 		labelBuilder.append("]");
 		labelBuilder.append("/");
-		O output = edge.getTransition().getOutput();
+		O output = edge.getOutput();
 		if (output != null) {
 			labelBuilder.append(String.valueOf(output));
 		}
 		properties.put(EdgeAttrs.LABEL, labelBuilder.toString());
 		return true;
 	}
-	
+
+
 	@Override
-	public boolean getNodeProperties(ConditionalState<ConditionalTransition<I, O>> node,
-			Map<String, String> properties) {
-		if (!super.getNodeProperties(node, properties)) {
-			return false;
-		}
-		final StringBuilder labelBuilder = new StringBuilder();
-		labelBuilder.append(String.valueOf(node.getId()));
-		labelBuilder.append("@");
-		labelBuilder.append("[");
-		labelBuilder.append(((node.getCondition()==null)?"null":node.getCondition()).toString());
-		labelBuilder.append("]");
-		properties.put(NodeAttrs.LABEL, labelBuilder.toString());
-		return super.getNodeProperties(node, properties);
+	public void writePreamble(Appendable a) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void writePostamble(Appendable a) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
