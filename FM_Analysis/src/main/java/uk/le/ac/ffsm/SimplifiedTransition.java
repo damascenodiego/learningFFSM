@@ -28,9 +28,6 @@ public class SimplifiedTransition<I,O> {
 	
 	public SimplifiedTransition(Integer si, I in, O out, Integer sj) {
 		this(si, in, out, null, sj);
-		NodeReader nodeReader = new NodeReader();
-		nodeReader.activateTextualSymbols();
-		this.condition = nodeReader.stringToNode(TRUE_STRING);
 	}
 
 	public Integer getSi() {
@@ -70,7 +67,7 @@ public class SimplifiedTransition<I,O> {
 		result = prime * result + ((out == null) ? 0 : out.hashCode());
 		result = prime * result + ((si == null) ? 0 : si.hashCode());
 		result = prime * result + ((sj == null) ? 0 : sj.hashCode());
-		result = prime * result + ((transition == null) ? 0 : transition.hashCode());
+//		result = prime * result + ((transition == null) ? 0 : transition.hashCode());
 		return result;
 	}
 
@@ -108,11 +105,11 @@ public class SimplifiedTransition<I,O> {
 				return false;
 		} else if (!sj.equals(other.sj))
 			return false;
-		if (transition == null) {
-			if (other.transition != null)
-				return false;
-		} else if (!transition.equals(other.transition))
-			return false;
+//		if (transition == null) {
+//			if (other.transition != null)
+//				return false;
+//		} else if (!transition.equals(other.transition))
+//			return false;
 		return true;
 	}
 	

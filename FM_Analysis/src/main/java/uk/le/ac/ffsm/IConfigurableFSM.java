@@ -14,6 +14,7 @@ public interface IConfigurableFSM<I,O> {
 	
 	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input, O output, Integer sj);
 	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si);
+	Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitionsIn(Integer sj);
 	
 	public Alphabet<I> getInputAlphabet();
 

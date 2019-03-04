@@ -202,5 +202,21 @@ public class FeaturedMealy<I,O>
 		return tr_match;
 	}
 	
+	@Override
+	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitionsIn(Integer sj) {
+		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
+		for (ConditionalState<ConditionalTransition<I, O>> si : getStates()) {
+			for (I input : getInputAlphabet()) {
+				for (ConditionalTransition<I, O> tr : getTransitions(si, input)) {
+					if(!getState(sj).equals(tr.getSuccessor())) continue;
+					tr_match.putIfAbsent(input, new ArrayList<>());
+					SimplifiedTransition<I, O> simplyTr = new SimplifiedTransition<I,O>(si.getId(), input, tr.getOutput(), tr.getSuccessor().getId());
+					simplyTr.setTransition(tr);
+					tr_match.get(input).add(simplyTr);
+				}
+			}
+		}
+		return tr_match;
+	}
 
 }
