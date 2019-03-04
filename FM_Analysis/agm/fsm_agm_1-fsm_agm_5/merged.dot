@@ -1,0 +1,25 @@
+digraph g {
+	edge [lblstyle="above, sloped"];
+	s0 [shape="circle" label="0@[(or AGM A M L C R V Y P B)]"];
+	s1 [shape="circle" label="1@[True]"];
+	s2 [shape="circle" label="2@[True]"];
+	s3 [shape="circle" label="3@[(and S)]"];
+	s0 -> s1 [label="a / _1() [-S | S]"];
+	s0 -> s0 [label="b / _0() [-S | S]"];
+	s0 -> s0 [label="c / _0() [-S | S]"];
+	s0 -> s0 [label="d / _0() [S]"];
+	s1 -> s1 [label="a / _0() [-S | S]"];
+	s1 -> s2 [label="b / _1() [-S | S]"];
+	s1 -> s1 [label="c / _0() [-S | S]"];
+	s1 -> s2 [label="d / _1() [S]"];
+	s2 -> s1 [label="a / _1() [-S | S]"];
+	s2 -> s2 [label="b / _0() [-S | S]"];
+	s2 -> s0 [label="c / _1() [-S | S]"];
+	s2 -> s3 [label="d / _0() [S]"];
+	s3 -> s1 [label="a / _1() [S]"];
+	s3 -> s3 [label="b / _1() [S]"];
+	s3 -> s3 [label="c / _0() [S]"];
+	s3 -> s3 [label="d / _0() [S]"];
+	__start0 [label="" shape="none" width="0" height="0"];
+	__start0 -> s0;
+}

@@ -56,13 +56,8 @@ public class CompareFSMs {
 			
 			File f_fsm1 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_1.txt");
 			ProductMealy<String, Word<String>> fsm1 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm1,fm);
-			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_5.txt");
+			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_2.txt");
 			ProductMealy<String, Word<String>> fsm2 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm2,fm);
-			
-			//File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
-			//FeaturedMealy<String, String> ffsm_orig = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
-			//f = new File("ffsm_orig.dot");
-			//FeaturedMealyUtils.getInstance().saveFFSM(ffsm_orig, f);
 			
 			double K = 0.50;
 			//double K = 1;
@@ -104,6 +99,10 @@ public class CompareFSMs {
 			File outDir = new File(new File(spl_name),dirName);
 			outDir.mkdirs();
 			
+			File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
+			FeaturedMealy<String, String> ffsm_orig = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
+			FeaturedMealyUtils.getInstance().saveFFSM(ffsm_orig, new File(outDir,"original.dot"));
+			
 			f = new File(outDir,f_fsm1.getName()+".dot");
 			bw = new BufferedWriter(new FileWriter(f));
 			GraphDOT.write(fsm1,fsm1.getInputAlphabet(),bw);
@@ -137,6 +136,12 @@ public class CompareFSMs {
 		nfa0ToFFSM.put(fsm1.getInitialState(), s0);
 		nfa1ToFFSM.put(fsm2.getInitialState(), s0);
 		
+		Set<Node> feat0 = new LinkedHashSet<>(fsm1.getConfiguration());
+		Set<Node> feat1 = new LinkedHashSet<>(fsm2.getConfiguration());
+		
+		feat0.removeAll(fsm2.getConfiguration());
+		feat1.removeAll(fsm1.getConfiguration());
+		
 		Set<Node> feat_common = new LinkedHashSet<>(fsm1.getConfiguration());
 		feat_common.retainAll(fsm2.getConfiguration());
 		
@@ -146,18 +151,20 @@ public class CompareFSMs {
 			Map<String, List<SimplifiedTransition<String, Word<String>>>> transitions = fsm1.getSimplifiedTransitions(si);
 			if(!nfa0ToFFSM.containsKey(si)){
 				ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
+				newState.setCondition(new Literal("True"));
 				nfa0ToFFSM.put(si, newState);
 				if(kPairs_nfa0to1.containsKey(si)) {
 					nfa1ToFFSM.put(kPairs_nfa0to1.get(si), newState);
 				}
 			}
 			ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa0ToFFSM.get(si);
-			updateCondition(ffsm_si,fsm1,fsm2);
 			for (String input : transitions.keySet()) {
 				for (SimplifiedTransition<String, Word<String>> simpleTr : transitions.get(input)) {
 					Integer sj = simpleTr.getSj();
 					if(!nfa0ToFFSM.containsKey(sj)){
 						ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
+						//newState.setCondition(new And(feat0));
+						newState.setCondition(new Literal("True"));
 						nfa0ToFFSM.put(sj, newState);
 						if(kPairs_nfa0to1.containsKey(sj)) {
 							nfa1ToFFSM.put(kPairs_nfa0to1.get(sj), newState);
@@ -166,10 +173,11 @@ public class CompareFSMs {
 					String ffsm_in  = simpleTr.getIn();
 					String ffsm_out = simpleTr.getOut().toString();
 					ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa0ToFFSM.get(sj);
-					updateCondition(ffsm_sj,fsm1,fsm2);
 					
-					ConditionalTransition<String, String> newTr = ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out);
-					updateCondition(newTr,fsm1,fsm2);
+					Node cond = new Literal("True");
+					if(!feat0.isEmpty()) cond = new And(feat0);
+					ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, cond);
+					//ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, new And("A"));
 					
 				}
 			}
@@ -179,32 +187,37 @@ public class CompareFSMs {
 			Map<String, List<SimplifiedTransition<String, Word<String>>>> transitions = fsm2.getSimplifiedTransitions(si);
 			if(!nfa1ToFFSM.containsKey(si)){
 				ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
+				//newState.setCondition(new And(feat1));
+				newState.setCondition(new Literal("True"));
 				nfa1ToFFSM.put(si, newState);
 			}
 			ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa1ToFFSM.get(si);
-			updateCondition(ffsm_si,fsm2,fsm1);
+			
 			for (String input : transitions.keySet()) {
 				for (SimplifiedTransition<String, Word<String>> simpleTr : transitions.get(input)) {
 					Integer sj = simpleTr.getSj();
 					if(!nfa1ToFFSM.containsKey(sj)){
 						ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
+						newState.setCondition(new And(feat1));
 						nfa1ToFFSM.put(sj, newState);
 					}
 					String ffsm_in  = simpleTr.getIn();
 					String ffsm_out = simpleTr.getOut().toString();
 					ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa1ToFFSM.get(sj);
-					updateCondition(ffsm_sj,fsm2,fsm1);
 					
 					
-					ConditionalTransition<String, String> aTr = null; 
 					Map<String, List<SimplifiedTransition<String, String>>> trs_matching = ffsm.getSimplifiedTransitions(ffsm_si.getId(), ffsm_in, ffsm_out, ffsm_sj.getId());
 					if(trs_matching.isEmpty()) {
-						aTr = ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out);
+						Node cond = new Literal("True");
+						if(!feat1.isEmpty()) cond = new And(feat1);
+						ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, cond);
 					}else {
 						SimplifiedTransition<String, String> tr = new ArrayList<>(trs_matching.values()).get(0).get(0);
-						aTr = (ConditionalTransition<String, String>) tr.getTransition();
+						ConditionalTransition<String, String> matching_tr = (ConditionalTransition<String, String>) tr.getTransition();
+						matching_tr.setCondition(new Or(matching_tr.getCondition(),new And(feat1)));
+//						
 					}
-					updateCondition(aTr,fsm2,fsm1);
+					
 				}
 			}
 		}
