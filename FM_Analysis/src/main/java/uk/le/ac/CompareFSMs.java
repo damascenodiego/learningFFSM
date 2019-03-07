@@ -151,7 +151,7 @@ public class CompareFSMs {
 			Map<String, List<SimplifiedTransition<String, Word<String>>>> transitions = fsm1.getSimplifiedTransitions(si);
 			if(!nfa0ToFFSM.containsKey(si)){
 				ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
-				newState.setCondition(new Literal("True"));
+				newState.setCondition(new Or(new And(fsm1.getConfiguration())));
 				nfa0ToFFSM.put(si, newState);
 				if(kPairs_nfa0to1.containsKey(si)) {
 					nfa1ToFFSM.put(kPairs_nfa0to1.get(si), newState);
@@ -164,7 +164,7 @@ public class CompareFSMs {
 					if(!nfa0ToFFSM.containsKey(sj)){
 						ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
 						//newState.setCondition(new And(feat0));
-						newState.setCondition(new Literal("True"));
+						newState.setCondition(new Or(new And(fsm1.getConfiguration())));
 						nfa0ToFFSM.put(sj, newState);
 						if(kPairs_nfa0to1.containsKey(sj)) {
 							nfa1ToFFSM.put(kPairs_nfa0to1.get(sj), newState);
@@ -174,8 +174,7 @@ public class CompareFSMs {
 					String ffsm_out = simpleTr.getOut().toString();
 					ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa0ToFFSM.get(sj);
 					
-					Node cond = new Literal("True");
-					if(!feat0.isEmpty()) cond = new And(feat0);
+					Node cond = new Or(new And(fsm1.getConfiguration()));
 					ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, cond);
 					//ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, new And("A"));
 					
@@ -188,34 +187,55 @@ public class CompareFSMs {
 			if(!nfa1ToFFSM.containsKey(si)){
 				ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
 				//newState.setCondition(new And(feat1));
-				newState.setCondition(new Literal("True"));
+				newState.setCondition(new Or(new And(fsm2.getConfiguration())));
 				nfa1ToFFSM.put(si, newState);
 			}
 			ConditionalState<ConditionalTransition<String, String>> ffsm_si = nfa1ToFFSM.get(si);
+			And a_cons = new And(fsm2.getConfiguration());
+			Set<Node> the_set = new HashSet<>();
+			for (Node node : ffsm_si.getCondition().getChildren())  the_set.add(node);
+			if(!the_set.contains(a_cons)) {
+				the_set.add(a_cons);
+				ffsm_si.setCondition(new Or(the_set));
+			}
+			
 			
 			for (String input : transitions.keySet()) {
 				for (SimplifiedTransition<String, Word<String>> simpleTr : transitions.get(input)) {
 					Integer sj = simpleTr.getSj();
 					if(!nfa1ToFFSM.containsKey(sj)){
 						ConditionalState<ConditionalTransition<String, String>> newState = ffsm.addState();
-						newState.setCondition(new And(feat1));
+						newState.setCondition(new Or(new And(fsm2.getConfiguration())));
 						nfa1ToFFSM.put(sj, newState);
 					}
 					String ffsm_in  = simpleTr.getIn();
 					String ffsm_out = simpleTr.getOut().toString();
 					ConditionalState<ConditionalTransition<String, String>> ffsm_sj = nfa1ToFFSM.get(sj);
 					
+					a_cons = new And(fsm2.getConfiguration());
+					the_set = new HashSet<>();
+					for (Node node : ffsm_sj.getCondition().getChildren()) the_set.add(node);
+					if(!the_set.contains(a_cons)) {
+						the_set.add(a_cons);
+						ffsm_si.setCondition(new Or(the_set));
+					}
+					
 					
 					Map<String, List<SimplifiedTransition<String, String>>> trs_matching = ffsm.getSimplifiedTransitions(ffsm_si.getId(), ffsm_in, ffsm_out, ffsm_sj.getId());
 					if(trs_matching.isEmpty()) {
-						Node cond = new Literal("True");
-						if(!feat1.isEmpty()) cond = new And(feat1);
+						Node cond = new Or(new And(fsm2.getConfiguration()));
 						ffsm.addTransition(ffsm_si, ffsm_in, ffsm_sj, ffsm_out, cond);
 					}else {
 						SimplifiedTransition<String, String> tr = new ArrayList<>(trs_matching.values()).get(0).get(0);
 						ConditionalTransition<String, String> matching_tr = (ConditionalTransition<String, String>) tr.getTransition();
-						matching_tr.setCondition(new Or(matching_tr.getCondition(),new And(feat1)));
-//						
+						a_cons = new And(fsm2.getConfiguration());
+						the_set = new HashSet<>();
+						for (Node node : matching_tr.getCondition().getChildren()) the_set.add(node);
+						if(!the_set.contains(a_cons)) {
+							the_set.add(a_cons);
+							matching_tr.setCondition(new Or(the_set));
+						}
+						
 					}
 					
 				}
@@ -260,10 +280,11 @@ public class CompareFSMs {
 	private static void makeInitialCondition(ConditionalState<ConditionalTransition<String, String>> s0,
 			ProductMealy<String, Word<String>> fsmRef, ProductMealy<String, Word<String>> fsmUpdt) {
 		
-		Set<Node> featCommon = new LinkedHashSet<>(fsmRef.getConfiguration());
-		featCommon.retainAll(fsmUpdt.getConfiguration());
 		
-		s0.setCondition(new Or(featCommon));
+		s0.setCondition(new Or(
+				new And(fsmRef.getConfiguration() ),
+				new And(fsmUpdt.getConfiguration())
+				));
 	}
 	
 

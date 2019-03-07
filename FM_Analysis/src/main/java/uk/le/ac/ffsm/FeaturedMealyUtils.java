@@ -82,8 +82,6 @@ public class FeaturedMealyUtils {
 	
 			BufferedReader br = new BufferedReader(new FileReader(f_ffsm));
 	
-			NodeReader nodeReader = new NodeReader();
-			nodeReader.activateTextualSymbols();
 			FeaturedMealy<String, String> ffsm = null;
 			
 			if(br.ready()){
@@ -109,7 +107,7 @@ public class FeaturedMealyUtils {
 						if(!statesId.containsKey(tr[0])) statesId.put(tr[0],stateId++);
 						
 						Integer si = statesId.get(tr[0]); 
-						Node si_c = nodeReader.stringToNode(tr[1]);
+						Node si_c = nodeReader(tr[1]);
 						if(!statesMap.containsKey(si)) {
 							statesMap.put(si,ffsm.addState(si_c));
 							if(s0==null) {
@@ -119,7 +117,7 @@ public class FeaturedMealyUtils {
 						
 						/* Conditional Input */
 						String in = tr[2];
-						Node in_c = nodeReader.stringToNode(tr[3]);
+						Node in_c = nodeReader(tr[3]);
 						
 						/* Output */
 						String out = tr[4];
@@ -127,7 +125,7 @@ public class FeaturedMealyUtils {
 						/* Conditional state destination */
 						if(!statesId.containsKey(tr[5])) statesId.put(tr[5],stateId++);
 						Integer sj = statesId.get(tr[5]);
-						Node sj_c = nodeReader.stringToNode(tr[6]);
+						Node sj_c = nodeReader(tr[6]);
 						if(!statesMap.containsKey(sj)) {
 							statesMap.put(sj,ffsm.addState(sj_c));
 						}
@@ -150,12 +148,12 @@ public class FeaturedMealyUtils {
 		bw.write("digraph g {\n");
 		bw.write("	edge [lblstyle=\"above, sloped\"];\n");
 		for (ConditionalState<ConditionalTransition<String, String>> si : ffsm.getStates()) {
-			bw.write(String.format("	s%d [shape=\"circle\" label=\"%s\"];\n", si.getId(), si.toString()));
+			bw.write(String.format("	s%d [shape=\"circle\" label=\"%s@[%s]\"];\n", si.getId(), si.getId(), nodeWriter(si.getCondition())));
 		}
 		for (ConditionalState<ConditionalTransition<String, String>> si : ffsm.getStates()) {
 			for (String in : ffsm.getInputAlphabet()) {
 				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
-					bw.write(String.format("	s%d -> s%d [label=\"%s / %s [%s]\"];\n", tr.getPredecessor().getId(), tr.getSuccessor().getId(), tr.getInput().toString(),tr.getOutput().toString(),tr.getCondition().toString()));
+					bw.write(String.format("	s%d -> s%d [label=\"%s / %s [%s]\"];\n", tr.getPredecessor().getId(), tr.getSuccessor().getId(), tr.getInput().toString(),tr.getOutput().toString(),nodeWriter(tr.getCondition())));
 				}
 					
 			}
@@ -209,12 +207,9 @@ public class FeaturedMealyUtils {
 
 		br.close();
 		
-		NodeReader nodeReader = new NodeReader();
-		nodeReader.activateTextualSymbols();
-		
 		List<Node> configuration_list = new ArrayList<>();
 		for (String string : configurations_split) {
-			configuration_list.add(nodeReader.stringToNode(string));
+			configuration_list.add(nodeReader(string));
 		}
 		
 		Collections.sort(abc);
@@ -690,8 +685,6 @@ public class FeaturedMealyUtils {
 	}
 	
 	public  Map<String, Node> mapConditionalInputs(IFeatureModel featModel) {
-		NodeReader nodeReader = new NodeReader();
-		nodeReader.activateTextualSymbols();
 		Map<String,Node> conditionalInputs = new HashMap<>();
 		Map<String,Set<Node>> inputCondSet = new HashMap<>();
 		List<String> inputs = getAlphabetFromFeature(featModel.getStructure().getRoot().getFeature());
@@ -700,7 +693,7 @@ public class FeaturedMealyUtils {
 			in_cond[1] = in_cond[1].replaceAll("^\\[", "").replaceAll("\\]$", "");
 			inputCondSet.putIfAbsent(in_cond[0], new HashSet<>());
 			
-			inputCondSet.get(in_cond[0]).add(nodeReader.stringToNode(in_cond[1]));
+			inputCondSet.get(in_cond[0]).add(nodeReader(in_cond[1]));
 		}
 		for (String key : inputCondSet.keySet()) {
 			conditionalInputs.put(key, new Or(inputCondSet.get(key)));			
@@ -708,7 +701,7 @@ public class FeaturedMealyUtils {
 		
 		return conditionalInputs;
 	}
-	public  String formatNode(Node n) {
+	public  String nodeWriter(Node n) {
 		NodeWriter nw = new NodeWriter(n);
 //		nw.setNotation(Notation.INFIX);
 		nw.setNotation(Notation.PREFIX);
@@ -717,4 +710,9 @@ public class FeaturedMealyUtils {
 		return nw.nodeToString();
 	}
 	
+	public  Node nodeReader(String constraint) {
+		NodeReader nr = new NodeReader();
+		nr.activateTextualSymbols();
+		return nr.stringToNode(constraint);
+	}
 }

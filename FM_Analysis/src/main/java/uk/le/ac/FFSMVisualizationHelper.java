@@ -33,7 +33,7 @@ public class FFSMVisualizationHelper<I,O> implements DOTVisualizationHelper<Cond
 		labelBuilder.append(String.valueOf(node.getId()));
 		labelBuilder.append("@");
 		labelBuilder.append("[");
-		labelBuilder.append(((node.getCondition()==null)?"null":FeaturedMealyUtils.getInstance().formatNode(node.getCondition())));
+		labelBuilder.append(((node.getCondition()==null)?"null":FeaturedMealyUtils.getInstance().nodeWriter(node.getCondition())));
 		labelBuilder.append("]");
 		properties.put(NodeAttrs.LABEL, labelBuilder.toString());
 		return true;
@@ -52,7 +52,7 @@ public class FFSMVisualizationHelper<I,O> implements DOTVisualizationHelper<Cond
 		labelBuilder.append(String.valueOf(edge.getInput()));
 		labelBuilder.append("@");
 		labelBuilder.append("[");
-		labelBuilder.append(((edge.getCondition()==null)?"TRUE":FeaturedMealyUtils.getInstance().formatNode(edge.getCondition())));
+		labelBuilder.append(((edge.getCondition()==null)?"TRUE":FeaturedMealyUtils.getInstance().nodeWriter(edge.getCondition())));
 		labelBuilder.append("]");
 		labelBuilder.append("/");
 		O output = edge.getOutput();
