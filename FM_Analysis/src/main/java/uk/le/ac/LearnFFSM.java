@@ -45,7 +45,7 @@ import uk.le.ac.ffsm.SimplifiedTransition;
 
 public class LearnFFSM {
 
-	private static final String FM = "FM";
+	private static final String FM = "fm";
 	private static final String UPDT = "updt";
 	private static final String FREF = "fref";
 	private static final String MREF = "mref";
@@ -65,7 +65,11 @@ public class LearnFFSM {
 			// parse the command line arguments
 			CommandLine line = parser.parse( options, args);
 
-			if(line.hasOption(HELP)){
+			if(line.hasOption(HELP) 
+					| !line.hasOption(UPDT)
+					| !line.hasOption(FREF)
+					| !line.hasOption(MREF)
+					){
 				formatter.printHelp( "LearnFFSM", options );
 				System.exit(0);
 			}
