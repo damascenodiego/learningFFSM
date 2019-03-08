@@ -194,6 +194,31 @@ public class FeaturedMealyUtils {
 		}
 		bw.close();
 	}
+	
+	public void printFFSM_kiss(FeaturedMealy<String, String> ffsm) throws Exception {
+
+		List<ConditionalState<ConditionalTransition<String, String>>> states = new ArrayList<>(ffsm.getStates());
+		states.remove(ffsm.getInitialState());
+		states.add(0,ffsm.getInitialState());
+		
+		for (ConditionalState<ConditionalTransition<String, String>> si : states) {
+			for (String in : ffsm.getInputAlphabet()) {
+				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
+					System.out.println(String.format("s%s@[%s] -- %s@[%s]/%s -> s%s@[%s]\n", 
+							tr.getPredecessor().getId(), 
+							nodeWriter(tr.getPredecessor().getCondition()),
+							tr.getInput().toString(),
+							nodeWriter(tr.getCondition()),
+							tr.getOutput().toString(),
+							tr.getSuccessor().getId(),
+							nodeWriter(tr.getSuccessor().getCondition())
+							));
+				}
+
+			}
+
+		}
+	}
 
 	public ProductMealy<String, Word<String>> loadProductMachine(File f, IFeatureModel fm) throws Exception {
 

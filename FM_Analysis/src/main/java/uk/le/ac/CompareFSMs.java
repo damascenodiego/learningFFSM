@@ -1,6 +1,5 @@
 package uk.le.ac;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.DecompositionSolver;
@@ -41,32 +45,56 @@ import uk.le.ac.ffsm.SimplifiedTransition;
 
 public class CompareFSMs {
 
+	private static final String FM = "FM";
+	private static final String UPDT = "updt";
+	private static final String FREF = "fref";
+	private static final String MREF = "mref";
+	private static final String HELP = "h";
+	private static final String K_VALUE = "k";
+
 	public static void main(String[] args) {
 		try {
-			String spl_name = "agm";
-			File f_fm = new File("Benchmark_SPL/"+spl_name+"/feature_models/example_"+spl_name+".xml");
 			
+			// create the command line parser
+			CommandLineParser parser = new BasicParser();
+			// create the Options
+			Options options = createOptions();
+			// automatically generate the help statement
+			HelpFormatter formatter = new HelpFormatter();
+			
+			// parse the command line arguments
+			CommandLine line = parser.parse( options, args);
+
+			if(line.hasOption(HELP)){
+				formatter.printHelp( "LearnFFSM", options );
+				System.exit(0);
+			}
+
+			File f_fm = new File(line.getOptionValue(FM));
+
 			IFeatureModel fm = FeatureModelManager.load(f_fm.toPath()).getObject();
+
+			IConfigurableFSM<String, Word<String>> ref  = null;
+			IConfigurableFSM<String, Word<String>> updt = null;;
+			if(line.hasOption(FREF)){
+				File f_ref  = new File(line.getOptionValue(FREF));
+				File f_upd = new File(line.getOptionValue(UPDT));
+				ref  = FeaturedMealyUtils.getInstance().loadFeaturedMealy (f_ref,fm);
+				updt = FeaturedMealyUtils.getInstance().loadProductMachine(f_upd,fm);
+			}
+
+			if(line.hasOption(MREF)){
+				File f_ref  = new File(line.getOptionValue(MREF));
+				File f_upd = new File(line.getOptionValue(UPDT));
+				ref  = FeaturedMealyUtils.getInstance().loadProductMachine(f_ref,fm);
+				updt = FeaturedMealyUtils.getInstance().loadProductMachine(f_upd,fm);
+			}
 			
-////			File f_fsm1 = new File("./agm/fsm_agm_1-fsm_agm_2/merged.kiss");
-//			File f_fsm1 = new File("./agm/fsm_agm_1-fsm_agm_5/merged.kiss");
-////			File f_fsm1 = new File("./agm/merged-fsm_agm_5/merged.kiss");
-//			FeaturedMealy<String, Word<String>> fsm1 = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_fsm1,fm);
-//			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_5.txt");
-//			ProductMealy<String, Word<String>> fsm2 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm2,fm);
+			double K = Double.valueOf(line.getOptionValue(K_VALUE,"0.50"));
 			
-			File f_fsm1 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_1.txt");
-			ProductMealy<String, Word<String>> fsm1 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm1,fm);
-//			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_2.txt");
-			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_1.txt");
-			ProductMealy<String, Word<String>> fsm2 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm2,fm);
-			
-			double K = 0.50;
-			//double K = 1;
-			
-			RealVector pairsToScore = computeScores(fsm1,fsm2,K);
-			Set<List<Integer>> kPairs = identifyLandmaks(pairsToScore,fsm1,fsm2);
-			Set<List<Integer>> nPairs = surr(kPairs, fsm1,fsm2);
+			RealVector pairsToScore = computeScores(ref,updt,K);
+			Set<List<Integer>> kPairs = identifyLandmaks(pairsToScore,ref,updt);
+			Set<List<Integer>> nPairs = surr(kPairs, ref,updt);
 			Map<Integer,Set<Integer>> checked = new HashMap<>();
 			checked.put(0, new HashSet<>());
 			checked.get(0).add(0);
@@ -79,44 +107,28 @@ public class CompareFSMs {
 			
 			while (!nPairs.isEmpty()) {
 				while (!nPairs.isEmpty()) {
-					List<Integer> A_B = pickHighest(nPairs,pairsToScore, fsm1,fsm2);
+					List<Integer> A_B = pickHighest(nPairs,pairsToScore,ref,updt);
 					kPairs.add(A_B);
 					checked.get(0).add(A_B.get(0));
 					checked.get(1).add(A_B.get(1));
 					removeConflicts(nPairs,checked);
 				}
-				nPairs = surr(kPairs, fsm1,fsm2);
+				nPairs = surr(kPairs,ref,updt);
 				removeConflicts(nPairs,checked);
 			}
 			
 			kPairs.forEach(pair ->System.out.println(pair.get(0)+","+pair.get(1)));
 			
-			FeaturedMealy<String, String> ffsm = makeFFSM(fsm1,fsm2,kPairs,fm);
+			FeaturedMealy<String, String> ffsm = null;
+			if(line.hasOption(FREF)){
+				ffsm = makeFFSM((FeaturedMealy<String, Word<String>>)ref,(ProductMealy<String, Word<String>>)updt,kPairs,fm);
+			}else {
+				ffsm = makeFFSM((ProductMealy<String, Word<String>>)ref,(ProductMealy<String, Word<String>>)updt,kPairs,fm);
+			}
 			
+			FeaturedMealyUtils.getInstance().printFFSM_kiss(ffsm);
 			
-			File f = null;
-			BufferedWriter bw = null;
-			
-			File outDir = new File(spl_name);
-			outDir.mkdirs();
-			
-//			File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
-//			FeaturedMealy<String, String> ffsm_orig = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
-//			FeaturedMealyUtils.getInstance().saveFFSM(ffsm_orig, new File(outDir,"original.dot"));
-			
-//			f = new File(outDir,f_fsm1.getName()+".dot");
-//			bw = new BufferedWriter(new FileWriter(f));
-//			GraphDOT.write(fsm1,fsm1.getInputAlphabet(),bw);
-//			
-//			f = new File(outDir,f_fsm2.getName()+".dot");
-//			bw = new BufferedWriter(new FileWriter(f));
-//			GraphDOT.write(fsm2,fsm2.getInputAlphabet(),bw);
-//			
-			f = new File(outDir,f_fsm1.getName()+f_fsm2.getName()+".dot");
-			FeaturedMealyUtils.getInstance().saveFFSM(ffsm, f);
-			f = new File(outDir,f_fsm1.getName()+f_fsm2.getName()+".kiss");
-			FeaturedMealyUtils.getInstance().saveFFSM_kiss(ffsm, f);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -686,6 +698,16 @@ public class CompareFSMs {
 		}
 		return max;
 		
+	}
+	
+	private static Options createOptions() {
+		Options options = new Options();
+		options.addOption( MREF,  true, "Mealy reference" );
+		options.addOption( FREF,  true, "FFSM reference" );
+		options.addOption( UPDT,  true, "Mealy update" );
+		options.addOption( FM,    true, "Feature model" );
+		options.addOption( HELP,  false, "Help menu" );
+		return options;
 	}
 
 }
