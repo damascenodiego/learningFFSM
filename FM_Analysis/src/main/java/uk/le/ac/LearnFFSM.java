@@ -43,7 +43,7 @@ import uk.le.ac.ffsm.IConfigurableFSM;
 import uk.le.ac.ffsm.ProductMealy;
 import uk.le.ac.ffsm.SimplifiedTransition;
 
-public class CompareFSMs {
+public class LearnFFSM {
 
 	private static final String FM = "FM";
 	private static final String UPDT = "updt";
