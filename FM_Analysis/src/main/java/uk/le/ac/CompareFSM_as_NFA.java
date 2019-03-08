@@ -69,7 +69,7 @@ public class CompareFSM_as_NFA {
 			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(fsm2);
 			
 			File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
-			FeaturedMealy<String, String> ffsm_orig = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
+			FeaturedMealy<String, Word<String>> ffsm_orig = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
 //			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(ffsm1);
 //			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(ffsm1);
 			
@@ -117,8 +117,8 @@ public class CompareFSM_as_NFA {
 			f = new File("ffsm_merged.dot");
 			FeaturedMealyUtils.getInstance().saveFFSM(ffsm, f);
 			
-			f = new File("ffsm_orig.dot");
-			FeaturedMealyUtils.getInstance().saveFFSM(ffsm_orig, f);
+//			f = new File("ffsm_orig.dot");
+//			FeaturedMealyUtils.getInstance().saveFFSM(ffsm_orig, f);
 			
 			
 			

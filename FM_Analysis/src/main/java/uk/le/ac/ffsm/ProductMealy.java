@@ -99,5 +99,17 @@ public class ProductMealy<I,O> extends CompactMealy<I, O> implements IConfigurab
 		return tr_match;
 	}
 	
-
+	@Override
+	public Integer getInitialStateIndex() {
+		return getStateId(getInitialState());
+	}
+	
+	@Override
+	public List<Integer> getStateIDs() {
+		List<Integer> out = new ArrayList<>();
+		for (Integer state : getStates()) {
+			out.add(getStateId(state));
+		}
+		return out;
+	}
 }

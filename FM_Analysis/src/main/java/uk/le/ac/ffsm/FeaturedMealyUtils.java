@@ -67,7 +67,7 @@ public class FeaturedMealyUtils {
 	}
 	
 	
-	public FeaturedMealy<String, String> loadFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
+	public FeaturedMealy<String, Word<String>> loadFeaturedMealy(File f_ffsm, IFeatureModel fm) throws IOException{
 			Pattern kissLine = Pattern.compile(
 					"\\s*"
 					+ "(\\S+)" + "@" + "\\[([^\\]]+)\\]"
@@ -82,7 +82,7 @@ public class FeaturedMealyUtils {
 	
 			BufferedReader br = new BufferedReader(new FileReader(f_ffsm));
 	
-			FeaturedMealy<String, String> ffsm = null;
+			FeaturedMealy<String, Word<String>> ffsm = null;
 			
 			if(br.ready()){
 				String line = null;
@@ -92,8 +92,8 @@ public class FeaturedMealyUtils {
 				Alphabet<String> alphabet = Alphabets.fromCollection(abc);
 				ffsm = new FeaturedMealy<>(alphabet,fm,cInps);
 				
-				ConditionalState<ConditionalTransition<String,String>> s0 = null;
-				Map<Integer,ConditionalState<ConditionalTransition<String,String>>> statesMap = new HashMap<>();
+				ConditionalState<ConditionalTransition<String,Word<String>>> s0 = null;
+				Map<Integer,ConditionalState<ConditionalTransition<String,Word<String>>>> statesMap = new HashMap<>();
 				Map<String,Integer> statesId = new HashMap<>();
 				int stateId = 0;
 				while(br.ready()){
@@ -109,7 +109,7 @@ public class FeaturedMealyUtils {
 						Integer si = statesId.get(tr[0]); 
 						Node si_c = nodeReader(tr[1]);
 						if(!statesMap.containsKey(si)) {
-							statesMap.put(si,ffsm.addState(si_c));
+							statesMap.put(si,ffsm.addState(makeConditionAsOr(si_c)));
 							if(s0==null) {
 								s0 = statesMap.get(si);
 							}
@@ -120,17 +120,19 @@ public class FeaturedMealyUtils {
 						Node in_c = nodeReader(tr[3]);
 						
 						/* Output */
-						String out = tr[4];
+						Word out = Word.epsilon();
+						out = out.append(tr[4]);
 						
 						/* Conditional state destination */
 						if(!statesId.containsKey(tr[5])) statesId.put(tr[5],stateId++);
 						Integer sj = statesId.get(tr[5]);
 						Node sj_c = nodeReader(tr[6]);
 						if(!statesMap.containsKey(sj)) {
-							statesMap.put(sj,ffsm.addState(sj_c));
+							statesMap.put(sj,ffsm.addState(makeConditionAsOr(sj_c)));
 						}
 						
-						ffsm.addTransition(statesMap.get(si), in, statesMap.get(sj), out,in_c);
+						ConditionalTransition newTr = ffsm.addTransition(statesMap.get(si), in, statesMap.get(sj), out, makeConditionAsOr(in_c));
+						newTr.getInput();
 					}
 				}
 				
@@ -140,10 +142,10 @@ public class FeaturedMealyUtils {
 			br.close();
 	
 			return ffsm;
-		}
-	
+	}
+
 	public void saveFFSM(FeaturedMealy<String, String> ffsm, File f) throws Exception {
-		
+
 		BufferedWriter bw = new BufferedWriter(new FileWriter(f));	
 		bw.write("digraph g {\n");
 		bw.write("	edge [lblstyle=\"above, sloped\"];\n");
@@ -155,17 +157,44 @@ public class FeaturedMealyUtils {
 				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
 					bw.write(String.format("	s%d -> s%d [label=\"%s / %s [%s]\"];\n", tr.getPredecessor().getId(), tr.getSuccessor().getId(), tr.getInput().toString(),tr.getOutput().toString(),nodeWriter(tr.getCondition())));
 				}
-					
+
 			}
-				
+
 		}
-		
+
 		bw.write("	__start0 [label=\"\" shape=\"none\" width=\"0\" height=\"0\"];\n");
 		bw.write("	__start0 -> s"+ffsm.getInitialState().getId()+";\n");
 		bw.write("}");
 		bw.close();
 	}
-	
+
+	public void saveFFSM_kiss(FeaturedMealy<String, String> ffsm, File f) throws Exception {
+
+		BufferedWriter bw = new BufferedWriter(new FileWriter(f));	
+		List<ConditionalState<ConditionalTransition<String, String>>> states = new ArrayList<>(ffsm.getStates());
+		states.remove(ffsm.getInitialState());
+		states.add(0,ffsm.getInitialState());
+		
+		for (ConditionalState<ConditionalTransition<String, String>> si : states) {
+			for (String in : ffsm.getInputAlphabet()) {
+				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
+					bw.write(String.format("s%s@[%s] -- %s@[%s]/%s -> s%s@[%s]\n", 
+							tr.getPredecessor().getId(), 
+							nodeWriter(tr.getPredecessor().getCondition()),
+							tr.getInput().toString(),
+							nodeWriter(tr.getCondition()),
+							tr.getOutput().toString(),
+							tr.getSuccessor().getId(),
+							nodeWriter(tr.getSuccessor().getCondition())
+							));
+				}
+
+			}
+
+		}
+		bw.close();
+	}
+
 	public ProductMealy<String, Word<String>> loadProductMachine(File f, IFeatureModel fm) throws Exception {
 
 		Pattern kissLine = Pattern.compile("\\s*(\\S+)\\s+--\\s+(\\S+)\\s*/\\s*(\\S+)\\s+->\\s+(\\S+)\\s*");
@@ -703,8 +732,8 @@ public class FeaturedMealyUtils {
 	}
 	public  String nodeWriter(Node n) {
 		NodeWriter nw = new NodeWriter(n);
-//		nw.setNotation(Notation.INFIX);
-		nw.setNotation(Notation.PREFIX);
+		nw.setNotation(Notation.INFIX);
+//		nw.setNotation(Notation.PREFIX);
 		nw.setSymbols(NodeWriter.textualSymbols);
 		nw.setEnforceBrackets(true);
 		return nw.nodeToString();
@@ -714,5 +743,14 @@ public class FeaturedMealyUtils {
 		NodeReader nr = new NodeReader();
 		nr.activateTextualSymbols();
 		return nr.stringToNode(constraint);
+	}
+	
+	public Or makeConditionAsOr(Node condition) {
+		if(condition instanceof And) {
+			return new Or(condition);
+		}else if(condition instanceof Or) {
+			return (Or)condition;
+		}
+		return null;
 	}
 }

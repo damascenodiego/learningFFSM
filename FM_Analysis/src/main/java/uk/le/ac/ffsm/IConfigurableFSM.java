@@ -1,5 +1,6 @@
 package uk.le.ac.ffsm;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -17,5 +18,8 @@ public interface IConfigurableFSM<I,O> {
 	Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitionsIn(Integer sj);
 	
 	public Alphabet<I> getInputAlphabet();
+	public List<Integer> getStateIDs();
+	public Integer getInitialStateIndex();
+	
 
 }

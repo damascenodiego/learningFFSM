@@ -218,5 +218,18 @@ public class FeaturedMealy<I,O>
 		}
 		return tr_match;
 	}
+	
+	@Override
+	public Integer getInitialStateIndex() {
+		return getStateId(getInitialState());
+	}
 
+	@Override
+	public List<Integer> getStateIDs() {
+		List<Integer> out = new ArrayList<>();
+		for (ConditionalState<ConditionalTransition<I, O>> state : getStates()) {
+			out.add(state.getId());
+		}
+		return out;
+	}
 }
