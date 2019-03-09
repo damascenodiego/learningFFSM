@@ -81,65 +81,67 @@ public class FeaturedMealyUtils {
 					);
 	
 			BufferedReader br = new BufferedReader(new FileReader(f_ffsm));
-	
-			FeaturedMealy<String, Word<String>> ffsm = null;
 			
+			Set<String> abc = new HashSet<>();
+			List<String[]> linesTruncated = new ArrayList<>();
 			if(br.ready()){
 				String line = null;
-				Map<String, Node> cInps = mapConditionalInputs(fm);
-				List<String> abc = new ArrayList<>(cInps.keySet());
-				Collections.sort(abc);
-				Alphabet<String> alphabet = Alphabets.fromCollection(abc);
-				ffsm = new FeaturedMealy<>(alphabet,fm,cInps);
-				
-				ConditionalState<ConditionalTransition<String,Word<String>>> s0 = null;
-				Map<Integer,ConditionalState<ConditionalTransition<String,Word<String>>>> statesMap = new HashMap<>();
-				Map<String,Integer> statesId = new HashMap<>();
-				int stateId = 0;
 				while(br.ready()){
 					line = br.readLine();
 					Matcher m = kissLine.matcher(line);
 					if(m.matches()){
 						String[] tr = new String[7];
 						IntStream.range(1, tr.length+1).forEach(idx-> tr[idx-1] = m.group(idx));
-						
-						/* Conditional state origin */
-						if(!statesId.containsKey(tr[0])) statesId.put(tr[0],stateId++);
-						
-						Integer si = statesId.get(tr[0]); 
-						Node si_c = nodeReader(tr[1]);
-						if(!statesMap.containsKey(si)) {
-							statesMap.put(si,ffsm.addState(makeConditionAsOr(si_c)));
-							if(s0==null) {
-								s0 = statesMap.get(si);
-							}
-						}
-						
-						/* Conditional Input */
-						String in = tr[2];
-						Node in_c = nodeReader(tr[3]);
-						
-						/* Output */
-						Word out = Word.epsilon();
-						out = out.append(tr[4]);
-						
-						/* Conditional state destination */
-						if(!statesId.containsKey(tr[5])) statesId.put(tr[5],stateId++);
-						Integer sj = statesId.get(tr[5]);
-						Node sj_c = nodeReader(tr[6]);
-						if(!statesMap.containsKey(sj)) {
-							statesMap.put(sj,ffsm.addState(makeConditionAsOr(sj_c)));
-						}
-						
-						ConditionalTransition newTr = ffsm.addTransition(statesMap.get(si), in, statesMap.get(sj), out, makeConditionAsOr(in_c));
-						newTr.getInput();
+						abc.add(tr[2]);
+						linesTruncated.add(tr);
 					}
 				}
 				
-				ffsm.setInitialState(s0);
 			}
 			
 			br.close();
+			
+			List<String> abcList = new ArrayList<>(abc);
+			Collections.sort(abcList);
+			Alphabet<String> alphabet = Alphabets.fromCollection(abcList);
+			FeaturedMealy<String, Word<String>> ffsm = new FeaturedMealy<>(alphabet,fm);
+			
+			ConditionalState<ConditionalTransition<String,Word<String>>> s0 = null;
+			Map<Integer,ConditionalState<ConditionalTransition<String,Word<String>>>> statesMap = new HashMap<>();
+			Map<String,Integer> statesId = new HashMap<>();
+			int stateId = 0;
+			for (String[] tr : linesTruncated) {
+				/* Conditional state origin */
+				if(!statesId.containsKey(tr[0])) statesId.put(tr[0],stateId++);
+				
+				Integer si = statesId.get(tr[0]); 
+				Node si_c = nodeReader(tr[1]);
+				if(!statesMap.containsKey(si)) {
+					statesMap.put(si,ffsm.addState((si_c)));
+					if(s0==null) {
+						s0 = statesMap.get(si);
+					}
+				}
+				
+				/* Conditional Input */
+				String in = tr[2];
+				Node in_c = nodeReader(tr[3]);
+				
+				/* Output */
+				Word out = Word.epsilon();
+				out = out.append(tr[4]);
+				
+				/* Conditional state destination */
+				if(!statesId.containsKey(tr[5])) statesId.put(tr[5],stateId++);
+				Integer sj = statesId.get(tr[5]);
+				Node sj_c = nodeReader(tr[6]);
+				if(!statesMap.containsKey(sj)) {
+					statesMap.put(sj,ffsm.addState((sj_c)));
+				}
+				
+				ConditionalTransition newTr = ffsm.addTransition(statesMap.get(si), in, statesMap.get(sj), out, (in_c));
+			}
+			ffsm.setInitialState(s0);
 	
 			return ffsm;
 	}
@@ -204,7 +206,7 @@ public class FeaturedMealyUtils {
 		for (ConditionalState<ConditionalTransition<String, String>> si : states) {
 			for (String in : ffsm.getInputAlphabet()) {
 				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
-					System.out.println(String.format("s%s@[%s] -- %s@[%s]/%s -> s%s@[%s]\n", 
+					System.out.println(String.format("s%s@[%s] -- %s@[%s]/%s -> s%s@[%s]", 
 							tr.getPredecessor().getId(), 
 							nodeWriter(tr.getPredecessor().getCondition()),
 							tr.getInput().toString(),
@@ -777,5 +779,22 @@ public class FeaturedMealyUtils {
 			return (Or)condition;
 		}
 		return null;
+	}
+
+	public Set<Node> getAllAnds(Node condition) {
+		HashSet<Node> andNodes = new HashSet<>();
+		if(condition instanceof And) {
+			andNodes.add(condition);
+			return andNodes;
+		}else if(condition instanceof Or){
+			for (Node node : condition.getChildren()) {
+				if(node instanceof And) {
+					andNodes.add(node);
+				}else {
+					andNodes.addAll(getAllAnds(node));
+				}
+			}
+		}		
+		return andNodes;
 	}
 }

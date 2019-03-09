@@ -12,95 +12,6 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-algorithms-parent</artifactId>
-        <version>0.13.1</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-algorithms-active-parent</artifactId>
-        <version>0.13.1</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-adt</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-dhc</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-discrimination-tree</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-discrimination-tree-vpda</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-kearns-vazirani</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-lstar</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-nlstar</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-ttt</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-ttt-vpda</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-algorithms-passive-parent</artifactId>
-        <version>0.13.1</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-rpni</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-rpni-edsm</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-rpni-mdl</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-api</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib.archetypes</groupId>
-        <artifactId>learnlib-archetypes-parent</artifactId>
-        <version>0.13.1</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
         <groupId>de.learnlib.archetypes</groupId>
         <artifactId>basic</artifactId>
         <version>0.13.1</version>
@@ -108,38 +19,6 @@
       <dependency>
         <groupId>de.learnlib.archetypes</groupId>
         <artifactId>complete</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-build-parent</artifactId>
-        <version>0.13.1</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-build-tools</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-commons-parent</artifactId>
-        <version>0.13.1</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-acex</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-counterexamples</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-settings</artifactId>
         <version>0.13.1</version>
       </dependency>
       <dependency>
@@ -166,11 +45,6 @@
       <dependency>
         <groupId>de.learnlib</groupId>
         <artifactId>learnlib-datastructure-ot</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-datastructure-pta</artifactId>
         <version>0.13.1</version>
       </dependency>
       <dependency>
@@ -215,55 +89,6 @@
         <groupId>de.learnlib</groupId>
         <artifactId>learnlib-filters-parent</artifactId>
         <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-cache</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-reuse</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-statistics</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-membership-oracles</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib</groupId>
-        <artifactId>learnlib-parallelism</artifactId>
-        <version>0.13.1</version>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib.testsupport</groupId>
-        <artifactId>learnlib-test-support-parent</artifactId>
-        <version>0.13.1</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib.testsupport</groupId>
-        <artifactId>learnlib-learning-examples</artifactId>
-        <version>0.13.1</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>de.learnlib.testsupport</groupId>
-        <artifactId>learnlib-learner-it-support</artifactId>
-        <version>0.13.1</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>6.11</version>
-        <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
@@ -484,6 +309,12 @@
       <artifactId>learnlib-distribution</artifactId>
       <type>pom</type>
       <scope>compile</scope>
+      <exclusions>
+      	<exclusion>
+      		<groupId>de.learnlib</groupId>
+      		<artifactId>learnlib-adt</artifactId>
+      	</exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
