@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -82,7 +83,7 @@ public class FeaturedMealyUtils {
 	
 			BufferedReader br = new BufferedReader(new FileReader(f_ffsm));
 			
-			Set<String> abc = new HashSet<>();
+			Set<String> abc = new LinkedHashSet<>();
 			List<String[]> linesTruncated = new ArrayList<>();
 			if(br.ready()){
 				String line = null;
@@ -146,17 +147,23 @@ public class FeaturedMealyUtils {
 			return ffsm;
 	}
 
-	public void saveFFSM(FeaturedMealy<String, String> ffsm, File f) throws Exception {
+	
+	public void saveFFSM(FeaturedMealy<String, Word<String>> ffsm, File f) throws Exception {
+		saveFFSM(ffsm, f,true);
+		
+	}
+	public void saveFFSM(FeaturedMealy<String, Word<String>> ffsm, File f, boolean plotLoop) throws Exception {
 
 		BufferedWriter bw = new BufferedWriter(new FileWriter(f));	
 		bw.write("digraph g {\n");
 		bw.write("	edge [lblstyle=\"above, sloped\"];\n");
-		for (ConditionalState<ConditionalTransition<String, String>> si : ffsm.getStates()) {
+		for (ConditionalState<ConditionalTransition<String, Word<String>>> si : ffsm.getStates()) {
 			bw.write(String.format("	s%d [shape=\"circle\" label=\"%s@[%s]\"];\n", si.getId(), si.getId(), nodeWriter(si.getCondition())));
 		}
-		for (ConditionalState<ConditionalTransition<String, String>> si : ffsm.getStates()) {
+		for (ConditionalState<ConditionalTransition<String, Word<String>>> si : ffsm.getStates()) {
 			for (String in : ffsm.getInputAlphabet()) {
-				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
+				for (ConditionalTransition<String, Word<String>> tr : ffsm.getTransitions(si,in)) {
+					if(!plotLoop && tr.getPredecessor().equals(tr.getSuccessor())) continue;
 					bw.write(String.format("	s%d -> s%d [label=\"%s / %s [%s]\"];\n", tr.getPredecessor().getId(), tr.getSuccessor().getId(), tr.getInput().toString(),tr.getOutput().toString(),nodeWriter(tr.getCondition())));
 				}
 
@@ -170,16 +177,21 @@ public class FeaturedMealyUtils {
 		bw.close();
 	}
 
-	public void saveFFSM_kiss(FeaturedMealy<String, String> ffsm, File f) throws Exception {
+	public void saveFFSM_kiss(FeaturedMealy<String, Word<String>> ffsm, File f) throws Exception {
+		saveFFSM_kiss(ffsm, f, true);
+	}
+	
+	public void saveFFSM_kiss(FeaturedMealy<String, Word<String>> ffsm, File f, boolean plotLoop) throws Exception {
 
 		BufferedWriter bw = new BufferedWriter(new FileWriter(f));	
-		List<ConditionalState<ConditionalTransition<String, String>>> states = new ArrayList<>(ffsm.getStates());
+		List<ConditionalState<ConditionalTransition<String, Word<String>>>> states = new ArrayList<>(ffsm.getStates());
 		states.remove(ffsm.getInitialState());
 		states.add(0,ffsm.getInitialState());
 		
-		for (ConditionalState<ConditionalTransition<String, String>> si : states) {
+		for (ConditionalState<ConditionalTransition<String, Word<String>>> si : states) {
 			for (String in : ffsm.getInputAlphabet()) {
-				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
+				for (ConditionalTransition<String, Word<String>> tr : ffsm.getTransitions(si,in)) {
+					if(!plotLoop && tr.getPredecessor().equals(tr.getSuccessor())) continue;
 					bw.write(String.format("s%s@[%s] -- %s@[%s]/%s -> s%s@[%s]\n", 
 							tr.getPredecessor().getId(), 
 							nodeWriter(tr.getPredecessor().getCondition()),
@@ -198,6 +210,10 @@ public class FeaturedMealyUtils {
 	}
 	
 	public void printFFSM_kiss(FeaturedMealy<String, String> ffsm) throws Exception {
+		printFFSM_kiss(ffsm,true);
+	}
+	
+	public void printFFSM_kiss(FeaturedMealy<String, String> ffsm, boolean plotLoop) throws Exception {
 
 		List<ConditionalState<ConditionalTransition<String, String>>> states = new ArrayList<>(ffsm.getStates());
 		states.remove(ffsm.getInitialState());
@@ -206,6 +222,7 @@ public class FeaturedMealyUtils {
 		for (ConditionalState<ConditionalTransition<String, String>> si : states) {
 			for (String in : ffsm.getInputAlphabet()) {
 				for (ConditionalTransition<String, String> tr : ffsm.getTransitions(si,in)) {
+					if(!plotLoop && tr.getPredecessor().equals(tr.getSuccessor())) continue;
 					System.out.println(String.format("s%s@[%s] -- %s@[%s]/%s -> s%s@[%s]", 
 							tr.getPredecessor().getId(), 
 							nodeWriter(tr.getPredecessor().getCondition()),
@@ -230,7 +247,7 @@ public class FeaturedMealyUtils {
 
 		List<String[]> trs = new ArrayList<String[]>();
 
-		HashSet<String> abcSet = new HashSet<>();
+		HashSet<String> abcSet = new LinkedHashSet<>();
 		List<String> abc = new ArrayList<>();
 
 		//		int count = 0;
@@ -264,8 +281,20 @@ public class FeaturedMealyUtils {
 		br.close();
 		
 		List<Node> configuration_list = new ArrayList<>();
+		Set<String> configuration_names = new HashSet<>();
+		
 		for (String string : configurations_split) {
-			configuration_list.add(nodeReader(string));
+			if(string.length()==0) continue;
+			Node newNode = nodeReader(string);
+			configuration_list.add(newNode);
+			if(newNode instanceof Literal) configuration_names.add(((Literal)newNode).toString());
+			if(newNode instanceof Not) configuration_names.add(((Not)newNode).getChildren()[0].toString());
+		}
+		for (IFeature node : fm.getFeatures()) {
+			if(node.getName().equals("TRUE")) continue;
+			if(!configuration_names.contains(node.getName())) {
+				configuration_list.add(new Not(nodeReader(node.getName())));
+			}
 		}
 		
 		Collections.sort(abc);
@@ -537,7 +566,7 @@ public class FeaturedMealyUtils {
 
 		ConditionalState<ConditionalTransition<I,O>> s0 = ffsm.getInitialState();
 		
-		Set<ConditionalTransition<I,O>> no_loop_tr = new HashSet<>();
+		Set<ConditionalTransition<I,O>> no_loop_tr = new LinkedHashSet<>();
 		for (ConditionalState<ConditionalTransition<I,O>> state : ffsm.getStates()) {
 			for (I input : ffsm.getInputAlphabet()) {
 				for (ConditionalTransition<I,O> tr : ffsm.getTransitions(state, input)) {
@@ -546,8 +575,8 @@ public class FeaturedMealyUtils {
 			}			
 		}
 		
-		Set<ConditionalState<ConditionalTransition<I,O>>> found_fc = new HashSet<>();
-		Set<ConditionalState<ConditionalTransition<I,O>>> nfound_fc = new HashSet<>(ffsm.getStates());
+		Set<ConditionalState<ConditionalTransition<I,O>>> found_fc = new LinkedHashSet<>();
+		Set<ConditionalState<ConditionalTransition<I,O>>> nfound_fc = new LinkedHashSet<>(ffsm.getStates());
 		if((ffsm.getInitialStates().size() == 1)) {
 			nfound_fc.remove(s0);
 			found_fc.add(s0);			
@@ -710,7 +739,7 @@ public class FeaturedMealyUtils {
 					IFeatureModel featModel,
 					Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid) {
 		// TODO Auto-generated method stub
-		Set<ConditionalState<ConditionalTransition<I, O>>> uncovStates = new HashSet<>() ;
+		Set<ConditionalState<ConditionalTransition<I, O>>> uncovStates = new LinkedHashSet<>() ;
 		
 		//check_path_coverage
 		for(ConditionalState<ConditionalTransition<I, O>> state: allValid.keySet()){
@@ -747,7 +776,7 @@ public class FeaturedMealyUtils {
 		for (String key : inputs) {
 			String[] in_cond = key.split("@");
 			in_cond[1] = in_cond[1].replaceAll("^\\[", "").replaceAll("\\]$", "");
-			inputCondSet.putIfAbsent(in_cond[0], new HashSet<>());
+			inputCondSet.putIfAbsent(in_cond[0], new LinkedHashSet<>());
 			
 			inputCondSet.get(in_cond[0]).add(nodeReader(in_cond[1]));
 		}
@@ -782,7 +811,7 @@ public class FeaturedMealyUtils {
 	}
 
 	public Set<Node> getAllAnds(Node condition) {
-		HashSet<Node> andNodes = new HashSet<>();
+		HashSet<Node> andNodes = new LinkedHashSet<>();
 		if(condition instanceof And) {
 			andNodes.add(condition);
 			return andNodes;
@@ -796,5 +825,38 @@ public class FeaturedMealyUtils {
 			}
 		}		
 		return andNodes;
+	}
+
+	public void cleanFeaturedMealy(FeaturedMealy<String, Word<String>> ref,
+			IFeatureModel fm) {
+		Set<Node> allConds = new LinkedHashSet<Node>();
+		List<Node> listConds = new ArrayList<Node>();
+		
+		for (ConditionalState<ConditionalTransition<String, Word<String>>> cState : ref.getStates()) {
+			List<Node> simpleCond = new ArrayList<Node>();
+			for (Node node : getAllAnds(cState.getCondition())) {
+				if(allConds.add(node)) {
+					listConds.add(node);
+				}
+				simpleCond.add(new Literal("c"+(listConds.indexOf(node)+1)));
+			}
+			cState.setCondition(new Or(simpleCond));
+		}
+
+		for (ConditionalState<ConditionalTransition<String, Word<String>>> cState : ref.getStates()) {
+			for (String input : ref.getInputAlphabet()) {
+				for (ConditionalTransition<String, Word<String>> tr : ref.getTransitions(cState, input)) {
+					List<Node> simpleCond = new ArrayList<Node>();
+					for (Node node : getAllAnds(tr.getCondition())) {
+						if(allConds.add(node)) {
+							listConds.add(node);
+						}
+						simpleCond.add(new Literal("c"+(listConds.indexOf(node)+1)));
+					}
+					tr.setCondition(new Or(simpleCond));
+				}
+			}
+		}
+		ref.getInitialState().setCondition(new Literal("TRUE"));
 	}
 }

@@ -1,3 +1,4 @@
+VM	BEV	CUR	DOL	TEA
 s0 -- sugar/nok() -> s0
 s0 -- no_sugar/nok() -> s0
 s0 -- tea/nok() -> s0

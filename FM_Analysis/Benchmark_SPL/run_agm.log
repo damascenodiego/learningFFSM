@@ -1,0 +1,42 @@
+java -jar ./learnFFSM.jar -fm ./agm/model.xml -mref ./agm/fsm/fsm_agm_1.txt -updt ./agm/fsm/fsm_agm_2.txt -out ./agm/learnt/ffsm_agm_1_2.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+2,2
+1,1
+Names of the reference/updated models and number of states implemented:fsm_agm_1.txt/fsm_agm_2.txt/3/3/3
+
+java -jar ./learnFFSM.jar -fm ./agm/model.xml -fref ./agm/learnt/ffsm_agm_1_2.txt  -updt ./agm/fsm/fsm_agm_3.txt -out ./agm/learnt/ffsm_agm_1_2_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+2,2
+1,1
+Names of the reference/updated models and number of states implemented:ffsm_agm_1_2.txt/fsm_agm_3.txt/3/3/3
+
+java -jar ./learnFFSM.jar -fm ./agm/model.xml -fref ./agm/learnt/ffsm_agm_1_2_3.txt  -updt ./agm/fsm/fsm_agm_4.txt -out ./agm/learnt/ffsm_agm_1_2_3_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+2,2
+1,1
+Names of the reference/updated models and number of states implemented:ffsm_agm_1_2_3.txt/fsm_agm_4.txt/3/4/4
+
+java -jar ./learnFFSM.jar -fm ./agm/model.xml -fref ./agm/learnt/ffsm_agm_1_2_3_4.txt  -updt ./agm/fsm/fsm_agm_5.txt -out ./agm/learnt/ffsm_agm_1_2_3_4_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+2,2
+3,3
+Names of the reference/updated models and number of states implemented:ffsm_agm_1_2_3_4.txt/fsm_agm_5.txt/4/4/4
+
+java -jar ./learnFFSM.jar -fm ./agm/model.xml -fref ./agm/learnt/ffsm_agm_1_2_3_4_5.txt  -updt ./agm/fsm/fsm_agm_6.txt -out ./agm/learnt/ffsm_agm_1_2_3_4_5_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+2,2
+3,3
+Names of the reference/updated models and number of states implemented:ffsm_agm_1_2_3_4_5.txt/fsm_agm_6.txt/4/4/4
+

@@ -54,81 +54,81 @@ import uk.le.ac.ffsm.SimplifiedTransition;
 public class CompareFSM_as_NFA {
 
 	public static void main(String[] args) {
-		try {
-			String spl_name = "agm";
-			File f_fm = new File("Benchmark_SPL/"+spl_name+"/feature_models/example_"+spl_name+".xml");
-			
-			IFeatureModel fm = FeatureModelManager.load(f_fm.toPath()).getObject();
-			
-			File f_fsm1 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_1.txt");
-			ProductMealy<String, Word<String>> fsm1 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm1,fm);
-			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_3.txt");
-			ProductMealy<String, Word<String>> fsm2 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm2,fm);
-			
-			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(fsm1);
-			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(fsm2);
-			
-			File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
-			FeaturedMealy<String, Word<String>> ffsm_orig = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
-//			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(ffsm1);
-//			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(ffsm1);
-			
-			//plotModels(m_nfa1,m_nfa2);
-			
-			double K = 0.50;
-			//double K = 1;
-			
-			RealVector pairsToScore = computeScores(m_nfa1,m_nfa2,K);
-			Set<List<FastNFAState>> kPairs = identifyLandmaks(pairsToScore,m_nfa1,m_nfa2);
-			Set<List<FastNFAState>> nPairs = surr(kPairs, m_nfa1, m_nfa2);
-			
-			Set<FastNFAState> checked = new HashSet<>();
-			while (!nPairs.isEmpty()) {
-				while (!nPairs.isEmpty()) {
-					List<FastNFAState> A_B = pickHighest(nPairs,pairsToScore, m_nfa1, m_nfa2);
-					kPairs.add(A_B); 
-					checked.addAll(A_B);
-					removeConflicts(nPairs,checked);
-				}
-				nPairs = surr(kPairs, m_nfa1, m_nfa2);
-				removeConflicts(nPairs,checked);
-			}
-			
-			kPairs.forEach(pair ->System.out.println(pair.get(0).getId()+","+pair.get(1).getId()));
-			
-			FeaturedMealy<String, String> ffsm = makeFFSM(m_nfa1,m_nfa2,kPairs,fm);
-
-			
-//			DOTVisualizationHelper helper   = new NFAVisualizationHelper();
-//			GraphDOT.write(m_nfa1.getNfa(),m_nfa1.getNfa().getInputAlphabet(),System.out, helper);
-//			GraphDOT.write(m_nfa2.getNfa(),m_nfa2.getNfa().getInputAlphabet(),System.out, helper);
-			
-			File f = null;
-			BufferedWriter bw = null;
-			
-			f = new File(f_fsm1.getName()+".dot");
-			bw = new BufferedWriter(new FileWriter(f));
-			GraphDOT.write(fsm1,fsm1.getInputAlphabet(),bw);
-			
-			f = new File(f_fsm2.getName()+".dot");
-			bw = new BufferedWriter(new FileWriter(f));
-			GraphDOT.write(fsm2,fsm2.getInputAlphabet(),bw);
-			
-			f = new File("ffsm_merged.dot");
-			FeaturedMealyUtils.getInstance().saveFFSM(ffsm, f);
-			
-//			f = new File("ffsm_orig.dot");
-//			FeaturedMealyUtils.getInstance().saveFFSM(ffsm_orig, f);
-			
-			
-			
-			
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			String spl_name = "agm";
+//			File f_fm = new File("Benchmark_SPL/"+spl_name+"/feature_models/example_"+spl_name+".xml");
+//			
+//			IFeatureModel fm = FeatureModelManager.load(f_fm.toPath()).getObject();
+//			
+//			File f_fsm1 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_1.txt");
+//			ProductMealy<String, Word<String>> fsm1 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm1,fm);
+//			File f_fsm2 = new File("./Benchmark_SPL/"+spl_name+"/fsm/fsm_"+spl_name+"_3.txt");
+//			ProductMealy<String, Word<String>> fsm2 = FeaturedMealyUtils.getInstance().loadProductMachine(f_fsm2,fm);
+//			
+//			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(fsm1);
+//			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(fsm2);
+//			
+//			File f_ffsm1 = new File("./Benchmark_SPL/"+spl_name+"/ffsms/ffsm_"+spl_name+".txt");
+//			FeaturedMealy<String, Word<String>> ffsm_orig = FeaturedMealyUtils.getInstance().loadFeaturedMealy(f_ffsm1,fm);
+////			ModelAsNfa<String,Word<String>> m_nfa1 = new ModelAsNfa<>(ffsm1);
+////			ModelAsNfa<String,Word<String>> m_nfa2 = new ModelAsNfa<>(ffsm1);
+//			
+//			//plotModels(m_nfa1,m_nfa2);
+//			
+//			double K = 0.50;
+//			//double K = 1;
+//			
+//			RealVector pairsToScore = computeScores(m_nfa1,m_nfa2,K);
+//			Set<List<FastNFAState>> kPairs = identifyLandmaks(pairsToScore,m_nfa1,m_nfa2);
+//			Set<List<FastNFAState>> nPairs = surr(kPairs, m_nfa1, m_nfa2);
+//			
+//			Set<FastNFAState> checked = new HashSet<>();
+//			while (!nPairs.isEmpty()) {
+//				while (!nPairs.isEmpty()) {
+//					List<FastNFAState> A_B = pickHighest(nPairs,pairsToScore, m_nfa1, m_nfa2);
+//					kPairs.add(A_B); 
+//					checked.addAll(A_B);
+//					removeConflicts(nPairs,checked);
+//				}
+//				nPairs = surr(kPairs, m_nfa1, m_nfa2);
+//				removeConflicts(nPairs,checked);
+//			}
+//			
+//			kPairs.forEach(pair ->System.out.println(pair.get(0).getId()+","+pair.get(1).getId()));
+//			
+//			FeaturedMealy<String, String> ffsm = makeFFSM(m_nfa1,m_nfa2,kPairs,fm);
+//
+//			
+////			DOTVisualizationHelper helper   = new NFAVisualizationHelper();
+////			GraphDOT.write(m_nfa1.getNfa(),m_nfa1.getNfa().getInputAlphabet(),System.out, helper);
+////			GraphDOT.write(m_nfa2.getNfa(),m_nfa2.getNfa().getInputAlphabet(),System.out, helper);
+//			
+//			File f = null;
+//			BufferedWriter bw = null;
+//			
+//			f = new File(f_fsm1.getName()+".dot");
+//			bw = new BufferedWriter(new FileWriter(f));
+//			GraphDOT.write(fsm1,fsm1.getInputAlphabet(),bw);
+//			
+//			f = new File(f_fsm2.getName()+".dot");
+//			bw = new BufferedWriter(new FileWriter(f));
+//			GraphDOT.write(fsm2,fsm2.getInputAlphabet(),bw);
+//			
+//			f = new File("ffsm_merged.dot");
+//			FeaturedMealyUtils.getInstance().saveFFSM(ffsm, f);
+//			
+////			f = new File("ffsm_orig.dot");
+////			FeaturedMealyUtils.getInstance().saveFFSM(ffsm_orig, f);
+//			
+//			
+//			
+//			
+//			
+//			
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	private static void plotModels(ModelAsNfa<String,Word<String>> m_nfa1, ModelAsNfa<String,Word<String>> m_nfa2) throws IOException {

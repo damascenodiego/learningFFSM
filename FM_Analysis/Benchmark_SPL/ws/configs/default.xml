@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+    <feature automatic="selected" name="R"/>
+    <feature automatic="selected" name="S"/>
+    <feature automatic="selected" name="W"/>
+</configuration>

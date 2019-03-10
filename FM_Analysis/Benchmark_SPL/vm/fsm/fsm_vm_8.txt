@@ -1,3 +1,4 @@
+VM	BEV	CUR	DOL	COF	TON
 s0 -- sugar/nok() -> s0
 s0 -- no_sugar/nok() -> s0
 s0 -- coffee/nok() -> s0
