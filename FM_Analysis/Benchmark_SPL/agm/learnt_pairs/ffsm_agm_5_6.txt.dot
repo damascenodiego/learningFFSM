@@ -1,0 +1,27 @@
+digraph g {
+	edge [lblstyle="above, sloped"];
+	s0 [shape="circle" label="0@[((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s1 [shape="circle" label="1@[((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s2 [shape="circle" label="2@[((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s3 [shape="circle" label="3@[((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s0 -> s1 [label="a / _1() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s0 -> s0 [label="b / _0() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s0 -> s0 [label="c / _0() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s0 -> s0 [label="d / _0() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s1 -> s1 [label="a / _0() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s1 -> s2 [label="b / _1() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s1 -> s0 [label="c / _1() [((N and S and not B and not W))]"];
+	s1 -> s1 [label="c / _0() [((B and S and not N and not W))]"];
+	s1 -> s2 [label="d / _1() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s2 -> s1 [label="a / _1() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s2 -> s2 [label="b / _0() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s2 -> s0 [label="c / _1() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s2 -> s3 [label="d / _0() [((B and S and not N and not W))]"];
+	s2 -> s3 [label="d / _1() [((N and S and not B and not W))]"];
+	s3 -> s1 [label="a / _1() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s3 -> s3 [label="b / _1() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s3 -> s3 [label="c / _0() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	s3 -> s3 [label="d / _0() [((B and S and not N and not W) or (N and S and not B and not W))]"];
+	__start0 [label="" shape="none" width="0" height="0"];
+	__start0 -> s0;
+}

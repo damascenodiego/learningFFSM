@@ -1,0 +1,5 @@
+s0@[TRUE] -- a@[(c1 or c2)]/_1() -> s1@[(c1 or c2)]
+s1@[(c1 or c2)] -- b@[(c1 or c2)]/_1() -> s2@[(c1 or c2)]
+s1@[(c1 or c2)] -- c@[(c2)]/_1() -> s0@[TRUE]
+s2@[(c1 or c2)] -- a@[(c1 or c2)]/_1() -> s1@[(c1 or c2)]
+s2@[(c1 or c2)] -- c@[(c1 or c2)]/_1() -> s0@[TRUE]

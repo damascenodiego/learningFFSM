@@ -1,0 +1,14 @@
+digraph g {
+	edge [lblstyle="above, sloped"];
+	s0 [shape="circle" label="0@[TRUE]"];
+	s1 [shape="circle" label="1@[(c1 or c2 or c3)]"];
+	s2 [shape="circle" label="2@[(c1 or c2 or c3)]"];
+	s0 -> s1 [label="a / _1() [(c1 or c2 or c3)]"];
+	s0 -> s2 [label="b / _1() [(c3)]"];
+	s1 -> s2 [label="b / _1() [(c1 or c2 or c3)]"];
+	s1 -> s0 [label="c / _1() [(c2)]"];
+	s2 -> s1 [label="a / _1() [(c1 or c2 or c3)]"];
+	s2 -> s0 [label="c / _1() [(c1 or c2 or c3)]"];
+	__start0 [label="" shape="none" width="0" height="0"];
+	__start0 -> s0;
+}

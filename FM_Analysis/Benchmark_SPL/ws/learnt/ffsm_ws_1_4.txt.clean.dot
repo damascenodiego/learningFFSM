@@ -1,0 +1,23 @@
+digraph g {
+	edge [lblstyle="above, sloped"];
+	s0 [shape="circle" label="0@[TRUE]"];
+	s1 [shape="circle" label="1@[(c1 or c2)]"];
+	s2 [shape="circle" label="2@[(c1 or c2)]"];
+	s3 [shape="circle" label="3@[(c1 or c2)]"];
+	s4 [shape="circle" label="4@[(c1 or c2)]"];
+	s0 -> s1 [label="heavy / ok()*ok() [(c1 or c2)]"];
+	s0 -> s2 [label="intvWipe / on() [(c1 or c2)]"];
+	s0 -> s1 [label="little / ok()*ok() [(c1 or c2)]"];
+	s1 -> s3 [label="intvWipe / on() [(c1 or c2)]"];
+	s1 -> s0 [label="non / ok()*ok() [(c1 or c2)]"];
+	s2 -> s4 [label="heavy / ok()*ok() [(c1 or c2)]"];
+	s2 -> s0 [label="intvWipe / off() [(c1 or c2)]"];
+	s2 -> s4 [label="little / ok()*ok() [(c1 or c2)]"];
+	s3 -> s4 [label="heavy / ok()*ok() [(c1 or c2)]"];
+	s3 -> s1 [label="intvWipe / off() [(c1 or c2)]"];
+	s3 -> s4 [label="little / ok()*ok() [(c1 or c2)]"];
+	s3 -> s2 [label="non / ok()*ok() [(c1 or c2)]"];
+	s4 -> s2 [label="non / ok()*ok() [(c1 or c2)]"];
+	__start0 [label="" shape="none" width="0" height="0"];
+	__start0 -> s0;
+}

@@ -1,0 +1,20 @@
+digraph g {
+	edge [lblstyle="above, sloped"];
+	s0 [shape="circle" label="0@[((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	s1 [shape="circle" label="1@[((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	s2 [shape="circle" label="2@[((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	s0 -> s1 [label="a / _1() [((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	s0 -> s0 [label="b / _0() [((N and not S and not B and not W))]"];
+	s0 -> s2 [label="b / _1() [((W and not S and not B and not N))]"];
+	s0 -> s0 [label="c / _1() [((W and not S and not B and not N))]"];
+	s0 -> s0 [label="c / _0() [((N and not S and not B and not W))]"];
+	s1 -> s1 [label="a / _0() [((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	s1 -> s2 [label="b / _1() [((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	s1 -> s1 [label="c / _0() [((W and not S and not B and not N))]"];
+	s1 -> s0 [label="c / _1() [((N and not S and not B and not W))]"];
+	s2 -> s1 [label="a / _1() [((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	s2 -> s2 [label="b / _0() [((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	s2 -> s0 [label="c / _1() [((N and not S and not B and not W) or (W and not S and not B and not N))]"];
+	__start0 [label="" shape="none" width="0" height="0"];
+	__start0 -> s0;
+}
