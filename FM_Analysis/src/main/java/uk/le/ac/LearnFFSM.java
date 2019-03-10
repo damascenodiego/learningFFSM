@@ -156,24 +156,44 @@ public class LearnFFSM {
 					updtFeatures.add(conf.toString());
 				}
 				
-				refFeatures.retainAll(updtFeatures);
+				Set<String> commonFeatures = new HashSet<>(refFeatures);
+				commonFeatures.retainAll(updtFeatures);
 				
-				System.out.println("Reference/Updated/StatesReference/StatesUpdated/StatesFFSM/CommonFeatures:"
-					    +f_ref.getName()
-					+"/"+f_upd.getName()
-					+"/"+ref.getStateIDs().size()
-					+"/"+updt.getStateIDs().size()
-					+"/"+ffsm.getStateIDs().size()
-					+"/"+refFeatures.size());	
+				Set<String> allFeatures = new HashSet<>();
+				allFeatures.addAll(refFeatures);
+				allFeatures.addAll(updtFeatures);
+				
+				System.out.println(
+						"Reference/Updated"
+						+ "/TotalStatesRef"+ "/TotalStatesUpdt"
+						+ "/TotalFeaturesRef"+ "/TotalFeaturesUpdt"
+						+ "/CommonFeatures"
+						+ "/RatioFeatures"
+						+ "/RatioStates"
+						+ "/StatesFFSM"
+						+ ":"
+						+f_ref.getName()+"/"+f_upd.getName()
+						+"/"+ref.getStateIDs().size()+"/"+updt.getStateIDs().size()
+						+"/"+refFeatures.size()+"/"+updtFeatures.size()
+						+"/"+commonFeatures.size()
+						+"/"+(((double)commonFeatures.size())    /(allFeatures.size()))
+						+"/"+(((double)ffsm.getStateIDs().size())/(ref.getStateIDs().size()+updt.getStateIDs().size()))
+						+"/"+ffsm.getStateIDs().size()
+						);
 			}
 			
 			if(line.hasOption(FREF)){
-				System.out.println("Reference/Updated/StatesReference/StatesUpdated/StatesFFSM:"
-					    +f_ref.getName()
-					+"/"+f_upd.getName()
-					+"/"+ref.getStateIDs().size()
-					+"/"+updt.getStateIDs().size()
-					+"/"+ffsm.getStateIDs().size());
+				System.out.println(
+						"Reference/Updated"
+						+ "/TotalStatesRef"+ "/TotalStatesUpdt"
+						+ "/RatioStates"
+						+ "/StatesFFSM"
+						+ ":"
+						+f_ref.getName()+"/"+f_upd.getName()
+						+"/"+ref.getStateIDs().size()+"/"+updt.getStateIDs().size()
+						+"/"+(((double)ffsm.getStateIDs().size())/(ref.getStateIDs().size()+updt.getStateIDs().size()))
+						+"/"+ffsm.getStateIDs().size()
+						);
 				
 			}
 

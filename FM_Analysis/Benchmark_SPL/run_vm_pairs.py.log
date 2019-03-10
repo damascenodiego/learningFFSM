@@ -1,0 +1,4068 @@
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_3_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,7
+1,1
+6,6
+3,3
+2,2
+5,5
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_3.txt/8/8/9/9/9/1.0/0.5/8
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_3_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,7
+6,6
+5,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_4.txt/8/8/9/9/7/0.6363636363636364/0.5/8
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_3_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,9
+6,8
+5,7
+3,3
+4,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_5.txt/8/10/9/9/6/0.5/0.5555555555555556/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_3_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,9
+1,1
+3,3
+2,2
+6,8
+5,7
+4,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_6.txt/8/10/9/9/8/0.8/0.5555555555555556/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_3_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,8
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_7.txt/8/9/9/9/6/0.5/0.7058823529411765/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_3_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_8.txt/8/9/9/9/4/0.2857142857142857/0.8823529411764706/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_3_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,8
+2,2
+3,3
+5,5
+4,4
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_9.txt/8/9/9/9/8/0.8/0.5294117647058824/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_3_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_10.txt/8/9/9/9/6/0.5/0.8823529411764706/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_3_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,9
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_11.txt/8/10/9/9/6/0.5/0.7222222222222222/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_3_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_12.txt/8/10/9/9/4/0.2857142857142857/0.8888888888888888/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_3_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,10
+2,2
+3,3
+5,7
+4,5
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_13.txt/8/11/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_3_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_14.txt/8/11/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_3_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_15.txt/8/12/9/9/5/0.38461538461538464/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_3_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,11
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_16.txt/8/12/9/9/3/0.2/0.75/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_3_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,11
+2,2
+3,3
+5,6
+4,4
+6,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_17.txt/8/12/9/9/7/0.6363636363636364/0.6/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_3_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_18.txt/8/12/9/9/5/0.38461538461538464/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_3_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,13
+2,2
+3,3
+5,8
+4,5
+6,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_19.txt/8/14/9/9/6/0.5/0.6363636363636364/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_3.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_3_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,13
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_3.txt/fsm_vm_20.txt/8/14/9/9/4/0.2857142857142857/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_4_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,7
+6,6
+5,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_3.txt/8/8/9/9/7/0.6363636363636364/0.5/8
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_4_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,7
+1,1
+6,6
+3,3
+2,2
+5,5
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_4.txt/8/8/9/9/9/1.0/0.5/8
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_4_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,9
+1,1
+3,3
+2,2
+6,8
+5,7
+4,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_5.txt/8/10/9/9/8/0.8/0.5555555555555556/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_4_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,9
+6,8
+5,7
+3,3
+4,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_6.txt/8/10/9/9/6/0.5/0.5555555555555556/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_4_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_7.txt/8/9/9/9/4/0.2857142857142857/0.8823529411764706/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_4_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,8
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_8.txt/8/9/9/9/6/0.5/0.7058823529411765/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_4_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_9.txt/8/9/9/9/6/0.5/0.8823529411764706/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_4_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,8
+2,2
+3,3
+5,5
+4,4
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_10.txt/8/9/9/9/8/0.8/0.5294117647058824/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_4_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_11.txt/8/10/9/9/4/0.2857142857142857/0.8888888888888888/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_4_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,9
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_12.txt/8/10/9/9/6/0.5/0.7222222222222222/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_4_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_13.txt/8/11/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_4_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,10
+2,2
+3,3
+5,7
+4,5
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_14.txt/8/11/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_4_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,11
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_15.txt/8/12/9/9/3/0.2/0.75/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_4_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_16.txt/8/12/9/9/5/0.38461538461538464/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_4_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_17.txt/8/12/9/9/5/0.38461538461538464/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_4_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,11
+2,2
+3,3
+5,6
+4,4
+6,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_18.txt/8/12/9/9/7/0.6363636363636364/0.6/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_4_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+7,13
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_19.txt/8/14/9/9/4/0.2857142857142857/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_4.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_4_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+7,13
+2,2
+3,3
+5,8
+4,5
+6,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_4.txt/fsm_vm_20.txt/8/14/9/9/6/0.5/0.6363636363636364/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_5_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,7
+8,6
+7,5
+3,3
+5,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_3.txt/10/8/9/9/6/0.5/0.5555555555555556/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_5_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,7
+1,1
+3,3
+2,2
+8,6
+7,5
+5,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_4.txt/10/8/9/9/8/0.8/0.5555555555555556/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_5_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,9
+8,8
+3,3
+2,2
+6,6
+7,7
+4,4
+5,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_5.txt/10/10/9/9/9/1.0/0.5/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_5_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+8,8
+6,6
+7,7
+4,4
+5,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_6.txt/10/10/9/9/7/0.6363636363636364/0.5/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_5_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_7.txt/10/9/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_5_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,8
+2,2
+3,3
+6,5
+4,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_8.txt/10/9/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_5_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_9.txt/10/9/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_5_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,8
+2,2
+3,3
+7,5
+5,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_10.txt/10/9/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_5_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_11.txt/10/10/9/9/3/0.2/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_5_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,9
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_12.txt/10/10/9/9/5/0.38461538461538464/0.75/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_5_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_13.txt/10/11/9/9/6/0.5/0.9047619047619048/19
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_5_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,10
+2,2
+3,3
+6,6
+7,7
+4,4
+5,5
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_14.txt/10/11/9/9/8/0.8/0.5238095238095238/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_5_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,11
+2,2
+3,3
+6,6
+4,4
+8,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_15.txt/10/12/9/9/4/0.2857142857142857/0.6363636363636364/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_5_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_16.txt/10/12/9/9/6/0.5/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_5_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_17.txt/10/12/9/9/4/0.2857142857142857/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_5_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,11
+2,2
+3,3
+7,6
+5,4
+8,9
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_18.txt/10/12/9/9/6/0.5/0.5909090909090909/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_5_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,13
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_19.txt/10/14/9/9/5/0.38461538461538464/0.9166666666666666/22
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_5.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_5_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,13
+2,2
+3,3
+6,7
+7,8
+4,4
+5,5
+8,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_5.txt/fsm_vm_20.txt/10/14/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_6_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,7
+1,1
+3,3
+2,2
+8,6
+7,5
+5,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_3.txt/10/8/9/9/8/0.8/0.5555555555555556/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_6_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,7
+8,6
+7,5
+3,3
+5,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_4.txt/10/8/9/9/6/0.5/0.5555555555555556/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_6_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+8,8
+6,6
+7,7
+4,4
+5,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_5.txt/10/10/9/9/7/0.6363636363636364/0.5/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_6_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,9
+8,8
+3,3
+2,2
+6,6
+7,7
+4,4
+5,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_6.txt/10/10/9/9/9/1.0/0.5/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_6_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,8
+2,2
+3,3
+6,5
+4,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_7.txt/10/9/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_6_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_8.txt/10/9/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_6_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,8
+2,2
+3,3
+7,5
+5,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_9.txt/10/9/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_6_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_10.txt/10/9/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_6_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,9
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_11.txt/10/10/9/9/5/0.38461538461538464/0.75/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_6_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_12.txt/10/10/9/9/3/0.2/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_6_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,10
+2,2
+3,3
+6,6
+7,7
+4,4
+5,5
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_13.txt/10/11/9/9/8/0.8/0.5238095238095238/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_6_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_14.txt/10/11/9/9/6/0.5/0.9047619047619048/19
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_6_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_15.txt/10/12/9/9/6/0.5/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_6_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,11
+2,2
+3,3
+6,6
+4,4
+8,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_16.txt/10/12/9/9/4/0.2857142857142857/0.6363636363636364/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_6_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,11
+2,2
+3,3
+7,6
+5,4
+8,9
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_17.txt/10/12/9/9/6/0.5/0.5909090909090909/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_6_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_18.txt/10/12/9/9/4/0.2857142857142857/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_6_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,13
+2,2
+3,3
+6,7
+7,8
+4,4
+5,5
+8,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_19.txt/10/14/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_6.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_6_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,13
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_6.txt/fsm_vm_20.txt/10/14/9/9/5/0.38461538461538464/0.9166666666666666/22
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_7_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+8,7
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_3.txt/9/8/9/9/6/0.5/0.7058823529411765/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_7_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_4.txt/9/8/9/9/4/0.2857142857142857/0.8823529411764706/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_7_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_5.txt/9/10/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_7_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+8,9
+2,2
+3,3
+5,6
+4,4
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_6.txt/9/10/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_7_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+1,1
+7,7
+3,3
+2,2
+6,6
+5,5
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_7.txt/9/9/9/9/9/1.0/0.5/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_7_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+7,7
+6,6
+5,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_8.txt/9/9/9/9/7/0.6363636363636364/0.5/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_7_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+1,1
+3,3
+2,2
+7,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_9.txt/9/9/9/9/7/0.6363636363636364/0.6111111111111112/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_7_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+7,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_10.txt/9/9/9/9/5/0.38461538461538464/0.7777777777777778/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_7_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+1,1
+7,8
+3,3
+2,2
+6,7
+5,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_11.txt/9/10/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_7_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+7,8
+6,7
+5,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_12.txt/9/10/9/9/5/0.38461538461538464/0.7368421052631579/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_7_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,10
+1,1
+3,3
+2,2
+7,9
+5,6
+4,4
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_13.txt/9/11/9/9/8/0.8/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_7_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,10
+7,9
+6,8
+5,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_14.txt/9/11/9/9/6/0.5/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_7_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+7,10
+6,9
+5,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_15.txt/9/12/9/9/8/0.8/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_7_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+1,1
+3,3
+2,2
+7,10
+6,9
+5,6
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_16.txt/9/12/9/9/6/0.5/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_7_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+1,1
+7,10
+3,3
+2,2
+6,9
+5,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_17.txt/9/12/9/9/6/0.5/0.6190476190476191/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_7_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+7,10
+6,9
+5,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_18.txt/9/12/9/9/4/0.2857142857142857/0.7619047619047619/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_7_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,13
+1,1
+3,3
+2,2
+7,12
+5,7
+4,4
+6,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_19.txt/9/14/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_7.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_7_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,13
+7,12
+6,11
+5,7
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_7.txt/fsm_vm_20.txt/9/14/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_8_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_3.txt/9/8/9/9/4/0.2857142857142857/0.8823529411764706/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_8_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+8,7
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_4.txt/9/8/9/9/6/0.5/0.7058823529411765/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_8_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+8,9
+2,2
+3,3
+5,6
+4,4
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_5.txt/9/10/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_8_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_6.txt/9/10/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_8_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+7,7
+6,6
+5,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_7.txt/9/9/9/9/7/0.6363636363636364/0.5/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_8_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+1,1
+7,7
+3,3
+2,2
+6,6
+5,5
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_8.txt/9/9/9/9/9/1.0/0.5/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_8_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+7,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_9.txt/9/9/9/9/5/0.38461538461538464/0.7777777777777778/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_8_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+1,1
+3,3
+2,2
+7,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_10.txt/9/9/9/9/7/0.6363636363636364/0.6111111111111112/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_8_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+7,8
+6,7
+5,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_11.txt/9/10/9/9/5/0.38461538461538464/0.7368421052631579/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_8_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+1,1
+7,8
+3,3
+2,2
+6,7
+5,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_12.txt/9/10/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_8_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,10
+7,9
+6,8
+5,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_13.txt/9/11/9/9/6/0.5/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_8_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,10
+1,1
+3,3
+2,2
+7,9
+5,6
+4,4
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_14.txt/9/11/9/9/8/0.8/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_8_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+1,1
+3,3
+2,2
+7,10
+6,9
+5,6
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_15.txt/9/12/9/9/6/0.5/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_8_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+7,10
+6,9
+5,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_16.txt/9/12/9/9/8/0.8/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_8_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+7,10
+6,9
+5,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_17.txt/9/12/9/9/4/0.2857142857142857/0.7619047619047619/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_8_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+1,1
+7,10
+3,3
+2,2
+6,9
+5,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_18.txt/9/12/9/9/6/0.5/0.6190476190476191/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_8_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,13
+7,12
+6,11
+5,7
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_19.txt/9/14/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_8.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_8_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,13
+1,1
+3,3
+2,2
+7,12
+5,7
+4,4
+6,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_8.txt/fsm_vm_20.txt/9/14/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_9_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+8,7
+2,2
+3,3
+5,5
+4,4
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_3.txt/9/8/9/9/8/0.8/0.5294117647058824/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_9_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_4.txt/9/8/9/9/6/0.5/0.8823529411764706/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_9_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_5.txt/9/10/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_9_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+8,9
+2,2
+3,3
+5,7
+4,5
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_6.txt/9/10/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_9_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+1,1
+3,3
+2,2
+7,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_7.txt/9/9/9/9/7/0.6363636363636364/0.6111111111111112/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_9_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+7,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_8.txt/9/9/9/9/5/0.38461538461538464/0.7777777777777778/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_9_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+1,1
+7,7
+3,3
+2,2
+6,6
+5,5
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_9.txt/9/9/9/9/9/1.0/0.5/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_9_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+7,7
+6,6
+5,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_10.txt/9/9/9/9/7/0.6363636363636364/0.5/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_9_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+1,1
+3,3
+2,2
+7,8
+6,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_11.txt/9/10/9/9/7/0.6363636363636364/0.631578947368421/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_9_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+7,8
+6,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_12.txt/9/10/9/9/5/0.38461538461538464/0.7894736842105263/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_9_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,10
+1,1
+3,3
+2,2
+7,9
+5,7
+4,5
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_13.txt/9/11/9/9/8/0.8/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_9_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,10
+7,9
+6,8
+5,7
+3,3
+4,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_14.txt/9/11/9/9/6/0.5/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_9_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+7,10
+6,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_15.txt/9/12/9/9/6/0.5/0.8095238095238095/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_9_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+1,1
+3,3
+2,2
+7,10
+6,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_16.txt/9/12/9/9/4/0.2857142857142857/0.6666666666666666/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_9_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+1,1
+3,3
+2,2
+7,10
+5,6
+4,4
+6,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_17.txt/9/12/9/9/8/0.8/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_9_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+7,10
+6,9
+5,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_18.txt/9/12/9/9/6/0.5/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_9_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,13
+1,1
+3,3
+2,2
+7,12
+5,8
+4,5
+6,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_19.txt/9/14/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_9.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_9_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,13
+7,12
+6,11
+5,8
+3,3
+4,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_9.txt/fsm_vm_20.txt/9/14/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_10_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_3.txt/9/8/9/9/6/0.5/0.8823529411764706/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_10_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+8,7
+2,2
+3,3
+5,5
+4,4
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_4.txt/9/8/9/9/8/0.8/0.5294117647058824/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_10_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+8,9
+2,2
+3,3
+5,7
+4,5
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_5.txt/9/10/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_10_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_6.txt/9/10/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_10_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+7,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_7.txt/9/9/9/9/5/0.38461538461538464/0.7777777777777778/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_10_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+1,1
+3,3
+2,2
+7,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_8.txt/9/9/9/9/7/0.6363636363636364/0.6111111111111112/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_10_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+7,7
+6,6
+5,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_9.txt/9/9/9/9/7/0.6363636363636364/0.5/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_10_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,8
+1,1
+7,7
+3,3
+2,2
+6,6
+5,5
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_10.txt/9/9/9/9/9/1.0/0.5/9
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_10_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+7,8
+6,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_11.txt/9/10/9/9/5/0.38461538461538464/0.7894736842105263/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_10_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,9
+1,1
+3,3
+2,2
+7,8
+6,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_12.txt/9/10/9/9/7/0.6363636363636364/0.631578947368421/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_10_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,10
+7,9
+6,8
+5,7
+3,3
+4,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_13.txt/9/11/9/9/6/0.5/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_10_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,10
+1,1
+3,3
+2,2
+7,9
+5,7
+4,5
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_14.txt/9/11/9/9/8/0.8/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_10_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+1,1
+3,3
+2,2
+7,10
+6,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_15.txt/9/12/9/9/4/0.2857142857142857/0.6666666666666666/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_10_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+7,10
+6,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_16.txt/9/12/9/9/6/0.5/0.8095238095238095/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_10_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+7,10
+6,9
+5,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_17.txt/9/12/9/9/6/0.5/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_10_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,11
+1,1
+3,3
+2,2
+7,10
+5,6
+4,4
+6,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_18.txt/9/12/9/9/8/0.8/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_10_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,13
+7,12
+6,11
+5,8
+3,3
+4,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_19.txt/9/14/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_10.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_10_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+8,13
+1,1
+3,3
+2,2
+7,12
+5,8
+4,5
+6,11
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_10.txt/fsm_vm_20.txt/9/14/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_11_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,7
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_3.txt/10/8/9/9/6/0.5/0.7222222222222222/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_11_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_4.txt/10/8/9/9/4/0.2857142857142857/0.8888888888888888/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_11_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_5.txt/10/10/9/9/3/0.2/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_11_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,9
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_6.txt/10/10/9/9/5/0.38461538461538464/0.75/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_11_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+1,1
+8,7
+3,3
+2,2
+7,6
+6,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_7.txt/10/9/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_11_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+8,7
+7,6
+6,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_8.txt/10/9/9/9/5/0.38461538461538464/0.7368421052631579/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_11_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+1,1
+3,3
+2,2
+8,7
+7,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_9.txt/10/9/9/9/7/0.6363636363636364/0.631578947368421/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_11_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+8,7
+7,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_10.txt/10/9/9/9/5/0.38461538461538464/0.7894736842105263/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_11_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+1,1
+8,8
+3,3
+2,2
+7,7
+5,5
+4,4
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_11.txt/10/10/9/9/9/1.0/0.5/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_11_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+8,8
+7,7
+6,6
+5,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_12.txt/10/10/9/9/7/0.6363636363636364/0.5/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_11_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,10
+1,1
+8,9
+3,3
+2,2
+7,8
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_13.txt/10/11/9/9/6/0.5/0.6190476190476191/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_11_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,10
+8,9
+7,8
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_14.txt/10/11/9/9/4/0.2857142857142857/0.7619047619047619/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_11_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+8,10
+7,9
+6,8
+5,7
+4,5
+3,3
+1,1
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_15.txt/10/12/9/9/8/0.8/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_11_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+1,1
+8,10
+2,2
+3,3
+4,5
+5,7
+7,9
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_16.txt/10/12/9/9/6/0.5/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_11_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+1,1
+3,3
+2,2
+8,10
+5,7
+4,5
+7,9
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_17.txt/10/12/9/9/8/0.8/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_11_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+8,10
+7,9
+6,8
+5,7
+3,3
+4,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_18.txt/10/12/9/9/6/0.5/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_11_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,13
+1,1
+8,12
+2,2
+3,3
+5,9
+4,6
+7,11
+6,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_19.txt/10/14/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_11.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_11_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,13
+8,12
+7,11
+6,10
+5,9
+4,6
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_11.txt/fsm_vm_20.txt/10/14/9/9/5/0.38461538461538464/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_12_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_3.txt/10/8/9/9/4/0.2857142857142857/0.8888888888888888/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_12_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,7
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_4.txt/10/8/9/9/6/0.5/0.7222222222222222/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_12_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+9,9
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_5.txt/10/10/9/9/5/0.38461538461538464/0.75/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_12_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_6.txt/10/10/9/9/3/0.2/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_12_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+8,7
+7,6
+6,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_7.txt/10/9/9/9/5/0.38461538461538464/0.7368421052631579/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_12_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+1,1
+8,7
+3,3
+2,2
+7,6
+6,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_8.txt/10/9/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_12_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+8,7
+7,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_9.txt/10/9/9/9/5/0.38461538461538464/0.7894736842105263/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_12_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,8
+1,1
+3,3
+2,2
+8,7
+7,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_10.txt/10/9/9/9/7/0.6363636363636364/0.631578947368421/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_12_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+8,8
+7,7
+6,6
+5,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_11.txt/10/10/9/9/7/0.6363636363636364/0.5/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_12_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,9
+1,1
+8,8
+3,3
+2,2
+7,7
+5,5
+4,4
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_12.txt/10/10/9/9/9/1.0/0.5/10
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_12_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,10
+8,9
+7,8
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_13.txt/10/11/9/9/4/0.2857142857142857/0.7619047619047619/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_12_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,10
+1,1
+8,9
+3,3
+2,2
+7,8
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_14.txt/10/11/9/9/6/0.5/0.6190476190476191/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_12_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+1,1
+8,10
+2,2
+3,3
+4,5
+5,7
+7,9
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_15.txt/10/12/9/9/6/0.5/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_12_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+8,10
+7,9
+6,8
+5,7
+4,5
+3,3
+1,1
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_16.txt/10/12/9/9/8/0.8/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_12_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+8,10
+7,9
+6,8
+5,7
+3,3
+4,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_17.txt/10/12/9/9/6/0.5/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_12_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,11
+1,1
+3,3
+2,2
+8,10
+5,7
+4,5
+7,9
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_18.txt/10/12/9/9/8/0.8/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_12_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,13
+8,12
+7,11
+6,10
+5,9
+4,6
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_19.txt/10/14/9/9/5/0.38461538461538464/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_12.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_12_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+9,13
+1,1
+8,12
+2,2
+3,3
+5,9
+4,6
+7,11
+6,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_12.txt/fsm_vm_20.txt/10/14/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_13_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+10,7
+2,2
+3,3
+7,5
+5,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_3.txt/11/8/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_13_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_4.txt/11/8/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_13_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_5.txt/11/10/9/9/6/0.5/0.9047619047619048/19
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_13_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+10,9
+2,2
+3,3
+6,6
+7,7
+4,4
+5,5
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_6.txt/11/10/9/9/8/0.8/0.5238095238095238/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_13_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,8
+1,1
+3,3
+2,2
+9,7
+6,5
+4,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_7.txt/11/9/9/9/8/0.8/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_13_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,8
+9,7
+8,6
+6,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_8.txt/11/9/9/9/6/0.5/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_13_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,8
+1,1
+3,3
+2,2
+9,7
+7,5
+5,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_9.txt/11/9/9/9/8/0.8/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_13_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,8
+9,7
+8,6
+7,5
+3,3
+5,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_10.txt/11/9/9/9/6/0.5/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_13_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,9
+1,1
+9,8
+3,3
+2,2
+8,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_11.txt/11/10/9/9/6/0.5/0.6190476190476191/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_13_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,9
+9,8
+8,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_12.txt/11/10/9/9/4/0.2857142857142857/0.7619047619047619/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_13_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,10
+1,1
+9,9
+3,3
+2,2
+8,8
+6,6
+7,7
+4,4
+5,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_13.txt/11/11/9/9/9/1.0/0.5/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_13_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,10
+9,9
+8,8
+6,6
+7,7
+4,4
+5,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_14.txt/11/11/9/9/7/0.6363636363636364/0.5/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_13_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,11
+9,10
+8,9
+6,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_15.txt/11/12/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_13_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,11
+1,1
+3,3
+2,2
+9,10
+6,6
+4,4
+8,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_16.txt/11/12/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_13_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,11
+1,1
+9,10
+2,2
+3,3
+7,6
+8,9
+5,4
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_17.txt/11/12/9/9/7/0.6363636363636364/0.5652173913043478/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_13_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,11
+9,10
+8,9
+7,6
+6,8
+5,4
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_18.txt/11/12/9/9/5/0.38461538461538464/0.5652173913043478/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_13_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,13
+1,1
+3,3
+2,2
+9,12
+8,11
+6,7
+7,8
+4,4
+5,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_19.txt/11/14/9/9/8/0.8/0.56/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_13.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_13_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,13
+9,12
+8,11
+6,7
+7,8
+3,3
+4,4
+5,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_13.txt/fsm_vm_20.txt/11/14/9/9/6/0.5/0.56/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_14_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_3.txt/11/8/9/9/5/0.38461538461538464/0.8947368421052632/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_14_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+10,7
+2,2
+3,3
+7,5
+5,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_4.txt/11/8/9/9/7/0.6363636363636364/0.5789473684210527/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_14_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+10,9
+2,2
+3,3
+6,6
+7,7
+4,4
+5,5
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_5.txt/11/10/9/9/8/0.8/0.5238095238095238/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_14_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_6.txt/11/10/9/9/6/0.5/0.9047619047619048/19
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_14_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,8
+9,7
+8,6
+6,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_7.txt/11/9/9/9/6/0.5/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_14_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,8
+1,1
+3,3
+2,2
+9,7
+6,5
+4,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_8.txt/11/9/9/9/8/0.8/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_14_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,8
+9,7
+8,6
+7,5
+3,3
+5,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_9.txt/11/9/9/9/6/0.5/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_14_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,8
+1,1
+3,3
+2,2
+9,7
+7,5
+5,4
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_10.txt/11/9/9/9/8/0.8/0.55/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_14_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,9
+9,8
+8,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_11.txt/11/10/9/9/4/0.2857142857142857/0.7619047619047619/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_14_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,9
+1,1
+9,8
+3,3
+2,2
+8,7
+6,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_12.txt/11/10/9/9/6/0.5/0.6190476190476191/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_14_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,10
+9,9
+8,8
+6,6
+7,7
+4,4
+5,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_13.txt/11/11/9/9/7/0.6363636363636364/0.5/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_14_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,10
+1,1
+9,9
+3,3
+2,2
+8,8
+6,6
+7,7
+4,4
+5,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_14.txt/11/11/9/9/9/1.0/0.5/11
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_14_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,11
+1,1
+3,3
+2,2
+9,10
+6,6
+4,4
+8,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_15.txt/11/12/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_14_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,11
+9,10
+8,9
+6,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_16.txt/11/12/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_14_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,11
+9,10
+8,9
+7,6
+6,8
+5,4
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_17.txt/11/12/9/9/5/0.38461538461538464/0.5652173913043478/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_14_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,11
+1,1
+9,10
+2,2
+3,3
+7,6
+8,9
+5,4
+6,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_18.txt/11/12/9/9/7/0.6363636363636364/0.5652173913043478/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_14_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,13
+9,12
+8,11
+6,7
+7,8
+3,3
+4,4
+5,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_19.txt/11/14/9/9/6/0.5/0.56/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_14.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_14_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+10,13
+1,1
+3,3
+2,2
+9,12
+8,11
+6,7
+7,8
+4,4
+5,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_14.txt/fsm_vm_20.txt/11/14/9/9/8/0.8/0.56/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_15_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_3.txt/12/8/9/9/5/0.38461538461538464/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_15_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+11,7
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_4.txt/12/8/9/9/3/0.2/0.75/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_15_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+11,9
+2,2
+3,3
+6,6
+4,4
+9,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_5.txt/12/10/9/9/4/0.2857142857142857/0.6363636363636364/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_15_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_6.txt/12/10/9/9/6/0.5/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_15_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+10,7
+9,6
+6,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_7.txt/12/9/9/9/8/0.8/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_15_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+1,1
+3,3
+2,2
+10,7
+9,6
+6,5
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_8.txt/12/9/9/9/6/0.5/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_15_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+10,7
+9,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_9.txt/12/9/9/9/6/0.5/0.8095238095238095/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_15_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+1,1
+3,3
+2,2
+10,7
+9,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_10.txt/12/9/9/9/4/0.2857142857142857/0.6666666666666666/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_15_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+10,8
+9,7
+8,6
+7,5
+5,4
+3,3
+1,1
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_11.txt/12/10/9/9/8/0.8/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_15_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+1,1
+10,8
+2,2
+3,3
+5,4
+7,5
+9,7
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_12.txt/12/10/9/9/6/0.5/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_15_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,10
+10,9
+9,8
+6,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_13.txt/12/11/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_15_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,10
+1,1
+3,3
+2,2
+10,9
+6,6
+4,4
+9,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_14.txt/12/11/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_15_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+1,1
+10,10
+3,3
+2,2
+9,9
+7,7
+6,6
+5,5
+4,4
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_15.txt/12/12/9/9/9/1.0/0.5/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_15_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+10,10
+9,9
+6,6
+8,8
+7,7
+4,4
+3,3
+5,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_16.txt/12/12/9/9/7/0.6363636363636364/0.5/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_15_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+10,10
+9,9
+8,8
+7,7
+5,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_17.txt/12/12/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_15_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+1,1
+10,10
+2,2
+3,3
+7,7
+5,5
+9,9
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_18.txt/12/12/9/9/5/0.38461538461538464/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_15_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,13
+10,12
+9,11
+6,7
+8,10
+3,3
+7,9
+4,4
+2,2
+5,6
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_19.txt/12/14/9/9/8/0.8/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_15.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_15_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,13
+1,1
+3,3
+2,2
+10,12
+7,9
+6,7
+5,6
+4,4
+9,11
+8,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_15.txt/fsm_vm_20.txt/12/14/9/9/6/0.5/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_16_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+11,7
+3,3
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_3.txt/12/8/9/9/3/0.2/0.75/15
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_16_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_4.txt/12/8/9/9/5/0.38461538461538464/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_16_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_5.txt/12/10/9/9/6/0.5/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_16_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+11,9
+2,2
+3,3
+6,6
+4,4
+9,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_6.txt/12/10/9/9/4/0.2857142857142857/0.6363636363636364/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_16_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+1,1
+3,3
+2,2
+10,7
+9,6
+6,5
+4,4
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_7.txt/12/9/9/9/6/0.5/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_16_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+10,7
+9,6
+6,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_8.txt/12/9/9/9/8/0.8/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_16_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+1,1
+3,3
+2,2
+10,7
+9,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_9.txt/12/9/9/9/4/0.2857142857142857/0.6666666666666666/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_16_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+10,7
+9,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_10.txt/12/9/9/9/6/0.5/0.8095238095238095/17
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_16_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+1,1
+10,8
+2,2
+3,3
+5,4
+7,5
+9,7
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_11.txt/12/10/9/9/6/0.5/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_16_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+10,8
+9,7
+8,6
+7,5
+5,4
+3,3
+1,1
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_12.txt/12/10/9/9/8/0.8/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_16_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,10
+1,1
+3,3
+2,2
+10,9
+6,6
+4,4
+9,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_13.txt/12/11/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_16_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,10
+10,9
+9,8
+6,6
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_14.txt/12/11/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_16_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+10,10
+9,9
+6,6
+8,8
+7,7
+4,4
+3,3
+5,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_15.txt/12/12/9/9/7/0.6363636363636364/0.5/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_16_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+1,1
+10,10
+3,3
+2,2
+9,9
+7,7
+6,6
+5,5
+4,4
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_16.txt/12/12/9/9/9/1.0/0.5/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_16_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+1,1
+10,10
+2,2
+3,3
+7,7
+5,5
+9,9
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_17.txt/12/12/9/9/5/0.38461538461538464/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_16_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+10,10
+9,9
+8,8
+7,7
+5,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_18.txt/12/12/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_16_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,13
+1,1
+3,3
+2,2
+10,12
+7,9
+6,7
+5,6
+4,4
+9,11
+8,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_19.txt/12/14/9/9/6/0.5/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_16.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_16_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,13
+10,12
+9,11
+6,7
+8,10
+3,3
+7,9
+4,4
+2,2
+5,6
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_16.txt/fsm_vm_20.txt/12/14/9/9/8/0.8/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_17_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+11,7
+2,2
+3,3
+6,5
+4,4
+9,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_3.txt/12/8/9/9/7/0.6363636363636364/0.6/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_17_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_4.txt/12/8/9/9/5/0.38461538461538464/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_17_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_5.txt/12/10/9/9/4/0.2857142857142857/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_17_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+11,9
+2,2
+3,3
+6,7
+4,5
+9,8
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_6.txt/12/10/9/9/6/0.5/0.5909090909090909/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_17_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+1,1
+10,7
+3,3
+2,2
+9,6
+8,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_7.txt/12/9/9/9/6/0.5/0.6190476190476191/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_17_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+10,7
+9,6
+8,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_8.txt/12/9/9/9/4/0.2857142857142857/0.7619047619047619/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_17_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+1,1
+3,3
+2,2
+10,7
+6,5
+4,4
+9,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_9.txt/12/9/9/9/8/0.8/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_17_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+10,7
+9,6
+6,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_10.txt/12/9/9/9/6/0.5/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_17_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+1,1
+3,3
+2,2
+10,8
+7,5
+5,4
+9,7
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_11.txt/12/10/9/9/8/0.8/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_17_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+10,8
+9,7
+8,6
+7,5
+3,3
+5,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_12.txt/12/10/9/9/6/0.5/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_17_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,10
+1,1
+10,9
+2,2
+3,3
+6,7
+9,8
+4,5
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_13.txt/12/11/9/9/7/0.6363636363636364/0.5652173913043478/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_17_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,10
+10,9
+9,8
+6,7
+8,6
+4,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_14.txt/12/11/9/9/5/0.38461538461538464/0.5652173913043478/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_17_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+10,10
+9,9
+8,8
+7,7
+5,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_15.txt/12/12/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_17_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+1,1
+10,10
+2,2
+3,3
+7,7
+5,5
+9,9
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_16.txt/12/12/9/9/5/0.38461538461538464/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_17_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+1,1
+10,10
+3,3
+2,2
+9,9
+7,7
+6,6
+5,5
+4,4
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_17.txt/12/12/9/9/9/1.0/0.5/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_17_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+10,10
+9,9
+6,6
+8,8
+7,7
+4,4
+3,3
+5,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_18.txt/12/12/9/9/7/0.6363636363636364/0.5/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_17_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,13
+1,1
+10,12
+2,2
+3,3
+5,6
+4,5
+7,9
+6,8
+9,11
+8,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_19.txt/12/14/9/9/8/0.8/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_17.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_17_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,13
+10,12
+9,11
+6,8
+8,10
+7,9
+4,5
+3,3
+5,6
+1,1
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_17.txt/fsm_vm_20.txt/12/14/9/9/6/0.5/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_18_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_3.txt/12/8/9/9/5/0.38461538461538464/0.9/18
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_18_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+11,7
+2,2
+3,3
+6,5
+4,4
+9,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_4.txt/12/8/9/9/7/0.6363636363636364/0.6/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_18_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+11,9
+2,2
+3,3
+6,7
+4,5
+9,8
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_5.txt/12/10/9/9/6/0.5/0.5909090909090909/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_18_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_6.txt/12/10/9/9/4/0.2857142857142857/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_18_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+10,7
+9,6
+8,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_7.txt/12/9/9/9/4/0.2857142857142857/0.7619047619047619/16
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_18_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+1,1
+10,7
+3,3
+2,2
+9,6
+8,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_8.txt/12/9/9/9/6/0.5/0.6190476190476191/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_18_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+10,7
+9,6
+6,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_9.txt/12/9/9/9/6/0.5/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_18_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,8
+1,1
+3,3
+2,2
+10,7
+6,5
+4,4
+9,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_10.txt/12/9/9/9/8/0.8/0.5714285714285714/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_18_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+10,8
+9,7
+8,6
+7,5
+3,3
+5,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_11.txt/12/10/9/9/6/0.5/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_18_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,9
+1,1
+3,3
+2,2
+10,8
+7,5
+5,4
+9,7
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_12.txt/12/10/9/9/8/0.8/0.5454545454545454/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_18_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,10
+10,9
+9,8
+6,7
+8,6
+4,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_13.txt/12/11/9/9/5/0.38461538461538464/0.5652173913043478/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_18_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,10
+1,1
+10,9
+2,2
+3,3
+6,7
+9,8
+4,5
+8,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_14.txt/12/11/9/9/7/0.6363636363636364/0.5652173913043478/13
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_18_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+1,1
+10,10
+2,2
+3,3
+7,7
+5,5
+9,9
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_15.txt/12/12/9/9/5/0.38461538461538464/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_18_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+10,10
+9,9
+8,8
+7,7
+5,5
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_16.txt/12/12/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_18_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+10,10
+9,9
+6,6
+8,8
+7,7
+4,4
+3,3
+5,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_17.txt/12/12/9/9/7/0.6363636363636364/0.5/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_18_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,11
+1,1
+10,10
+3,3
+2,2
+9,9
+7,7
+6,6
+5,5
+4,4
+8,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_18.txt/12/12/9/9/9/1.0/0.5/12
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_18_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,13
+10,12
+9,11
+6,8
+8,10
+7,9
+4,5
+3,3
+5,6
+1,1
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_19.txt/12/14/9/9/6/0.5/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_18.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_18_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+11,13
+1,1
+10,12
+2,2
+3,3
+5,6
+4,5
+7,9
+6,8
+9,11
+8,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_18.txt/fsm_vm_20.txt/12/14/9/9/8/0.8/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_19_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+13,7
+2,2
+3,3
+8,5
+5,4
+11,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_3.txt/14/8/9/9/6/0.5/0.6363636363636364/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_19_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_4.txt/14/8/9/9/4/0.2857142857142857/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_19_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_5.txt/14/10/9/9/5/0.38461538461538464/0.9166666666666666/22
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_19_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+13,9
+2,2
+3,3
+7,6
+8,7
+4,4
+5,5
+11,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_6.txt/14/10/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_19_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,8
+1,1
+3,3
+2,2
+12,7
+7,5
+4,4
+11,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_7.txt/14/9/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_19_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,8
+12,7
+11,6
+7,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_8.txt/14/9/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_19_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,8
+1,1
+3,3
+2,2
+12,7
+8,5
+5,4
+11,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_9.txt/14/9/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_19_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,8
+12,7
+11,6
+8,5
+3,3
+5,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_10.txt/14/9/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_19_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,9
+1,1
+12,8
+2,2
+3,3
+9,5
+6,4
+11,7
+10,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_11.txt/14/10/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_19_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,9
+12,8
+11,7
+10,6
+9,5
+6,4
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_12.txt/14/10/9/9/5/0.38461538461538464/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_19_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,10
+1,1
+3,3
+2,2
+12,9
+11,8
+7,6
+8,7
+4,4
+5,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_13.txt/14/11/9/9/8/0.8/0.56/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_19_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,10
+12,9
+11,8
+7,6
+8,7
+3,3
+4,4
+5,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_14.txt/14/11/9/9/6/0.5/0.56/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_19_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,11
+12,10
+11,9
+7,6
+10,8
+3,3
+9,7
+4,4
+2,2
+6,5
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_15.txt/14/12/9/9/8/0.8/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_19_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,11
+1,1
+3,3
+2,2
+12,10
+9,7
+7,6
+6,5
+4,4
+11,9
+10,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_16.txt/14/12/9/9/6/0.5/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_19_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,11
+1,1
+12,10
+2,2
+3,3
+6,5
+5,4
+9,7
+8,6
+11,9
+10,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_17.txt/14/12/9/9/8/0.8/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_19_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,11
+12,10
+11,9
+8,6
+10,8
+9,7
+5,4
+3,3
+6,5
+1,1
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_18.txt/14/12/9/9/6/0.5/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_19_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,13
+1,1
+12,12
+3,3
+2,2
+11,11
+9,9
+7,7
+8,8
+6,6
+4,4
+5,5
+10,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_19.txt/14/14/9/9/9/1.0/0.5/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_19.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_19_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,13
+12,12
+11,11
+7,7
+8,8
+10,10
+9,9
+4,4
+5,5
+3,3
+6,6
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_19.txt/fsm_vm_20.txt/14/14/9/9/7/0.6363636363636364/0.5/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_3.txt -out ./vm/learnt_pairs/ffsm_vm_20_3.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,7
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_3.txt/14/8/9/9/4/0.2857142857142857/0.9090909090909091/20
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_4.txt -out ./vm/learnt_pairs/ffsm_vm_20_4.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+13,7
+2,2
+3,3
+8,5
+5,4
+11,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_4.txt/14/8/9/9/6/0.5/0.6363636363636364/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_5.txt -out ./vm/learnt_pairs/ffsm_vm_20_5.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+1,1
+13,9
+2,2
+3,3
+7,6
+8,7
+4,4
+5,5
+11,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_5.txt/14/10/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_6.txt -out ./vm/learnt_pairs/ffsm_vm_20_6.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,9
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_6.txt/14/10/9/9/5/0.38461538461538464/0.9166666666666666/22
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_7.txt -out ./vm/learnt_pairs/ffsm_vm_20_7.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,8
+12,7
+11,6
+7,5
+3,3
+4,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_7.txt/14/9/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_8.txt -out ./vm/learnt_pairs/ffsm_vm_20_8.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,8
+1,1
+3,3
+2,2
+12,7
+7,5
+4,4
+11,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_8.txt/14/9/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_9.txt -out ./vm/learnt_pairs/ffsm_vm_20_9.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,8
+12,7
+11,6
+8,5
+3,3
+5,4
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_9.txt/14/9/9/9/5/0.38461538461538464/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_10.txt -out ./vm/learnt_pairs/ffsm_vm_20_10.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,8
+1,1
+3,3
+2,2
+12,7
+8,5
+5,4
+11,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_10.txt/14/9/9/9/7/0.6363636363636364/0.6086956521739131/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_11.txt -out ./vm/learnt_pairs/ffsm_vm_20_11.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,9
+12,8
+11,7
+10,6
+9,5
+6,4
+3,3
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_11.txt/14/10/9/9/5/0.38461538461538464/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_12.txt -out ./vm/learnt_pairs/ffsm_vm_20_12.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,9
+1,1
+12,8
+2,2
+3,3
+9,5
+6,4
+11,7
+10,6
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_12.txt/14/10/9/9/7/0.6363636363636364/0.5833333333333334/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_13.txt -out ./vm/learnt_pairs/ffsm_vm_20_13.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,10
+12,9
+11,8
+7,6
+8,7
+3,3
+4,4
+5,5
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_13.txt/14/11/9/9/6/0.5/0.56/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_14.txt -out ./vm/learnt_pairs/ffsm_vm_20_14.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,10
+1,1
+3,3
+2,2
+12,9
+11,8
+7,6
+8,7
+4,4
+5,5
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_14.txt/14/11/9/9/8/0.8/0.56/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_15.txt -out ./vm/learnt_pairs/ffsm_vm_20_15.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,11
+1,1
+3,3
+2,2
+12,10
+9,7
+7,6
+6,5
+4,4
+11,9
+10,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_15.txt/14/12/9/9/6/0.5/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_16.txt -out ./vm/learnt_pairs/ffsm_vm_20_16.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,11
+12,10
+11,9
+7,6
+10,8
+3,3
+9,7
+4,4
+2,2
+6,5
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_16.txt/14/12/9/9/8/0.8/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_17.txt -out ./vm/learnt_pairs/ffsm_vm_20_17.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,11
+12,10
+11,9
+8,6
+10,8
+9,7
+5,4
+3,3
+6,5
+1,1
+2,2
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_17.txt/14/12/9/9/6/0.5/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_18.txt -out ./vm/learnt_pairs/ffsm_vm_20_18.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,11
+1,1
+12,10
+2,2
+3,3
+6,5
+5,4
+9,7
+8,6
+11,9
+10,8
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_18.txt/14/12/9/9/8/0.8/0.5384615384615384/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_19.txt -out ./vm/learnt_pairs/ffsm_vm_20_19.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,13
+12,12
+11,11
+7,7
+8,8
+10,10
+9,9
+4,4
+5,5
+3,3
+6,6
+2,2
+1,1
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_19.txt/14/14/9/9/7/0.6363636363636364/0.5/14
+
+java -jar ./learnFFSM.jar -fm ./vm/model.xml -mref ./vm/fsm/fsm_vm_20.txt -updt ./vm/fsm/fsm_vm_20.txt -out ./vm/learnt_pairs/ffsm_vm_20_20.txt
+WARNING: Extension 'class de.ovgu.featureide.fm.core.io.velvet.SimpleVelvetFeatureModelFormat' couldn't be loaded due to: org/antlr/runtime/RecognitionException
+Common states found!
+0,0
+13,13
+1,1
+12,12
+3,3
+2,2
+11,11
+9,9
+7,7
+8,8
+6,6
+4,4
+5,5
+10,10
+Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:fsm_vm_20.txt/fsm_vm_20.txt/14/14/9/9/9/1.0/0.5/14
+
