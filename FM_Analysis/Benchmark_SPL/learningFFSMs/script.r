@@ -45,14 +45,15 @@ plot <- ggplot(data=tab_recov, aes_string(x="Products.Analyzed", y="StatesFFSM",
   geom_line(stat = "identity",aes_string(linetype="SPL"))+
   labs(
     y = "FFSM size",
-    x = "% of products analyzed",
-    title = "Impact of cumulative learning on the FFSM size"
+    x = "Percentage of products analyzed",
+    title = "Size of the FFSMs recovered"
     )+
   scale_x_continuous(breaks = seq(0,100,10)) +
   scale_y_continuous(breaks = seq(0,15,1))+
   theme_bw()+
   theme(
     plot.title = element_text(hjust = 0.5, size=9),
+    legend.position="bottom",
     axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=8),
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=8),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=8),
