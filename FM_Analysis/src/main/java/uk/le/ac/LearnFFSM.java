@@ -583,6 +583,12 @@ public class LearnFFSM {
 		kPairs.add(fsm1.getInitialStateIndex());
 		kPairs.add(fsm2.getInitialStateIndex());
 		outPairs.add(kPairs);
+		int x = pairsToScore.getMaxIndex() / fsm2.getStateIDs().size();
+		int y = pairsToScore.getMaxIndex() % fsm2.getStateIDs().size();
+		kPairs = new ArrayList<>();
+		kPairs.add(x);
+		kPairs.add(y);
+		outPairs.add(kPairs);
 		return outPairs;
 	}
 
