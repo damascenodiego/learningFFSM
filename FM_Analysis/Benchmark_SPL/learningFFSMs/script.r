@@ -104,7 +104,7 @@ ggsave(device=cairo_pdf, filename, width = 6, height = 3, dpi=320)  # ssh plots
 ffsm_orig_size<-list()
 ffsm_orig_size[["AGM"]]<-21
 ffsm_orig_size[["VM"]]<-14
-ffsm_orig_size[["WS"]]<-14
+ffsm_orig_size[["WS"]]<-13
 for (variable in unique(spl_name)) {
   tmp_tab<-tab_prods[tab_prods$SPL==variable,]
   wilc_val<-wilcox.test(tmp_tab[tmp_tab$Model=="All products","Size"],tmp_tab[tmp_tab$Model=="FFSM","Size"])
@@ -116,7 +116,7 @@ for (variable in unique(spl_name)) {
 for (variable in unique(spl_name)) {
   tmp_tab<-tab_prods[tab_prods$SPL==variable,]
   subtmp_tab<-tmp_tab[tmp_tab$Model=="FFSM",]
-  subtmp_tab<-rbind(subtmp_tab,setNames(data.frame(variable,ffsm_orig_size[[variable]],"Original Size"),names(subtmp_tab)))
+  subtmp_tab<-rbind(subtmp_tab,setNames(data.frame(rep(variable,length(subtmp_tab)),rep(ffsm_orig_size[[variable]],length(subtmp_tab)),"Original Size"),names(subtmp_tab)))
   subtmp_tab$Model<-droplevels(subtmp_tab$Model)
   wilc_val<-wilcox.test(subtmp_tab[subtmp_tab$Model=="FFSM","Size"],subtmp_tab[subtmp_tab$Model=="Original Size","Size"])
   print(paste(variable," p-value = ",wilc_val$p.value))
