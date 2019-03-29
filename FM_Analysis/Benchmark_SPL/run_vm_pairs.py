@@ -4,12 +4,6 @@ import random,subprocess,os
 
 
 prodOrder=["{:01d}".format(x) for x in range(1,21)]
-# random.shuffle(prodOrder)
-prodAnalyzed=list()
-prodAnalyzed.append(prodOrder[0])
-prodAnalyzed.append(prodOrder[1])
-prodOrder.remove(prodOrder[1])
-prodOrder.remove(prodOrder[0])
 
 SPL_NAME="vm"
 

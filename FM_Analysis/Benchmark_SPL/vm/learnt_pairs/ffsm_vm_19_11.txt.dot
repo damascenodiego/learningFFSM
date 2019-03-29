@@ -41,8 +41,8 @@ digraph g {
 	s1 -> s3 [label="sugar / ok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s1 -> s1 [label="tea / nok() [((EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s2 -> s7 [label="cap / ok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
-	s2 -> s8 [label="coffee / ok() [((EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s2 -> s2 [label="coffee / Ω [((EUR and CAP and TON and not DOL and not TEA and not COF))]"];
+	s2 -> s8 [label="coffee / ok() [((EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s2 -> s2 [label="cup_taken / nok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s2 -> s2 [label="display_done / nok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s2 -> s2 [label="euro / nok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
@@ -55,8 +55,8 @@ digraph g {
 	s2 -> s2 [label="sugar / void() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s2 -> s9 [label="tea / ok() [((EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s3 -> s4 [label="cap / ok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
-	s3 -> s3 [label="coffee / Ω [((EUR and CAP and TON and not DOL and not TEA and not COF))]"];
 	s3 -> s5 [label="coffee / ok() [((EUR and COF and TEA and CAP and TON and not DOL))]"];
+	s3 -> s3 [label="coffee / Ω [((EUR and CAP and TON and not DOL and not TEA and not COF))]"];
 	s3 -> s3 [label="cup_taken / nok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s3 -> s3 [label="display_done / nok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];
 	s3 -> s3 [label="euro / nok() [((EUR and CAP and TON and not DOL and not TEA and not COF) or (EUR and COF and TEA and CAP and TON and not DOL))]"];

@@ -37,8 +37,8 @@ digraph g {
 	s1 -> s1 [label="ring / nok() [((DOL and CAP and TON and not TEA and not EUR and not COF) or (DOL and COF and CAP and TON and not TEA and not EUR))]"];
 	s1 -> s3 [label="sugar / ok() [((DOL and CAP and TON and not TEA and not EUR and not COF) or (DOL and COF and CAP and TON and not TEA and not EUR))]"];
 	s2 -> s5 [label="cap / ok() [((DOL and CAP and TON and not TEA and not EUR and not COF) or (DOL and COF and CAP and TON and not TEA and not EUR))]"];
-	s2 -> s11 [label="coffee / ok() [((DOL and COF and CAP and TON and not TEA and not EUR))]"];
 	s2 -> s2 [label="coffee / Ω [((DOL and CAP and TON and not TEA and not EUR and not COF))]"];
+	s2 -> s11 [label="coffee / ok() [((DOL and COF and CAP and TON and not TEA and not EUR))]"];
 	s2 -> s2 [label="cup_taken / nok() [((DOL and CAP and TON and not TEA and not EUR and not COF) or (DOL and COF and CAP and TON and not TEA and not EUR))]"];
 	s2 -> s2 [label="display_done / nok() [((DOL and CAP and TON and not TEA and not EUR and not COF) or (DOL and COF and CAP and TON and not TEA and not EUR))]"];
 	s2 -> s2 [label="dollar / nok() [((DOL and CAP and TON and not TEA and not EUR and not COF))]"];

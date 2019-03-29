@@ -23,8 +23,8 @@ digraph g {
 	s1 -> s1 [label="heavy / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s1 -> s7 [label="intvWipe / on() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s1 -> s3 [label="little / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
-	s1 -> s8 [label="manWipe / on() [((sH and wL and not sL and not wH and pW))]"];
 	s1 -> s1 [label="manWipe / Ω [((sH and wH and not sL and not wL and not pW))]"];
+	s1 -> s8 [label="manWipe / on() [((sH and wL and not sL and not wH and pW))]"];
 	s1 -> s0 [label="non / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s1 -> s1 [label="weather / heavyRain() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s1 -> s1 [label="wipe / off() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
@@ -92,8 +92,8 @@ digraph g {
 	s9 -> s9 [label="manWipe / off() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s9 -> s2 [label="non / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s9 -> s9 [label="weather / heavyRain() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
-	s9 -> s9 [label="wipe / fast() [((sH and wH and not sL and not wL and not pW))]"];
 	s9 -> s9 [label="wipe / slow() [((sH and wL and not sL and not wH and pW))]"];
+	s9 -> s9 [label="wipe / fast() [((sH and wH and not sL and not wL and not pW))]"];
 	s9 -> s9 [label="work / Ω [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s10 -> s9 [label="heavy / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s10 -> s10 [label="intvWipe / on() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];

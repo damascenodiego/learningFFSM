@@ -34,8 +34,8 @@ digraph g {
 	s1 -> s1 [label="ring / nok() [((EUR and COF and TON and not DOL and not TEA and not CAP) or (EUR and CAP and TON and not DOL and not TEA and not COF))]"];
 	s1 -> s3 [label="sugar / ok() [((EUR and COF and TON and not DOL and not TEA and not CAP) or (EUR and CAP and TON and not DOL and not TEA and not COF))]"];
 	s2 -> s10 [label="cap / ok() [((EUR and CAP and TON and not DOL and not TEA and not COF))]"];
-	s2 -> s2 [label="coffee / Ω [((EUR and CAP and TON and not DOL and not TEA and not COF))]"];
 	s2 -> s5 [label="coffee / ok() [((EUR and COF and TON and not DOL and not TEA and not CAP))]"];
+	s2 -> s2 [label="coffee / Ω [((EUR and CAP and TON and not DOL and not TEA and not COF))]"];
 	s2 -> s2 [label="cup_taken / nok() [((EUR and COF and TON and not DOL and not TEA and not CAP) or (EUR and CAP and TON and not DOL and not TEA and not COF))]"];
 	s2 -> s2 [label="display_done / nok() [((EUR and COF and TON and not DOL and not TEA and not CAP) or (EUR and CAP and TON and not DOL and not TEA and not COF))]"];
 	s2 -> s2 [label="euro / nok() [((EUR and COF and TON and not DOL and not TEA and not CAP) or (EUR and CAP and TON and not DOL and not TEA and not COF))]"];

@@ -119,8 +119,8 @@ digraph g {
 	s8 -> s8 [label="cap / nok() [((DOL and TEA and CAP and TON and not EUR and not COF))]"];
 	s8 -> s8 [label="coffee / nok() [((DOL and TEA and CAP and TON and not EUR and not COF))]"];
 	s8 -> s8 [label="cup_taken / nok() [((DOL and TEA and CAP and TON and not EUR and not COF) or (DOL and TEA and not TON and not CAP and not EUR and not COF))]"];
-	s8 -> s11 [label="display_done / ok() [((DOL and TEA and not TON and not CAP and not EUR and not COF))]"];
 	s8 -> s10 [label="display_done / ok() [((DOL and TEA and CAP and TON and not EUR and not COF))]"];
+	s8 -> s11 [label="display_done / ok() [((DOL and TEA and not TON and not CAP and not EUR and not COF))]"];
 	s8 -> s8 [label="dollar / nok() [((DOL and TEA and CAP and TON and not EUR and not COF) or (DOL and TEA and not TON and not CAP and not EUR and not COF))]"];
 	s8 -> s8 [label="no_sugar / nok() [((DOL and TEA and CAP and TON and not EUR and not COF) or (DOL and TEA and not TON and not CAP and not EUR and not COF))]"];
 	s8 -> s8 [label="pour_coffee / nok() [((DOL and TEA and CAP and TON and not EUR and not COF))]"];

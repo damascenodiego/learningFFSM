@@ -55,8 +55,8 @@ digraph g {
 	s2 -> s2 [label="sugar / void() [((DOL and TEA and CAP and TON and not EUR and not COF) or (EUR and COF and CAP and TON and not DOL and not TEA))]"];
 	s2 -> s7 [label="tea / ok() [((DOL and TEA and CAP and TON and not EUR and not COF))]"];
 	s3 -> s4 [label="cap / ok() [((DOL and TEA and CAP and TON and not EUR and not COF) or (EUR and COF and CAP and TON and not DOL and not TEA))]"];
-	s3 -> s12 [label="coffee / ok() [((EUR and COF and CAP and TON and not DOL and not TEA))]"];
 	s3 -> s3 [label="coffee / Ω [((DOL and TEA and CAP and TON and not EUR and not COF))]"];
+	s3 -> s12 [label="coffee / ok() [((EUR and COF and CAP and TON and not DOL and not TEA))]"];
 	s3 -> s3 [label="cup_taken / nok() [((DOL and TEA and CAP and TON and not EUR and not COF) or (EUR and COF and CAP and TON and not DOL and not TEA))]"];
 	s3 -> s3 [label="display_done / nok() [((DOL and TEA and CAP and TON and not EUR and not COF) or (EUR and COF and CAP and TON and not DOL and not TEA))]"];
 	s3 -> s3 [label="dollar / nok() [((DOL and TEA and CAP and TON and not EUR and not COF) or (EUR and COF and CAP and TON and not DOL and not TEA))]"];

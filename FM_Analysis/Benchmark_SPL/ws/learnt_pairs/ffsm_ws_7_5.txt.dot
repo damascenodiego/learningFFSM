@@ -61,8 +61,8 @@ digraph g {
 	s6 -> s6 [label="manWipe / off() [((sL and wH and not sH and not wL and pW) or (sL and wL and not sH and not wH and pW))]"];
 	s6 -> s2 [label="non / ok()*ok() [((sL and wH and not sH and not wL and pW) or (sL and wL and not sH and not wH and pW))]"];
 	s6 -> s6 [label="weather / rain() [((sL and wH and not sH and not wL and pW) or (sL and wL and not sH and not wH and pW))]"];
-	s6 -> s6 [label="wipe / slow() [((sL and wL and not sH and not wH and pW))]"];
 	s6 -> s6 [label="wipe / fast() [((sL and wH and not sH and not wL and pW))]"];
+	s6 -> s6 [label="wipe / slow() [((sL and wL and not sH and not wH and pW))]"];
 	s6 -> s6 [label="work / Ω [((sL and wH and not sH and not wL and pW) or (sL and wL and not sH and not wH and pW))]"];
 	__start0 [label="" shape="none" width="0" height="0"];
 	__start0 -> s0;

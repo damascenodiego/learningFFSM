@@ -89,8 +89,8 @@ digraph g {
 	s9 -> s9 [label="manWipe / off() [((sH and wH and not sL and not wL and pW) or (sH and wL and not sL and not wH and pW))]"];
 	s9 -> s2 [label="non / ok()*ok() [((sH and wH and not sL and not wL and pW) or (sH and wL and not sL and not wH and pW))]"];
 	s9 -> s9 [label="weather / heavyRain() [((sH and wH and not sL and not wL and pW) or (sH and wL and not sL and not wH and pW))]"];
-	s9 -> s9 [label="wipe / slow() [((sH and wL and not sL and not wH and pW))]"];
 	s9 -> s9 [label="wipe / fast() [((sH and wH and not sL and not wL and pW))]"];
+	s9 -> s9 [label="wipe / slow() [((sH and wL and not sL and not wH and pW))]"];
 	s9 -> s9 [label="work / Ω [((sH and wH and not sL and not wL and pW) or (sH and wL and not sL and not wH and pW))]"];
 	s10 -> s9 [label="heavy / ok()*ok() [((sH and wH and not sL and not wL and pW) or (sH and wL and not sL and not wH and pW))]"];
 	s10 -> s10 [label="intvWipe / on() [((sH and wH and not sL and not wL and pW) or (sH and wL and not sL and not wH and pW))]"];

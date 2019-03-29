@@ -10,8 +10,8 @@ digraph g {
 	s0 -> s0 [label="d / _0() [((N and S and not B and not W) or (B and S and not N and not W))]"];
 	s1 -> s1 [label="a / _0() [((N and S and not B and not W) or (B and S and not N and not W))]"];
 	s1 -> s2 [label="b / _1() [((N and S and not B and not W) or (B and S and not N and not W))]"];
-	s1 -> s1 [label="c / _0() [((B and S and not N and not W))]"];
 	s1 -> s0 [label="c / _1() [((N and S and not B and not W))]"];
+	s1 -> s1 [label="c / _0() [((B and S and not N and not W))]"];
 	s1 -> s2 [label="d / _1() [((N and S and not B and not W) or (B and S and not N and not W))]"];
 	s2 -> s1 [label="a / _1() [((N and S and not B and not W) or (B and S and not N and not W))]"];
 	s2 -> s2 [label="b / _0() [((N and S and not B and not W) or (B and S and not N and not W))]"];

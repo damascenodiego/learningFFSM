@@ -14,8 +14,8 @@ digraph g {
 	s0 -> s1 [label="heavy / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s0 -> s2 [label="intvWipe / on() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s0 -> s3 [label="little / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
-	s0 -> s8 [label="manWipe / on() [((sH and wL and not sL and not wH and pW))]"];
 	s0 -> s0 [label="manWipe / Ω [((sH and wH and not sL and not wL and not pW))]"];
+	s0 -> s8 [label="manWipe / on() [((sH and wL and not sL and not wH and pW))]"];
 	s0 -> s0 [label="non / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s0 -> s0 [label="weather / noRain() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s0 -> s0 [label="wipe / off() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
@@ -77,8 +77,8 @@ digraph g {
 	s7 -> s7 [label="manWipe / off() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s7 -> s2 [label="non / ok()*ok() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s7 -> s7 [label="weather / rain() [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
-	s7 -> s7 [label="wipe / fast() [((sH and wH and not sL and not wL and not pW))]"];
 	s7 -> s7 [label="wipe / slow() [((sH and wL and not sL and not wH and pW))]"];
+	s7 -> s7 [label="wipe / fast() [((sH and wH and not sL and not wL and not pW))]"];
 	s7 -> s7 [label="work / Ω [((sH and wL and not sL and not wH and pW) or (sH and wH and not sL and not wL and not pW))]"];
 	s8 -> s10 [label="heavy / ok()*ok() [((sH and wL and not sL and not wH and pW))]"];
 	s8 -> s2 [label="intvWipe / on() [((sH and wL and not sL and not wH and pW))]"];

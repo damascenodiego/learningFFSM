@@ -1,6 +1,6 @@
 s0@[((N and not S and not B and not W) or (W and S and not B and not N))] -- a@[((W and S and not B and not N) or (N and not S and not B and not W))]/_1() -> s1@[((W and S and not B and not N) or (N and not S and not B and not W))]
-s0@[((N and not S and not B and not W) or (W and S and not B and not N))] -- b@[((W and S and not B and not N))]/_1() -> s2@[((W and S and not B and not N) or (N and not S and not B and not W))]
 s0@[((N and not S and not B and not W) or (W and S and not B and not N))] -- b@[((N and not S and not B and not W))]/_0() -> s0@[((N and not S and not B and not W) or (W and S and not B and not N))]
+s0@[((N and not S and not B and not W) or (W and S and not B and not N))] -- b@[((W and S and not B and not N))]/_1() -> s2@[((W and S and not B and not N) or (N and not S and not B and not W))]
 s0@[((N and not S and not B and not W) or (W and S and not B and not N))] -- c@[((W and S and not B and not N) or (N and not S and not B and not W))]/_0() -> s0@[((N and not S and not B and not W) or (W and S and not B and not N))]
 s0@[((N and not S and not B and not W) or (W and S and not B and not N))] -- d@[((W and S and not B and not N))]/_0() -> s0@[((N and not S and not B and not W) or (W and S and not B and not N))]
 s1@[((W and S and not B and not N) or (N and not S and not B and not W))] -- a@[((W and S and not B and not N) or (N and not S and not B and not W))]/_0() -> s1@[((W and S and not B and not N) or (N and not S and not B and not W))]

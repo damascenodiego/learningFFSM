@@ -5,14 +5,14 @@ digraph g {
 	s2 [shape="circle" label="2@[((W and S and not B and not N) or (N and not S and not B and not W))]"];
 	s3 [shape="circle" label="3@[((W and S and not B and not N))]"];
 	s0 -> s1 [label="a / _1() [((W and S and not B and not N) or (N and not S and not B and not W))]"];
-	s0 -> s0 [label="b / _0() [((N and not S and not B and not W))]"];
 	s0 -> s2 [label="b / _1() [((W and S and not B and not N))]"];
+	s0 -> s0 [label="b / _0() [((N and not S and not B and not W))]"];
 	s0 -> s0 [label="c / _0() [((W and S and not B and not N) or (N and not S and not B and not W))]"];
 	s0 -> s0 [label="d / _0() [((W and S and not B and not N))]"];
 	s1 -> s1 [label="a / _0() [((W and S and not B and not N) or (N and not S and not B and not W))]"];
 	s1 -> s2 [label="b / _1() [((W and S and not B and not N) or (N and not S and not B and not W))]"];
-	s1 -> s0 [label="c / _1() [((N and not S and not B and not W))]"];
 	s1 -> s2 [label="c / _1() [((W and S and not B and not N))]"];
+	s1 -> s0 [label="c / _1() [((N and not S and not B and not W))]"];
 	s1 -> s3 [label="d / _1() [((W and S and not B and not N))]"];
 	s2 -> s1 [label="a / _1() [((W and S and not B and not N) or (N and not S and not B and not W))]"];
 	s2 -> s2 [label="b / _0() [((W and S and not B and not N) or (N and not S and not B and not W))]"];
