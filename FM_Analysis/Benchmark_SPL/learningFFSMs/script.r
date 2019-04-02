@@ -85,12 +85,12 @@ tab_prods<-rbind(tab_prods,setNames(data.frame(spl_name,tot_prod_siz,rep("All pr
 plot <- ggplot(data=tab_prods, aes_string(x="SPL",y="Size",color="Model")) + 
   geom_boxplot()+ 
   stat_boxplot(geom ='errorbar')+
-  geom_hline(colour="gray", yintercept=6,linetype="solid") + 
-  geom_hline(colour="gray", yintercept=14,linetype="dashed") + 
-  geom_hline(colour="gray", yintercept=13,linetype="longdash") + 
-  annotate("text",x = 0.650, y = 6, label="Hc AGM" , size = 2)+
-  annotate("text",x = 1.550, y = 14, label="Hc VM" , size = 2)+
-  annotate("text",x = 2.750, y = 13, label="Hc WS" , size = 2)+
+  # geom_hline(colour="gray", yintercept=6,linetype="solid") + 
+  # geom_hline(colour="gray", yintercept=14,linetype="dashed") + 
+  # geom_hline(colour="gray", yintercept=13,linetype="longdash") + 
+  # annotate("text",x = 0.650, y = 6, label="Hc AGM" , size = 2)+
+  # annotate("text",x = 1.550, y = 14, label="Hc VM" , size = 2)+
+  # annotate("text",x = 2.750, y = 13, label="Hc WS" , size = 2)+
   # scale_y_continuous(limits=c(0,30),breaks=seq(0,30,5))+
   scale_y_continuous(breaks=seq(0,30,5))+
   scale_fill_grey() + 
@@ -99,6 +99,28 @@ plot <- ggplot(data=tab_prods, aes_string(x="SPL",y="Size",color="Model")) +
 plot
 filename <- "tot_size_prod.pdf"
 ggsave(device=cairo_pdf, filename, width = 6, height = 3, dpi=320)  # ssh plots  
+
+plot <- ggplot(data=tab_prods[(tab_prods$Model=="FFSM"),], aes_string(x="SPL",y="Size",color="Model")) + 
+  geom_boxplot()+ 
+  stat_boxplot(geom ='errorbar')+
+  geom_hline(colour="gray", yintercept=6,linetype="solid") +
+  geom_hline(colour="gray", yintercept=14,linetype="dashed") +
+  geom_hline(colour="gray", yintercept=13,linetype="longdash") +
+  annotate("text",x = 1.0, y = 6, label="Hand-crafted AGM" , size = 2.5)+
+  annotate("text",x = 2.0, y = 14, label="Hand-crafted VM" , size = 2.5)+
+  annotate("text",x = 3.0, y = 13, label="Hand-crafted WS" , size = 2.5)+
+  scale_y_continuous(limits=c(0,30),breaks=seq(0,30,5))+
+  scale_y_continuous(breaks=seq(0,30,5))+
+  scale_fill_grey() + 
+  theme_bw()+
+  theme(
+    legend.position="none"
+  )+
+  labs(x = "Software product line", y = "Number of states")
+
+plot
+filename <- "tot_size_prod_2.pdf"
+ggsave(device=cairo_pdf, filename, width = 5, height = 3, dpi=320)  # ssh plots  
 
 
 ffsm_orig_size<-list()
