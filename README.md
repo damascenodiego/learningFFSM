@@ -16,7 +16,7 @@ In **[FFSM_diff/Benchmark_SPL](https://github.com/damascenodiego/learningFFSM/tr
 
 In **[FFSM_diff/Benchmark_SPL/learningFFSMs](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/learningFFSMs)**, there is a RStudio project for the experiment data. The learnFFSM.jar file is a compiled version of FFSM_Diff algorithm. 
 
-The **FFSM_diff/Benchmark_SPL/run_*.py** are the test scripts that we designed run our experiments using the learnFFSM.jar file for each SPL (i.e., [agm](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/agm), [vm](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/vm), [ws](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/ws)) . 
+The **FFSM_diff/Benchmark_SPL/run_*.py** are the test scripts that we designed run our experiments for each SPL (i.e., [agm](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/agm), [vm](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/vm), [ws](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/ws)) . 
 
 To run the [learnFFSM.jar](https://github.com/damascenodiego/learningFFSM/blob/master/FFSM_diff/Benchmark_SPL/learnFFSM.jar) program, use the following parameters:
 
