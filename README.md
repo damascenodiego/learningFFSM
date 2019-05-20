@@ -12,11 +12,11 @@ In folder **[FFSM_diff/lib](https://github.com/damascenodiego/learningFFSM/tree/
 
 In folder **[FFSM_diff/src](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/src/)**, we find the source-code of the FFSM_Diff project. Essentially, there are two packages: [uk.le.ac](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/src/main/java/uk/le/ac), that includes code artifacts we developed in our study; and [br.usp.icmc](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/src/main/java/br/usp/icmc), that was reused from [the work of Fragal et al. on Featured Finite State Machines](http://doi.org/10.1007/978-3-319-57666-4_13).
 
-In **[FFSM_diff/Benchmark_SPL](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL)**, we included the subject systems and their respective FSMs and FFSMs as KISS files and feature models as XML files. PNG images of the state machines and feature models are available as well.
+In **[FFSM_diff/Benchmark_SPL](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL)**, we included the subject systems (i.e., [agm](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/agm), [vm](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/vm), [ws](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/ws))  and their respective FSMs and FFSMs as KISS files and feature models as XML files. PNG images of the state machines and feature models are available as well.
 
 In **[FFSM_diff/Benchmark_SPL/learningFFSMs](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/learningFFSMs)**, there is a RStudio project for the experiment data. The learnFFSM.jar file is a compiled version of FFSM_Diff algorithm. 
 
-The **FFSM_diff/Benchmark_SPL/run_*.py** are the test scripts that we designed run our experiments for each SPL (i.e., [agm](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/agm), [vm](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/vm), [ws](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/ws)) . 
+The **FFSM_diff/Benchmark_SPL/run_*.py** are the test scripts that we designed run our experiments for each SPL. 
 
 To run the [learnFFSM.jar](https://github.com/damascenodiego/learningFFSM/blob/master/FFSM_diff/Benchmark_SPL/learnFFSM.jar) program, use the following parameters:
 
