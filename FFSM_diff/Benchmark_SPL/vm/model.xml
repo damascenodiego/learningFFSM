@@ -22,10 +22,7 @@
         <rule>
             <imp>
                 <var>CAP</var>
-                <conj>
-                    <var>COF</var>
-                    <var>TEA</var>
-                </conj>
+                <var>TON</var>
             </imp>
         </rule>
     </constraints>
