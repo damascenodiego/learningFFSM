@@ -25,6 +25,6 @@ In **FFSM_diff/Benchmark_SPL/learningFFSMs**, there is a RStudio project for the
 The learnFFSM.jar file is a compiled version of FFSM_Diff algorithm. 
 To display the help menu, run **java -jar learnFFSM.jar -h**.
 
-The **FFSM_diff/Benchmark_SPL/run_*.py** are the test scripts that run the 
-learnFFSM.jar file for each SPL. 
+The **FFSM_diff/Benchmark_SPL/run_*.py** are the test scripts that we designed 
+run our experiments with the learnFFSM.jar file for each SPL. 
 
