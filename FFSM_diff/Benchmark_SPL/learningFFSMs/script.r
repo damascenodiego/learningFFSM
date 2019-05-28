@@ -26,11 +26,11 @@ plot<-ggscatter(tab,
 )+
   theme_bw()+
   theme(
-  plot.title = element_text(hjust = 0.5, size=9),
-  axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=8),
-  axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=8),
-  axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=8),
-  axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=8),
+  plot.title = element_text(hjust = 0.5, size=10),
+  axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+  axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+  axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
+  axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
 )
 
 plot
@@ -82,9 +82,9 @@ ffsm_siz<-tab$StatesFFSM
 tab_prods<-data.frame(SPL=spl_name,Size=ffsm_siz,Model=rep("FFSM",length(spl_name)))
 tab_prods<-rbind(tab_prods,setNames(data.frame(spl_name,tot_prod_siz,rep("All products",length(spl_name))),names(tab_prods)))
 
-plot <- ggplot(data=tab_prods, aes_string(x="SPL",y="Size",color="Model")) + 
-  geom_boxplot()+ 
-  stat_boxplot(geom ='errorbar')+
+plot <- ggplot(data=tab_prods, aes_string(x="SPL",y="Size",color="Model",fill="Model")) + 
+  geom_boxplot(color = "black")+ 
+  stat_boxplot(geom ='errorbar',color = "black")+
   # geom_hline(colour="gray", yintercept=6,linetype="solid") + 
   # geom_hline(colour="gray", yintercept=14,linetype="dashed") + 
   # geom_hline(colour="gray", yintercept=13,linetype="longdash") + 
@@ -93,25 +93,26 @@ plot <- ggplot(data=tab_prods, aes_string(x="SPL",y="Size",color="Model")) +
   # annotate("text",x = 2.750, y = 13, label="Hc WS" , size = 2)+
   # scale_y_continuous(limits=c(0,30),breaks=seq(0,30,5))+
   scale_y_continuous(breaks=seq(0,30,5))+
-  scale_fill_grey() + 
-  theme_bw()+
+  # scale_fill_brewer(palette="Greens") + 
+  scale_fill_brewer(palette="Greys") + 
+  theme_bw() + 
   labs(x = "Software product line", y = "Number of states")
 plot
 filename <- "tot_size_prod.pdf"
 ggsave(device=cairo_pdf, filename, width = 6, height = 3, dpi=320)  # ssh plots  
 
-plot <- ggplot(data=tab_prods[(tab_prods$Model=="FFSM"),], aes_string(x="SPL",y="Size",color="Model")) + 
-  geom_boxplot()+ 
-  stat_boxplot(geom ='errorbar')+
+plot <- ggplot(data=tab_prods[(tab_prods$Model=="FFSM"),], aes_string(x="SPL",y="Size",color="Model",fill="SPL")) + 
+  geom_boxplot(color = "black")+ 
+  stat_boxplot(geom ='errorbar', color = "black")+
   geom_hline(colour="gray", yintercept=6,linetype="solid") +
   geom_hline(colour="gray", yintercept=14,linetype="dashed") +
   geom_hline(colour="gray", yintercept=13,linetype="longdash") +
   annotate("text",x = 1.0, y = 6, label="Hand-crafted AGM" , size = 2.5)+
   annotate("text",x = 2.0, y = 14, label="Hand-crafted VM" , size = 2.5)+
   annotate("text",x = 3.0, y = 13, label="Hand-crafted WS" , size = 2.5)+
-  scale_y_continuous(limits=c(0,30),breaks=seq(0,30,5))+
-  scale_y_continuous(breaks=seq(0,30,5))+
-  scale_fill_grey() + 
+  scale_y_continuous(limits=c(0,23),breaks=seq(0,23,2))+
+  # scale_fill_grey() + 
+  scale_fill_brewer(palette="Greys") + 
   theme_bw()+
   theme(
     legend.position="none"
@@ -120,7 +121,7 @@ plot <- ggplot(data=tab_prods[(tab_prods$Model=="FFSM"),], aes_string(x="SPL",y=
 
 plot
 filename <- "tot_size_prod_2.pdf"
-ggsave(device=cairo_pdf, filename, width = 5, height = 3, dpi=320)  # ssh plots  
+ggsave(device=cairo_pdf, filename, width = 4.5, height = 3, dpi=320)  # ssh plots  
 
 
 ffsm_orig_size<-list()
