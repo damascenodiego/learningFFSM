@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
-    <feature automatic="selected" name="minepump"/>
+    <feature automatic="selected" name="MinePumpSys"/>
+    <feature automatic="selected" name="WaterRegulation"/>
+    <feature automatic="selected" name="High"/>
+    <feature manual="selected" name="Low"/>
+    <feature manual="selected" name="Normal"/>
+    <feature manual="selected" name="MethaneDetect"/>
+    <feature automatic="selected" name="Command"/>
+    <feature manual="selected" name="Start"/>
+    <feature manual="selected" name="Stop"/>
 </configuration>

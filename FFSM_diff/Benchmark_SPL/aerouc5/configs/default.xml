@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
-    <feature automatic="selected" name="aerouc5"/>
+    <feature automatic="selected" name="AeroUc5"/>
+    <feature automatic="selected" name="Provide_slope_indication_for_LP"/>
+    <feature manual="selected" name="SI_sensor_based"/>
+    <feature automatic="unselected" name="SI_from_DB"/>
+    <feature automatic="selected" name="Display_reference_objects_in_landing_zone"/>
+    <feature automatic="selected" name="Display_visual_3D_cues"/>
+    <feature automatic="selected" name="HOCAS"/>
+    <feature manual="selected" name="HOCAS_Honeywell"/>
+    <feature automatic="unselected" name="HOCAS_GE_Aviation_Systems"/>
+    <feature automatic="selected" name="Mark_landing_position"/>
+    <feature automatic="selected" name="Mark_LP"/>
+    <feature manual="selected" name="Mark_LP_by_handling_pilot_only"/>
+    <feature automatic="unselected" name="Mark_LP_by_both_pilots"/>
+    <feature automatic="selected" name="Check_for_no_ground"/>
+    <feature automatic="selected" name="Database"/>
+    <feature automatic="unselected" name="DB_provided_by_Cassidian"/>
+    <feature manual="selected" name="DB_provided_by_customer"/>
+    <feature automatic="selected" name="OWS"/>
+    <feature manual="selected" name="ELOP"/>
+    <feature automatic="unselected" name="HELLAS"/>
+    <feature automatic="selected" name="HMS_D"/>
+    <feature automatic="unselected" name="HMS_D_Elbit"/>
+    <feature manual="selected" name="HMS_D_Thales"/>
 </configuration>
