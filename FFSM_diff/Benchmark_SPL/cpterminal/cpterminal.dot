@@ -1,0 +1,35 @@
+strict digraph g {
+	graph [name=g];
+	node [label="\N"];
+	__start0	 [height=0,
+		label="",
+		shape=none,
+		width=0];
+	Init	 [label="Init@[(True)]"];
+	__start0 -> Init;
+	Card_in	 [label="Card_in@[(True)]"];
+	Init -> Card_in	 [label="insert_card@[(True)] /ok"];
+	state3	 [label="state3@[(True)]"];
+	Card_in -> state3	 [label="initSchema@[(DirectDebit||CreditCard)] /ok"];
+	App_init	 [label="App_init@[(True)]"];
+	state3 -> App_init	 [label="init_schema@[(DirectDebit||CreditCard)] /ok"];
+	Aborted	 [label="Aborted@[(True)]"];
+	state3 -> Aborted	 [label="abort@[(True)] /ok"];
+	CH_verified	 [label="CH_verified@[(True)]"];
+	App_init -> CH_verified	 [label="check_PIN_offline@[(Offline && PIN)] /ok"];
+	Aborted -> Init	 [label="remove_card@[(True)] /ok"];
+	NO_GO	 [label="NO_GO@[(True)]"];
+	CH_verified -> NO_GO	 [label="no_go@[(True)] /ok"];
+	Go_online	 [label="Go_online@[(True)]"];
+	CH_verified -> Go_online	 [label="go_online@[(Online)] /ok"];
+	Go_offline	 [label="Go_offline@[(True)]"];
+	CH_verified -> Go_offline	 [label="go_offline@[(Offline)] /ok"];
+	NO_GO -> Aborted	 [label="abort@[(True)] /ok"];
+	Issuer_responded	 [label="Issuer_responded@[(True)]"];
+	Go_online -> Issuer_responded	 [label="ask_issuer@[(True)] /ok"];
+	Completed	 [label="Completed@[(True)]"];
+	Go_offline -> Completed	 [label="accepts@[(True)] /ok"];
+	Issuer_responded -> Aborted	 [label="issuer_rejects@[(True)] /ok"];
+	Issuer_responded -> Completed	 [label="issuer_accepts@[(True)] /ok"];
+	Completed -> Init	 [label="remove_card@[(True)] /ok"];
+}
