@@ -27,8 +27,8 @@ public class FFSMAnalysis {
 
 	public static void main(String[] args) {
 		try {
-			String spl_name = "bcs2";
-			File f_fm = new File("Benchmark_SPL/"+spl_name+"/feature_models/example_"+spl_name+".xml");
+			String spl_name = "agm";
+			File f_fm = new File("Benchmark_SPL/"+spl_name+"/model.xml");
 			File f_ffsm = new File("./Benchmark_SPL/"+spl_name+ "/ffsms/ffsm_"+spl_name+".txt");
 			String checking_str = null;
 			

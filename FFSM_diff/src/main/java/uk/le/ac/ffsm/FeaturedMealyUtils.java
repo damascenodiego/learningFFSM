@@ -106,6 +106,9 @@ public class FeaturedMealyUtils {
 			Collections.sort(abcList);
 			Alphabet<String> alphabet = Alphabets.fromCollection(abcList);
 			FeaturedMealy<String, Word<String>> ffsm = new FeaturedMealy<>(alphabet,fm);
+			Map<String, Node> conditionalInputs = FeaturedMealyUtils.getInstance().mapConditionalInputs(fm);
+			ffsm.setConditionalInputs(conditionalInputs);
+
 			
 			ConditionalState<ConditionalTransition<String,Word<String>>> s0 = null;
 			Map<Integer,ConditionalState<ConditionalTransition<String,Word<String>>>> statesMap = new HashMap<>();
