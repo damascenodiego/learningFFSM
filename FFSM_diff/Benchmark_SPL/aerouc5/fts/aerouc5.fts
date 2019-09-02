@@ -6,9 +6,9 @@
             <transition target="s0"/>
         </state>
         <state id="Approach_line_landing_doghouse_and_reference_objects_displayed_end">
-            <transition target="symbology_is_displayed_end"/>
+            <transition target="symbology_is_displayed_end" action="symbology_is_displayed_end"/>
             <transition target="Approach_line_takeoff_doghouse_and_reference_objects_displayed_start" action="Landing_and_touchdown_for_more_than_5_sec"/>
-            <transition target="S5"/>
+            <transition target="S5" action="S5"/>
             <transition target="Pin_with_slope_indication_approach_line_landing_doghouse_displayed" action="Depart_from_landing_position"/>
         </state>
         <state id="landing_position_is_marked_start">
@@ -24,7 +24,7 @@
         <state id="Pin_and_approach_line_displayed">
             <transition target="Pin_with_slope_indication_and_approach_line_displayed" action="Approach_to_landing_position"/>
             <transition target="Pin_displayed" action="Depart_from_landing_position"/>
-            <transition target="S5" action="Approach_to_landing_position"/>
+            <transition target="S5" action="S5"/>
         </state>
         <state id="symbology_is_displayed_start">
             <transition target="Pin_displayed" action="Approach_to_landing_position"/>
@@ -36,7 +36,7 @@
             <transition target="Approach_line_landing_doghouse_and_reference_objects_displayed_end"/>
         </state>
         <state id="Pin_displayed">
-            <transition target="S5" action="Approach_to_landing_position"/>
+            <transition target="S5" action="S5"/>
             <transition target="Pin_and_approach_line_displayed" action="Approach_to_landing_position"/>
         </state>
         <state id="Landing_Position_is_marked">
@@ -71,10 +71,10 @@
             <transition target="Pin_and_approach_line_displayed" action="Depart_from_landing_position"/>
         </state>
         <state id="S5">
-            <transition target="Pin_with_slope_indication_approach_line_landing_doghouse_displayed" action="Depart_from_landing_position"/>
-            <transition target="Pin_and_approach_line_displayed" action="Depart_from_landing_position"/>
-            <transition target="Pin_displayed" action="Depart_from_landing_position"/>
-            <transition target="Pin_with_slope_indication_and_approach_line_displayed" action="Depart_from_landing_position"/>
+            <transition target="Pin_with_slope_indication_approach_line_landing_doghouse_displayed" action="Pin_with_slope_indication_approach_line_landing_doghouse_displayed"/>
+            <transition target="Pin_and_approach_line_displayed" action="Pin_and_approach_line_displayed"/>
+            <transition target="Pin_displayed" action="Pin_displayed"/>
+            <transition target="Pin_with_slope_indication_and_approach_line_displayed" action="Pin_with_slope_indication_and_approach_line_displayed"/>
             <transition target="Approach_line_landing_doghouse_and_reference_objects_displayed_start" action="Approach_to_landing_position"/>
             <transition target="Approach_line_takeoff_doghouse_and_reference_objects_displayed_start" action="Landing_and_touchdown_for_more_than_5_sec"/>
         </state>
