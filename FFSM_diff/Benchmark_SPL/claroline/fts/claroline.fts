@@ -9632,8 +9632,6 @@
             <transition target="0" action="clic(0)"/>
         </state>
 
-        <!--<state id=""/>-->
-
         <state id="wiki/wiki.php">
  
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>

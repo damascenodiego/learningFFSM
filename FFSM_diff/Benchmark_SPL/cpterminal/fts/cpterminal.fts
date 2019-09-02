@@ -6,14 +6,14 @@
 			<transition action="insert_card" target="Card_in"/>
 		</state>
 		<state id="Card_in">
-			<transition action="initSchema" fexpression="DirectDebit||CreditCard" target="state3"/>
+			<transition action="initSchema" fexpression="DirectDebit || CreditCard" target="state3"/>
 		</state>
 		<state id="state3">
-			<transition action="init_schema" fexpression="DirectDebit||CreditCard" target="App_init"/>
+			<transition action="init_schema" fexpression="DirectDebit || CreditCard" target="App_init"/>
 			<transition action="abort" target="Aborted"/>
 		</state>
 		<state id="App_init">
-			<transition action="check_signature" fexpression="!DirectDebit &amp;&amp; Signature" target="CH_verified"/>
+			<transition action="check_signature" fexpression="! DirectDebit &amp;&amp; Signature" target="CH_verified"/>
 			<transition action="check_PIN_online" fexpression="Online &amp;&amp; PIN" target="CH_verified"/>
 			<transition action="check_PIN_offline" fexpression="Offline &amp;&amp; PIN" target="CH_verified"/>
 		</state>
