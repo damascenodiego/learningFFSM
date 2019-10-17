@@ -15,7 +15,7 @@
             <transition target="S21"/>
         </state>
         <state id="Approach_line_takeoff_doghouse_and_real_objects_displayed">
-            <transition target="Approach_line_takeoff_doghouse_and_reference_objects_displayed_end"/>
+            <transition target="Approach_line_takeoff_doghouse_and_reference_objects_displayed_end" fexpression="Display_real_reference_objects"/>
         </state>
         <state id="Approach_line_landing_doghouse_and_reference_objects_displayed_start">
             <transition target="Approach_line_landing_doghouse_and_virtual_3D_cues_displayed" action="Virtual_3D_cues_displayed" fexpression="Display_visual_3D_cues"/>
@@ -50,7 +50,7 @@
             <transition target="S5"/>
         </state>
         <state id="Approach_line_landing_doghouse_and_real_objects_displayed">
-            <transition target="Approach_line_landing_doghouse_and_reference_objects_displayed_end"/>
+            <transition target="Approach_line_landing_doghouse_and_reference_objects_displayed_end" fexpression="Display_real_reference_objects"/>
         </state>
         <state id="s0">
             <transition target="standby" action="activate"/>
@@ -82,7 +82,7 @@
             <transition target="s99" action="deactivate"/>
         </state>
         <state id="displayed">
-            <transition target="S21"/>
+            <transition fexpression="Check_for_obstacles" target="S21"/>
         </state>
         <state id="standby">
             <transition target="landing_position_is_marked_start"/>

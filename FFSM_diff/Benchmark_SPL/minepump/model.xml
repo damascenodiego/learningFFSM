@@ -2,14 +2,14 @@
 <featureModel>
     <properties/>
     <struct>
-        <and abstract="true" mandatory="true" name="MinePumpSys">
-            <and abstract="true" mandatory="true" name="WaterRegulation">
+        <and mandatory="true" name="MinePumpSys">
+            <and mandatory="true" name="WaterRegulation">
                 <feature mandatory="true" name="High"/>
                 <feature name="Low"/>
                 <feature name="Normal"/>
             </and>
             <feature name="MethaneDetect"/>
-            <or abstract="true" name="Command">
+            <or name="Command">
                 <feature name="Start"/>
                 <feature name="Stop"/>
             </or>

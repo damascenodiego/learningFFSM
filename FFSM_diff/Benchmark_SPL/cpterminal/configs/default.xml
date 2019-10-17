@@ -4,6 +4,8 @@
     <feature automatic="selected" name="Connectivity"/>
     <feature automatic="selected" name="Online"/>
     <feature manual="selected" name="PrivateWAN"/>
+    <feature automatic="selected" name="Identification"/>
+    <feature automatic="selected" name="Signature"/>
     <feature automatic="selected" name="PaymentSchema"/>
     <feature automatic="selected" name="DirectDebit"/>
     <feature manual="selected" name="PrepaidCard"/>

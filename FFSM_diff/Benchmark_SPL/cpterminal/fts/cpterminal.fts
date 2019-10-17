@@ -6,14 +6,14 @@
 			<transition action="insert_card" target="Card_in"/>
 		</state>
 		<state id="Card_in">
-			<transition action="initSchema" fexpression="DirectDebit || CreditCard" target="state3"/>
+			<transition action="initSchema" fexpression="DirectDebit||CreditCard" target="state3"/>
 		</state>
 		<state id="state3">
-			<transition action="init_schema" fexpression="DirectDebit || CreditCard" target="App_init"/>
+			<transition action="init_schema" fexpression="DirectDebit||CreditCard" target="App_init"/>
 			<transition action="abort" target="Aborted"/>
 		</state>
 		<state id="App_init">
-			<transition action="check_signature" fexpression="! DirectDebit &amp;&amp; Signature" target="CH_verified"/>
+			<transition action="check_signature" fexpression="Signature" target="CH_verified"/>
 			<transition action="check_PIN_online" fexpression="Online &amp;&amp; PIN" target="CH_verified"/>
 			<transition action="check_PIN_offline" fexpression="Offline &amp;&amp; PIN" target="CH_verified"/>
 		</state>
@@ -29,17 +29,17 @@
 			<transition action="abort" target="Aborted"/>
 		</state>
 		<state id="Go_online">
-			<transition action="ask_issuer" target="Issuer_responded"/>
+			<transition action="ask_issuer" fexpression="Online" target="Issuer_responded"/>
 		</state>
 		<state id="Issuer_responded">
-			<transition action="issuer_accepts" target="Completed"/>
-			<transition action="issuer_rejects" target="Aborted"/>
+			<transition action="issuer_accepts" fexpression="Online" target="Completed"/>
+			<transition action="issuer_rejects" fexpression="Online" target="Aborted"/>
 		</state>
 		<state id="Completed">
-			<transition action="remove_card" target="Init"/>
+			<transition action="remove_card" fexpression="Offline" target="Init"/>
 		</state>
 		<state id="Go_offline">
-			<transition action="accepts" target="Completed"/>
+			<transition action="accepts" fexpression="Offline" target="Completed"/>
 		</state>
 	</states>
 </fts>
