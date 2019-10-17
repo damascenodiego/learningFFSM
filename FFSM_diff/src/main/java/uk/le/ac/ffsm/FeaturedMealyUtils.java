@@ -212,6 +212,47 @@ public class FeaturedMealyUtils {
 		bw.close();
 	}
 	
+	public void saveFSM_kiss(CompactMealy<String, Word<String>> fsm, File f) throws Exception {
+		saveFSM_kiss(fsm, f, true, null);
+	}
+	
+	public void saveFSM_kiss(CompactMealy<String, Word<String>> fsm, File f, boolean plotLoop) throws Exception {
+		saveFSM_kiss(fsm, f, plotLoop, null);
+	}
+	
+	public void saveFSM_kiss(CompactMealy<String, Word<String>> fsm, File f, String header) throws Exception {
+		saveFSM_kiss(fsm, f, true, header);
+	}
+	public void saveFSM_kiss(CompactMealy<String, Word<String>> fsm, File f, boolean plotLoop, String header) throws Exception {
+
+		BufferedWriter bw = new BufferedWriter(new FileWriter(f));	
+		List<Integer> states = new ArrayList<>(fsm.getStates());
+		states.remove(fsm.getInitialState());
+		states.add(0,fsm.getInitialState());
+		
+		if(header != null) {
+			bw.append(header);
+			bw.append("\n");
+		}
+		
+		for (Integer si : states) {
+			for (String in : fsm.getInputAlphabet()) {
+				for (CompactMealyTransition<Word<String>> tr : fsm.getTransitions(si,in)) {
+					if(!plotLoop && tr.getSuccId() == si) continue;
+					bw.write(String.format("s%d -- %s/%s -> s%d\n", 
+							si, 
+							in,
+							tr.getOutput().toString(),
+							tr.getSuccId()
+							));
+				}
+
+			}
+
+		}
+		bw.close();
+	}
+	
 	public void printFFSM_kiss(FeaturedMealy<String, String> ffsm) throws Exception {
 		printFFSM_kiss(ffsm,true);
 	}
