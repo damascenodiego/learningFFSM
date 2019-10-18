@@ -106,45 +106,56 @@ public class LearnFFSM {
 			}
 			
 			double K = Double.valueOf(line.getOptionValue(K_VALUE,"0.50"));
-			double T = Double.valueOf(line.getOptionValue(K_VALUE,"0.35"));
+			double T = Double.valueOf(line.getOptionValue(K_VALUE,"0.40"));
 			double R = Double.valueOf(line.getOptionValue(K_VALUE,"1.10"));
 			
+			// See https://doi.org/10.1145/2430545.2430549 (Algorithm 1)
+			
+			// Line 1 @ Algorithm 1 
 			RealVector pairsToScore = computeScores(ref,updt,K);
+			System.out.print("States pair scores:\t");
 			System.out.println(pairsToScore);
+			
+			// Line 2-5 @ Algorithm 1
 			Set<List<Integer>> kPairs = identifyLandmaks(pairsToScore,ref,updt, T, R);
+			System.out.print("Landmarks found:\t");
+			kPairs.forEach(pair ->System.out.print("\t"+pair.get(0)+","+pair.get(1)));
+			System.out.println();
 			
-			System.out.println("Landmarks found!");
-			kPairs.forEach(pair ->System.out.println(pair.get(0)+","+pair.get(1)));
-			
+			// Line 6 @ Algorithm 1
 			Set<List<Integer>> nPairs = surr(kPairs, ref,updt);
 			Map<Integer,Set<Integer>> checked = new HashMap<>();
-			checked.put(0, new HashSet<>());
-			checked.put(1, new HashSet<>());
-			
+			checked.put(0, new HashSet<>()); checked.put(1, new HashSet<>());
 			for (List<Integer> list : kPairs) {
 				checked.get(0).add(list.get(0));
 				checked.get(1).add(list.get(1));
 			}
-			
 			removeConflicts(nPairs,checked);
 			
-			
+			// Line 7-14 @ Algorithm 1
 			while (!nPairs.isEmpty()) {
 				while (!nPairs.isEmpty()) {
+					// Line 9 @ Algorithm 1
 					List<Integer> A_B = pickHighest(nPairs,pairsToScore,ref,updt);
-					System.out.println("Highest state pair found!");
-					System.out.println(A_B.get(0)+","+A_B.get(1));
+					System.out.print("Highest state pair found:");
+					System.out.println("\t"+A_B.get(0)+","+A_B.get(1));
+					
+					// Line 10 @ Algorithm 1
 					kPairs.add(A_B);
 					checked.get(0).add(A_B.get(0));
 					checked.get(1).add(A_B.get(1));
+					
+					// Line 11 @ Algorithm 1
 					removeConflicts(nPairs,checked);
 				}
+				// Line 13 @ Algorithm 1
 				nPairs = surr(kPairs,ref,updt);
 				removeConflicts(nPairs,checked);
 			}
 			
-			System.out.println("Common states found!");
-			kPairs.forEach(pair ->System.out.println(pair.get(0)+","+pair.get(1)));			
+			System.out.print("Common states found:");
+			kPairs.forEach(pair ->System.out.print("\t"+pair.get(0)+","+pair.get(1)));
+			System.out.println();
 			
 			if(line.hasOption(FREF)){
 				ffsm = makeFFSM((FeaturedMealy<String, Word<String>>)ref,(ProductMealy<String, Word<String>>)updt,kPairs,fm);
@@ -613,6 +624,10 @@ public class LearnFFSM {
 			double threshold,
 			double ration
 			) {
+		
+		// Comments below relate to Section 4.3.1, Page 13:14
+		// in the paper https://doi.org/10.1145/2430545.2430549 
+		
 		Set<List<Integer>> outPairs = new LinkedHashSet<>();
 		
 		// add the initial states pair to outPairs
@@ -628,8 +643,7 @@ public class LearnFFSM {
 			int x = i / fsm2.getStateIDs().size();
 			int y = i % fsm2.getStateIDs().size();
 			
-			// Check if 'score fall above t' 
-			// See https://doi.org/10.1145/2430545.2430549 Section 4.3.1, Page 13:14 
+			// Check if 'score fall above t'  
 			if(pairsToScore.getEntry(i) >= threshold 
 					&& x!=fsm1.getInitialStateIndex() 
 					&& y!=fsm2.getInitialStateIndex()
