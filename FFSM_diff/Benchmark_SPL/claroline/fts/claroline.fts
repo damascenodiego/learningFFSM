@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <fts>
-    <start>0</start>
+    <start>s0</start>
     <states>
-        <state id="0">
+        <state id="s0">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
             <transition target="admin/admin_class.php" action="clic(admin/admin_class.php)"/>
             <transition target="admin/admin_courses.php" action="clic(admin/admin_courses.php)"/>
@@ -108,7 +108,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="group/group.php">
 	
@@ -217,7 +217,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="group/group_space.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -325,7 +325,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="group/group_edit.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -433,7 +433,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="messaging/sendmessage.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -541,7 +541,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="announcements/announcements.php">
@@ -650,7 +650,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="messaging/messagescourse.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -758,7 +758,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="learnPath/module.php">
@@ -867,7 +867,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="learnPath/learningPathAdmin.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -975,7 +975,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 		
         <state id="learnPath/insertMyDoc.php">
@@ -1084,7 +1084,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 		
         <state id="learnPath/insertMyExercise.php">
@@ -1193,7 +1193,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 		
         <state id="learnPath/insertMyModule.php">
@@ -1302,7 +1302,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 		
         <state id="user/user.php">
@@ -1411,7 +1411,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="user/user_add.php">
@@ -1521,7 +1521,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="user/addcsvusers.php">
@@ -1631,7 +1631,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="user/class_add.php">
@@ -1740,7 +1740,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="phpbb/index.php">
@@ -1849,7 +1849,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="phpbb/viewforum.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -1957,7 +1957,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="phpbb/viewtopic.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -2065,7 +2065,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="auth/login.php">
         
@@ -2174,7 +2174,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="desktop/index.php">
         
@@ -2284,7 +2284,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="course/settings.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -2392,7 +2392,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         <state id="group/group_properties.php">
             <transition target="admin/admin_category.php" action="clic(admin/admin_category.php)"/>
@@ -2500,7 +2500,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 	
         <state id="tracking/courseReport.php">
@@ -2610,7 +2610,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 	
         <state id="tracking/course_access_details.php">
@@ -2719,7 +2719,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 	
         <state id="tracking/delete_course_stats.php">
@@ -2828,7 +2828,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 	
         <state id="course/create.php">
@@ -2937,7 +2937,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 	
         <state id="course/tools.php">
@@ -3046,7 +3046,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 	
         <state id="admin/managing/editFile.php">
@@ -3155,7 +3155,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="messaging/index.php">
@@ -3265,7 +3265,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="messaging/messagebox.php">
@@ -3374,7 +3374,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="messaging/readmessage.php">
@@ -3483,7 +3483,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="auth/profile.php">
@@ -3592,7 +3592,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="tracking/userReport.php">
@@ -3701,7 +3701,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="course/platform_courses.php">
@@ -3810,7 +3810,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="notification_date.php">
@@ -3919,7 +3919,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/index.php">
@@ -4035,7 +4035,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/clarolinenews.php">
@@ -4145,7 +4145,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/upgrade/upgrade.php">
@@ -4254,7 +4254,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/upgrade/upgrade_conf.php">
@@ -4364,7 +4364,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/upgrade/upgrade_main_db.php">
@@ -4474,7 +4474,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/upgrade/upgrade_courses.php">
@@ -4583,7 +4583,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/upgrade/upgrade_modules.php">
@@ -4692,7 +4692,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/campusProblem.php">
@@ -4803,7 +4803,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="tracking/platform_report.php">
@@ -4913,7 +4913,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="tracking/platform_access_details.php">
@@ -5023,7 +5023,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/technical/files_stats.php">
@@ -5133,7 +5133,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/technical/phpInfo.php">
@@ -5244,7 +5244,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/adminmailsystem.php">
@@ -5355,7 +5355,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/module/module_list.php">
@@ -5466,7 +5466,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/module/module.php">
@@ -5578,7 +5578,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/tool/config_list.php">
@@ -5687,7 +5687,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/tool/config_edit.php">
@@ -5796,7 +5796,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/admin_category.php">
@@ -5905,7 +5905,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/admin_courses.php">
@@ -6016,7 +6016,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/admincourseusers.php">
@@ -6125,7 +6125,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/admin_user_course_settings.php">
@@ -6236,7 +6236,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/adminuserunregistered.php">
@@ -6346,7 +6346,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state> 
         
         <state id="admin/adminregisteruser.php">
@@ -6455,7 +6455,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/advanced_course_search.php">
@@ -6564,7 +6564,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="messaging/admin.php">
@@ -6674,7 +6674,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="messaging/admin_search.php">
@@ -6785,7 +6785,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="messaging/admin_delete.php">
@@ -6896,7 +6896,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/adminmergeuser.php">
@@ -7006,7 +7006,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="desktop/config.php">
@@ -7115,7 +7115,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/right/profile_list.php">
@@ -7225,7 +7225,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/admin_class.php">
@@ -7334,7 +7334,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/admin_users.php">
@@ -7443,7 +7443,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/adminaddnewuser.php">
@@ -7552,7 +7552,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/adminusercourses.php">
@@ -7661,7 +7661,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/admin_profile.php">
@@ -7770,7 +7770,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/adminuserdeleted.php">
@@ -7879,7 +7879,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="auth/courses.php">
@@ -7988,7 +7988,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="admin/advanced_user_search.php">
@@ -8098,7 +8098,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="exercise/exercise.php">
@@ -8207,7 +8207,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="exercise/admin/question_category.php">
@@ -8316,7 +8316,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="exercise/admin/question_pool.php">
@@ -8425,7 +8425,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="exercise/admin/edit_exercise.php">
@@ -8534,7 +8534,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="exercise/admin/edit_question.php">
@@ -8643,7 +8643,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="exercise/admin/edit_answers.php">
@@ -8752,7 +8752,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="exercise/exercise_submit.php">
@@ -8861,7 +8861,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="auth/inscription.php">
@@ -8970,7 +8970,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="course/index.php">
@@ -9079,7 +9079,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="index.php">
@@ -9188,7 +9188,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="learnPath/learningPath.php">
@@ -9297,7 +9297,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="document/document.php">
@@ -9408,7 +9408,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="document/rqmkhtml.php">
@@ -9518,7 +9518,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="calendar/agenda.php">
@@ -9629,7 +9629,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="wiki/wiki.php">
@@ -9739,7 +9739,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
         <state id="course_description/index.php">
@@ -9849,7 +9849,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
                 
         <state id="work/work.php">
@@ -9959,7 +9959,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="module/CLCHAT/index.php">
@@ -10069,7 +10069,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="user/user_pictures.php">
@@ -10179,7 +10179,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="work/work_list.php">
@@ -10289,7 +10289,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="work/user_work.php"> 
@@ -10399,7 +10399,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="work/feedback.php">
@@ -10509,7 +10509,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="wiki/page.php">
@@ -10619,7 +10619,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="user/userInfo.php">
@@ -10730,7 +10730,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="auth/lostPassword.php">
@@ -10839,7 +10839,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="learnPath/learningPathList.php">
@@ -10949,7 +10949,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="tracking/learnPath_details.php">
@@ -11059,7 +11059,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="tracking/lp_modules_details.php">
@@ -11169,7 +11169,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
                 
         <state id="learnPath/modules_pool.php">
@@ -11279,7 +11279,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="learnPath/importLearningPath.php">
@@ -11388,7 +11388,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
 
 
@@ -11499,7 +11499,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         <state id="backends/ical.php">
@@ -11609,7 +11609,7 @@
             <transition target="work/user_work.php" action="clic(work/user_work.php)" fexpression="CourseWork"/>
             <transition target="work/work_list.php" action="clic(work/work_list.php)" fexpression="CourseWork"/>
             <transition target="work/work.php" action="clic(work/work.php)" fexpression="CourseWork"/>
-            <transition target="0" action="clic(0)"/>
+            <transition target="s0" action="clic(0)"/>
         </state>
         
         
