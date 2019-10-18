@@ -106,8 +106,8 @@ public class LearnFFSM {
 			}
 			
 			double K = Double.valueOf(line.getOptionValue(K_VALUE,"0.50"));
-			double T = Double.valueOf(line.getOptionValue(K_VALUE,"0.40"));
-			double R = Double.valueOf(line.getOptionValue(K_VALUE,"1.10"));
+			double T = Double.valueOf(line.getOptionValue(K_VALUE,"0.50"));
+			double R = Double.valueOf(line.getOptionValue(K_VALUE,"1.40"));
 			
 			// See https://doi.org/10.1145/2430545.2430549 (Algorithm 1)
 			
