@@ -807,16 +807,27 @@ public class LearnFFSM {
 		protected Double score;
 		protected Integer statei;
 		protected Integer statej;
+		protected String as_str;
 		
 		public ScorePair(double sc, int si, int sj) {
 			this.score = sc;
 			this.statei = si;
 			this.statej = sj;
+			as_str = String.format("%d,%d", statei,statej);
 		}
 
 		@Override
 		public int compareTo(ScorePair o) {
 			return Double.compare(o.score, this.score);
+		}
+		
+		@Override
+		public int hashCode() {
+			return as_str.hashCode();
+		}
+		@Override
+		public String toString() {
+			return as_str;
 		}
 	}
 
