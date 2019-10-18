@@ -67,7 +67,7 @@ public class LearnFFSM {
 			// parse the command line arguments
 			CommandLine line = parser.parse( options, args);
 
-			if(line.hasOption(HELP)){
+			if(line.hasOption(HELP) || !line.hasOption(FM)){
 				formatter.printHelp( "LearnFFSM", options );
 				System.exit(0);
 			}
