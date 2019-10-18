@@ -3,7 +3,6 @@
     <feature automatic="selected" name="CPTerminal"/>
     <feature automatic="selected" name="Connectivity"/>
     <feature automatic="selected" name="Online"/>
-    <feature manual="selected" name="PrivateWAN"/>
     <feature automatic="selected" name="Identification"/>
     <feature automatic="selected" name="Signature"/>
     <feature automatic="selected" name="PaymentSchema"/>
@@ -11,6 +10,6 @@
     <feature manual="selected" name="PrepaidCard"/>
     <feature automatic="selected" name="CardReader"/>
     <feature manual="selected" name="Chip"/>
-    <feature manual="selected" name="NFC"/>
     <feature manual="selected" name="MagStrip"/>
+    <feature manual="selected" name="NFC"/>
 </configuration>

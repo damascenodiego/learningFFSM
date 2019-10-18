@@ -4,12 +4,7 @@
     <struct>
         <and mandatory="true" name="CPTerminal">
             <or mandatory="true" name="Connectivity">
-                <or name="Online">
-                    <feature name="PSTN"/>
-                    <feature name="Mobile3G"/>
-                    <feature name="PrivateWAN"/>
-                    <feature name="VPN"/>
-                </or>
+                <feature name="Online"/>
                 <feature name="Offline"/>
             </or>
             <and mandatory="true" name="Identification">
@@ -20,40 +15,13 @@
                 <or name="DirectDebit">
                     <feature name="DebitCard"/>
                     <feature name="PrepaidCard"/>
-                    <feature name="EPurse"/>
                 </or>
                 <feature name="CreditCard"/>
             </or>
-            <or mandatory="true" name="CardReader">
-                <feature name="Chip"/>
-                <feature name="NFC"/>
-                <feature name="MagStrip"/>
-            </or>
+            <feature mandatory="true" name="CardReader"/>
         </and>
     </struct>
     <constraints>
-        <rule>
-            <disj>
-                <not>
-                    <var>PrepaidCard</var>
-                </not>
-                <disj>
-                    <var>Chip</var>
-                    <var>NFC</var>
-                </disj>
-            </disj>
-        </rule>
-        <rule>
-            <disj>
-                <not>
-                    <var>EPurse</var>
-                </not>
-                <disj>
-                    <var>Chip</var>
-                    <var>NFC</var>
-                </disj>
-            </disj>
-        </rule>
         <rule>
             <imp>
                 <var>DebitCard</var>
