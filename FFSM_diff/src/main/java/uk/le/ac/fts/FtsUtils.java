@@ -108,7 +108,7 @@ public class FtsUtils {
 				Transition tr = it_t.next();
 				String[] atr = new String[3];
 				atr[0] = tr.getSource().getName();
-				atr[1] = tr.getAction().getName();
+				atr[1] = tr.getAction().getName().replace("/", "_");
 				atr[2] = tr.getTarget().getName();
 				transitions.add(atr);
 				abc_s.add(atr[1]);
@@ -122,8 +122,16 @@ public class FtsUtils {
 			if(!state_h.containsKey(a_tr[2])) state_h.put(a_tr[2], mealy.addState());
 			Word word = Word.epsilon().append("0");
 			mealy.addTransition(state_h.get(a_tr[0]), a_tr[1], state_h.get(a_tr[2]), word);	
-		}
+		}		
 		mealy.setInitial(state_h.get(lts.getInitialState().getName()), true);
+		
+		for(Integer stateId: mealy.getStates()) {
+			for(String input: mealy.getInputAlphabet()) {
+				if(mealy.getTransition(stateId, input) == null) {
+					mealy.addTransition(stateId, input, stateId, OMEGA_SYMBOL);
+				}
+			}			
+		}		
 		return mealy;
 	}
 }
