@@ -108,14 +108,21 @@ public class LearnFFSM {
 			double K = Double.valueOf(line.getOptionValue(K_VALUE,"0.50"));
 			
 			RealVector pairsToScore = computeScores(ref,updt,K);
+			System.out.println(pairsToScore);
 			Set<List<Integer>> kPairs = identifyLandmaks(pairsToScore,ref,updt);
+			
+//			System.out.println("Landmarks found!");
+//			kPairs.forEach(pair ->System.out.println(pair.get(0)+","+pair.get(1)));
+			
 			Set<List<Integer>> nPairs = surr(kPairs, ref,updt);
 			Map<Integer,Set<Integer>> checked = new HashMap<>();
 			checked.put(0, new HashSet<>());
-			checked.get(0).add(0);
-			
 			checked.put(1, new HashSet<>());
-			checked.get(1).add(0);
+			
+			for (List<Integer> list : kPairs) {
+				checked.get(0).add(list.get(0));
+				checked.get(1).add(list.get(1));
+			}
 			
 			removeConflicts(nPairs,checked);
 			
@@ -123,6 +130,8 @@ public class LearnFFSM {
 			while (!nPairs.isEmpty()) {
 				while (!nPairs.isEmpty()) {
 					List<Integer> A_B = pickHighest(nPairs,pairsToScore,ref,updt);
+//					System.out.println("Highest state pair found!");
+//					System.out.println(A_B.get(0)+","+A_B.get(1));
 					kPairs.add(A_B);
 					checked.get(0).add(A_B.get(0));
 					checked.get(1).add(A_B.get(1));
@@ -576,19 +585,37 @@ public class LearnFFSM {
 		nPairs.removeAll(toRemove);
 		
 	}
-
+	
 	private static Set<List<Integer>> identifyLandmaks(RealVector pairsToScore, IConfigurableFSM<String, Word<String>> fsm1, IConfigurableFSM<String, Word<String>> fsm2) {
 		Set<List<Integer>> outPairs = new LinkedHashSet<>();
 		List<Integer> kPairs = new ArrayList<>();
-		kPairs.add(fsm1.getInitialStateIndex());
-		kPairs.add(fsm2.getInitialStateIndex());
-		outPairs.add(kPairs);
-		int x = pairsToScore.getMaxIndex() / fsm2.getStateIDs().size();
-		int y = pairsToScore.getMaxIndex() % fsm2.getStateIDs().size();
-		kPairs = new ArrayList<>();
-		kPairs.add(x);
-		kPairs.add(y);
-		outPairs.add(kPairs);
+		double kPairsScore_max = 0;
+		for (int i = 0; i < pairsToScore.getDimension(); i++) {
+			int x = i / fsm2.getStateIDs().size();
+			int y = i % fsm2.getStateIDs().size();
+			if(x!=fsm1.getInitialStateIndex() && y!=fsm2.getInitialStateIndex()) {
+				if(pairsToScore.getEntry(i)>kPairsScore_max) {
+					kPairsScore_max=pairsToScore.getEntry(i);
+					outPairs.clear();
+					
+					kPairs = new ArrayList<>();
+					kPairs.add(fsm1.getInitialStateIndex());
+					kPairs.add(fsm2.getInitialStateIndex());
+					outPairs.add(kPairs);
+					
+					kPairs = new ArrayList<>();
+					kPairs.add(x);
+					kPairs.add(y);
+					outPairs.add(kPairs);
+				}else if(pairsToScore.getEntry(i)==kPairsScore_max) {
+					kPairs = new ArrayList<>();
+					kPairs.add(x);
+					kPairs.add(y);
+					outPairs.add(kPairs);
+				}
+			}
+		}
+		
 		return outPairs;
 	}
 
@@ -773,6 +800,24 @@ public class LearnFFSM {
 		options.addOption( OUT,    true, "Output file" );
 		options.addOption( HELP,  false, "Help menu" );
 		return options;
+	}
+	
+	class ScorePair implements Comparable<ScorePair>{
+		
+		protected Double score;
+		protected Integer statei;
+		protected Integer statej;
+		
+		public ScorePair(double sc, int si, int sj) {
+			this.score = sc;
+			this.statei = si;
+			this.statej = sj;
+		}
+
+		@Override
+		public int compareTo(ScorePair o) {
+			return Double.compare(o.score, this.score);
+		}
 	}
 
 }
