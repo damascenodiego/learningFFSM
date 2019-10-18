@@ -588,34 +588,33 @@ public class LearnFFSM {
 	
 	private static Set<List<Integer>> identifyLandmaks(RealVector pairsToScore, IConfigurableFSM<String, Word<String>> fsm1, IConfigurableFSM<String, Word<String>> fsm2) {
 		Set<List<Integer>> outPairs = new LinkedHashSet<>();
+		
+		// add the initial states pair to outPairs
 		List<Integer> kPairs = new ArrayList<>();
-		double kPairsScore_max = 0;
+		kPairs = new ArrayList<>();
+		kPairs.add(fsm1.getInitialStateIndex());
+		kPairs.add(fsm2.getInitialStateIndex());
+		outPairs.add(kPairs);
+		
+		// search for the most distinct states pair
+		double kPairsScore_max = -1;
+		kPairs = new ArrayList<>();
+		kPairs.add(0); kPairs.add(0);
+		
 		for (int i = 0; i < pairsToScore.getDimension(); i++) {
 			int x = i / fsm2.getStateIDs().size();
 			int y = i % fsm2.getStateIDs().size();
 			if(x!=fsm1.getInitialStateIndex() && y!=fsm2.getInitialStateIndex()) {
 				if(pairsToScore.getEntry(i)>kPairsScore_max) {
 					kPairsScore_max=pairsToScore.getEntry(i);
-					outPairs.clear();
-					
-					kPairs = new ArrayList<>();
-					kPairs.add(fsm1.getInitialStateIndex());
-					kPairs.add(fsm2.getInitialStateIndex());
-					outPairs.add(kPairs);
-					
-					kPairs = new ArrayList<>();
-					kPairs.add(x);
-					kPairs.add(y);
-					outPairs.add(kPairs);
-				}else if(pairsToScore.getEntry(i)==kPairsScore_max) {
-					kPairs = new ArrayList<>();
-					kPairs.add(x);
-					kPairs.add(y);
-					outPairs.add(kPairs);
+					kPairs.set(0, x);
+					kPairs.set(1, y);
 				}
 			}
 		}
 		
+		// if found then add to outPairs
+		if(kPairsScore_max != -1) outPairs.add(kPairs);
 		return outPairs;
 	}
 
