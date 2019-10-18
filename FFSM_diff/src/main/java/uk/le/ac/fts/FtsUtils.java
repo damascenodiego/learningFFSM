@@ -116,19 +116,20 @@ public class FtsUtils {
 		}
 		
 		Alphabet<String> alphabet = Alphabets.fromCollection(abc_s);
-		CompactMealy<String, Word<String>> mealy = new CompactMealy<>(alphabet); 
+		CompactMealy<String, Word<String>> mealy = new CompactMealy<>(alphabet);
+		Word word0 = Word.epsilon().append("0");
+		Word word1 = Word.epsilon().append("1");
 		for (String[] a_tr : transitions) {
 			if(!state_h.containsKey(a_tr[0])) state_h.put(a_tr[0], mealy.addState());
 			if(!state_h.containsKey(a_tr[2])) state_h.put(a_tr[2], mealy.addState());
-			Word word = Word.epsilon().append("0");
-			mealy.addTransition(state_h.get(a_tr[0]), a_tr[1], state_h.get(a_tr[2]), word);	
+			mealy.addTransition(state_h.get(a_tr[0]), a_tr[1], state_h.get(a_tr[2]), word0);	
 		}		
 		mealy.setInitial(state_h.get(lts.getInitialState().getName()), true);
 		
 		for(Integer stateId: mealy.getStates()) {
 			for(String input: mealy.getInputAlphabet()) {
 				if(mealy.getTransition(stateId, input) == null) {
-					mealy.addTransition(stateId, input, stateId, OMEGA_SYMBOL);
+					mealy.addTransition(stateId, input, stateId, word1);
 				}
 			}			
 		}		
