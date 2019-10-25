@@ -1,28 +1,28 @@
 package uk.le.ac;
 
-public class ScorePair implements Comparable<ScorePair>{
+public class ScorePair<Item> implements Comparable<ScorePair>{
 	
 	private Double score;
-	private Integer statei;
-	private Integer statej;
+	private Item statei;
+	private Item statej;
 	private String as_str;
 	
-	public ScorePair(double sc, int si, int sj) {
+	public ScorePair(double sc, Item si, Item sj) {
 		this.score = sc;
 		this.statei = si;
 		this.statej = sj;
-		as_str = String.format("%d,%d", statei,statej);
+		as_str = String.format("%s,%s", statei.toString(),statej.toString());	
 	}
 	
 	public Double getScore() {
 		return score;
 	}
 	
-	public Integer getStatei() {
+	public Item getStatei() {
 		return statei;
 	}
 	
-	public Integer getStatej() {
+	public Item getStatej() {
 		return statej;
 	}
 

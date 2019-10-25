@@ -53,12 +53,12 @@ public class FfsmDiffUtils {
 		
 	}
 	
-	public void removeConflictsByOrder(List<ScorePair> scorePairs) {
+	public void removeConflictsByOrder(List<ScorePair<Integer>> scorePairs) {
 		Map<Integer,Set<Integer>> checked = new HashMap<>();
 		checked.put(0, new HashSet<>());
 		checked.put(1, new HashSet<>());
-		List<ScorePair> toRemove = new ArrayList<>();
-		for (ScorePair pair : scorePairs) {
+		List<ScorePair<Integer>> toRemove = new ArrayList<>();
+		for (ScorePair<Integer> pair : scorePairs) {
 			if (checked.get(0).contains(pair.getStatei()) || checked.get(1).contains(pair.getStatej())) {
 				toRemove.add(pair);
 			}else {
@@ -92,7 +92,7 @@ public class FfsmDiffUtils {
 		outPairs.add(kPairs);
 		
 		// sort ScorePairs
-		List<ScorePair> scorePairs = new ArrayList<>();
+		List<ScorePair<Integer>> scorePairs = new ArrayList<>();
 		for (int i = 0; i < pairsToScore.getDimension(); i++) {
 			int x = i / fsm2.getStateIDs().size();
 			int y = i % fsm2.getStateIDs().size();
@@ -102,7 +102,7 @@ public class FfsmDiffUtils {
 					&& x!=fsm1.getInitialStateIndex() 
 					&& y!=fsm2.getInitialStateIndex()
 					) {
-				scorePairs.add(new ScorePair(pairsToScore.getEntry(i), x, y));
+				scorePairs.add(new ScorePair<Integer>(pairsToScore.getEntry(i), x, y));
 			}
 			
 		}
@@ -120,7 +120,7 @@ public class FfsmDiffUtils {
 		//System.out.println(scorePairs);
 		
 		// then add remainder in scorePairs to outPairs
-		for (ScorePair scorePair : scorePairs) {
+		for (ScorePair<Integer> scorePair : scorePairs) {
 			kPairs = new ArrayList<>();
 			kPairs.add(scorePair.getStatei());
 			kPairs.add(scorePair.getStatej());
