@@ -5,9 +5,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -31,9 +33,9 @@ public class PrtzProducts {
 	
 	private static final String FM = "fm";
 	private static final String HELP = "h";
-	private static final String REVERSE = "r";
+	private static final String SIMILARITY = "similar";
 	private static final String SHUFFLE = "shuffle";
-	private static final String GMDP = null;
+	private static final String GMDP = "gmdp";
 	
 	
 	public static void main(String[] args) {
@@ -99,13 +101,13 @@ public class PrtzProducts {
 			}
 			
 			if(line.hasOption(SHUFFLE)) Collections.shuffle(prodPair_lst);
-			boolean reverse_mode = line.hasOption(REVERSE);
+			boolean by_similarity = line.hasOption(SIMILARITY);
 			
-//			if(line.hasOption(GMDP)) {
-//				prod_lst = prioritizeGlobalMaxDistance(prod_lst,prodPair_lst,reverse_mode);
-//			}else {
-				prod_lst = prioritizeLocalMaxDistance (prod_lst,prodPair_lst,reverse_mode);
-//			}
+			if(line.hasOption(GMDP)) {
+				prod_lst = prioritizeGlobalMaxDistance(prod_lst,prodPair_lst,by_similarity);
+			}else {
+				prod_lst = prioritizeLocalMaxDistance (prod_lst,prodPair_lst,by_similarity);
+			}
 			
 			for (ProductMealy<String, Word<String>> productMealy : prod_lst) {
 				System.out.println(productMealy.getInfo().get("abspath"));
@@ -123,13 +125,13 @@ public class PrtzProducts {
 	private static List<ProductMealy<String, Word<String>>> prioritizeLocalMaxDistance(
 			List<ProductMealy<String, Word<String>>> prod_lst,
 			List<ScorePair<ProductMealy<String, Word<String>>>> prodPair_lst, 
-			boolean reverse) {
+			boolean by_similarity) {
 		
 		int pairTot = prod_lst.size();
 		List<ScorePair<ProductMealy<String, Word<String>>>> prodPair_copy = new ArrayList<>(prodPair_lst);
 		
 		Collections.sort(prodPair_copy);
-		if(reverse) Collections.reverse(prodPair_copy);
+		if(!by_similarity) Collections.reverse(prodPair_copy);
 		
 		Iterator<ScorePair<ProductMealy<String, Word<String>>>> iter = prodPair_copy.iterator();
 		List<ProductMealy<String, Word<String>>> result_lst = new ArrayList<>();
@@ -144,6 +146,7 @@ public class PrtzProducts {
 			if(!pairSet.contains(ci) && !pairSet.contains(cj)){
 				result_lst.add(ci); pairSet.add(ci); --pairTot;
 				result_lst.add(cj); pairSet.add(cj); --pairTot;
+//				System.out.println(pair.getScore());
 			}
 			if(pairTot==1){
 				for (ProductMealy<String, Word<String>> a_conf : prod_lst) {
@@ -161,9 +164,86 @@ public class PrtzProducts {
 	private static List<ProductMealy<String, Word<String>>> prioritizeGlobalMaxDistance(
 			List<ProductMealy<String, Word<String>>> prod_lst,
 			List<ScorePair<ProductMealy<String, Word<String>>>> prodPair_lst, 
-			boolean reverse) {
-		// TODO Auto-generated method stub
-		return prod_lst;
+			boolean by_similarity) {
+
+		List<ProductMealy<String, Word<String>>> to_check = new ArrayList<>(prod_lst);
+		Map<ProductMealy<String, Word<String>>,Map<ProductMealy<String, Word<String>>,Double>> pairSim = new HashMap<>();
+		
+		ScorePair<ProductMealy<String, Word<String>>>  best_pair = null;
+		double best_ds;
+		if(by_similarity) best_ds = Double.MAX_VALUE;	
+		else best_ds = Double.MIN_VALUE;
+		boolean is_best = true;
+		
+		for (ScorePair<ProductMealy<String, Word<String>>> scorePair : prodPair_lst) {
+			if(!pairSim.containsKey(scorePair.getStatei())) pairSim.put(scorePair.getStatei(),new HashMap<>());
+			if(!pairSim.containsKey(scorePair.getStatej())) pairSim.put(scorePair.getStatej(),new HashMap<>());
+			
+			pairSim.get(scorePair.getStatei()).put(scorePair.getStatej(), scorePair.getScore());
+			pairSim.get(scorePair.getStatej()).put(scorePair.getStatei(), scorePair.getScore());
+			
+			
+			if(by_similarity) is_best = best_ds > scorePair.getScore();	
+			else is_best = best_ds < scorePair.getScore();
+			
+			if(is_best) {
+				best_ds = scorePair.getScore();
+				best_pair = scorePair;
+			}
+		}
+//		System.out.println(best_ds);
+		List<ProductMealy<String, Word<String>>> result_lst = new ArrayList<>();
+		
+		result_lst.add(best_pair.getStatei());
+		result_lst.add(best_pair.getStatej());
+		
+		Map<ProductMealy<String, Word<String>>,Double> ds_sum = new HashMap<>();
+		to_check.forEach(conf -> ds_sum.put(conf, 0.0));
+		update_ds_sum(prod_lst,pairSim.get(best_pair.getStatei()),best_pair.getStatei(),ds_sum);
+		update_ds_sum(prod_lst,pairSim.get(best_pair.getStatej()),best_pair.getStatej(),ds_sum);
+		//
+		to_check.remove(best_pair.getStatei());
+		to_check.remove(best_pair.getStatej());
+		
+		ProductMealy<String, Word<String>> best_prod = null;
+		while (to_check.size()>0){
+			
+			if(by_similarity) best_ds = Double.MAX_VALUE;
+			else best_ds = Double.MIN_VALUE;
+			for (ProductMealy<String, Word<String>> productMealy : to_check) {
+				double tmp_ds = ds_sum.get(productMealy);
+				
+				if(by_similarity) is_best = tmp_ds < best_ds;
+				else is_best = tmp_ds > best_ds;
+				if(is_best) {
+					best_ds = tmp_ds;
+					best_prod = productMealy;
+				}
+			}
+//			System.out.println(best_ds);
+			result_lst.add(best_prod);
+			update_ds_sum(prod_lst,pairSim.get(best_prod),best_prod,ds_sum);
+			to_check.remove(best_prod);
+		}
+		
+		return result_lst;
+	}
+
+	private static void update_ds_sum(
+			List<ProductMealy<String, Word<String>>> result_lst,
+			Map<ProductMealy<String, Word<String>>, Double> map,
+			ProductMealy<String, Word<String>> state, 
+			Map<ProductMealy<String, Word<String>>,Double> ds_sum
+			) {
+		map.put(state, null);
+		for (ProductMealy<String, Word<String>> t : result_lst) {
+			if(map.get(t) != null) {
+				ds_sum.put(t,ds_sum.get(t) + map.get(t));
+			}
+		}
+		
+		
+		
 	}
 
 	private static float clacDistance(List<String> x, List<String> y, List<String> allFeatures) {
@@ -187,7 +267,8 @@ public class PrtzProducts {
 		Options options = new Options();
 		options.addOption( FM,    true, "Feature model" );
 		options.addOption( SHUFFLE,    false, "Shuffle" );
-		options.addOption( REVERSE,  false, "Sort by dissimilarity" );		
+		options.addOption( GMDP,    false, "Use GMDP to sort products (default: LMDP)" );
+		options.addOption( SIMILARITY,  false, "Sort by similarity (default: Dissimilarity)" );		
 		options.addOption( HELP,  false, "Help menu" );
 		return options;
 	}	
