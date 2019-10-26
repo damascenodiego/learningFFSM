@@ -93,7 +93,7 @@ public class PrtzProducts {
 						if(n instanceof Literal) conf_j.add(n.toString());
 					}
 					
-					double sc = clacDistance(conf_i, conf_j, allFeatures);
+					float sc = 1 - clacDistance(conf_i, conf_j, allFeatures);
 					prodPair_lst.add(new ScorePair<ProductMealy<String,Word<String>>>(sc, fMealy_i, fMealy_j));
 				}				
 			}
@@ -142,7 +142,6 @@ public class PrtzProducts {
 			ProductMealy<String, Word<String>> cj = pair.getStatej();
 			
 			if(!pairSet.contains(ci) && !pairSet.contains(cj)){
-				System.out.println(pair.getScore());
 				result_lst.add(ci); pairSet.add(ci); --pairTot;
 				result_lst.add(cj); pairSet.add(cj); --pairTot;
 			}
@@ -167,7 +166,7 @@ public class PrtzProducts {
 		return prod_lst;
 	}
 
-	private static double clacDistance(List<String> x, List<String> y, List<String> allFeatures) {
+	private static float clacDistance(List<String> x, List<String> y, List<String> allFeatures) {
 		final Collection<String> similar = new HashSet<String>(x);
 		final Collection<String> different = new HashSet<String>();
 
@@ -177,9 +176,9 @@ public class PrtzProducts {
 
 		different.removeAll(similar);
 
-		final double s = similar.size();
-		final double d = different.size();
-		final double t = allFeatures.size();
+		final float s = similar.size();
+		final float d = different.size();
+		final float t = allFeatures.size();
 
 		return (s + (t - (s + d))) / t;
 	}
