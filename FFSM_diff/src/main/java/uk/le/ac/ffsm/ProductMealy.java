@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.prop4j.Node;
 import org.prop4j.NodeReader;
@@ -24,10 +25,12 @@ public class ProductMealy<I,O> extends CompactMealy<I, O> implements IConfigurab
 	private IFeatureModel featureModel;
 	private static final String TRUE_STRING = "TRUE";
 	private List<Node> configuration;
+	private Properties info;
 	
 	public ProductMealy(Alphabet<I> alphabet) {
 		super(alphabet);
 		this.configuration = new ArrayList<>();
+		this.info = new Properties();
 	}
 	
 	public ProductMealy(Alphabet<I> alphabet, IFeatureModel fm, Collection<Node> configuration) {
@@ -35,6 +38,10 @@ public class ProductMealy<I,O> extends CompactMealy<I, O> implements IConfigurab
 		this.featureModel = fm;
 		this.configuration.addAll(configuration);
 		addTRUE_feature();
+	}
+	
+	public Properties getInfo() {
+		return info;
 	}
 	
 	private void addTRUE_feature() {
