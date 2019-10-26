@@ -28,7 +28,7 @@ public class ScorePair<Item> implements Comparable<ScorePair>{
 
 	@Override
 	public int compareTo(ScorePair o) {
-		return Double.compare(o.score, this.score);
+		return Double.compare(this.score, o.score);
 	}
 	
 	@Override
