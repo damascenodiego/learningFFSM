@@ -10,6 +10,8 @@ if not os.path.exists(directory):
 	os.makedirs(directory)
 
 
+_ktr=""
+_ktr="-t 0.40"
 _writer = open(directory+"/pair_merging_"+SPL_NAME+".txt","w")
 for idx_PROD_I in range(len(prodOrder)-1):
 	for idx_PROD_J in range(idx_PROD_I,len(prodOrder)):
@@ -17,7 +19,7 @@ for idx_PROD_I in range(len(prodOrder)-1):
 		PROD_J = prodOrder[idx_PROD_J] 
 		print("Running for "+PROD_I+"_"+PROD_J)
 		# if(PROD_J==PROD_I): continue
-		bashCommand = "java -jar ./learnFFSM.jar -fm ./"+SPL_NAME+"/model.xml -mref ./"+SPL_NAME+"/products/products_all/"+PROD_I+"_kiss.txt -updt ./"+SPL_NAME+"/products/products_all/"+PROD_J+"_kiss.txt -out "+directory+"/ffsm_"+SPL_NAME+"_"+PROD_I+"_"+PROD_J+".txt"
+		bashCommand = "java -jar ./learnFFSM.jar "+_ktr+" -fm ./"+SPL_NAME+"/model.xml -mref ./"+SPL_NAME+"/products/products_all/"+PROD_I+"_kiss.txt -updt ./"+SPL_NAME+"/products/products_all/"+PROD_J+"_kiss.txt -out "+directory+"/ffsm_"+SPL_NAME+"_"+PROD_I+"_"+PROD_J+".txt"
 		
 		_writer.write("#")
 		_writer.write(bashCommand)
