@@ -76,7 +76,7 @@ public class CalculateDissimilarity {
 				
 				float sc = 1 - clacDistance(a_conf, b_conf, allFeatures);
 				
-				System.out.println(String.format("Pair dissimilarity:\t%s", Float.toString(sc)));
+				System.out.println(String.format("Pair dissimilarity:%s\t%s\t%s", a_prod.getName(),b_prod.getName(),Float.toString(sc)));
 			}else {
 				File prods_file = new File(line.getOptionValue(PROD_ORDER));
 				BufferedReader br = new BufferedReader(new FileReader(prods_file));
@@ -100,7 +100,7 @@ public class CalculateDissimilarity {
 						cum_dissimilarity.set(ii,cum_dissimilarity.get(ii)+dist_ii_i);
 					}
 				}
-				System.out.println("Cumulative dissimilarity");
+				System.out.println(String.format("Cumulative dissimilarity (%s)", prods_file.getName()));
 				cum_dissimilarity.forEach(sim -> System.out.println(sim));
 			}
 			
