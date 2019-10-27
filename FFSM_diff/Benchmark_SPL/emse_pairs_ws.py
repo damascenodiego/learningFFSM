@@ -8,6 +8,8 @@ prodOrder=["{:01d}".format(x) for x in range(1,8+1)]
 directory="./"+SPL_NAME+"/emse/"
 if not os.path.exists(directory):
 	os.makedirs(directory)
+if not os.path.exists(directory+"learnt/"):
+	os.makedirs(directory)
 
 
 _ktr=""
