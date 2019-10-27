@@ -27,7 +27,6 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.impl.Alphabets;
-import uk.le.ac.ScorePair;
 
 public class FfsmDiffUtils {
 

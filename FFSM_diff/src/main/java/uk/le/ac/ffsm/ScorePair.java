@@ -1,4 +1,4 @@
-package uk.le.ac;
+package uk.le.ac.ffsm;
 
 public class ScorePair<Item> implements Comparable<ScorePair>{
 	

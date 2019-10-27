@@ -25,9 +25,9 @@ import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 import net.automatalib.words.Word;
-import uk.le.ac.ScorePair;
 import uk.le.ac.ffsm.FeaturedMealyUtils;
 import uk.le.ac.ffsm.ProductMealy;
+import uk.le.ac.ffsm.ScorePair;
 
 public class PrtzProducts {
 	
