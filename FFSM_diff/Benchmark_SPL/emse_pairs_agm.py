@@ -9,7 +9,7 @@ directory="./"+SPL_NAME+"/emse/"
 if not os.path.exists(directory):
 	os.makedirs(directory)
 if not os.path.exists(directory+"learnt/"):
-	os.makedirs(directory)
+	os.makedirs(directory+"learnt/")
 
 
 _ktr=""
