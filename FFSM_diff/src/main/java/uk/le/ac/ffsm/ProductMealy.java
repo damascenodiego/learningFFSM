@@ -76,6 +76,35 @@ public class ProductMealy<I,O> extends CompactMealy<I, O> implements IConfigurab
 	}
 	
 	@Override
+	public Map<I,List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input, O output){
+		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
+		for (CompactMealyTransition<O> tr : super.getTransitions(si, input)) {
+			if(tr.getOutput().equals(output)) {
+				Integer sj = tr.getSuccId();
+				tr_match.putIfAbsent(input, new ArrayList<>());
+				SimplifiedTransition<I, O> simplyTr = new SimplifiedTransition<I,O>(si, input, output, sj);
+				simplyTr.setTransition(tr);
+				tr_match.get(input).add(simplyTr);
+			}
+		}
+		return tr_match;
+	}
+	
+	@Override
+	public Map<I,List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input){
+		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
+		for (CompactMealyTransition<O> tr : super.getTransitions(si, input)) {
+			Integer sj = tr.getSuccId();
+			O output = tr.getOutput();
+			tr_match.putIfAbsent(input, new ArrayList<>());
+			SimplifiedTransition<I, O> simplyTr = new SimplifiedTransition<I,O>(si, input, output, sj);
+			simplyTr.setTransition(tr);
+			tr_match.get(input).add(simplyTr);
+		}
+		return tr_match;
+	}
+	
+	@Override
 	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si) {
 		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
 		for (I input : getInputAlphabet()) {

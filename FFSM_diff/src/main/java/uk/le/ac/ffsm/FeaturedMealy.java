@@ -188,6 +188,35 @@ public class FeaturedMealy<I,O>
 	}
 	
 	@Override
+	public Map<I,List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input, O output) {
+		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
+		ConditionalState<ConditionalTransition<I, O>> statei = getState(si);
+		for (ConditionalTransition<I, O> tr : super.getTransitions(statei, input)) {
+			Integer sj = tr.getSuccessor().getId();
+			tr_match.putIfAbsent(input, new ArrayList<>());
+			SimplifiedTransition<I, O> simplyTr = new SimplifiedTransition<I,O>(si, input, output, sj);
+			simplyTr.setTransition(tr);
+			tr_match.get(input).add(simplyTr);
+		}
+		return tr_match;
+	}
+	
+	@Override
+	public Map<I,List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input) {
+		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
+		ConditionalState<ConditionalTransition<I, O>> statei = getState(si);
+		for (ConditionalTransition<I, O> tr : super.getTransitions(statei, input)) {
+			Integer sj = tr.getSuccessor().getId();
+			O output = tr.getOutput();
+			tr_match.putIfAbsent(input, new ArrayList<>());
+			SimplifiedTransition<I, O> simplyTr = new SimplifiedTransition<I,O>(si, input, output, sj);
+			simplyTr.setTransition(tr);
+			tr_match.get(input).add(simplyTr);
+		}
+		return tr_match;
+	}
+	
+	@Override
 	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si) {
 		Map<I,List<SimplifiedTransition<I, O>>> tr_match = new LinkedHashMap<>() ;
 		ConditionalState<ConditionalTransition<I, O>> statei = getState(si);

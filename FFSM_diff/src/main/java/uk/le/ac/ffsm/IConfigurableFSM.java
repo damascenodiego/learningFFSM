@@ -14,6 +14,8 @@ public interface IConfigurableFSM<I,O> {
 	public void 	  setConfiguration(List<Node> configuration);
 	
 	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input, O output, Integer sj);
+	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input, O output);
+	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si, I input);
 	public Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitions(Integer si);
 	Map<I, List<SimplifiedTransition<I, O>>> getSimplifiedTransitionsIn(Integer sj);
 	
