@@ -71,7 +71,7 @@ public class LearnFFSM {
 			CommandLine line = parser.parse( options, args);
 
 			if(line.hasOption(HELP) || !line.hasOption(FM)){
-				formatter.printHelp( "", options );
+				formatter.printHelp( "LearnFFSM", options );
 				System.exit(0);
 			}
 			
@@ -112,53 +112,23 @@ public class LearnFFSM {
 			double T = Double.valueOf(line.getOptionValue(T_VALUE,"0.50"));
 			double R = Double.valueOf(line.getOptionValue(R_VALUE,"1.40"));
 			
-			// See https://doi.org/10.1145/2430545.2430549 (Algorithm 1)
+			Set<List<Integer>> kPairs = FfsmDiffUtils.getInstance().ffsmDiff(ref,updt,K,T,R);
 			
-			// Line 1 @ Algorithm 1 
-			RealVector pairsToScore = FfsmDiffUtils.getInstance().computeScores(ref,updt,K);
-			System.out.print("States pair scores:\t");
-			System.out.println(pairsToScore);
-			
-			// Line 2-5 @ Algorithm 1
-			Set<List<Integer>> kPairs = FfsmDiffUtils.getInstance().identifyLandmaks(pairsToScore,ref,updt, T, R);
-			System.out.print("Landmarks found:\t");
+ 			System.out.print("Common states found:");
 			kPairs.forEach(pair ->System.out.print("\t"+pair.get(0)+","+pair.get(1)));
 			System.out.println();
 			
-			// Line 6 @ Algorithm 1
-			Set<List<Integer>> nPairs = FfsmDiffUtils.getInstance().surr(kPairs, ref,updt);
-			Map<Integer,Set<Integer>> checked = new HashMap<>();
-			checked.put(0, new HashSet<>()); checked.put(1, new HashSet<>());
-			for (List<Integer> list : kPairs) {
-				checked.get(0).add(list.get(0));
-				checked.get(1).add(list.get(1));
-			}
-			FfsmDiffUtils.getInstance().removeConflicts(nPairs,checked);
+			Set<SimplifiedTransition<String, Word<String>>> addedTr = new HashSet<>(FfsmDiffUtils.getInstance().getAddedTransitions(ref,updt,kPairs));
+			Set<SimplifiedTransition<String, Word<String>>> removTr = new HashSet<>(FfsmDiffUtils.getInstance().getRemovTransitions(ref,updt,kPairs));
 			
-			// Line 7-14 @ Algorithm 1
-			while (!nPairs.isEmpty()) {
-				while (!nPairs.isEmpty()) {
-					// Line 9 @ Algorithm 1
-					List<Integer> A_B = FfsmDiffUtils.getInstance().pickHighest(nPairs,pairsToScore,ref,updt);
-					System.out.print("Highest state pair found:");
-					System.out.println("\t"+A_B.get(0)+","+A_B.get(1));
-					
-					// Line 10 @ Algorithm 1
-					kPairs.add(A_B);
-					checked.get(0).add(A_B.get(0));
-					checked.get(1).add(A_B.get(1));
-					
-					// Line 11 @ Algorithm 1
-					FfsmDiffUtils.getInstance().removeConflicts(nPairs,checked);
-				}
-				// Line 13 @ Algorithm 1
-				nPairs = FfsmDiffUtils.getInstance().surr(kPairs,ref,updt);
-				FfsmDiffUtils.getInstance().removeConflicts(nPairs,checked);
-			}
+			Set<SimplifiedTransition<String, Word<String>>> deltaRef = FfsmDiffUtils.getInstance().mkTransitionsSet(ref);
 			
-			System.out.print("Common states found:");
-			kPairs.forEach(pair ->System.out.print("\t"+pair.get(0)+","+pair.get(1)));
-			System.out.println();
+			float precision = FfsmDiffUtils.getInstance().calcPerformance(deltaRef,removTr,addedTr);
+			float recall    = FfsmDiffUtils.getInstance().calcPerformance(deltaRef,removTr,removTr);
+			
+			System.out.println(String.format("Precision:%f", precision));
+			System.out.println(String.format("Recall:%f", recall));
+			
 			
 			if(line.hasOption(FREF)){
 				ffsm = FfsmDiffUtils.getInstance().makeFFSM((FeaturedMealy<String, Word<String>>)ref,(ProductMealy<String, Word<String>>)updt,kPairs,fm);
@@ -229,6 +199,8 @@ public class LearnFFSM {
 		}
 	}
 	
+	
+
 	private static Options createOptions() {
 		Options options = new Options();
 		options.addOption( CLEAN,  true, "Simplify FFSM labels" );
