@@ -32,6 +32,7 @@ import org.prop4j.NodeWriter.Notation;
 import org.prop4j.Not;
 import org.prop4j.Or;
 
+import de.learnlib.api.query.DefaultQuery;
 import de.ovgu.featureide.fm.core.base.IConstraint;
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
@@ -463,6 +464,39 @@ public class FeaturedMealyUtils {
 		fm.reset();
 		return true;
 
+	}
+	
+	public <I, O> List<DefaultQuery<I, Word<O>>> getValidTraces(FeaturedMealy<I,O> ffsm){
+		List<DefaultQuery<I, Word<O>>> valid_q = new ArrayList<>();
+		
+		Map<ConditionalState<ConditionalTransition<I, O>>, List<List<ConditionalTransition<I, O>>>> allValid = getAllValidPaths(ffsm);
+		
+//		for(ConditionalState<ConditionalTransition<I, O>> cstate : ffsm.getStates()){
+//			if(!ffsm.getInitialStates().contains(cstate)){
+//				if(allValid.get(cstate) == null || allValid.get(cstate).size() <= 0){
+//					return valid_q; //there is no path for this state 
+//				} 
+//			}
+//		}
+//		
+//		//remove invalid paths
+//		boolean epath = check_valid_paths(ffsm,allValid);
+		
+		for (ConditionalState<ConditionalTransition<I, O>> a_state : allValid.keySet()) {
+			List<List<ConditionalTransition<I, O>>> a_path = allValid.get(a_state);
+			for (List<ConditionalTransition<I, O>> ios : a_path) {
+				WordBuilder<I> wbIn = new WordBuilder<>();
+		        WordBuilder<O> wbOut = new WordBuilder<>();
+				for (ConditionalTransition<I, O> an_io : ios) {
+					wbIn.append(an_io.getInput());
+					wbOut.append(an_io.getOutput());
+				}
+				DefaultQuery<I, Word<O>> a_query = new DefaultQuery<>(wbIn.toWord());
+				a_query.answer(wbOut.toWord());
+				valid_q.add(a_query);
+			}
+		}
+		return valid_q;
 	}
 	
 	public  <I,O> boolean isInitiallyConnected(FeaturedMealy<I,O> ffsm){

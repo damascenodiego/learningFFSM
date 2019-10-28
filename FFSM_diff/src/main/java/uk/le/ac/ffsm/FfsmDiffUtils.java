@@ -657,4 +657,196 @@ public class FfsmDiffUtils {
 		Collections.sort(abc);
 		return abc;
 	}
+	
+	public float calcPerformance(Set<SimplifiedTransition<String, Word<String>>> deltaRef,
+			Set<SimplifiedTransition<String, Word<String>>> removTr,
+			Set<SimplifiedTransition<String, Word<String>>> xTr) {
+		
+		Set<SimplifiedTransition<String, Word<String>>> tp = new HashSet<>(deltaRef);
+		tp.removeAll(removTr);
+		
+		Set<SimplifiedTransition<String, Word<String>>> tp_u_x = new HashSet<>(tp);
+		tp_u_x.addAll(xTr);
+		
+		float performance = ((float) tp.size())/tp_u_x.size(); 
+		return performance;
+	}
+
+	public Set<SimplifiedTransition<String, Word<String>>> mkTransitionsSet(
+			IConfigurableFSM<String, Word<String>> ref) {
+		Set<SimplifiedTransition<String, Word<String>>> deltaRef = new HashSet<>();
+		for (Integer si : ref.getStateIDs()) {
+			for (List<SimplifiedTransition<String, Word<String>>> trs : ref.getSimplifiedTransitions(si).values()) {
+				deltaRef.addAll(trs);	
+			}
+		}
+		return deltaRef;
+	}
+
+	public List<SimplifiedTransition<String, Word<String>>> getAddedTransitions(
+			IConfigurableFSM<String, Word<String>> ref,
+			IConfigurableFSM<String, Word<String>> updt, 
+			Set<List<Integer>> kPairs
+			) {
+		List<SimplifiedTransition<String, Word<String>>> added_trs = new ArrayList<>();
+		
+		Map<Integer,Integer> map_ba = new HashMap<>();
+		for (List<Integer> _pair : kPairs) {
+			Integer _a = _pair.get(0);
+			Integer _b = _pair.get(1);
+			map_ba.put(_b, _a);
+		}
+		
+		for (Integer b1 : updt.getStateIDs()) {
+			for (String _in : updt.getInputAlphabet()) {
+				Map<String, List<SimplifiedTransition<String, Word<String>>>> trs_matching_in = updt.getSimplifiedTransitions(b1, _in);
+				for (List<SimplifiedTransition<String, Word<String>>> _tr : trs_matching_in.values()) {
+					for (SimplifiedTransition<String, Word<String>> upd_tr : _tr) {
+
+						// for each a1 - \alpha -> a2 \in \Delta_X, where \alpha = (_in, _out)
+						Integer b2 = upd_tr.getSj();
+						Word<String> _out = upd_tr.getOut();
+						
+						// (a1,b1) \not\in Kpairs
+						Integer  a1 = map_ba.get(b1);
+						if(a1 == null) { 
+							added_trs.add(upd_tr);
+							continue;
+						}
+						
+						// (a2,b2) \not\in Kpairs
+						Integer a2 = map_ba.get(b2);
+						if(a2 == null) { 
+							added_trs.add(upd_tr);
+							continue;
+						}
+						
+						// b1 - \alpha -> b2 \not\in \Delta_Y
+						if(!ref.getInputAlphabet().contains(_in)) {
+							added_trs.add(upd_tr);
+							continue;
+						}
+						
+						// b1 - \alpha -> b2 \not\in \Delta_Y
+						Map<String, List<SimplifiedTransition<String, Word<String>>>> y_trs = new HashMap<>(ref.getSimplifiedTransitions(a1, _in, _out, a2));
+						if(y_trs.isEmpty()) {
+							added_trs.add(upd_tr);
+							continue;
+						} 
+					}
+				}
+			}
+		}
+		return added_trs;
+	}
+
+	public List<SimplifiedTransition<String, Word<String>>> getRemovTransitions(
+			IConfigurableFSM<String, Word<String>> ref, 
+			IConfigurableFSM<String, Word<String>> updt, 
+			Set<List<Integer>> kPairs
+			) {
+		List<SimplifiedTransition<String, Word<String>>> removed_trs = new ArrayList<>();
+		
+		Map<Integer,Integer> map_ab = new HashMap<>();
+		for (List<Integer> _pair : kPairs) {
+			Integer _a = _pair.get(0);
+			Integer _b = _pair.get(1);
+			map_ab.put(_a, _b);
+		}
+		
+		for (Integer a1 : ref.getStateIDs()) {
+			for (String _in : ref.getInputAlphabet()) {
+				Map<String, List<SimplifiedTransition<String, Word<String>>>> trs_matching_in = ref.getSimplifiedTransitions(a1, _in);
+				for (List<SimplifiedTransition<String, Word<String>>> _tr : trs_matching_in.values()) {
+					for (SimplifiedTransition<String, Word<String>> ref_tr : _tr) {
+
+						// for each a1 - \alpha -> a2 \in \Delta_X, where \alpha = (_in, _out)
+						Integer a2 = ref_tr.getSj();
+						Word<String> _out = ref_tr.getOut();
+						
+						// (a1,b1) \not\in Kpairs
+						Integer  b1 = map_ab.get(a1);
+						if(b1 == null) { 
+							removed_trs.add(ref_tr);
+							continue;
+						}
+						
+						// (a2,b2) \not\in Kpairs
+						Integer b2 = map_ab.get(a2);
+						if(b2 == null) { 
+							removed_trs.add(ref_tr);
+							continue;
+						}
+						
+						// b1 - \alpha -> b2 \not\in \Delta_Y
+						if(!updt.getInputAlphabet().contains(_in)) {
+							removed_trs.add(ref_tr);
+							continue;
+						}
+						
+						// b1 - \alpha -> b2 \not\in \Delta_Y
+						Map<String, List<SimplifiedTransition<String, Word<String>>>> y_trs = new HashMap<>(updt.getSimplifiedTransitions(b1, _in, _out, b2));
+						if(y_trs.isEmpty()) {
+							removed_trs.add(ref_tr);
+							continue;
+						} 
+					}
+				}
+			}
+		}
+		return removed_trs;
+	}
+
+	public Set<List<Integer>> ffsmDiff(
+			IConfigurableFSM<String, Word<String>> ref, 
+			IConfigurableFSM<String, Word<String>> updt,
+			double K, 
+			double T, 
+			double R
+			) {
+		// See https://doi.org/10.1145/2430545.2430549 (Algorithm 1)
+
+		// Line 1 @ Algorithm 1 
+		RealVector pairsToScore = FfsmDiffUtils.getInstance().computeScores(ref,updt,K);
+		System.out.print("States pair scores:\t");
+		System.out.println(pairsToScore);
+
+		// Line 2-5 @ Algorithm 1
+		Set<List<Integer>> kPairs = FfsmDiffUtils.getInstance().identifyLandmaks(pairsToScore,ref,updt, T, R);
+		System.out.print("Landmarks found:\t");
+		kPairs.forEach(pair ->System.out.print("\t"+pair.get(0)+","+pair.get(1)));
+		System.out.println();
+
+		// Line 6 @ Algorithm 1
+		Set<List<Integer>> nPairs = FfsmDiffUtils.getInstance().surr(kPairs, ref,updt);
+		Map<Integer,Set<Integer>> checked = new HashMap<>();
+		checked.put(0, new HashSet<>()); checked.put(1, new HashSet<>());
+		for (List<Integer> list : kPairs) {
+			checked.get(0).add(list.get(0));
+			checked.get(1).add(list.get(1));
+		}
+		FfsmDiffUtils.getInstance().removeConflicts(nPairs,checked);
+
+		// Line 7-14 @ Algorithm 1
+		while (!nPairs.isEmpty()) {
+			while (!nPairs.isEmpty()) {
+				// Line 9 @ Algorithm 1
+				List<Integer> A_B = FfsmDiffUtils.getInstance().pickHighest(nPairs,pairsToScore,ref,updt);
+				System.out.print("Highest state pair found:");
+				System.out.println("\t"+A_B.get(0)+","+A_B.get(1));
+
+				// Line 10 @ Algorithm 1
+				kPairs.add(A_B);
+				checked.get(0).add(A_B.get(0));
+				checked.get(1).add(A_B.get(1));
+
+				// Line 11 @ Algorithm 1
+				FfsmDiffUtils.getInstance().removeConflicts(nPairs,checked);
+			}
+			// Line 13 @ Algorithm 1
+			nPairs = FfsmDiffUtils.getInstance().surr(kPairs,ref,updt);
+			FfsmDiffUtils.getInstance().removeConflicts(nPairs,checked);
+		}
+		return kPairs;
+	}
 }
