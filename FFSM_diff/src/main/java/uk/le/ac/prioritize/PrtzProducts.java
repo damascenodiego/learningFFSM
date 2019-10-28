@@ -53,7 +53,7 @@ public class PrtzProducts {
 			CommandLine line = parser.parse( options, args);
 
 			if(line.hasOption(HELP) || !line.hasOption(FM)){
-				formatter.printHelp( "", options );
+				formatter.printHelp( "PrtzProducts", options );
 				System.exit(0);
 			}
 			

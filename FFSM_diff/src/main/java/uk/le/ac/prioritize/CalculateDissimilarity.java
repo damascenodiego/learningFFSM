@@ -51,7 +51,7 @@ public class CalculateDissimilarity {
 			CommandLine line = parser.parse( options, args);
 
 			if(line.hasOption(HELP) || !line.hasOption(FM)){
-				formatter.printHelp( "", options );
+				formatter.printHelp( "CalculateDissimilarity", options );
 				System.exit(0);
 			}
 			
