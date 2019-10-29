@@ -125,10 +125,9 @@ public class LearnFFSM {
 			
 			float precision = FfsmDiffUtils.getInstance().calcPerformance(deltaRef,removTr,addedTr);
 			float recall    = FfsmDiffUtils.getInstance().calcPerformance(deltaRef,removTr,removTr);
+			float f_measure = (2*precision*recall)/(precision+recall);
 			
-			System.out.println(String.format("Precision:%f", precision));
-			System.out.println(String.format("Recall:%f", recall));
-			
+			System.out.println(String.format("Precision|Recall|F-measure:%f|%f|%f", precision, recall, f_measure));
 			
 			if(line.hasOption(FREF)){
 				ffsm = FfsmDiffUtils.getInstance().makeFFSM((FeaturedMealy<String, Word<String>>)ref,(ProductMealy<String, Word<String>>)updt,kPairs,fm);
