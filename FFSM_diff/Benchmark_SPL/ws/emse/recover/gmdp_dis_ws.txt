@@ -1,0 +1,8 @@
+/var/autofs/home/home/cdnd1/git/learningFFSM/FFSM_diff/Benchmark_SPL/ws/fsm/fsm_ws_1.txt
+/var/autofs/home/home/cdnd1/git/learningFFSM/FFSM_diff/Benchmark_SPL/ws/fsm/fsm_ws_8.txt
+/var/autofs/home/home/cdnd1/git/learningFFSM/FFSM_diff/Benchmark_SPL/ws/fsm/fsm_ws_2.txt
+/var/autofs/home/home/cdnd1/git/learningFFSM/FFSM_diff/Benchmark_SPL/ws/fsm/fsm_ws_7.txt
+/var/autofs/home/home/cdnd1/git/learningFFSM/FFSM_diff/Benchmark_SPL/ws/fsm/fsm_ws_3.txt
+/var/autofs/home/home/cdnd1/git/learningFFSM/FFSM_diff/Benchmark_SPL/ws/fsm/fsm_ws_5.txt
+/var/autofs/home/home/cdnd1/git/learningFFSM/FFSM_diff/Benchmark_SPL/ws/fsm/fsm_ws_4.txt
+/var/autofs/home/home/cdnd1/git/learningFFSM/FFSM_diff/Benchmark_SPL/ws/fsm/fsm_ws_6.txt
