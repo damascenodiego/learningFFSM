@@ -561,7 +561,7 @@ public class FfsmDiffUtils {
 	}
 
 	public Node removeCoreFeatures(IFeatureModel fm, Or condition) {
-		List<IFeature> coreFeatures = new ArrayList<>(fm.getAnalyser().getCoreFeatures());
+		List<IFeature> coreFeatures = new ArrayList<>(fm.getAnalyser().getCoreFeatures(300000));
 		for (IFeature iFeat: coreFeatures) {
 			if(iFeat.getName().equals("TRUE")) {
 				coreFeatures.remove(iFeat);
@@ -583,7 +583,7 @@ public class FfsmDiffUtils {
 	}
 	
 	public  Node removeCoreFeatures(IFeatureModel fm, And condition) {
-		List<IFeature> coreFeatures = new ArrayList<>(fm.getAnalyser().getCoreFeatures());
+		List<IFeature> coreFeatures = new ArrayList<>(fm.getAnalyser().getCoreFeatures(300000));
 		for (IFeature iFeat: coreFeatures) {
 			if(iFeat.getName().equals("TRUE")) {
 				coreFeatures.remove(iFeat);
