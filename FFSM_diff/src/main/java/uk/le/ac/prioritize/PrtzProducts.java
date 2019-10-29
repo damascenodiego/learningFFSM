@@ -97,6 +97,9 @@ public class PrtzProducts {
 					
 					float sc = 1 - clacDistance(conf_i, conf_j, allFeatures);
 					prodPair_lst.add(new ScorePair<ProductMealy<String,Word<String>>>(sc, fMealy_i, fMealy_j));
+					System.err.println(fMealy_i.getInfo().getProperty("filename"));
+					System.err.println(fMealy_j.getInfo().getProperty("filename"));
+					System.err.println(String.format("Score: %f", sc));
 				}				
 			}
 			
@@ -183,8 +186,8 @@ public class PrtzProducts {
 			pairSim.get(scorePair.getStatej()).put(scorePair.getStatei(), scorePair.getScore());
 			
 			
-			if(by_similarity) is_best = best_ds > scorePair.getScore();	
-			else is_best = best_ds < scorePair.getScore();
+			if(by_similarity) is_best = scorePair.getScore() < best_ds;	
+			else is_best = scorePair.getScore() > best_ds;
 			
 			if(is_best) {
 				best_ds = scorePair.getScore();
