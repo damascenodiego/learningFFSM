@@ -13,4 +13,4 @@ my_dir=/home/damascdn/remote_euler/Benchmark_SPL/
 cd $my_dir
 
 
-python emse.py $name
+python emse_prtz.py $name
