@@ -71,9 +71,11 @@ public class CompareLanguages {
 			
 			float precision = FfsmDiffUtils.getInstance().calcPerformance(deltaRef,removTr,addedTr);
 			float recall    = FfsmDiffUtils.getInstance().calcPerformance(deltaRef,removTr,removTr);
+			float f_measure = (2*precision*recall)/(precision+recall);
 			
 			System.out.println(String.format("Precision:%f", precision));
 			System.out.println(String.format("Recall:%f", recall));
+			System.out.println(String.format("F-measure:%f", f_measure));
 			
 			
 			
