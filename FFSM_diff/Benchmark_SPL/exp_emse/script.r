@@ -58,11 +58,12 @@ p<-ggplot(tab_m, aes(x=RatioStates)) +
 filename <- "histogram_ratsize.pdf"
 ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
 
-tab_m$ConfigDissim <- 1-tab_m$ConfigDissim
+tab_m$ConfigSim <- 1-tab_m$ConfigDissim
 {
   corrMethod<-"pearson"
   y_txt <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing"; y_title <- "Pearson correlation coefficient - FFSM size vs. Feature sharing"
   y_txt <- "ConfigDissim"; ylab_txt <- "Configuration dissimilarity"; y_title <- "Pearson correlation coefficient - FFSM size vs. Product dissimilarity"
+  y_txt <- "ConfigSim"; ylab_txt <- "Configuration similarity"; y_title <- "Pearson correlation coefficient - FFSM size vs. Product similarity"
   
   plot<-ggscatter(tab_m,
                   x = "RatioStates", xlab = "Ratio between FFSM size to total size of products pairs",
