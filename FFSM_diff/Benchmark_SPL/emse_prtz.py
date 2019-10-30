@@ -21,7 +21,7 @@ if not os.path.exists(out_directory):
 	os.makedirs(out_directory)
 
 _ktr=""
-# _ktr="-t 0.40"
+_ktr="-t 0.40"
 _writer = open(out_directory+"/report.log","w")
 
 MODEL_ID=1
