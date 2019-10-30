@@ -41,8 +41,6 @@ _writer.write("\n")
 
 for NEXT_ID in prodOrder:
 	MODEL_ID+=1
-	tmp=list(prodAnalyzed)
-	tmp.append(NEXT_ID)
 	bashCommand = "java -jar ./learnFFSM.jar "+_ktr+" -fm ./"+SPL_NAME+"/model.xml -fref "+out_directory+"ffsm_"+str(MODEL_ID-1)+"_kiss.txt  -updt "+NEXT_ID+" -out "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt"
 	_writer.write(bashCommand)
 	_writer.write("\n")
@@ -59,7 +57,7 @@ for NEXT_ID in prodOrder:
 	_writer.flush()
 _writer.close()
 	
-_ktr="-k 1.0"
+_ktr="-t 999 -r 0"
 _writer = open(out_directory+"/report_fmeasure.log","w")
 MAX_ID = MODEL_ID
 for MODEL_ID in range(1,MAX_ID+1):
@@ -71,7 +69,6 @@ for MODEL_ID in range(1,MAX_ID+1):
 	_writer.write("\n")
 	_writer.write(output)
 	_writer.write("\n")
-	prodAnalyzed=tmp
 
 
 _writer.close()
