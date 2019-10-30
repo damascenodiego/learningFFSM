@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -42,7 +41,7 @@ public class FfsmDiffUtils {
 	}
 	
 	public void removeConflicts(Set<List<Integer>> nPairs, Map<Integer, Set<Integer>> checked) {
-		Set<List<Integer>> toRemove = new HashSet<>();
+		Set<List<Integer>> toRemove = new LinkedHashSet<>();
 		for (List<Integer> pair : nPairs) {
 			if (checked.get(0).contains(pair.get(0)) || checked.get(1).contains(pair.get(1))) {
 				toRemove.add(pair);
@@ -54,8 +53,8 @@ public class FfsmDiffUtils {
 	
 	public void removeConflictsByOrder(List<ScorePair<Integer>> scorePairs) {
 		Map<Integer,Set<Integer>> checked = new HashMap<>();
-		checked.put(0, new HashSet<>());
-		checked.put(1, new HashSet<>());
+		checked.put(0, new LinkedHashSet<>());
+		checked.put(1, new LinkedHashSet<>());
 		List<ScorePair<Integer>> toRemove = new ArrayList<>();
 		for (ScorePair<Integer> pair : scorePairs) {
 			if (checked.get(0).contains(pair.getStatei()) || checked.get(1).contains(pair.getStatej())) {
@@ -97,7 +96,7 @@ public class FfsmDiffUtils {
 			int y = i % fsm2.getStateIDs().size();
 			
 			// Check if 'score fall above t'  
-			if(pairsToScore.getEntry(i) >= threshold 
+			if(pairsToScore.getEntry(i) > threshold 
 					&& x!=fsm1.getInitialStateIndex() 
 					&& y!=fsm2.getInitialStateIndex()
 					) {
@@ -109,7 +108,7 @@ public class FfsmDiffUtils {
 		
 		// only pairs where the best match is
 		// at least r times as good as any other match
-		while(!scorePairs.isEmpty() && scorePairs.get(scorePairs.size()-1).getScore()*ration < scorePairs.get(0).getScore()) {
+		while(scorePairs.size()>1 && scorePairs.get(scorePairs.size()-1).getScore()*ration < scorePairs.get(0).getScore()) {
 			scorePairs.remove(scorePairs.size()-1);
 		}
 		//System.out.println(scorePairs);
@@ -200,9 +199,9 @@ public class FfsmDiffUtils {
 				trsIn2.values().forEach(a_lst -> a_lst.forEach(sympTr -> sigma_i2.putIfAbsent(sympTr.getIn()+"\t/\t"+sympTr.getOut(),new ArrayList<>())));
 				trsIn2.values().forEach(a_lst -> a_lst.forEach(sympTr -> sigma_i2.get(sympTr.getIn()+"\t/\t"+sympTr.getOut()).add(sympTr)));
 				
-				Set<String> sigma_i1_min_i2 = new HashSet<>(sigma_i1.keySet()); sigma_i1_min_i2.removeAll(sigma_i2.keySet());
-				Set<String> sigma_i2_min_i1 = new HashSet<>(sigma_i2.keySet()); sigma_i2_min_i1.removeAll(sigma_i1.keySet());
-				Set<String> sigma_intersec = new HashSet<>(sigma_i1.keySet()); sigma_intersec.retainAll(sigma_i2.keySet());
+				Set<String> sigma_i1_min_i2 = new LinkedHashSet<>(sigma_i1.keySet()); sigma_i1_min_i2.removeAll(sigma_i2.keySet());
+				Set<String> sigma_i2_min_i1 = new LinkedHashSet<>(sigma_i2.keySet()); sigma_i2_min_i1.removeAll(sigma_i1.keySet());
+				Set<String> sigma_intersec = new LinkedHashSet<>(sigma_i1.keySet()); sigma_intersec.retainAll(sigma_i2.keySet());
 				
 				int succ_i1_i2 = 0;
 				for (String inputSymbol : sigma_intersec) {
@@ -246,9 +245,9 @@ public class FfsmDiffUtils {
 				trsIn2.values().forEach(a_lst -> a_lst.forEach(sympTr -> sigma_i2.putIfAbsent(sympTr.getIn()+"\t/\t"+sympTr.getOut(),new ArrayList<>())));
 				trsIn2.values().forEach(a_lst -> a_lst.forEach(sympTr -> sigma_i2.get(sympTr.getIn()+"\t/\t"+sympTr.getOut()).add(sympTr)));
 				
-				Set<String> sigma_i1_min_i2 = new HashSet<>(sigma_i1.keySet()); sigma_i1_min_i2.removeAll(sigma_i2.keySet());
-				Set<String> sigma_i2_min_i1 = new HashSet<>(sigma_i2.keySet()); sigma_i2_min_i1.removeAll(sigma_i1.keySet());
-				Set<String> sigma_intersec = new HashSet<>(sigma_i1.keySet()); sigma_intersec.retainAll(sigma_i2.keySet());
+				Set<String> sigma_i1_min_i2 = new LinkedHashSet<>(sigma_i1.keySet()); sigma_i1_min_i2.removeAll(sigma_i2.keySet());
+				Set<String> sigma_i2_min_i1 = new LinkedHashSet<>(sigma_i2.keySet()); sigma_i2_min_i1.removeAll(sigma_i1.keySet());
+				Set<String> sigma_intersec = new LinkedHashSet<>(sigma_i1.keySet()); sigma_intersec.retainAll(sigma_i2.keySet());
 				
 				int succ_i1_i2 = 0;
 				for (String inputSymbol : sigma_intersec) {
@@ -377,7 +376,7 @@ public class FfsmDiffUtils {
 			ConditionalState<ConditionalTransition<String, Word<String>>> ffsm_si = nfa1ToFFSM.get(si);
 			
 			Node a_cons = removeCoreFeatures(fm, new And(fsm2.getConfiguration()));
-			Set<Node> the_set = new HashSet<>();
+			Set<Node> the_set = new LinkedHashSet<>();
 			for (Node node : ffsm_si.getCondition().getChildren())  the_set.add(node);
 			if(!the_set.contains(a_cons)) {
 				the_set.add(a_cons);
@@ -398,7 +397,7 @@ public class FfsmDiffUtils {
 					ConditionalState<ConditionalTransition<String, Word<String>>> ffsm_sj = nfa1ToFFSM.get(sj);
 					
 					a_cons = removeCoreFeatures(fm, new And(fsm2.getConfiguration()));
-					the_set = new HashSet<>();
+					the_set = new LinkedHashSet<>();
 					for (Node node : ffsm_sj.getCondition().getChildren()) the_set.add(node);
 					if(!the_set.contains(a_cons)) {
 						the_set.add(a_cons);
@@ -414,7 +413,7 @@ public class FfsmDiffUtils {
 						SimplifiedTransition<String, Word<String>> tr = new ArrayList<>(trs_matching.values()).get(0).get(0);
 						a_tr = (ConditionalTransition<String, Word<String>>) tr.getTransition();
 						a_cons = removeCoreFeatures(fm, new And(fsm2.getConfiguration()));
-						the_set = new HashSet<>();
+						the_set = new LinkedHashSet<>();
 						for (Node node : a_tr.getCondition().getChildren()) the_set.add(node);
 						if(!the_set.contains(a_cons)) {
 							the_set.add(a_cons);
@@ -569,7 +568,7 @@ public class FfsmDiffUtils {
 			}
 			
 		}
-		Set<String> featNames = new HashSet<>();
+		Set<String> featNames = new LinkedHashSet<>();
 		coreFeatures.forEach(aFeat -> featNames.add(aFeat.getName()));
 		
 		Set<Node> or_set = new LinkedHashSet<>();
@@ -590,7 +589,7 @@ public class FfsmDiffUtils {
 				break;
 			}	
 		}
-		Set<String> featNames = new HashSet<>();
+		Set<String> featNames = new LinkedHashSet<>();
 		coreFeatures.forEach(aFeat -> featNames.add(aFeat.getName()));
 		Set<Node> and_set = removeFeaturesByName(featNames,condition);
 		return new And(and_set);
@@ -648,7 +647,7 @@ public class FfsmDiffUtils {
 	public Collection<String> createAlphabet(
 			ProductMealy<String, Word<String>> fsm1, 
 			ProductMealy<String, Word<String>> fsm2) {
-		Set<String> abcSet = new HashSet<>();
+		Set<String> abcSet = new LinkedHashSet<>();
 		
 		abcSet.addAll(fsm1.getInputAlphabet());
 		abcSet.addAll(fsm2.getInputAlphabet());
@@ -662,10 +661,10 @@ public class FfsmDiffUtils {
 			Set<SimplifiedTransition<String, Word<String>>> removTr,
 			Set<SimplifiedTransition<String, Word<String>>> xTr) {
 		
-		Set<SimplifiedTransition<String, Word<String>>> tp = new HashSet<>(deltaRef);
+		Set<SimplifiedTransition<String, Word<String>>> tp = new LinkedHashSet<>(deltaRef);
 		tp.removeAll(removTr);
 		
-		Set<SimplifiedTransition<String, Word<String>>> tp_u_x = new HashSet<>(tp);
+		Set<SimplifiedTransition<String, Word<String>>> tp_u_x = new LinkedHashSet<>(tp);
 		tp_u_x.addAll(xTr);
 		
 		float performance = ((float) tp.size())/tp_u_x.size(); 
@@ -674,7 +673,7 @@ public class FfsmDiffUtils {
 
 	public Set<SimplifiedTransition<String, Word<String>>> mkTransitionsSet(
 			IConfigurableFSM<String, Word<String>> ref) {
-		Set<SimplifiedTransition<String, Word<String>>> deltaRef = new HashSet<>();
+		Set<SimplifiedTransition<String, Word<String>>> deltaRef = new LinkedHashSet<>();
 		for (Integer si : ref.getStateIDs()) {
 			for (List<SimplifiedTransition<String, Word<String>>> trs : ref.getSimplifiedTransitions(si).values()) {
 				deltaRef.addAll(trs);	
@@ -820,7 +819,7 @@ public class FfsmDiffUtils {
 		// Line 6 @ Algorithm 1
 		Set<List<Integer>> nPairs = FfsmDiffUtils.getInstance().surr(kPairs, ref,updt);
 		Map<Integer,Set<Integer>> checked = new HashMap<>();
-		checked.put(0, new HashSet<>()); checked.put(1, new HashSet<>());
+		checked.put(0, new LinkedHashSet<>()); checked.put(1, new LinkedHashSet<>());
 		for (List<Integer> list : kPairs) {
 			checked.get(0).add(list.get(0));
 			checked.get(1).add(list.get(1));
