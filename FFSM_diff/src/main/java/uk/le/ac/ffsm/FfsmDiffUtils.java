@@ -288,7 +288,11 @@ public class FfsmDiffUtils {
 			Integer A = pair.get(0);
 			Integer B = pair.get(1);
 			int coordIdx = (A) * lst_B.size() + (B);
-			if(maxSim<solution.getEntry(coordIdx)) {
+			// higher priority to fix point pairs, i.e., (x,x)
+			if(maxSim == solution.getEntry(coordIdx) && A == B) {
+				max.set(0, A);
+				max.set(1, B);
+			}else if(maxSim<solution.getEntry(coordIdx)) {
 				max.set(0, A);
 				max.set(1, B);
 				maxSim = solution.getEntry(coordIdx);
