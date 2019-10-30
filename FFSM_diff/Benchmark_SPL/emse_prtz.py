@@ -21,7 +21,7 @@ if not os.path.exists(out_directory):
 	os.makedirs(out_directory)
 
 _ktr=""
-_ktr="-t 0.40"
+# _ktr="-t 0.40"
 _writer = open(out_directory+"/report.log","w")
 
 MODEL_ID=1
@@ -56,9 +56,10 @@ for NEXT_ID in prodOrder:
 	output, error = process.communicate()
 	_writer.write(output)
 	_writer.write("\n")
+	_writer.flush()
 _writer.close()
 	
-
+_ktr="-k 1.0"
 _writer = open(out_directory+"/report_fmeasure.log","w")
 MAX_ID = MODEL_ID
 for MODEL_ID in range(1,MAX_ID+1):
