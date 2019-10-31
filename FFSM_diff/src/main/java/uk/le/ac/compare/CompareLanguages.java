@@ -18,6 +18,8 @@ import net.automatalib.words.Word;
 import uk.le.ac.ffsm.FeaturedMealy;
 import uk.le.ac.ffsm.FeaturedMealyUtils;
 import uk.le.ac.ffsm.FfsmDiffUtils;
+import uk.le.ac.ffsm.IConfigurableFSM;
+import uk.le.ac.ffsm.ProductMealy;
 import uk.le.ac.ffsm.SimplifiedTransition;
 
 public class CompareLanguages {
@@ -25,6 +27,7 @@ public class CompareLanguages {
 	private static final String HELP = "h";
 	private static final String K_VALUE = "k";
 	private static final String T_VALUE = "t";
+	private static final String IS_FSM = "fsm";
 	private static final String R_VALUE = "r";
 	
 	public static void main(String[] args) {
@@ -53,10 +56,18 @@ public class CompareLanguages {
 			
 			
 			File a_prod = new File(line.getArgList().get(0).toString());
-			FeaturedMealy<String, Word<String>> a_fMealy = FeaturedMealyUtils.getInstance().loadFeaturedMealy(a_prod,fm);
-			
 			File b_prod = new File(line.getArgList().get(1).toString());
-			FeaturedMealy<String, Word<String>> b_fMealy = FeaturedMealyUtils.getInstance().loadFeaturedMealy(b_prod,fm);
+			
+			IConfigurableFSM<String, Word<String>> a_fMealy = FeaturedMealyUtils.getInstance().loadProductMachine(a_prod,fm);
+			IConfigurableFSM<String, Word<String>> b_fMealy = FeaturedMealyUtils.getInstance().loadProductMachine(b_prod,fm);
+			
+			if(line.hasOption(IS_FSM)) {
+				a_fMealy = FeaturedMealyUtils.getInstance().loadProductMachine(a_prod,fm);
+				b_fMealy = FeaturedMealyUtils.getInstance().loadProductMachine(b_prod,fm);
+			}else {
+				a_fMealy = FeaturedMealyUtils.getInstance().loadFeaturedMealy(a_prod,fm);
+				b_fMealy = FeaturedMealyUtils.getInstance().loadFeaturedMealy(b_prod,fm);
+			}
 			
 			double K = Double.valueOf(line.getOptionValue(K_VALUE,"0.50"));
 			double T = Double.valueOf(line.getOptionValue(T_VALUE,"0.50"));
@@ -73,7 +84,7 @@ public class CompareLanguages {
 			float recall    = FfsmDiffUtils.getInstance().calcPerformance(deltaRef,removTr,removTr);
 			float f_measure = (2*precision*recall)/(precision+recall);
 			
-			System.out.println(String.format("Precision|Recall|F-measure:%f|%f|%f", precision, recall, f_measure));
+			System.out.println(String.format("ModelRef|ModelUpdt|Precision|Recall|F-measure:%s|%s|%f|%f|%f", a_prod.getName(),b_prod.getName(),precision, recall, f_measure));
 			
 			
 			
@@ -89,6 +100,7 @@ public class CompareLanguages {
 		options.addOption( FM,    true, "Feature model" );
 		options.addOption( K_VALUE, true, "Attenuation (i.e., surrounding states)" );
 		options.addOption( T_VALUE, true, "Threshold (i.e., only above)" );
+		options.addOption( IS_FSM, false, "Read FSM" );
 		options.addOption( R_VALUE, true, "Ratio (i.e., r times better only)" );
 		options.addOption( HELP,  false, "Help menu" );
 		return options;
