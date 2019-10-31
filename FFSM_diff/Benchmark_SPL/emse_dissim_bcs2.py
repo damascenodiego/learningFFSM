@@ -1,4 +1,4 @@
- -fsm#!/bin/python
+#!/bin/python
 
 import random,subprocess,os
 
