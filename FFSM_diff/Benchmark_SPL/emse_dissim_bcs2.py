@@ -1,4 +1,4 @@
-#!/bin/python
+ -fsm#!/bin/python
 
 import random,subprocess,os
 
@@ -31,7 +31,7 @@ for idx_PROD_I in range(len(prodOrder)):
 	_writer.flush()
 _writer.close()
 
-_ktr="-t 0.40"
+_ktr="-t 0.40 -fsm"
 _writer = open(directory+"/pair_comparelanguages_"+SPL_NAME+".txt","w")
 for idx_PROD_I in range(len(prodOrder)):
 	for idx_PROD_J in range(idx_PROD_I,len(prodOrder)):
