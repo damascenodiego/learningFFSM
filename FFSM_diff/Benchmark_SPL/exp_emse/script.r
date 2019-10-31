@@ -1,4 +1,4 @@
-list.of.packages <- c("ggpubr","ggrepel","ggplot2","effsize")
+list.of.packages <- c("ggpubr","ggrepel","ggplot2","effsize","stringr","reshape","dplyr")
 
 # new.packages <- list.of.packages[!(list.of.packages %in% installed.packages(lib.loc="/home/cdnd1/Rpackages/")[,"Package"])]
 # if(length(new.packages)) install.packages(new.packages,lib="/home/cdnd1/Rpackages/")
@@ -90,6 +90,95 @@ tab_m$ConfigSim <- 1-tab_m$ConfigDissim
   filename <- paste("correlation_",y_txt,".pdf",sep = "")
   ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
 }
+
+all_tabs <- NULL
+for (logId in seq(1,30)) {
+    logId <- str_pad(logId, 2, pad = "0")
+    for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
+      # for (an_spl in c("agm", "vm", "ws", "bcs2", "aerouc5", "cpterminal", "minepump")) {
+      for (xmdp in c("lmdp")) {
+        for (tsort in c("sim", "dis")) {
+          tab<-read.table(paste("../",xmdp,"_",tsort,"_",logId,"_",an_spl,"_fmeasure.log.tab",sep = ""),sep="|", header=TRUE)
+          tab$Index <- seq(nrow(tab))
+          tab$SPL <- an_spl
+          tab$Prioritization <- xmdp
+          tab$ID <- logId
+          tab$Criteria <- tsort
+          if(is.null(all_tabs)) all_tabs <- tab
+          else{
+            all_tabs <- rbind(all_tabs,tab)
+          }
+        }
+      }
+    }
+}
+
+summarized_tab <- all_tabs %>%
+  group_by(SPL,Prioritization,Criteria,ID) %>%
+  summarize(
+    sum_Precision = sum(Precision),
+    sum_Recall    = sum(Recall),
+    sum_Fmeasure  = sum(F.measure),
+    len_Precision = length(Precision),
+    len_Recall    = length(Recall),
+    len_Fmeasure  = length(F.measure),
+  )
+summarized_df<-data.frame(summarized_tab)
+
+# summarized_df$APFD_Precision  <- 1-summarized_df$sum_Precision/ summarized_df$len_Precision + 1/(2*summarized_df$len_Precision)
+# summarized_df$APFD_Recall     <- 1-summarized_df$sum_Recall   / summarized_df$len_Recall    + 1/(2*summarized_df$len_Recall)
+# summarized_df$APFD_Fmeasure   <- 1-summarized_df$sum_Fmeasure / summarized_df$len_Fmeasure  + 1/(2*summarized_df$len_Fmeasure)
+
+summarized_df$APFD_Precision <- summarized_df$sum_Precision/summarized_df$len_Precision
+summarized_df$APFD_Recall    <- summarized_df$sum_Recall/summarized_df$len_Recall
+summarized_df$APFD_Fmeasure  <- summarized_df$sum_Fmeasure/summarized_df$len_Fmeasure
+
+
+for (a_metric in c('APFD_Precision', 'APFD_Recall', 'APFD_Fmeasure')) {
+  plot <- ggplot(data=summarized_df, aes_string(x="SPL",y=a_metric,color="Criteria",fill="Criteria")) +
+    geom_boxplot(color = "black")+
+    stat_boxplot(geom ='errorbar',color = "black")+
+    # geom_hline(colour="gray", yintercept=6,linetype="solid") +
+    # geom_hline(colour="gray", yintercept=14,linetype="dashed") +
+    # geom_hline(colour="gray", yintercept=13,linetype="longdash") +
+    # annotate("text",x = 0.650, y = 6, label="Hc AGM" , size = 2)+
+    # annotate("text",x = 1.550, y = 14, label="Hc VM" , size = 2)+
+    # annotate("text",x = 2.750, y = 13, label="Hc WS" , size = 2)+
+    # scale_y_continuous(limits=c(0,1),breaks=seq(0,1,0.1))+
+    # scale_fill_brewer(palette="Greens") +
+    scale_fill_brewer(palette="Greys") +
+    theme_bw() #+ labs(x = "Software product line", y = "Number of states")
+  print(plot)
+  filename <- paste(a_metric,".pdf",sep="")
+  ggsave(device=cairo_pdf, filename, width = 6, height = 3, dpi=320)  # ssh plots
+}
+
+
+# {logId<-1
+# # for (logId in seq(1,30)) {
+#   logId <- str_pad(logId, 2, pad = "0")
+#   for (an_spl in unique(all_tabs$SPL)) {
+#     sub_tab<-data.frame(all_tabs[(all_tabs$SPL==an_spl & all_tabs$ID==logId),])
+#     colnames(sub_tab)
+#     # tab_melt <- melt(sub_tab[,c('Index', 'Prioritization', 'Criteria',"Precision","Recall","F.measure")],  id.vars = c('Index', 'Prioritization', 'Criteria'), variable.name = 'Metric')
+#     tab_melt <- melt(sub_tab[,c('Index', 'Prioritization', 'Criteria',"Recall")],  id.vars = c('Index', 'Prioritization', 'Criteria'), variable.name = 'Metric')  
+#     
+#     plot<-ggplot(tab_melt, aes(Index,value)) +
+#       geom_line(aes(colour = Criteria))+
+#       theme_bw()+
+#       scale_y_continuous(breaks = seq(0,1,0.1), limits = c(0,1))+
+#       theme(
+#         plot.title = element_text(hjust = 0.5, size=10),
+#         axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+#         axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+#         axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
+#         axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
+#       )+
+#       labs(x = "Number of products analyzed", y="Sensitivity", title = paste('Family model recovering - Sensitivity (',an_spl,' - ID',logId,')',sep = ''))
+#     print(plot)
+#   }
+# }
+# tab_melt <- melt(all_tabs[c("Index","Prioritization","Criteria","Recall")] ,  id.vars = c('Index', 'Prioritization', 'Criteria'), variable.name = 'Metric')
 
 # 
 # ##########################################################################

@@ -15,7 +15,7 @@ if not os.path.exists(directory+"learnt/"):
 _ktr=""
 _ktr="-t 0.40"
 _writer = open(directory+"/pair_merging_"+SPL_NAME+".txt","w")
-for idx_PROD_I in range(len(prodOrder)-1):
+for idx_PROD_I in range(len(prodOrder)):
 	for idx_PROD_J in range(idx_PROD_I,len(prodOrder)):
 		PROD_I = prodOrder[idx_PROD_I]
 		PROD_J = prodOrder[idx_PROD_J] 
