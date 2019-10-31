@@ -10,21 +10,25 @@ lapply(list.of.packages,require,character.only=TRUE)
 
 rm(new.packages,list.of.packages)
 
-tab_lst <- NULL
-for (an_spl in c("agm", "vm", "ws", "bcs2", "aerouc5", "cpterminal", "minepump")) {
-  tab<-read.table(paste("./pair_merging_",an_spl,".log",sep = ""),sep="/", header=TRUE)
-  tab_d<-read.table(paste("./pair_dissimilarity_",an_spl,".log",sep = ""),sep="\t", header=TRUE)
-  tab_m<-merge(tab,tab_d)
-  tab_m$SPL <- an_spl
-  if(is.null(tab_lst)){
-    tab_lst <- tab_m
-  }else{
-    tab_lst <- rbind(tab_lst,tab_m)
-  }
-}
+# tab_lst <- NULL
+# for (an_spl in c("agm", "vm", "ws", "bcs2")) {
+# # for (an_spl in c("agm", "vm", "ws", "bcs2", "aerouc5", "cpterminal", "minepump")) {
+#   tab_c<-read.table(paste("./pair_merging_",an_spl,".log",sep = ""),sep="/", header=TRUE)
+#   tab_d<-read.table(paste("./pair_dissimilarity_",an_spl,".log",sep = ""),sep="\t", header=TRUE)
+#   tab_l<-read.table(paste("./pair_comparelanguages_",an_spl,".log",sep = ""),sep="|", header=TRUE)
+#   tab_m<-merge(merge(tab_c,tab_d),tab_l)
+#   tab_m$SPL <- an_spl
+#   if(is.null(tab_lst)){
+#     tab_lst <- tab_m
+#   }else{
+#     tab_lst <- rbind(tab_lst,tab_m)
+#   }
+# }
+# write.table(tab_lst,"./pair_mdc.tab")
+tab_lst<-read.table("./pair_mdc.tab")
 
 # dissimilarity histogram 
-p<-ggplot(tab_m, aes(x=ConfigDissim)) + 
+p<-ggplot(tab_lst, aes(x=ConfigDissim)) + 
   geom_histogram(color="black", fill="lightgrey", bins=7)+
   labs(x = "Configuration dissimilarity", y = "Frequency", title = "Pairwise product dissimilarity")+
   scale_x_continuous(breaks = seq(0,1,0.1))+
@@ -35,14 +39,32 @@ p<-ggplot(tab_m, aes(x=ConfigDissim)) +
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )
-# p
+  )+facet_wrap(SPL~.,scales = "free_y")
+print(p)
 filename <- "histogram_dissim.pdf"
 ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
 
 
+# dissimilarity (recall) histogram 
+p<-ggplot(tab_lst, aes(x=Recall)) + 
+  geom_histogram(color="black", fill="lightgrey", bins=7)+
+  labs(x = "Configuration dissimilarity", y = "Frequency", title = "Pairwise product dissimilarity")+
+  scale_x_continuous(breaks = seq(0,1,0.1))+
+  theme_bw()+
+  theme(
+    plot.title = element_text(hjust = 0.5, size=10),
+    axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+    axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+    axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
+    axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
+  )+facet_wrap(SPL~.,scales = "free_y")
+print(p)
+filename <- "histogram_recall.pdf"
+ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
+
+
 # ratio size histogram 
-p<-ggplot(tab_m, aes(x=RatioStates)) + 
+p<-ggplot(tab_lst, aes(x=RatioStates)) + 
   geom_histogram(color="black", fill="lightgrey", bins=7)+
   labs(x = "Ratio betwen FFSM size to total size of products pair", y = "Frequency", title = "Ratio FFSM size to total products pair size")+
   scale_x_continuous(breaks = seq(0,1,0.1))+
@@ -53,24 +75,30 @@ p<-ggplot(tab_m, aes(x=RatioStates)) +
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )
+  )+facet_wrap(SPL~.,scales = "free_y")
 # p
 filename <- "histogram_ratsize.pdf"
 ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
 
-tab_m$ConfigSim <- 1-tab_m$ConfigDissim
+tab_lst$ConfigSim <- 1-tab_lst$ConfigDissim
 {
   corrMethod<-"pearson"
-  y_txt <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing"; y_title <- "Pearson correlation coefficient - FFSM size vs. Feature sharing"
-  y_txt <- "ConfigDissim"; ylab_txt <- "Configuration dissimilarity"; y_title <- "Pearson correlation coefficient - FFSM size vs. Product dissimilarity"
-  y_txt <- "ConfigSim"; ylab_txt <- "Configuration similarity"; y_title <- "Pearson correlation coefficient - FFSM size vs. Product similarity"
+  # x_col = "Recall"; xlab_txt = "Recall"
+  # x_col = "Precision"; xlab_txt = "Precision"
+  # x_col = "F.measure"; xlab_txt = "F-Measure"
+  x_col = "RatioStates"; xlab_txt = "Ratio between FFSM size to total size of products pairs"
+  # y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
+  y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
+  # y_col <- "ConfigDissim"; ylab_txt <- "Configuration dissimilarity"; 
   
-  plot<-ggscatter(tab_m,
-                  x = "RatioStates", xlab = "Ratio between FFSM size to total size of products pairs",
-                  y = y_txt, ylab = ylab_txt,
+  y_title <- "Pearson correlation coefficient"
+  
+  plot<-ggscatter(tab_lst,
+                  x = x_col, xlab = xlab_txt,
+                  y = y_col, ylab = ylab_txt,
                   title = y_title,
                   add = "reg.line",
-                  cor.coeff.args = list(method = corrMethod, label.x.npc = 0.7, label.y.npc = 0.1),
+                  cor.coeff.args = list(method = corrMethod, label.x.npc = 0.4, label.y.npc = 0.1),
                   conf.int = TRUE, # Add confidence interval
                   cor.coef = TRUE # Add correlation coefficient. see ?stat_cor
   )+
@@ -82,12 +110,12 @@ tab_m$ConfigSim <- 1-tab_m$ConfigDissim
       axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
       axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
       axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-    )
+    )+facet_wrap(SPL~.,scales = "free")
   
-  plot
+  print(plot)
   # filename <- paste("correlation_",an_spl,".pdf",sep = "")
   # filename <- "correlation.pdf"
-  filename <- paste("correlation_",y_txt,".pdf",sep = "")
+  filename <- paste("correlation_",x_col,"_",y_col,".pdf",sep = "")
   ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
 }
 
