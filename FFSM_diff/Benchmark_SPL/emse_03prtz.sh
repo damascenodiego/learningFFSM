@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #PBS -l ncpus=1
-#PBS -l walltime=24:00:00
+#PBS -l walltime=48:00:00
 #PBS -m ae
 #PBS -M damascenodiego@usp.br
 
