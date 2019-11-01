@@ -1,0 +1,31 @@
+digraph G {
+rankdir=LR;
+state0[ label = "Init", style=filled, color=green ];
+state1 [ label = "Go_offline" ];
+state1 -> state2 [ label=" accepts " ];
+state0 -> state3 [ label=" insert_card " ];
+state4 [ label = "CH_verified" ];
+state4 -> state5 [ label=" no_go " ];
+state4 -> state6 [ label=" go_online " ];
+state4 -> state1 [ label=" go_offline " ];
+state5 [ label = "NO_GO" ];
+state5 -> state7 [ label=" abort " ];
+state2 [ label = "Completed" ];
+state2 -> state0 [ label=" remove_card " ];
+state3 [ label = "Card_in" ];
+state3 -> state8 [ label=" initSchema " ];
+state9 [ label = "Issuer_responded" ];
+state9 -> state2 [ label=" issuer_accepts " ];
+state9 -> state7 [ label=" issuer_rejects " ];
+state6 [ label = "Go_online" ];
+state6 -> state9 [ label=" ask_issuer " ];
+state7 [ label = "Aborted" ];
+state7 -> state0 [ label=" remove_card " ];
+state8 [ label = "state3" ];
+state8 -> state10 [ label=" init_schema " ];
+state8 -> state7 [ label=" abort " ];
+state10 [ label = "App_init" ];
+state10 -> state4 [ label=" check_signature " ];
+state10 -> state4 [ label=" check_PIN_online " ];
+state10 -> state4 [ label=" check_PIN_offline " ];
+}
