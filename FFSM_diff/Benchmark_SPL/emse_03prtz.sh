@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#PBS -l ncpus=3
-#PBS -l walltime=96:00:00
+#PBS -l ncpus=1
+#PBS -l walltime=24:00:00
 #PBS -m ae
 #PBS -M damascenodiego@usp.br
 
@@ -11,6 +11,5 @@ module load gcc/4.9.2 R/3.3.3 java-oracle/jdk1.8.0_65
 
 my_dir=/home/damascdn/remote_euler/Benchmark_SPL/
 cd $my_dir
-
 
 python emse_prtz.py $name
