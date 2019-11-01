@@ -12,8 +12,8 @@ for an_spl in "agm" "vm" "ws" "bcs2"; do
    # done
 done
 
-for an_spl in "cpterminal" "minepump"; do
-# for an_spl in "aerouc5" "cpterminal" "minepump"; do
+# for an_spl in "cpterminal" "minepump"; do
+for an_spl in "aerouc5" "cpterminal" "minepump"; do
    mkdir -p $an_spl/emse/recover
    tar -xvf $an_spl/products.tar.gz -C $an_spl/
    ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -fm $an_spl/model.xml -gmdp          2> $an_spl/emse/recover/gmdp_dis_$an_spl.err 1> $an_spl/emse/recover/gmdp_dis_$an_spl.txt

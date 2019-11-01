@@ -1,8 +1,8 @@
 #!/bin/bash
 
-for an_spl in "agm" "vm" "ws" "bcs2";
-# for an_spl in "agm" "vm" "ws "bcs2" "cpterminal" "minepump";
-# for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump" "aerouc5";
+# for an_spl in "agm" "vm" "ws" "bcs2";
+# for an_spl in "agm" "vm" "ws" "bcs2"; "cpterminal" "minepump";
+for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump" "aerouc5";
 do
  echo "Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM" > ./pair_merging_$an_spl.log
  grep "^Reference" ./pair_merging_$an_spl.txt >> ./pair_merging_$an_spl.log
@@ -27,15 +27,15 @@ for i in */emse/recover/[gld][nm]dp*.txt; do
    done; 
 done;
 
-for fname in */emse/recover/[gld][nm]dp*/report_fmeasure.log; do
-   cp  $fname `echo $fname | cut -d\/ -f4`.txt
+for fname in */emse/recover/[gld][nm]dp*/report_fmeasure_l.log; do
+   cp  $fname ./exp_emse/`echo $fname | cut -d\/ -f4`.txt
 done
 
 
-for i in [gld][nm]dp*.log; do
-   echo "Precision|Recall|F-measure:Precision|Recall|F-measure" > $i.tab
-   grep "Precision|Recall|F-measure" $i >> $i.tab
-   sed -i "s/^Precision|Recall|F-measure://g" $i.tab
+for i in ./exp_emse/[gld][nm]dp*.txt; do
+   echo "ModelRef|ModelUpdt|Precision|Recall|F-measure:Reference|Updated|Precision|Recall|F-measure" > $i.tab
+   grep "ModelRef|ModelUpdt|Precision|Recall|F-measure:" $i >> $i.tab
+   sed -i "s/^ModelRef|ModelUpdt|Precision|Recall|F-measure://g" $i.tab
 done
 
 for i in */emse/recover; do
