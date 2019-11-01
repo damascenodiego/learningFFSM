@@ -48,12 +48,4 @@ for NEXT_ID in prodOrder:
 	output, error = process.communicate()	
 	_writer.write(output)
 	_writer.write("\n")
-	
-	bashCommand = "java -jar ./learnFFSM.jar -fm ./"+SPL_NAME+"/model.xml -clean "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt"
-	process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-	output, error = process.communicate()
-	_writer.write(output)
-	_writer.write("\n")
-	_writer.flush()
 _writer.close()
-	
