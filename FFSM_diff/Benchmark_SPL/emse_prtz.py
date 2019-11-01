@@ -32,12 +32,7 @@ process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
 _writer.write(output)
 _writer.write("\n")
-
-bashCommand = "java -jar ./learnFFSM.jar -fm ./"+SPL_NAME+"/model.xml -clean "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt"
-process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-output, error = process.communicate()
-_writer.write(output)
-_writer.write("\n")
+_writer.flush()
 
 for NEXT_ID in prodOrder:
 	MODEL_ID+=1
@@ -46,12 +41,6 @@ for NEXT_ID in prodOrder:
 	_writer.write("\n")
 	process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 	output, error = process.communicate()	
-	_writer.write(output)
-	_writer.write("\n")
-	
-	bashCommand = "java -jar ./learnFFSM.jar -fm ./"+SPL_NAME+"/model.xml -clean "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt"
-	process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-	output, error = process.communicate()
 	_writer.write(output)
 	_writer.write("\n")
 	_writer.flush()
@@ -71,16 +60,16 @@ for MODEL_ID in range(1,MAX_ID+1):
 	_writer.write("\n")
 _writer.close()
 
-_ktr="-t 999 -r 0"
-_writer = open(out_directory+"/report_fmeasure_p.log","w")
-MAX_ID = MODEL_ID
-for MODEL_ID in range(1,MAX_ID+1):
-	bashCommand = "java -cp ./learnFFSM.jar uk.le.ac.compare.CompareLanguages "+SPL_NAME+"/ffsms/ffsm_"+SPL_NAME+".txt "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt "+_ktr+" -fm ./"+SPL_NAME+"/model.xml"
-	# bashCommand = "java -cp ./learnFFSM.jar uk.le.ac.compare.CompareLanguages "+out_directory+"ffsm_"+str(MAX_ID)+"_kiss.txt "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt "+_ktr+" -fm ./"+SPL_NAME+"/model.xml"
-	process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-	output, error = process.communicate()
-	_writer.write(bashCommand)
-	_writer.write("\n")
-	_writer.write(output)
-	_writer.write("\n")
-_writer.close()
+# _ktr="-t 999 -r 0"
+# _writer = open(out_directory+"/report_fmeasure_p.log","w")
+# MAX_ID = MODEL_ID
+# for MODEL_ID in range(1,MAX_ID+1):
+# 	bashCommand = "java -cp ./learnFFSM.jar uk.le.ac.compare.CompareLanguages "+SPL_NAME+"/ffsms/ffsm_"+SPL_NAME+".txt "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt "+_ktr+" -fm ./"+SPL_NAME+"/model.xml"
+# 	# bashCommand = "java -cp ./learnFFSM.jar uk.le.ac.compare.CompareLanguages "+out_directory+"ffsm_"+str(MAX_ID)+"_kiss.txt "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt "+_ktr+" -fm ./"+SPL_NAME+"/model.xml"
+# 	process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+# 	output, error = process.communicate()
+# 	_writer.write(bashCommand)
+# 	_writer.write("\n")
+# 	_writer.write(output)
+# 	_writer.write("\n")
+# _writer.close()
