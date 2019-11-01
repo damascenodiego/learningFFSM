@@ -130,6 +130,7 @@ tab_lst$ConfigSim <- 1-tab_lst$ConfigDissim
 #         for (tsort in c("dis")) {
 #           tab<-read.table(paste("./fmeasure/",xmdp,"_",tsort,"_",logId,"_",an_spl,"_l.txt.tab",sep = ""),sep="|", header=TRUE)
 #           tab$Index <- seq(nrow(tab))
+#           tab$Weight <- nrow(tab)-seq(nrow(tab))+1
 #           tab$SPL <- an_spl
 #           tab$Prioritization <- xmdp
 #           tab$ID <- logId
@@ -142,16 +143,20 @@ tab_lst$ConfigSim <- 1-tab_lst$ConfigDissim
 #       }
 #     }
 # }
-# write.table(all_tabs,"./fmeasure_apfd.tab")
-tab_lst<-read.table("./fmeasure_apfd.tab")
+# write.table(all_tabs,"./fmeasure_apfd_l.tab")
+tab_lst<-read.table("./fmeasure_apfd_l.tab")
+tab_lst<-read.table("./fmeasure_apfd_p.tab")
 
 
-summarized_tab <- all_tabs %>%
+summarized_tab <- all_tabs[all_tabs$Prioritization!="lmdp",] %>%
   group_by(SPL,Prioritization,Criteria,ID) %>%
   summarize(
     sum_Precision = sum(Precision),
     sum_Recall    = sum(Recall),
     sum_Fmeasure  = sum(F.measure),
+    wav_Precision = weighted.mean(Precision,Weight),
+    wav_Recall    = weighted.mean(Recall,Weight),
+    wav_Fmeasure  = weighted.mean(F.measure,Weight),
     len_Precision = length(Precision),
     len_Recall    = length(Recall),
     len_Fmeasure  = length(F.measure),
@@ -166,7 +171,7 @@ summarized_df$APFD_Precision <- summarized_df$sum_Precision/summarized_df$len_Pr
 summarized_df$APFD_Recall    <- summarized_df$sum_Recall/summarized_df$len_Recall
 summarized_df$APFD_Fmeasure  <- summarized_df$sum_Fmeasure/summarized_df$len_Fmeasure
 
-
+# for (a_metric in c('wav_Precision', 'wav_Recall', 'wav_Fmeasure')) {
 for (a_metric in c('APFD_Precision', 'APFD_Recall', 'APFD_Fmeasure')) {
   plot <- ggplot(data=summarized_df, aes_string(x="Prioritization",y=a_metric)) +
     geom_boxplot(color = "black")+
@@ -177,10 +182,10 @@ for (a_metric in c('APFD_Precision', 'APFD_Recall', 'APFD_Fmeasure')) {
     # annotate("text",x = 0.650, y = 6, label="Hc AGM" , size = 2)+
     # annotate("text",x = 1.550, y = 14, label="Hc VM" , size = 2)+
     # annotate("text",x = 2.750, y = 13, label="Hc WS" , size = 2)+
-    # scale_y_continuous(limits=c(0,1),breaks=seq(0,1,0.1))+
+    scale_y_continuous(limits=c(0.7,1),breaks=seq(0,1,0.05))+
     # scale_fill_brewer(palette="Greens") +
     scale_fill_brewer(palette="Greys") +
-    theme_bw() #+facet_wrap(SPL~.,scales = "free")
+    theme_bw() +facet_wrap(SPL~.,scales = "free")
   print(plot)
   filename <- paste(a_metric,".pdf",sep="")
   ggsave(device=cairo_pdf, filename, width = 6, height = 3, dpi=320)  # ssh plots
