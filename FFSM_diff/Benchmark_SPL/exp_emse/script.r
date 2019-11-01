@@ -119,27 +119,32 @@ tab_lst$ConfigSim <- 1-tab_lst$ConfigDissim
   ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
 }
 
-all_tabs <- NULL
-for (logId in seq(1,30)) {
-    logId <- str_pad(logId, 2, pad = "0")
-    for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
-      # for (an_spl in c("agm", "vm", "ws", "bcs2", "aerouc5", "cpterminal", "minepump")) {
-      for (xmdp in c("lmdp")) {
-        for (tsort in c("sim", "dis")) {
-          tab<-read.table(paste("../",xmdp,"_",tsort,"_",logId,"_",an_spl,"_fmeasure.log.tab",sep = ""),sep="|", header=TRUE)
-          tab$Index <- seq(nrow(tab))
-          tab$SPL <- an_spl
-          tab$Prioritization <- xmdp
-          tab$ID <- logId
-          tab$Criteria <- tsort
-          if(is.null(all_tabs)) all_tabs <- tab
-          else{
-            all_tabs <- rbind(all_tabs,tab)
-          }
-        }
-      }
-    }
-}
+# all_tabs <- NULL
+# for (logId in seq(0,99)) {
+#     logId <- str_pad(logId, 2, pad = "0")
+#     for (an_spl in c("agm", "vm", "ws", "bcs2")) {
+#     # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
+#       # for (an_spl in c("agm", "vm", "ws", "bcs2", "aerouc5", "cpterminal", "minepump")) {
+#       # for (xmdp in c("gmdp","rndp")) {
+#       for (xmdp in c("lmdp","gmdp","rndp")) {
+#         for (tsort in c("dis")) {
+#           tab<-read.table(paste("./fmeasure/",xmdp,"_",tsort,"_",logId,"_",an_spl,"_l.txt.tab",sep = ""),sep="|", header=TRUE)
+#           tab$Index <- seq(nrow(tab))
+#           tab$SPL <- an_spl
+#           tab$Prioritization <- xmdp
+#           tab$ID <- logId
+#           tab$Criteria <- tsort
+#           if(is.null(all_tabs)) all_tabs <- tab
+#           else{
+#             all_tabs <- rbind(all_tabs,tab)
+#           }
+#         }
+#       }
+#     }
+# }
+# write.table(all_tabs,"./fmeasure_apfd.tab")
+tab_lst<-read.table("./fmeasure_apfd.tab")
+
 
 summarized_tab <- all_tabs %>%
   group_by(SPL,Prioritization,Criteria,ID) %>%
@@ -163,7 +168,7 @@ summarized_df$APFD_Fmeasure  <- summarized_df$sum_Fmeasure/summarized_df$len_Fme
 
 
 for (a_metric in c('APFD_Precision', 'APFD_Recall', 'APFD_Fmeasure')) {
-  plot <- ggplot(data=summarized_df, aes_string(x="SPL",y=a_metric,color="Criteria",fill="Criteria")) +
+  plot <- ggplot(data=summarized_df, aes_string(x="Prioritization",y=a_metric)) +
     geom_boxplot(color = "black")+
     stat_boxplot(geom ='errorbar',color = "black")+
     # geom_hline(colour="gray", yintercept=6,linetype="solid") +
@@ -175,7 +180,7 @@ for (a_metric in c('APFD_Precision', 'APFD_Recall', 'APFD_Fmeasure')) {
     # scale_y_continuous(limits=c(0,1),breaks=seq(0,1,0.1))+
     # scale_fill_brewer(palette="Greens") +
     scale_fill_brewer(palette="Greys") +
-    theme_bw() #+ labs(x = "Software product line", y = "Number of states")
+    theme_bw() #+facet_wrap(SPL~.,scales = "free")
   print(plot)
   filename <- paste(a_metric,".pdf",sep="")
   ggsave(device=cairo_pdf, filename, width = 6, height = 3, dpi=320)  # ssh plots
