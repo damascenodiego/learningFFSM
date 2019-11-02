@@ -46,7 +46,7 @@ for NEXT_ID in prodOrder:
 	_writer.flush()
 _writer.close()
 	
-_ktr="-t 999 -r 0"
+# _ktr="-t 999 -r 0"
 _writer = open(out_directory+"/report_fmeasure_l.log","w")
 MAX_ID = MODEL_ID
 for MODEL_ID in range(1,MAX_ID+1):
