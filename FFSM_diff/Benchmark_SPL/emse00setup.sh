@@ -5,7 +5,7 @@ for an_spl in "agm" "vm" "ws" "bcs2"; do
    mkdir -p $an_spl/emse/recover
    for idx in {00..30}; do
       ls -1 $an_spl/fsm/fsm_$an_spl*txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml -gmdp          2> $an_spl/emse/recover/gmdp_dis_"$idx"_$an_spl.err 1> $an_spl/emse/recover/gmdp_dis_"$idx"_$an_spl.txt
-      ls -1 $an_spl/fsm/fsm_$an_spl*txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml                2> $an_spl/emse/rec*over/lmdp_dis_"$idx"_$an_spl.err 1> $an_spl/emse/recover/lmdp_dis_"$idx"_$an_spl.txt
+      ls -1 $an_spl/fsm/fsm_$an_spl*txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml                2> $an_spl/emse/recover/lmdp_dis_"$idx"_$an_spl.err 1> $an_spl/emse/recover/lmdp_dis_"$idx"_$an_spl.txt
       ls -1 $an_spl/fsm/fsm_$an_spl*txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml -gmdp -similar 2> $an_spl/emse/recover/gmdp_sim_"$idx"_$an_spl.err 1> $an_spl/emse/recover/gmdp_sim_"$idx"_$an_spl.txt
       ls -1 $an_spl/fsm/fsm_$an_spl*txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml       -similar 2> $an_spl/emse/recover/lmdp_sim_"$idx"_$an_spl.err 1> $an_spl/emse/recover/lmdp_sim_"$idx"_$an_spl.txt
       ls -1 $an_spl/fsm/fsm_$an_spl*txt | shuf > $an_spl/emse/recover/rndp_dis_"$idx"_$an_spl.txt
