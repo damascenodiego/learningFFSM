@@ -17,10 +17,10 @@ for an_spl in "cpterminal" "minepump"; do
    mkdir -p $an_spl/emse/recover
    tar -xvf $an_spl/products.tar.gz -C $an_spl/
    for idx in {00..30}; do
-      ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml -gmdp          2> $an_spl/emse/recover/gmdp_diss_"$idx"_$an_spl.err 1> $an_spl/emse/recover/gmdp_diss_"$idx"_$an_spl.txt
-      ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml                2> $an_spl/emse/recover/lmdp_diss_"$idx"_$an_spl.err 1> $an_spl/emse/recover/lmdp_diss_"$idx"_$an_spl.txt
-      ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml -gmdp -similar 2> $an_spl/emse/recover/gmdp_sims_"$idx"_$an_spl.err 1> $an_spl/emse/recover/gmdp_sims_"$idx"_$an_spl.txt
-      ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml       -similar 2> $an_spl/emse/recover/lmdp_sims_"$idx"_$an_spl.err 1> $an_spl/emse/recover/lmdp_sims_"$idx"_$an_spl.txt
+      ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml -gmdp          2> $an_spl/emse/recover/gmdp_dis_"$idx"_$an_spl.err 1> $an_spl/emse/recover/gmdp_dis_"$idx"_$an_spl.txt
+      ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml                2> $an_spl/emse/recover/lmdp_dis_"$idx"_$an_spl.err 1> $an_spl/emse/recover/lmdp_dis_"$idx"_$an_spl.txt
+      ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml -gmdp -similar 2> $an_spl/emse/recover/gmdp_sim_"$idx"_$an_spl.err 1> $an_spl/emse/recover/gmdp_sim_"$idx"_$an_spl.txt
+      ls -1 $an_spl/products/products_all/*_kiss.txt | java -cp learnFFSM.jar uk.le.ac.prioritize.PrtzProducts -shuffle -fm $an_spl/model.xml       -similar 2> $an_spl/emse/recover/lmdp_sim_"$idx"_$an_spl.err 1> $an_spl/emse/recover/lmdp_sim_"$idx"_$an_spl.txt
       ls -1 $an_spl/products/products_all/*_kiss.txt | shuf > $an_spl/emse/recover/rndp_dis_"$idx"_$an_spl.txt
    done
 done
