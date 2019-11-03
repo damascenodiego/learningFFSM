@@ -140,6 +140,7 @@ public class LearnFFSM {
 			
 			List<SimplifiedTransition<String, Word<String>>> refTrs = FeaturedMealyUtils.getInstance().getTransitions(ref);
 			List<SimplifiedTransition<String, Word<String>>> updtTrs = FeaturedMealyUtils.getInstance().getTransitions(updt);
+			List<SimplifiedTransition<String, Word<String>>> ffsmTrs = FeaturedMealyUtils.getInstance().getTransitions(ffsm);
 			
 			if(line.hasOption(MREF)){
 				Set<String> refFeatures = new HashSet<>();
@@ -170,6 +171,7 @@ public class LearnFFSM {
 						+ "/RatioStates"
 						+ "/RatioTransitions"
 						+ "/StatesFFSM"
+						+ "/TransitionsFFSM"
 						+ ":"
 						+f_ref.getName()+"/"+f_upd.getName()
 						+"/"+ref.getStateIDs().size()+"/"+updt.getStateIDs().size()
@@ -180,6 +182,7 @@ public class LearnFFSM {
 						+"/"+(((double)ffsm.getStateIDs().size())/(ref.getStateIDs().size()+updt.getStateIDs().size()))
 						+"/"+((double)refTrs.size())/updtTrs.size()
 						+"/"+ffsm.getStateIDs().size()
+						+"/"+ffsmTrs.size()						
 						);
 			}
 			
@@ -194,6 +197,7 @@ public class LearnFFSM {
 						+ "/RatioStates"
 						+ "/RatioTransitions"
 						+ "/StatesFFSM"
+						+ "/TransitionsFFSM"
 						+ ":"
 						+f_ref.getName()+"/"+f_upd.getName()
 						+"/"+ref.getStateIDs().size()+"/"+updt.getStateIDs().size()
@@ -204,6 +208,7 @@ public class LearnFFSM {
 						+"/"+(((double)ffsm.getStateIDs().size())/(ref.getStateIDs().size()+updt.getStateIDs().size()))
 						+"/"+((double)refTrs.size())/updtTrs.size()
 						+"/"+ffsm.getStateIDs().size()
+						+"/"+ffsmTrs.size()
 						);
 				
 			}
