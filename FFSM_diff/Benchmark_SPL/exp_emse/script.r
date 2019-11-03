@@ -11,8 +11,9 @@ lapply(list.of.packages,require,character.only=TRUE)
 rm(new.packages,list.of.packages)
 
 # tab_lst <- NULL
+# for (an_spl in c("agm", "bcs2")) {
 # # for (an_spl in c("agm", "vm", "ws", "bcs2")) {
-# for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
+# # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
 # # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
 #   tab_c<-read.table(paste("./pair/pair_merging_",an_spl,".log",sep = ""),sep="/", header=TRUE)
 #   tab_d<-read.table(paste("./pair/pair_dissimilarity_",an_spl,".log",sep = ""),sep="\t", header=TRUE)
@@ -24,9 +25,16 @@ rm(new.packages,list.of.packages)
 #   }else{
 #     tab_lst <- rbind(tab_lst,tab_m)
 #   }
+#   rm(tab_c,tab_d,tab_l,tab_m)
 # }
 # write.table(tab_lst,"./pair_mdc.tab")
 tab_lst<-read.table("./pair_mdc.tab")
+
+tab_lst$RatioStatesMax<- apply(tab_lst[,c("TotalStatesRef","TotalStatesUpdt")],1,max)
+tab_lst$RatioStatesMax<- tab_lst$StatesFFSM/tab_lst$RatioStatesMax
+
+tab_lst$RatioTransitionsMax<- apply(tab_lst[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,max)
+tab_lst$RatioTransitionsMax<- tab_lst$TransitionsFFSM/tab_lst$RatioTransitionsMax
 
 # dissimilarity histogram 
 p<-ggplot(tab_lst, aes(x=ConfigDissim)) + 
@@ -46,53 +54,55 @@ filename <- "histogram_dissim.pdf"
 ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
 
 
-# dissimilarity (recall) histogram 
-p<-ggplot(tab_lst, aes(x=Recall)) + 
-  geom_histogram(color="black", fill="lightgrey", bins=7)+
-  labs(x = "Configuration dissimilarity", y = "Frequency", title = "Pairwise product dissimilarity")+
-  scale_x_continuous(breaks = seq(0,1,0.1))+
-  theme_bw()+
-  theme(
-    plot.title = element_text(hjust = 0.5, size=10),
-    axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
-    axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
-    axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
-    axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )+facet_wrap(SPL~.,scales = "free_y")
-print(p)
-filename <- "histogram_recall.pdf"
-ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
+# # dissimilarity (recall) histogram 
+# p<-ggplot(tab_lst, aes(x=Recall)) + 
+#   geom_histogram(color="black", fill="lightgrey", bins=7)+
+#   labs(x = "Configuration dissimilarity", y = "Frequency", title = "Pairwise product dissimilarity")+
+#   scale_x_continuous(breaks = seq(0,1,0.1))+
+#   theme_bw()+
+#   theme(
+#     plot.title = element_text(hjust = 0.5, size=10),
+#     axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+#     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+#     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
+#     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
+#   )+facet_wrap(SPL~.,scales = "free_y")
+# print(p)
+# filename <- "histogram_recall.pdf"
+# ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
 
-
-# ratio size histogram 
-p<-ggplot(tab_lst, aes(x=RatioStates)) + 
-  geom_histogram(color="black", fill="lightgrey", bins=7)+
-  labs(x = "Ratio betwen FFSM size to total size of products pair", y = "Frequency", title = "Ratio FFSM size to total products pair size")+
-  scale_x_continuous(breaks = seq(0,1,0.1))+
-  theme_bw()+
-  theme(
-    plot.title = element_text(hjust = 0.5, size=10),
-    axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
-    axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
-    axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
-    axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )+facet_wrap(SPL~.,scales = "free_y")
-print(p)
-filename <- "histogram_ratsize.pdf"
-ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
+# 
+# # ratio size histogram 
+# p<-ggplot(tab_lst, aes(x=RatioStatesMax)) + 
+#   geom_histogram(color="black", fill="lightgrey", bins=7)+
+#   labs(x = "Ratio between sizes of FFSM to largest product", y = "Frequency", title = "Ratio between FFSM to product sizes - Pairwise analysis")+
+#   # scale_x_continuous(breaks = seq(0,1,0.1))+
+#   theme_bw()+
+#   theme(
+#     plot.title = element_text(hjust = 0.5, size=10),
+#     axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+#     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+#     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
+#     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
+#   )+facet_wrap(SPL~.,scales = "free_y")
+# print(p)
+# filename <- "histogram_ratsizemax.pdf"
+# ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
 
 tab_lst$ConfigSim <- 1-tab_lst$ConfigDissim
 {
   corrMethod<-"pearson"
-  # x_col = "Recall"; xlab_txt = "Recall"
-  # x_col = "Precision"; xlab_txt = "Precision"
-  x_col = "F.measure"; xlab_txt = "F-Measure"
-  # x_col = "RatioStates"; xlab_txt = "Ratio between FFSM size to total size of products pairs"
-  y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
-  # y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
+  # x_col = "Recall";               xlab_txt = "Recall"
+  # x_col = "Precision";            xlab_txt = "Precision"
+  # x_col = "F.measure";            xlab_txt = "F-Measure"
+  # x_col = "RatioStates";          xlab_txt = "Ratio between FFSM size to total size of products pairs"
+  x_col = "RatioStatesMax";       xlab_txt = "Ratio between FFSM size to largest product (Number of states)"
+  # x_col <- "RatioTransitionsMax"; xlab_txt <- "Ratio between FFSM size to largest product (Number of transitions)"
+  # y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
+  y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
   # y_col <- "ConfigDissim"; ylab_txt <- "Configuration dissimilarity"; 
   
-  y_title <- "Pearson correlation coefficient"
+  y_title <- "Pearson correlation coefficient - Pairwise analysis"
   
   plot<-ggscatter(tab_lst,
                   x = x_col, xlab = xlab_txt,
