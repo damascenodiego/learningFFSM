@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # for an_spl in "agm" "vm" "ws" "bcs2";
-# for an_spl in "agm" "vm" "ws" "bcs2"; "cpterminal" "minepump";
+# for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump";
 for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump" "aerouc5";
 do
  echo "Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM:Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/StatesFFSM" > ./pair_merging_$an_spl.log

@@ -937,4 +937,12 @@ public class FeaturedMealyUtils {
 		}
 		ref.getInitialState().setCondition(new Literal("TRUE"));
 	}
+
+	public List<SimplifiedTransition<String, Word<String>>> getTransitions(IConfigurableFSM<String, Word<String>> model) {
+		List<SimplifiedTransition<String, Word<String>>> list_out = new ArrayList<>();
+		for (Integer si : model.getStateIDs()) {
+			model.getSimplifiedTransitions(si).values().forEach(tr -> list_out.addAll(tr));
+		}
+		return list_out;
+	}
 }

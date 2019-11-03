@@ -138,6 +138,9 @@ public class LearnFFSM {
 			FeaturedMealyUtils.getInstance().saveFFSM_kiss(ffsm, new File(line.getOptionValue(OUT)));
 			FeaturedMealyUtils.getInstance().saveFFSM(ffsm, new File(line.getOptionValue(OUT)+".dot"));
 			
+			List<SimplifiedTransition<String, Word<String>>> refTrs = FeaturedMealyUtils.getInstance().getTransitions(ref);
+			List<SimplifiedTransition<String, Word<String>>> updtTrs = FeaturedMealyUtils.getInstance().getTransitions(updt);
+			
 			if(line.hasOption(MREF)){
 				Set<String> refFeatures = new HashSet<>();
 				Set<String> updtFeatures = new HashSet<>();
@@ -160,18 +163,22 @@ public class LearnFFSM {
 				System.out.println(
 						"Reference/Updated"
 						+ "/TotalStatesRef"+ "/TotalStatesUpdt"
+						+ "/TotalTransitionsRef"+ "/TotalTransitionsUpdt"
 						+ "/TotalFeaturesRef"+ "/TotalFeaturesUpdt"
 						+ "/CommonFeatures"
 						+ "/RatioFeatures"
 						+ "/RatioStates"
+						+ "/RatioTransitions"
 						+ "/StatesFFSM"
 						+ ":"
 						+f_ref.getName()+"/"+f_upd.getName()
 						+"/"+ref.getStateIDs().size()+"/"+updt.getStateIDs().size()
+						+"/"+refTrs.size()+"/"+updtTrs.size()
 						+"/"+refFeatures.size()+"/"+updtFeatures.size()
 						+"/"+commonFeatures.size()
 						+"/"+(((double)commonFeatures.size())    /(allFeatures.size()))
 						+"/"+(((double)ffsm.getStateIDs().size())/(ref.getStateIDs().size()+updt.getStateIDs().size()))
+						+"/"+((double)refTrs.size())/updtTrs.size()
 						+"/"+ffsm.getStateIDs().size()
 						);
 			}
@@ -180,12 +187,22 @@ public class LearnFFSM {
 				System.out.println(
 						"Reference/Updated"
 						+ "/TotalStatesRef"+ "/TotalStatesUpdt"
+						+ "/TotalTransitionsRef"+ "/TotalTransitionsUpdt"
+						+ "/TotalFeaturesRef"+ "/TotalFeaturesUpdt"
+						+ "/CommonFeatures"
+						+ "/RatioFeatures"
 						+ "/RatioStates"
+						+ "/RatioTransitions"
 						+ "/StatesFFSM"
 						+ ":"
 						+f_ref.getName()+"/"+f_upd.getName()
 						+"/"+ref.getStateIDs().size()+"/"+updt.getStateIDs().size()
+						+"/"+refTrs.size()+"/"+updtTrs.size()
+						+"/-1"+"/-1"
+						+"/-1"
+						+"/-1"
 						+"/"+(((double)ffsm.getStateIDs().size())/(ref.getStateIDs().size()+updt.getStateIDs().size()))
+						+"/"+((double)refTrs.size())/updtTrs.size()
 						+"/"+ffsm.getStateIDs().size()
 						);
 				
