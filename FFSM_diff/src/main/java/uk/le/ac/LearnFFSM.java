@@ -180,7 +180,7 @@ public class LearnFFSM {
 						+"/"+commonFeatures.size()
 						+"/"+(((double)commonFeatures.size())    /(allFeatures.size()))
 						+"/"+(((double)ffsm.getStateIDs().size())/(ref.getStateIDs().size()+updt.getStateIDs().size()))
-						+"/"+((double)refTrs.size())/updtTrs.size()
+						+"/"+((double)ffsmTrs.size())/(refTrs.size()+updtTrs.size())
 						+"/"+ffsm.getStateIDs().size()
 						+"/"+ffsmTrs.size()						
 						);
@@ -206,7 +206,7 @@ public class LearnFFSM {
 						+"/-1"
 						+"/-1"
 						+"/"+(((double)ffsm.getStateIDs().size())/(ref.getStateIDs().size()+updt.getStateIDs().size()))
-						+"/"+((double)refTrs.size())/updtTrs.size()
+						+"/"+((double)ffsmTrs.size())/(refTrs.size()+updtTrs.size())
 						+"/"+ffsm.getStateIDs().size()
 						+"/"+ffsmTrs.size()
 						);
