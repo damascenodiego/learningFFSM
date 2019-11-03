@@ -11,11 +11,12 @@ lapply(list.of.packages,require,character.only=TRUE)
 rm(new.packages,list.of.packages)
 
 # tab_lst <- NULL
-# for (an_spl in c("agm", "vm", "ws", "bcs2")) {
-# # for (an_spl in c("agm", "vm", "ws", "bcs2", "aerouc5", "cpterminal", "minepump")) {
-#   tab_c<-read.table(paste("./pair_merging_",an_spl,".log",sep = ""),sep="/", header=TRUE)
-#   tab_d<-read.table(paste("./pair_dissimilarity_",an_spl,".log",sep = ""),sep="\t", header=TRUE)
-#   tab_l<-read.table(paste("./pair_comparelanguages_",an_spl,".log",sep = ""),sep="|", header=TRUE)
+# # for (an_spl in c("agm", "vm", "ws", "bcs2")) {
+# for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
+# # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
+#   tab_c<-read.table(paste("./pair/pair_merging_",an_spl,".log",sep = ""),sep="/", header=TRUE)
+#   tab_d<-read.table(paste("./pair/pair_dissimilarity_",an_spl,".log",sep = ""),sep="\t", header=TRUE)
+#   tab_l<-read.table(paste("./pair/pair_comparelanguages_",an_spl,".log",sep = ""),sep="|", header=TRUE)
 #   tab_m<-merge(merge(tab_c,tab_d),tab_l)
 #   tab_m$SPL <- an_spl
 #   if(is.null(tab_lst)){
@@ -42,7 +43,7 @@ p<-ggplot(tab_lst, aes(x=ConfigDissim)) +
   )+facet_wrap(SPL~.,scales = "free_y")
 print(p)
 filename <- "histogram_dissim.pdf"
-ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
+ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
 
 
 # dissimilarity (recall) histogram 
@@ -60,7 +61,7 @@ p<-ggplot(tab_lst, aes(x=Recall)) +
   )+facet_wrap(SPL~.,scales = "free_y")
 print(p)
 filename <- "histogram_recall.pdf"
-ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
+ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
 
 
 # ratio size histogram 
@@ -76,19 +77,19 @@ p<-ggplot(tab_lst, aes(x=RatioStates)) +
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
   )+facet_wrap(SPL~.,scales = "free_y")
-# p
+print(p)
 filename <- "histogram_ratsize.pdf"
-ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
+ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
 
 tab_lst$ConfigSim <- 1-tab_lst$ConfigDissim
 {
   corrMethod<-"pearson"
   # x_col = "Recall"; xlab_txt = "Recall"
   # x_col = "Precision"; xlab_txt = "Precision"
-  # x_col = "F.measure"; xlab_txt = "F-Measure"
-  x_col = "RatioStates"; xlab_txt = "Ratio between FFSM size to total size of products pairs"
-  # y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
-  y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
+  x_col = "F.measure"; xlab_txt = "F-Measure"
+  # x_col = "RatioStates"; xlab_txt = "Ratio between FFSM size to total size of products pairs"
+  y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
+  # y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
   # y_col <- "ConfigDissim"; ylab_txt <- "Configuration dissimilarity"; 
   
   y_title <- "Pearson correlation coefficient"
@@ -116,30 +117,36 @@ tab_lst$ConfigSim <- 1-tab_lst$ConfigDissim
   # filename <- paste("correlation_",an_spl,".pdf",sep = "")
   # filename <- "correlation.pdf"
   filename <- paste("correlation_",x_col,"_",y_col,".pdf",sep = "")
-  ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)  # ssh plots
+  ggsave(device=cairo_pdf, filename, width = 8, height = 4, dpi=320)
 }
 
-all_tabs <- NULL
-for (logId in seq(1,30)) {
-    logId <- str_pad(logId, 2, pad = "0")
-    for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
-      # for (an_spl in c("agm", "vm", "ws", "bcs2", "aerouc5", "cpterminal", "minepump")) {
-      for (xmdp in c("lmdp")) {
-        for (tsort in c("sim", "dis")) {
-          tab<-read.table(paste("../",xmdp,"_",tsort,"_",logId,"_",an_spl,"_fmeasure.log.tab",sep = ""),sep="|", header=TRUE)
-          tab$Index <- seq(nrow(tab))
-          tab$SPL <- an_spl
-          tab$Prioritization <- xmdp
-          tab$ID <- logId
-          tab$Criteria <- tsort
-          if(is.null(all_tabs)) all_tabs <- tab
-          else{
-            all_tabs <- rbind(all_tabs,tab)
-          }
-        }
-      }
-    }
-}
+# all_tabs <- NULL
+# for (logId in seq(0,29)) {
+#     logId <- str_pad(logId, 2, pad = "0")
+#     for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
+#       # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
+#       for (xmdp in c("lmdp", "gmdp", "rndp")) {
+#       # for (xmdp in c("lmdp", "rndp")) {
+#         # for (tsort in c("dis")) {
+#         for (tsort in c("dis", "sim")) {
+#           if(xmdp=="rndp" && tsort == "sim"){ next }
+#           tab<-read.table(paste("./prtz/",xmdp,"_",tsort,"_",logId,"_",an_spl,"_l.txt.tab",sep = ""),sep="|", header=TRUE)
+#           tab$Index <- seq(nrow(tab))
+#           tab$SPL <- an_spl
+#           # tab$Prioritization <- paste(xmdp,tsort)
+#           tab$Prioritization <- xmdp
+#           tab$ID <- logId
+#           tab$Criteria <- tsort
+#           if(is.null(all_tabs)) all_tabs <- tab
+#           else{
+#             all_tabs <- rbind(all_tabs,tab)
+#           }
+#         }
+#       }
+#     }
+# }
+# write.table(all_tabs,"./recov_prtz.tab")
+all_tabs<-read.table("./recov_prtz.tab")
 
 summarized_tab <- all_tabs %>%
   group_by(SPL,Prioritization,Criteria,ID) %>%
@@ -149,7 +156,7 @@ summarized_tab <- all_tabs %>%
     sum_Fmeasure  = sum(F.measure),
     len_Precision = length(Precision),
     len_Recall    = length(Recall),
-    len_Fmeasure  = length(F.measure),
+    len_Fmeasure  = length(F.measure)
   )
 summarized_df<-data.frame(summarized_tab)
 
@@ -163,7 +170,7 @@ summarized_df$APFD_Fmeasure  <- summarized_df$sum_Fmeasure/summarized_df$len_Fme
 
 
 for (a_metric in c('APFD_Precision', 'APFD_Recall', 'APFD_Fmeasure')) {
-  plot <- ggplot(data=summarized_df, aes_string(x="SPL",y=a_metric,color="Criteria",fill="Criteria")) +
+  p <- ggplot(data=summarized_df, aes_string(x="Criteria",y=a_metric,color="Prioritization",fill="Prioritization")) +
     geom_boxplot(color = "black")+
     stat_boxplot(geom ='errorbar',color = "black")+
     # geom_hline(colour="gray", yintercept=6,linetype="solid") +
@@ -174,9 +181,10 @@ for (a_metric in c('APFD_Precision', 'APFD_Recall', 'APFD_Fmeasure')) {
     # annotate("text",x = 2.750, y = 13, label="Hc WS" , size = 2)+
     # scale_y_continuous(limits=c(0,1),breaks=seq(0,1,0.1))+
     # scale_fill_brewer(palette="Greens") +
+    # labs(x = "Software product line", y = "Number of states")+
     scale_fill_brewer(palette="Greys") +
-    theme_bw() #+ labs(x = "Software product line", y = "Number of states")
-  print(plot)
+    theme_bw() +facet_wrap(SPL~.,scales = "free")
+  print(p)
   filename <- paste(a_metric,".pdf",sep="")
   ggsave(device=cairo_pdf, filename, width = 6, height = 3, dpi=320)  # ssh plots
 }
