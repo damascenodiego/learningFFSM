@@ -170,7 +170,7 @@ summarized_df$APFD_Fmeasure  <- summarized_df$sum_Fmeasure/summarized_df$len_Fme
 
 
 for (a_metric in c('APFD_Precision', 'APFD_Recall', 'APFD_Fmeasure')) {
-  p <- ggplot(data=summarized_df, aes_string(x="Criteria",y=a_metric,color="Prioritization",fill="Prioritization")) +
+  p <- ggplot(data=summarized_df[(summarized_df$Criteria!="sim"),], aes_string(x="Prioritization",y=a_metric,color="Prioritization",fill="Prioritization")) +
     geom_boxplot(color = "black")+
     stat_boxplot(geom ='errorbar',color = "black")+
     # geom_hline(colour="gray", yintercept=6,linetype="solid") +
