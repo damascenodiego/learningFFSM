@@ -33,8 +33,9 @@ done;
 mkdir ./exp_emse/pair/
 # for an_spl in "agm" "bcs2";
 # for an_spl in "agm" "vm" "ws" "bcs2";
-for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump";
+# for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump";
 # for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump" "aerouc5";
+for an_spl in "aerouc5";
 do
  echo "Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM:Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM" > ./exp_emse/pair/pair_merging_$an_spl.log
  grep "^Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM" ./$an_spl/emse/pair_merging_$an_spl.txt >> ./exp_emse/pair/pair_merging_$an_spl.log
