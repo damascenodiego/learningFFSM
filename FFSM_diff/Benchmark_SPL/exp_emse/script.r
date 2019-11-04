@@ -29,6 +29,7 @@ rm(new.packages,list.of.packages)
 # }
 # write.table(pair_tabs,"./pair_mdc.tab")
 pair_tabs<-read.table("./pair_mdc.tab")
+pair_tabs<-pair_tabs[pair_tabs$SPL!="cpterminal",]
 
 # calculate similarity (opposite of dissim)
 pair_tabs$ConfigSim <- 1-pair_tabs$ConfigDissim
@@ -51,7 +52,7 @@ pair_tabs$RatioTransitions<- pair_tabs$TransitionsFFSM/pair_tabs$RatioTransition
 
 # dissimilarity histogram 
 p<-ggplot(pair_tabs, aes(x=ConfigSim)) + 
-  geom_histogram(color="black", fill="lightgrey", bins=10)+
+  geom_histogram(color="black", fill="lightgrey", bins=7)+
   labs(x = "Configuration similarity", y = "Frequency")+
   theme_bw()+
   theme(
@@ -60,15 +61,15 @@ p<-ggplot(pair_tabs, aes(x=ConfigSim)) +
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )+facet_wrap(SPL~.,scales = "free_y")
+  )+facet_wrap(SPL~.,scales = "free_y", nrow = 1)
 print(p)
 filename <- "histogram_ConfigSim.pdf"
-ggsave(device=cairo_pdf, filename, width = 12, height = 4, dpi=320)
+ggsave(device=cairo_pdf, filename, width = 12, height = 2, dpi=320)
 rm(p,filename)
 
 # dissimilarity (RatioStates) histogram
 p<-ggplot(pair_tabs, aes(x=RatioStates)) +
-  geom_histogram(color="black", fill="lightgrey", bins=10)+
+  geom_histogram(color="black", fill="lightgrey", bins=7)+
   labs(x = "Ratio between FFSM size to total size of products pairs (number of states)", y = "Frequency")+
   theme_bw()+
   theme(
@@ -77,15 +78,15 @@ p<-ggplot(pair_tabs, aes(x=RatioStates)) +
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )+facet_wrap(SPL~.,scales = "free_y")
+  )+facet_wrap(SPL~.,scales = "free_y", nrow = 1)
 print(p)
 filename <- "histogram_RatioStates.pdf"
-ggsave(device=cairo_pdf, filename, width = 12, height = 4, dpi=320)
+ggsave(device=cairo_pdf, filename, width = 12, height = 2, dpi=320)
 rm(p,filename)
 
 # dissimilarity (RatioTransitions) histogram
 p<-ggplot(pair_tabs, aes(x=RatioTransitions)) +
-  geom_histogram(color="black", fill="lightgrey", bins=10)+
+  geom_histogram(color="black", fill="lightgrey", bins=7)+
   labs(x = "Ratio between FFSM size to total size of products pairs (number of transitions)", y = "Frequency")+
   # scale_x_continuous(breaks = seq(0,1,0.1))+
   theme_bw()+
@@ -95,17 +96,17 @@ p<-ggplot(pair_tabs, aes(x=RatioTransitions)) +
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )+facet_wrap(SPL~.,scales = "free_y")
+  )+facet_wrap(SPL~.,scales = "free_y", nrow = 1)
 print(p)
 filename <- "histogram_RatioTransitions.pdf"
-ggsave(device=cairo_pdf, filename, width = 12, height = 4, dpi=320)
+ggsave(device=cairo_pdf, filename, width = 12, height = 2, dpi=320)
 rm(p,filename)
 
 {
   corrMethod<-"pearson"
-  # x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
-  x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
-  # y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
+  x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
+  # x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
+  y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
   y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
   
   y_title <- "Pearson correlation coefficient - Pairwise analysis"
@@ -115,13 +116,14 @@ rm(p,filename)
                   y = y_col, ylab = ylab_txt,
                   title = y_title,
                   add = "reg.line",
-                  cor.coeff.args = list(method = corrMethod, label.x.npc = 0.01, label.y.npc = 0.05),
+                  cor.coeff.args = list(method = corrMethod, label.x.npc = 0.01, label.y.npc = 0.01),
+                  cor.coef.size = 3.5,
                   conf.int = TRUE, # Add confidence interval
                   cor.coef = TRUE # Add correlation coefficient. see ?stat_cor
   )+
     theme_bw()+
     # scale_y_continuous(breaks = seq(0,1,0.2), limits = c(0,1))+
-    # scale_x_continuous(breaks = seq(0.5,1,0.1), limits = c(0.5,1))+
+    # scale_y_continuous(breaks = seq(0.3,1,0.1), limits = c(0.5,1))+
     theme(
       plot.title = element_text(hjust = 0.5, size=15),
       strip.text.x = element_text(size = 15),
@@ -130,11 +132,14 @@ rm(p,filename)
       axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=15),
       axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=15),
       axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=15)
-    )+facet_wrap(SPL~.,scales = "free")
+    )+
+    facet_wrap(SPL~.,scales = "free", nrow = 1)
+    # facet_wrap(SPL~.,scales = "free_x", nrow = 1)
+    # facet_wrap(SPL~., nrow = 1)
   
   print(p)
   filename <- paste("correlation_",x_col,"_",y_col,".pdf",sep = "")
-  ggsave(device=cairo_pdf, filename, width = 15, height = 7, dpi=320)
+  ggsave(device=cairo_pdf, filename, width = 18, height = 4, dpi=320)
   rm(p,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
 }
 
@@ -165,51 +170,53 @@ rm(p,filename)
 # }
 # write.table(prtz_tabs,"./recov_prtz.tab")
 prtz_tabs<-read.table("./recov_prtz.tab")
-prtz_tabs$StatesOrigFFSM <- 0; prtz_tabs$TransitionsOrigFFSM <- 0 
-
 prtz_tabs<-prtz_tabs[prtz_tabs$Criteria=="dis",]
+prtz_tabs<-prtz_tabs[prtz_tabs$SPL!="cpterminal",]
+prtz_tabs<-prtz_tabs[prtz_tabs$Prioritization!="gmdp",]
+
+prtz_tabs$StatesOrigFFSM <- 0; prtz_tabs$TransitionsOrigFFSM <- 0 
+prtz_tabs[prtz_tabs$SPL=='agm',      'StatesOrigFFSM'] <- 6;  prtz_tabs[prtz_tabs$SPL=='agm',     'TransitionsOrigFFSM'] <- 35
+prtz_tabs[prtz_tabs$SPL=='bcs2',     'StatesOrigFFSM'] <- 6;  prtz_tabs[prtz_tabs$SPL=='bcs2',    'TransitionsOrigFFSM'] <- 58
+prtz_tabs[prtz_tabs$SPL=='minepump', 'StatesOrigFFSM'] <- 26; prtz_tabs[prtz_tabs$SPL=='minepump','TransitionsOrigFFSM'] <- 572
+prtz_tabs[prtz_tabs$SPL=='vm',       'StatesOrigFFSM'] <- 14; prtz_tabs[prtz_tabs$SPL=='vm',      'TransitionsOrigFFSM'] <- 197
+prtz_tabs[prtz_tabs$SPL=='ws',       'StatesOrigFFSM'] <- 13; prtz_tabs[prtz_tabs$SPL=='ws',      'TransitionsOrigFFSM'] <- 112
 
 # calculate model size increment in terms of the maximum size (number of states)
-prtz_tabs$RatioStates<- apply(prtz_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,sum)
-prtz_tabs$RatioStates<- prtz_tabs$StatesFFSM/prtz_tabs$RatioStates
+prtz_tabs$RatioStates<- prtz_tabs$StatesFFSM/apply(prtz_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,sum)
 
 # calculate model size increment in terms of the maximum size (number of transitions)  
-prtz_tabs$RatioTransitions<- apply(prtz_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,sum)
-prtz_tabs$RatioTransitions<- prtz_tabs$TransitionsFFSM/prtz_tabs$RatioTransitions
-
-# calculate model size increment in terms of the largest model size (number of states)
-prtz_tabs$RatioStatesMax<- apply(prtz_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,max)
-prtz_tabs$RatioStatesMax<- prtz_tabs$StatesFFSM/prtz_tabs$RatioStatesMax
-
-# calculate model size increment in terms of the largest model size (number of transitions)
-prtz_tabs$RatioTransitionsMax<- apply(prtz_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,max)
-prtz_tabs$RatioTransitionsMax<- prtz_tabs$TransitionsFFSM/prtz_tabs$RatioTransitionsMax
+prtz_tabs$RatioTransitions<- prtz_tabs$TransitionsFFSM/apply(prtz_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,sum)
 
 summarized_tab <- prtz_tabs %>%
   group_by(SPL,Prioritization,Criteria,ID) %>%
   summarize(
-    sum_RatioTransitions = sum(RatioTransitions),
-    len_RatioTransitions = length(RatioTransitions),
+    sum_StatesFFSM = sum(StatesFFSM),
+    sum_TransitionsFFSM = sum(TransitionsFFSM),
     
     sum_RatioStates      = sum(RatioStates),
-    len_RatioStates      = length(RatioStates),
+    sum_RatioTransitions = sum(RatioTransitions),
     
-    sum_RatioTransitionsMax = sum(RatioTransitionsMax),
-    len_RatioTransitionsMax = length(RatioTransitionsMax),
+    num_FFSMs = length(StatesFFSM),
     
-    sum_RatioStatesMax      = sum(RatioStatesMax),
-    len_RatioStatesMax      = length(RatioStatesMax),
-  )
+    StatesOrigFFSM      = mean(StatesOrigFFSM),
+    TransitionsOrigFFSM = mean(TransitionsOrigFFSM)
+    )
 summarized_df<-data.frame(summarized_tab)
 
-summarized_df$APFD_RatioTransitions <- summarized_df$sum_RatioTransitions/summarized_df$len_RatioTransitions
-summarized_df$APFD_RatioStates      <- summarized_df$sum_RatioStates     /summarized_df$len_RatioStates
-summarized_df$APFD_RatioTransitionsMax <- summarized_df$sum_RatioTransitionsMax/summarized_df$len_RatioTransitionsMax
-summarized_df$APFD_RatioStatesMax      <- summarized_df$sum_RatioStatesMax     /summarized_df$len_RatioStatesMax
+summarized_df$APFD_RatioTransitions <- summarized_df$sum_RatioTransitions/summarized_df$num_FFSMs
+summarized_df$APFD_RatioStates      <- summarized_df$sum_RatioStates     /summarized_df$num_FFSMs
 
-for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates')) {
-# for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates','APFD_StatesFFSM', 'APFD_TransitionsFFSM')) {
-  p <- ggplot(data=summarized_df[(summarized_df$Criteria!="sim"),], aes_string(x="Prioritization",y=a_metric,color="Prioritization",fill="Prioritization")) +
+summarized_df$APFD_StatesOrigFFSM      <- summarized_df$sum_StatesFFSM/(summarized_df$num_FFSMs * summarized_df$StatesOrigFFSM)
+summarized_df$APFD_TransitionsOrigFFSM <- summarized_df$sum_TransitionsFFSM/(summarized_df$num_FFSMs * summarized_df$TransitionsOrigFFSM)
+
+summarized_df$Prioritization<- sub("lmdp","Similarity",summarized_df$Prioritization)
+# summarized_df$Prioritization<- sub("gmdp","Global",summarized_df$Prioritization)
+# summarized_df$Prioritization<- sub("lmdp","Local",summarized_df$Prioritization)
+summarized_df$Prioritization<- sub("rndp","Random",summarized_df$Prioritization)
+
+# for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates')) {
+for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates','APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
+  p <- ggplot(data=summarized_df, aes_string(x="Prioritization",y=a_metric,color="Prioritization",fill="Prioritization")) +
     geom_boxplot(color = "black")+
     stat_boxplot(geom ='errorbar',color = "black")+
     # geom_hline(colour="gray", yintercept=6,linetype="solid") +
@@ -222,9 +229,10 @@ for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates')) {
     # scale_fill_brewer(palette="Greens") +
     # labs(x = "Software product line", y = "Number of states")+
     scale_fill_brewer(palette="Greys") +
-    theme_bw() +facet_wrap(SPL~.,scales = "free")
+    theme_bw() +facet_wrap(SPL~.,scales = "free", nrow = 1)
   print(p)
   filename <- paste(a_metric,".pdf",sep="")
-  ggsave(device=cairo_pdf, filename, width = 8, height = 6, dpi=320)  # ssh plots
+  ggsave(device=cairo_pdf, filename, width = 11, height = 3, dpi=320)  # ssh plots
   rm(p,filename,a_metric)
 }
+
