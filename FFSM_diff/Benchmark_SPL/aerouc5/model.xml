@@ -3,23 +3,11 @@
     <properties/>
     <struct>
         <and mandatory="true" name="AeroUc5">
-            <alt mandatory="true" name="Provide_slope_indication_for_LP">
-                <feature name="SI_sensor_based"/>
-                <feature name="SI_from_DB"/>
-            </alt>
             <and mandatory="true" name="Display_reference_objects_in_landing_zone">
                 <feature name="Display_real_reference_objects"/>
                 <feature mandatory="true" name="Display_visual_3D_cues"/>
             </and>
-            <alt mandatory="true" name="HOCAS">
-                <feature name="HOCAS_Honeywell"/>
-                <feature name="HOCAS_GE_Aviation_Systems"/>
-            </alt>
             <and mandatory="true" name="Mark_landing_position">
-                <alt mandatory="true" name="Mark_LP">
-                    <feature name="Mark_LP_by_handling_pilot_only"/>
-                    <feature name="Mark_LP_by_both_pilots"/>
-                </alt>
                 <feature name="Check_for_obstacles"/>
                 <feature mandatory="true" name="Check_for_no_ground"/>
             </and>
