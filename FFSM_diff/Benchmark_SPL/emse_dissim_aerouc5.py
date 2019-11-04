@@ -3,7 +3,7 @@
 import random,subprocess,os
 
 
-prodOrder=["{:05d}".format(x) for x in range(1,256+1)]
+prodOrder=["{:05d}".format(x) for x in range(1,9+1)]
 
 SPL_NAME="aerouc5"
 

@@ -3,7 +3,7 @@
 import random,subprocess,os
 
 SPL_NAME="aerouc5"
-prodOrder=["{:05d}".format(x) for x in range(1,256+1)]
+prodOrder=["{:05d}".format(x) for x in range(1,9+1)]
 
 directory="./"+SPL_NAME+"/emse/"
 if not os.path.exists(directory):
