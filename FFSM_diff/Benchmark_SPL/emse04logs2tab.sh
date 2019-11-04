@@ -50,22 +50,26 @@ do
 
 done
 
-mkdir ./exp_emse/prtz/
-for fname in */emse/recover/[gld][nm]dp*/report_fmeasure_l.log; do
-   cp  $fname ./exp_emse/prtz/`echo $fname | cut -d\/ -f4`_l.txt
-done
 
-for fname in */emse/recover/[gld][nm]dp*/report.log; do
+
+mkdir ./exp_emse/prtz/
+
+for fname in */emse/recover/[glr][nm]dp*/report.log; do
    cp  $fname ./exp_emse/prtz/`echo $fname | cut -d\/ -f4`_r.txt
 done
 
+for fname in ./exp_emse/prtz/[glr][nm]dp*_r.txt; do
+   dest_file=$fname.log
 
-# for i in ./exp_emse/prtz/[gld][nm]dp*.txt; do
-#    echo "ModelRef|ModelUpdt|Precision|Recall|F-measure:Reference|Updated|Precision|Recall|F-measure" > $i.tab
-#    grep "ModelRef|ModelUpdt|Precision|Recall|F-measure:" $i >> $i.tab
-#    sed -i "s/^ModelRef|ModelUpdt|Precision|Recall|F-measure://g" $i.tab
-# done
+   echo "Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM:Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM" > $dest_file
+   grep "^Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM" $fname >> $dest_file
+   sed -i 's/Reference\/Updated\/TotalStatesRef\/TotalStatesUpdt\/TotalTransitionsRef\/TotalTransitionsUpdt\/TotalFeaturesRef\/TotalFeaturesUpdt\/CommonFeatures\/RatioFeatures\/RatioStates\/RatioTransitions\/StatesFFSM\/TransitionsFFSM://g' $dest_file
 
-# for i in */emse/recover; do
-#    zip -rm $i.zip $i & 
-# done
+done
+
+
+
+for i in */emse/; do
+   zip -rm $i/recover.zip $i/recover/* & 
+   zip -rm $i/pair.zip $i/pair/* & 
+done
