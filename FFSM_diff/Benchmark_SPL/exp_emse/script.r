@@ -50,6 +50,7 @@ pair_tabs$RatioTransitions<- pair_tabs$TransitionsFFSM/pair_tabs$RatioTransition
 # pair_tabs$RatioTransitionsMax<- apply(pair_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,max)
 # pair_tabs$RatioTransitionsMax<- pair_tabs$TransitionsFFSM/pair_tabs$RatioTransitionsMax
 
+pair_tabs$SPL<-toupper(pair_tabs$SPL)
 # dissimilarity histogram 
 p<-ggplot(pair_tabs, aes(x=ConfigSim)) + 
   geom_histogram(color="black", fill="lightgrey", bins=7)+
@@ -104,10 +105,10 @@ rm(p,filename)
 
 {
   corrMethod<-"pearson"
-  x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
-  # x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
-  # y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
-  y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
+  # x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
+  x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
+  y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
+  # y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
   
   y_title <- "Pearson correlation coefficient - Pairwise analysis"
   
@@ -214,6 +215,7 @@ summarized_df$APFD_TransitionsOrigFFSM <- summarized_df$sum_TransitionsFFSM/(sum
 # summarized_df$Prioritization<- sub("lmdp","Local",summarized_df$Prioritization)
 summarized_df$Prioritization<- sub("lmdp","Similarity",summarized_df$Prioritization)
 summarized_df$Prioritization<- sub("rndp","Random",summarized_df$Prioritization)
+summarized_df$SPL<-toupper(summarized_df$SPL)
 
 for (a_metric in c('APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
 # for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates')) {
