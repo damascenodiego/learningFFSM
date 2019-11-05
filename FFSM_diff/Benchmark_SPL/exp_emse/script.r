@@ -13,8 +13,8 @@ rm(new.packages,list.of.packages)
 # pair_tabs <- NULL
 # # for (an_spl in c("agm", "bcs2")) {
 # # for (an_spl in c("agm", "vm", "ws", "bcs2")) {
-# for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
-# # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
+# # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
+# for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
 #   tab_c<-read.table(paste("./pair/pair_merging_",an_spl,".log",sep = ""),sep="/", header=TRUE)
 #   tab_d<-read.table(paste("./pair/pair_dissimilarity_",an_spl,".log",sep = ""),sep="\t", header=TRUE)
 #   tab_l<-read.table(paste("./pair/pair_comparelanguages_",an_spl,".log",sep = ""),sep="|", header=TRUE)
@@ -106,8 +106,8 @@ rm(p,filename)
   corrMethod<-"pearson"
   x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
   # x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
+  # y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
   y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
-  y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
   
   y_title <- "Pearson correlation coefficient - Pairwise analysis"
   
@@ -117,7 +117,7 @@ rm(p,filename)
                   title = y_title,
                   add = "reg.line",
                   cor.coeff.args = list(method = corrMethod, label.x.npc = 0.01, label.y.npc = 0.01),
-                  cor.coef.size = 3.5,
+                  cor.coef.size = 4,
                   conf.int = TRUE, # Add confidence interval
                   cor.coef = TRUE # Add correlation coefficient. see ?stat_cor
   )+
@@ -139,15 +139,15 @@ rm(p,filename)
   
   print(p)
   filename <- paste("correlation_",x_col,"_",y_col,".pdf",sep = "")
-  ggsave(device=cairo_pdf, filename, width = 18, height = 4, dpi=320)
+  ggsave(device=cairo_pdf, filename, width = 25, height = 4, dpi=320)
   rm(p,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
 }
 
 # prtz_tabs <- NULL
 # for (logId in seq(0,29)) {
 #     logId <- str_pad(logId, 2, pad = "0")
-#     for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
-#       # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
+#     # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
+#     for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
 #       for (xmdp in c("lmdp", "gmdp", "rndp")) {
 #       # for (xmdp in c("lmdp", "rndp")) {
 #         # for (tsort in c("dis")) {
@@ -180,6 +180,7 @@ prtz_tabs[prtz_tabs$SPL=='bcs2',     'StatesOrigFFSM'] <- 6;  prtz_tabs[prtz_tab
 prtz_tabs[prtz_tabs$SPL=='minepump', 'StatesOrigFFSM'] <- 26; prtz_tabs[prtz_tabs$SPL=='minepump','TransitionsOrigFFSM'] <- 572
 prtz_tabs[prtz_tabs$SPL=='vm',       'StatesOrigFFSM'] <- 14; prtz_tabs[prtz_tabs$SPL=='vm',      'TransitionsOrigFFSM'] <- 197
 prtz_tabs[prtz_tabs$SPL=='ws',       'StatesOrigFFSM'] <- 13; prtz_tabs[prtz_tabs$SPL=='ws',      'TransitionsOrigFFSM'] <- 112
+prtz_tabs[prtz_tabs$SPL=='aerouc5',  'StatesOrigFFSM'] <- 25; prtz_tabs[prtz_tabs$SPL=='aerouc5', 'TransitionsOrigFFSM'] <- 25*18
 
 # calculate model size increment in terms of the maximum size (number of states)
 prtz_tabs$RatioStates<- prtz_tabs$StatesFFSM/apply(prtz_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,sum)
@@ -209,13 +210,14 @@ summarized_df$APFD_RatioStates      <- summarized_df$sum_RatioStates     /summar
 summarized_df$APFD_StatesOrigFFSM      <- summarized_df$sum_StatesFFSM/(summarized_df$num_FFSMs * summarized_df$StatesOrigFFSM)
 summarized_df$APFD_TransitionsOrigFFSM <- summarized_df$sum_TransitionsFFSM/(summarized_df$num_FFSMs * summarized_df$TransitionsOrigFFSM)
 
-summarized_df$Prioritization<- sub("lmdp","Similarity",summarized_df$Prioritization)
 # summarized_df$Prioritization<- sub("gmdp","Global",summarized_df$Prioritization)
 # summarized_df$Prioritization<- sub("lmdp","Local",summarized_df$Prioritization)
+summarized_df$Prioritization<- sub("lmdp","Similarity",summarized_df$Prioritization)
 summarized_df$Prioritization<- sub("rndp","Random",summarized_df$Prioritization)
 
+for (a_metric in c('APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
 # for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates')) {
-for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates','APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
+# for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates','APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
   p <- ggplot(data=summarized_df, aes_string(x="Prioritization",y=a_metric,color="Prioritization",fill="Prioritization")) +
     geom_boxplot(color = "black")+
     stat_boxplot(geom ='errorbar',color = "black")+
@@ -232,7 +234,7 @@ for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates','APFD_StatesOrigF
     theme_bw() +facet_wrap(SPL~.,scales = "free", nrow = 1)
   print(p)
   filename <- paste(a_metric,".pdf",sep="")
-  ggsave(device=cairo_pdf, filename, width = 11, height = 3, dpi=320)  # ssh plots
+  ggsave(device=cairo_pdf, filename, width = 15, height = 3, dpi=320)  # ssh plots
   rm(p,filename,a_metric)
 }
 
