@@ -298,7 +298,7 @@ for (a_metric in c('APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
 
 
 for (SPL in unique(summarized_df$SPL)) {
-  print(paste("#########",SPL,"-",Prtz))
+  print(paste("#########",SPL))
   sub_tab<-summarized_df[(summarized_df$SPL ==SPL),]
   glo_var <- sub_tab[sub_tab$Prioritization=="Global","APFD_TransitionsOrigFFSM"]
   loc_var <- sub_tab[sub_tab$Prioritization=="Local" ,"APFD_TransitionsOrigFFSM"]
