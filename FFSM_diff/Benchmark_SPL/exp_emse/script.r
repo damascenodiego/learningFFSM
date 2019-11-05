@@ -297,19 +297,34 @@ for (a_metric in c('APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
 }
 
 
+lines <-c()
 for (SPL in unique(summarized_df$SPL)) {
-  print(paste("#########",SPL))
+  lines<-append(lines,paste("#########",SPL))
   sub_tab<-summarized_df[(summarized_df$SPL ==SPL),]
   glo_var <- sub_tab[sub_tab$Prioritization=="Global","APFD_TransitionsOrigFFSM"]
   loc_var <- sub_tab[sub_tab$Prioritization=="Local" ,"APFD_TransitionsOrigFFSM"]
   rnd_var <- sub_tab[sub_tab$Prioritization=="Random","APFD_TransitionsOrigFFSM"]
+  # global vs random
   wilc_glo<-wilcox.test(glo_var,rnd_var)
-  wilc_loc<-wilcox.test(loc_var,rnd_var)
   vd_glo<-VD.A(glo_var,rnd_var)
+  # local vs random
+  wilc_loc<-wilcox.test(loc_var,rnd_var)
   vd_loc<-VD.A(loc_var,rnd_var)
-  print(paste("Global vs. Random: p-value =",wilc_glo$p.value))
-  print(paste("Global vs. Random: Â =",vd_glo$estimate,"(",vd_glo$magnitude,")"))
-  print(paste("Local  vs. Random: p-value =",wilc_loc$p.value))
-  print(paste("Local  vs. Random: Â =",vd_loc$estimate,"(",vd_loc$magnitude,")"))
+  # global vs local
+  wilc_glc<-wilcox.test(glo_var,loc_var)
+  vd_glc<-VD.A(glo_var,loc_var)
+  lines<-append(lines,"Global vs. Random")
+  lines<-append(lines,paste("\tp-value =", wilc_glo$p.value))
+  lines<-append(lines,paste("\tÂ =",       vd_glo$estimate,"(",vd_glo$magnitude,")"))
+  lines<-append(lines,"Local vs. Random")
+  lines<-append(lines,paste("\tp-value =", wilc_loc$p.value))
+  lines<-append(lines,paste("\tÂ =",       vd_loc$estimate,"(",vd_loc$magnitude,")"))
+  lines<-append(lines,"Global vs. Local")
+  lines<-append(lines,paste("\tp-value =", wilc_glc$p.value))
+  lines<-append(lines,paste("\tÂ =",       vd_glc$estimate,"(",vd_glc$magnitude,")"))
+  lines<-append(lines,"")
 }
+fileConn<-file("statistics.txt")
+writeLines(lines,fileConn)
+close(fileConn)
 
