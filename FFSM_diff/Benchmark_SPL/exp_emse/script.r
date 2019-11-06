@@ -220,7 +220,7 @@ rm(p,p1,p2,filename)
 # }
 # write.table(prtz_tabs,"./recov_prtz.tab")
 prtz_tabs<-read.table("./recov_prtz.tab")
-prtz_tabs<-prtz_tabs[prtz_tabs$Criteria=="dis",]
+# prtz_tabs<-prtz_tabs[prtz_tabs$Criteria=="dis",]
 # prtz_tabs<-prtz_tabs[prtz_tabs$Prioritization!="gmdp",]
 
 prtz_tabs$StatesOrigFFSM <- 0; prtz_tabs$TransitionsOrigFFSM <- 0 
@@ -256,6 +256,9 @@ summarized_tab <- prtz_tabs %>%
     )
 summarized_df<-data.frame(summarized_tab)
 
+summarized_df$AVG_Transitions <- summarized_df$sum_TransitionsFFSM/summarized_df$num_FFSMs
+summarized_df$AVG_States <- summarized_df$sum_StatesFFSM/summarized_df$num_FFSMs
+
 summarized_df$APFD_RatioTransitions <- summarized_df$sum_RatioTransitions/summarized_df$num_FFSMs
 summarized_df$APFD_RatioStates      <- summarized_df$sum_RatioStates     /summarized_df$num_FFSMs
 
@@ -268,11 +271,11 @@ summarized_df$Prioritization<- sub("lmdp","Local",summarized_df$Prioritization)
 summarized_df$Prioritization<- sub("rndp","Random",summarized_df$Prioritization)
 summarized_df$SPL<-toupper(summarized_df$SPL)
 
-for (a_metric in c('APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
+# for (a_metric in c('APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
 # for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates')) {
-# for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates','APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
+for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates','APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM', 'AVG_States', 'AVG_Transitio')) {
   filename <- paste(a_metric,".pdf",sep="")
-  p1 <- ggplot(data=summarized_df[summarized_df$SPL %in% c("AGM","BCS2","VM","WS"),], aes_string(x="Prioritization",y=a_metric,color="Prioritization",fill="Prioritization")) +
+  p1 <- ggplot(data=summarized_df[summarized_df$SPL %in% c("AGM","BCS2","VM","WS"),], aes_string(x="Prioritization",y=a_metric,color="Criteria",fill="Prioritization")) +
     geom_boxplot(color = "black")+
     stat_boxplot(geom ='errorbar',color = "black")+
     scale_fill_brewer(palette="Greys") +
@@ -328,3 +331,18 @@ fileConn<-file("statistics.txt")
 writeLines(lines,fileConn)
 close(fileConn)
 
+
+
+for (logId in seq(0,99)) {
+  logId <- str_pad(logId, 2, pad = "0")
+  # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
+  for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
+    for (xmdp in c("lmdp", "gmdp", "rndp")) {
+    # for (xmdp in c("lmdp", "rndp")) {
+      # for (tsort in c("dis")) {
+      for (tsort in c("dis", "sim")) {
+        if(xmdp=="rndp" && tsort == "sim"){ next }
+      }
+    }
+  }
+}
