@@ -73,7 +73,7 @@ p<-arrangeGrob(grobs = lapply(
   width = unit(5, "cm"),
   height = unit(4, "cm")
 ))
-print(p)
+#print(p)
 ggsave(device=cairo_pdf, filename, width = 9.75, height = 4.5, dpi=320,p)
 rm(p,p1,p2,filename)
 
@@ -98,7 +98,7 @@ p<-arrangeGrob(grobs = lapply(
   width = unit(5, "cm"),
   height = unit(4, "cm")
 ))
-print(p)
+#print(p)
 ggsave(device=cairo_pdf, filename, width = 9.75, height = 4.5, dpi=320,p)
 rm(p,p1,p2,filename)
 
@@ -123,7 +123,7 @@ p<-arrangeGrob(grobs = lapply(
   width = unit(5, "cm"),
   height = unit(4, "cm")
 ))
-print(p)
+#print(p)
 ggsave(device=cairo_pdf, filename, width = 9.75, height = 4.5, dpi=320,p)
 rm(p,p1,p2,filename)
 
@@ -186,7 +186,7 @@ rm(p,p1,p2,filename)
     width = unit(9, "cm"),
     height = unit(5, "cm")
   ))
-  print(p)
+  #print(p)
   ggsave(device=cairo_pdf, filename, width = 17, height = 6, dpi=320,p)
   rm(p,p1,p2,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
 }
@@ -194,7 +194,7 @@ rm(p,p1,p2,filename)
 # # Loading report files of recovering FFSMs from prioritized configurations
 # # Then, combine tables in a single data structure
 # prtz_tabs <- NULL
-# for (logId in seq(0,29)) {
+# for (logId in seq(0,99)) {
 #     logId <- str_pad(logId, 2, pad = "0")
 #     # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
 #     for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
@@ -290,7 +290,7 @@ for (a_metric in c('APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
     width = unit(5, "cm"),
     height = unit(4, "cm")
   ))
-  print(p)
+  #print(p)
   ggsave(device=cairo_pdf, filename, width = 9.75, height = 4.5, dpi=320,p)
   rm(p,p1,p2,filename)
   

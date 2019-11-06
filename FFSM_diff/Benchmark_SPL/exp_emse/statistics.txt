@@ -1,77 +1,77 @@
 ######### AEROUC5
 Global vs. Random
-	p-value = 0.447363622460576
-	Â = 0.443333333333333 ( negligible )
+	p-value = 0.00175786018940401
+	Â = 0.374 ( small )
 Local vs. Random
-	p-value = 0.111866226166272
-	Â = 0.380555555555556 ( small )
+	p-value = 6.39344904044026e-08
+	Â = 0.27955 ( medium )
 Global vs. Local
-	p-value = 0.00030162657163754
-	Â = 0.763333333333333 ( large )
+	p-value = 2.43116509763277e-10
+	Â = 0.7512 ( large )
 
 ######### AGM
 Global vs. Random
-	p-value = 0.0028586955655584
-	Â = 0.717222222222222 ( medium )
+	p-value = 0.000278796667594687
+	Â = 0.64415 ( small )
 Local vs. Random
-	p-value = 0.159193680902839
-	Â = 0.605555555555556 ( small )
+	p-value = 0.449998565817937
+	Â = 0.5308 ( negligible )
 Global vs. Local
-	p-value = 0.0147315344558343
-	Â = 0.666111111111111 ( medium )
+	p-value = 0.000333725827104466
+	Â = 0.6362 ( small )
 
 ######### BCS2
 Global vs. Random
-	p-value = 0.00330643457299021
-	Â = 0.717777777777778 ( medium )
+	p-value = 3.32186618445481e-07
+	Â = 0.705 ( medium )
 Local vs. Random
-	p-value = 0.000165477642609596
-	Â = 0.778888888888889 ( large )
+	p-value = 4.91235210177792e-09
+	Â = 0.735 ( medium )
 Global vs. Local
-	p-value = 0.0161608333294412
-	Â = 0.334444444444444 ( medium )
+	p-value = 0.000522973551714146
+	Â = 0.37 ( small )
 
 ######### CPTERMINAL
 Global vs. Random
-	p-value = 5.16568972768807e-05
-	Â = 0.8 ( large )
+	p-value = 2.57861726143976e-13
+	Â = 0.7947 ( large )
 Local vs. Random
-	p-value = 0.39524731365962
-	Â = 0.435555555555556 ( negligible )
+	p-value = 0.0271859362426324
+	Â = 0.40955 ( small )
 Global vs. Local
-	p-value = 4.90490366087877e-09
-	Â = 0.933333333333333 ( large )
+	p-value = 8.29154169110652e-31
+	Â = 0.9649 ( large )
 
 ######### MINEPUMP
 Global vs. Random
-	p-value = 0.144373333210762
-	Â = 0.61 ( small )
+	p-value = 0.000169153794651004
+	Â = 0.6538 ( small )
 Local vs. Random
-	p-value = 0.0653991147132801
-	Â = 0.638888888888889 ( small )
+	p-value = 3.89784590961488e-05
+	Â = 0.6684 ( medium )
 Global vs. Local
-	p-value = 0.37791419159905
-	Â = 0.433333333333333 ( negligible )
+	p-value = 0.364756974475505
+	Â = 0.4629 ( negligible )
 
 ######### VM
 Global vs. Random
-	p-value = 5.39164442623065e-06
-	Â = 0.841666666666667 ( large )
+	p-value = 9.67107916927808e-15
+	Â = 0.8163 ( large )
 Local vs. Random
-	p-value = 0.000268004336588577
-	Â = 0.774444444444444 ( large )
+	p-value = 2.34834944518926e-09
+	Â = 0.74445 ( large )
 Global vs. Local
-	p-value = 0.0462832313707489
-	Â = 0.65 ( small )
+	p-value = 0.000105720493559097
+	Â = 0.6584 ( small )
 
 ######### WS
 Global vs. Random
-	p-value = 0.407530960638294
-	Â = 0.562222222222222 ( negligible )
+	p-value = 0.0595518690055576
+	Â = 0.5768 ( small )
 Local vs. Random
-	p-value = 0.00220040617105305
-	Â = 0.73 ( medium )
+	p-value = 0.000145597946119596
+	Â = 0.6553 ( small )
 Global vs. Local
-	p-value = 5.32565642460907e-05
-	Â = 0.202222222222222 ( large )
+	p-value = 0.000464440625143184
+	Â = 0.3586 ( small )
 
