@@ -28,6 +28,7 @@ public class CompareLanguages {
 	private static final String K_VALUE = "k";
 	private static final String T_VALUE = "t";
 	private static final String IS_FSM = "fsm";
+	private static final String IS_BOTH = "both";
 	private static final String R_VALUE = "r";
 	
 	public static void main(String[] args) {
@@ -63,6 +64,9 @@ public class CompareLanguages {
 			
 			if(line.hasOption(IS_FSM)) {
 				a_fMealy = FeaturedMealyUtils.getInstance().loadProductMachine(a_prod,fm);
+				b_fMealy = FeaturedMealyUtils.getInstance().loadProductMachine(b_prod,fm);
+			}else if(line.hasOption(IS_BOTH)) {
+				a_fMealy = FeaturedMealyUtils.getInstance().loadFeaturedMealy(a_prod,fm);
 				b_fMealy = FeaturedMealyUtils.getInstance().loadProductMachine(b_prod,fm);
 			}else {
 				a_fMealy = FeaturedMealyUtils.getInstance().loadFeaturedMealy(a_prod,fm);
@@ -101,6 +105,7 @@ public class CompareLanguages {
 		options.addOption( K_VALUE, true, "Attenuation (i.e., surrounding states)" );
 		options.addOption( T_VALUE, true, "Threshold (i.e., only above)" );
 		options.addOption( IS_FSM, false, "Read FSM" );
+		options.addOption( IS_BOTH, false, "Read FFSM and FSM" );
 		options.addOption( R_VALUE, true, "Ratio (i.e., r times better only)" );
 		options.addOption( HELP,  false, "Help menu" );
 		return options;
