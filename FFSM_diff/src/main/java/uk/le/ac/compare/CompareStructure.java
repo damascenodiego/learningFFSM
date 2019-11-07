@@ -22,7 +22,7 @@ import uk.le.ac.ffsm.IConfigurableFSM;
 import uk.le.ac.ffsm.ProductMealy;
 import uk.le.ac.ffsm.SimplifiedTransition;
 
-public class CompareLanguages {
+public class CompareStructure {
 	private static final String FM = "fm";
 	private static final String HELP = "h";
 	private static final String K_VALUE = "k";
@@ -46,7 +46,7 @@ public class CompareLanguages {
 			CommandLine line = parser.parse( options, args);
 
 			if(line.hasOption(HELP) || !line.hasOption(FM) || line.getArgList().size()!=2){
-				formatter.printHelp( "CompareLanguages", options);
+				formatter.printHelp( "CompareStructure", options);
 				System.exit(0);
 			}
 			
