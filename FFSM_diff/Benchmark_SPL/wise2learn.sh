@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# ./emse01pairwise.sh
-
 
 for an_spl in "agm" "vm" "ws" "cpterminal" "minepump" "aerouc5"; do
 	qsub -N "p_$an_spl" -v "name=emse_pairs_$an_spl" ./emse.sh
@@ -30,3 +28,20 @@ for an_spl in "agm" "vm" "ws"; do
 done
 
 wait
+
+for an_spl in "agm" "vm" "ws" "cpterminal" "minepump" "aerouc5"; do
+	for wise in "1wise" "2wise" "3wise" "4wise" "all";do
+		echo "Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM:Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM" > ./$an_spl/products_$wise/report.tab
+		grep "^Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM" ./$an_spl/products_$wise/report.log >> ./$an_spl/products_$wise/report.tab
+		sed -i 's/Reference\/Updated\/TotalStatesRef\/TotalStatesUpdt\/TotalTransitionsRef\/TotalTransitionsUpdt\/TotalFeaturesRef\/TotalFeaturesUpdt\/CommonFeatures\/RatioFeatures\/RatioStates\/RatioTransitions\/StatesFFSM\/TransitionsFFSM://g' ./$an_spl/products_$wise/report.tab
+
+		echo -e "Precision|Recall|F-measure:Precision|Recall|F-measure" > ./$an_spl/products_$wise/report_prf.tab
+		grep "^Precision|Recall|F-measure:" ./$an_spl/products_$wise/report.log >> ./$an_spl/products_$wise/report_prf.tab
+		sed -i 's/Precision|Recall|F-measure://g' ./$an_spl/products_$wise/report_prf.tab
+
+
+		echo -e "ModelRef|ModelUpdt|Precision|Recall|F-measure:Reference|Updated|Precision|Recall|F-measure" > ./$an_spl/products_$wise/report_fmeasure_l.tab
+		grep "^ModelRef|ModelUpdt|Precision|Recall|F-measure:" ./$an_spl/products_$wise/report_fmeasure_l.log >> ./$an_spl/products_$wise/report_fmeasure_l.tab
+		sed -i 's/ModelRef|ModelUpdt|Precision|Recall|F-measure://g' ./$an_spl/products_$wise/report_fmeasure_l.tab
+	done
+done
