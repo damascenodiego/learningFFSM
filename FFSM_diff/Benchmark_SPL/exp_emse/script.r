@@ -191,36 +191,26 @@ rm(p,p1,p2,filename)
   rm(p,p1,p2,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
 }
 
-# # Loading report files of recovering FFSMs from prioritized configurations
-# # Then, combine tables in a single data structure
-# prtz_tabs <- NULL
-# for (logId in seq(0,99)) {
-#     logId <- str_pad(logId, 2, pad = "0")
-#     # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
-#     for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
-#       for (xmdp in c("lmdp", "gmdp", "rndp")) {
-#       # for (xmdp in c("lmdp", "rndp")) {
-#         # for (tsort in c("dis")) {
-#         for (tsort in c("dis", "sim")) {
-#           if(xmdp=="rndp" && tsort == "sim"){ next }
-#           tab<-read.table(paste("./prtz/",xmdp,"_",tsort,"_",logId,"_",an_spl,"_r.txt.log",sep = ""),sep="/", header=TRUE)
-#           tab$Index <- seq(nrow(tab))
-#           tab$SPL <- an_spl
-#           # tab$Prioritization <- paste(xmdp,tsort)
-#           tab$Prioritization <- xmdp
-#           tab$ID <- logId
-#           tab$Criteria <- tsort
-#           if(is.null(prtz_tabs)) prtz_tabs <- tab
-#           else{
-#             prtz_tabs <- rbind(prtz_tabs,tab)
-#           }
-#         }
-#       }
-#     }
-# }
-# write.table(prtz_tabs,"./recov_prtz.tab")
+# Loading report files of recovering FFSMs from prioritized configurations
+# Then, combine tables in a single data structure
+prtz_tabs <- NULL
+for (an_spl in c("agm", "vm", "ws", "cpterminal", "minepump", "aerouc5")) {
+  for (wise in c("1wise", "2wise", "3wise", "4wise", "all")) {
+    # tab_r<-read.table(paste("../",an_spl,"/products_",wise,"/","report.tab",sep = ""),sep="/", header=TRUE)
+    # tab_prf<-read.table(paste("../",an_spl,"/products_",wise,"/","report_prf.tab",sep = ""),sep="|", header=TRUE)
+    tab_l<-read.table(paste("../",an_spl,"/products_",wise,"/","report_fmeasure_l.tab",sep = ""),sep="|", header=TRUE)
+    tab_l$SPL <- an_spl
+    tab_l$Twise <- wise
+    if(is.null(prtz_tabs)) prtz_tabs <- tab_l
+    else{
+      prtz_tabs <- rbind(prtz_tabs,tab_l)
+    }
+  }
+}
+write.table(prtz_tabs,"./recov_prtz.tab")
 prtz_tabs<-read.table("./recov_prtz.tab")
-# prtz_tabs<-prtz_tabs[prtz_tabs$Criteria=="dis",]
+prtz_tabs$Reference<-sub("^ffsm_","",prtz_tabs$Reference)
+prtz_tabs$Reference<-sub("_kiss.txt$","",prtz_tabs$Reference)
 # prtz_tabs<-prtz_tabs[prtz_tabs$Prioritization!="gmdp",]
 
 prtz_tabs$StatesOrigFFSM <- 0; prtz_tabs$TransitionsOrigFFSM <- 0 
