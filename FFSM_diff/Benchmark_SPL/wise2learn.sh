@@ -1,10 +1,6 @@
 #!/bin/bash
 
 
-for an_spl in "agm" "vm" "ws" "cpterminal" "minepump" "aerouc5"; do
-	qsub -N "p_$an_spl" -v "name=emse_pairs_$an_spl" ./emse.sh
-done
-
 for an_spl in "minepump" "aerouc5" "cpterminal"; do
 	cd $an_spl/
 	for i in ./products_*/*.config; do 
@@ -17,7 +13,6 @@ for an_spl in "minepump" "aerouc5" "cpterminal"; do
 	cd -
 done
 
-
 for an_spl in "agm" "vm" "ws"; do
 	cd $an_spl/
 	for a_prtz in ./products_*.prtz;do
@@ -26,6 +21,12 @@ for an_spl in "agm" "vm" "ws"; do
 	done
 	cd -
 done
+
+
+for an_spl in "agm" "vm" "ws" "cpterminal" "minepump" "aerouc5"; do
+	qsub -N "p_$an_spl" -v "name=emse_pairs_$an_spl" ./emse.sh
+done
+
 
 wait
 
