@@ -14,9 +14,8 @@ for an_spl in "minepump" "aerouc5" "cpterminal"; do
 	done
 	for a_prtz in ./products_*.prtz;do
 		echo $an_spl" - "$a_prtz
-		python ../emse_prtz.py $a_prtz
+		python ../emse_prtz.py $a_prtz &
 	done
-	wait
 	cd -
 done
 
@@ -25,8 +24,9 @@ for an_spl in "agm" "vm" "ws"; do
 	cd $an_spl/
 	for a_prtz in ./products_*.prtz;do
 		echo $an_spl" - "$a_prtz
-		python ../emse_prtz.py $a_prtz
+		python ../emse_prtz.py $a_prtz &
 	done
-	wait
 	cd -
 done
+
+wait
