@@ -23,6 +23,7 @@ for an_spl in "minepump" "aerouc5"; do
 		java -cp ../learnFFSM.jar uk.le.ac.fts.FsmFromFTS -fts fts/*.fts -conf $i;
 	done
 	for a_prtz in ./products_*.prtz;do
+		echo $an_spl" - "$a_prtz
 		python ../emse_prtz.py $a_prtz &
 	done
 	wait

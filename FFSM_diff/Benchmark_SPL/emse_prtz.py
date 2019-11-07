@@ -47,11 +47,11 @@ _writer.close()
 _writer = open(out_directory+"/report_fmeasure_l.log","w")
 MAX_ID = MODEL_ID
 with open(current_directory+"/products_all.prtz", 'r') as f:
-	for MODEL_ID in range(1,MAX_ID+1):
+	for AN_ID in range(1,MAX_ID+1):
 		for fsm_file in f.readlines():
 			fsm_file = fsm_file.replace("\n","")
-			# bashCommand = "java -cp ./learnFFSM.jar uk.le.ac.compare.CompareStructure "+SPL_NAME+"/ffsms/ffsm_"+SPL_NAME+".txt "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt "+_ktr+" -fm ./"+SPL_NAME+"/model.xml"
-			bashCommand = "java -cp ../learnFFSM.jar uk.le.ac.compare.CompareStructure "+out_directory+"ffsm_"+str(MODEL_ID)+"_kiss.txt "+fsm_file+" "+_ktr+" -fm "+current_directory+"model.xml -both"
+			# bashCommand = "java -cp ./learnFFSM.jar uk.le.ac.compare.CompareStructure "+SPL_NAME+"/ffsms/ffsm_"+SPL_NAME+".txt "+out_directory+"ffsm_"+str(AN_ID)+"_kiss.txt "+_ktr+" -fm ./"+SPL_NAME+"/model.xml"
+			bashCommand = "java -cp ../learnFFSM.jar uk.le.ac.compare.CompareStructure "+out_directory+"ffsm_"+str(AN_ID)+"_kiss.txt "+fsm_file+" "+_ktr+" -fm "+current_directory+"model.xml -both"
 			process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 			output, error = process.communicate()
 			_writer.write(bashCommand)
