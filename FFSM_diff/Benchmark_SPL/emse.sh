@@ -9,7 +9,7 @@
 
 module load gcc/4.9.2 R/3.3.3 java-oracle/jdk1.8.0_65
 
-my_dir=/home/damascdn/remote_euler/Benchmark_SPL/
+my_dir=~/git/learningFFSM/FFSM_diff/Benchmark_SPL/
 cd $my_dir
 
 python $name".py"
