@@ -1,0 +1,78 @@
+######### AGM
+1-wise vs all
+	p-value = 0.175734335644225
+	Â = 0.333333333333333 ( medium )
+2-wise vs all
+	p-value = NaN
+	Â = 0.5 ( negligible )
+3-wise vs all
+	p-value = NaN
+	Â = 0.5 ( negligible )
+4-wise vs all
+	p-value = NaN
+	Â = 0.5 ( negligible )
+######### VM
+1-wise vs all
+	p-value = 3.50548865903038e-07
+	Â = 0.075 ( large )
+2-wise vs all
+	p-value = 0.00453205907914325
+	Â = 0.325 ( medium )
+3-wise vs all
+	p-value = NaN
+	Â = 0.5 ( negligible )
+4-wise vs all
+	p-value = NaN
+	Â = 0.5 ( negligible )
+######### WS
+1-wise vs all
+	p-value = 0.00456930456922445
+	Â = 0.125 ( large )
+2-wise vs all
+	p-value = 0.0320350563462038
+	Â = 0.25 ( large )
+3-wise vs all
+	p-value = NaN
+	Â = 0.5 ( negligible )
+4-wise vs all
+	p-value = NaN
+	Â = 0.5 ( negligible )
+######### AEROUC5
+1-wise vs all
+	p-value = 0.00135640147080858
+	Â = 0.0493827160493827 ( large )
+2-wise vs all
+	p-value = 0.0927212438520728
+	Â = 0.259259259259259 ( large )
+3-wise vs all
+	p-value = 0.155770274688499
+	Â = 0.296296296296296 ( medium )
+4-wise vs all
+	p-value = 0.595290474169594
+	Â = 0.419753086419753 ( small )
+######### CPTERMINAL
+1-wise vs all
+	p-value = 1.21908834301153e-07
+	Â = 0.166666666666667 ( large )
+2-wise vs all
+	p-value = 2.78474597989093e-05
+	Â = 0.266666666666667 ( medium )
+3-wise vs all
+	p-value = 0.00546603429644953
+	Â = 0.383333333333333 ( small )
+4-wise vs all
+	p-value = NaN
+	Â = 0.5 ( negligible )
+######### MINEPUMP
+1-wise vs all
+	p-value = 7.40205671548982e-05
+	Â = 0.212890625 ( large )
+2-wise vs all
+	p-value = 0.939494562670442
+	Â = 0.505859375 ( negligible )
+3-wise vs all
+	p-value = 0.281198791677223
+	Â = 0.576171875 ( small )
+4-wise vs all
+	p-value = 0.00239455747108954
+	Â = 0.70703125 ( medium )

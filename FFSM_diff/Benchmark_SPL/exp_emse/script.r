@@ -1,4 +1,4 @@
-list.of.packages <- c("ggpubr","ggrepel","ggplot2","effsize","stringr","reshape","dplyr", "egg", "gridExtra")
+list.of.packages <- c("ggpubr","ggrepel","ggplot2","effsize","stringr","reshape","dplyr", "egg", "gridExtra", "xtable")
 
 # new.packages <- list.of.packages[!(list.of.packages %in% installed.packages(lib.loc="/home/cdnd1/Rpackages/")[,"Package"])]
 # if(length(new.packages)) install.packages(new.packages,lib="/home/cdnd1/Rpackages/")
@@ -16,7 +16,8 @@ rm(new.packages,list.of.packages)
 # # for (an_spl in c("agm", "bcs2")) {
 # # for (an_spl in c("agm", "vm", "ws", "bcs2")) {
 # # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
-# for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
+# for (an_spl in c("agm", "vm", "ws", "cpterminal", "minepump", "aerouc5")) {
+# # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
 #   tab_c<-read.table(paste("./pair/pair_merging_",an_spl,".log",sep = ""),sep="/", header=TRUE)
 #   tab_d<-read.table(paste("./pair/pair_dissimilarity_",an_spl,".log",sep = ""),sep="\t", header=TRUE)
 #   tab_l<-read.table(paste("./pair/pair_comparelanguages_",an_spl,".log",sep = ""),sep="|", header=TRUE)
@@ -31,6 +32,7 @@ rm(new.packages,list.of.packages)
 # }
 # write.table(pair_tabs,"./pair_mdc.tab")
 pair_tabs<-read.table("./pair_mdc.tab")
+pair_tabs<-pair_tabs[pair_tabs$SPL!='bcs2',]
 
 # calculate similarity (opposite of dissim)
 pair_tabs$ConfigSim <- 1-pair_tabs$ConfigDissim
@@ -74,7 +76,7 @@ p<-arrangeGrob(grobs = lapply(
   height = unit(4, "cm")
 ))
 #print(p)
-ggsave(device=cairo_pdf, filename, width = 9.75, height = 4.5, dpi=320,p)
+ggsave(device=cairo_pdf, filename, width = 7.250, height = 4.5, dpi=320,p)
 rm(p,p1,p2,filename)
 
 # dissimilarity (RatioStates) histogram
@@ -99,7 +101,7 @@ p<-arrangeGrob(grobs = lapply(
   height = unit(4, "cm")
 ))
 #print(p)
-ggsave(device=cairo_pdf, filename, width = 9.75, height = 4.5, dpi=320,p)
+ggsave(device=cairo_pdf, filename, width = 7.250, height = 4.5, dpi=320,p)
 rm(p,p1,p2,filename)
 
 # dissimilarity (RatioTransitions) histogram
@@ -124,15 +126,15 @@ p<-arrangeGrob(grobs = lapply(
   height = unit(4, "cm")
 ))
 #print(p)
-ggsave(device=cairo_pdf, filename, width = 9.75, height = 4.5, dpi=320,p)
+ggsave(device=cairo_pdf, filename, width = 7.250, height = 4.5, dpi=320,p)
 rm(p,p1,p2,filename)
 
 {
   corrMethod<-"pearson"
-  # x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
-  x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
-  y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
-  # y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
+  x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
+  # x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
+  # y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
+  y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
   
   y_title <- "Pearson correlation coefficient - Pairwise analysis"
   filename <- paste("correlation_",x_col,"_",y_col,".pdf",sep = "")
@@ -187,152 +189,143 @@ rm(p,p1,p2,filename)
     height = unit(5, "cm")
   ))
   #print(p)
-  ggsave(device=cairo_pdf, filename, width = 17, height = 6, dpi=320,p)
+  ggsave(device=cairo_pdf, filename, width = 12.5, height = 6, dpi=320,p)
   rm(p,p1,p2,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
 }
 
-# Loading report files of recovering FFSMs from prioritized configurations
-# Then, combine tables in a single data structure
-prtz_tabs <- NULL
-for (an_spl in c("agm", "vm", "ws", "cpterminal", "minepump", "aerouc5")) {
-  for (wise in c("1wise", "2wise", "3wise", "4wise", "all")) {
-    # tab_r<-read.table(paste("../",an_spl,"/products_",wise,"/","report.tab",sep = ""),sep="/", header=TRUE)
-    # tab_prf<-read.table(paste("../",an_spl,"/products_",wise,"/","report_prf.tab",sep = ""),sep="|", header=TRUE)
-    tab_l<-read.table(paste("../",an_spl,"/products_",wise,"/","report_fmeasure_l.tab",sep = ""),sep="|", header=TRUE)
-    tab_l$SPL <- an_spl
-    tab_l$Twise <- wise
-    if(is.null(prtz_tabs)) prtz_tabs <- tab_l
-    else{
-      prtz_tabs <- rbind(prtz_tabs,tab_l)
-    }
-  }
-}
-write.table(prtz_tabs,"./recov_prtz.tab")
+# # Loading report files of recovering FFSMs from prioritized configurations
+# # Then, combine tables in a single data structure
+# prtz_tabs <- NULL
+# for (an_spl in c("agm", "vm", "ws", "cpterminal", "minepump", "aerouc5")) {
+#   for (wise in c("1wise", "2wise", "3wise", "4wise", "all")) {
+#     # tab_r<-read.table(paste("../",an_spl,"/products_",wise,"/","report.tab",sep = ""),sep="/", header=TRUE)
+#     # tab_prf<-read.table(paste("../",an_spl,"/products_",wise,"/","report_prf.tab",sep = ""),sep="|", header=TRUE)
+#     tab_l<-read.table(paste("../",an_spl,"/products_",wise,"/","report_fmeasure_l.tab",sep = ""),sep="|", header=TRUE)
+#     tab_l$SPL <- an_spl
+#     tab_l$Twise <- wise
+#     if(is.null(prtz_tabs)) prtz_tabs <- tab_l
+#     else{
+#       prtz_tabs <- rbind(prtz_tabs,tab_l)
+#     }
+#     rm(tab_l)
+#   }
+# }
+# write.table(prtz_tabs,"./recov_prtz.tab")
 prtz_tabs<-read.table("./recov_prtz.tab")
-prtz_tabs$Reference<-sub("^ffsm_","",prtz_tabs$Reference)
-prtz_tabs$Reference<-sub("_kiss.txt$","",prtz_tabs$Reference)
-# prtz_tabs<-prtz_tabs[prtz_tabs$Prioritization!="gmdp",]
+prtz_tabs$Index <-prtz_tabs$Reference
+prtz_tabs$Index<-sub("^ffsm_","",prtz_tabs$Index)
+prtz_tabs$Index<-sub("_kiss.txt$","",prtz_tabs$Index)
+prtz_tabs$Index<-as.integer(prtz_tabs$Index)
+prtz_tabs$SPL<-toupper(prtz_tabs$SPL)
+prtz_tabs$SPL <- factor(prtz_tabs$SPL, levels = c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP"))
 
-prtz_tabs$StatesOrigFFSM <- 0; prtz_tabs$TransitionsOrigFFSM <- 0 
+final_ffsm <- prtz_tabs %>% 
+  group_by(SPL, Twise) %>%
+  filter(Index == max(Index))
 
-prtz_tabs[prtz_tabs$SPL=='aerouc5',   'StatesOrigFFSM'] <- 25; prtz_tabs[prtz_tabs$SPL=='aerouc5',   'TransitionsOrigFFSM'] <- 25*18
-prtz_tabs[prtz_tabs$SPL=='agm',       'StatesOrigFFSM'] <- 6;  prtz_tabs[prtz_tabs$SPL=='agm',       'TransitionsOrigFFSM'] <- 35
-prtz_tabs[prtz_tabs$SPL=='bcs2',      'StatesOrigFFSM'] <- 6;  prtz_tabs[prtz_tabs$SPL=='bcs2',      'TransitionsOrigFFSM'] <- 53
-prtz_tabs[prtz_tabs$SPL=='cpterminal','StatesOrigFFSM'] <- 11; prtz_tabs[prtz_tabs$SPL=='cpterminal','TransitionsOrigFFSM'] <- 11*15
-prtz_tabs[prtz_tabs$SPL=='minepump',  'StatesOrigFFSM'] <- 25; prtz_tabs[prtz_tabs$SPL=='minepump',  'TransitionsOrigFFSM'] <- 25*23
-prtz_tabs[prtz_tabs$SPL=='vm',        'StatesOrigFFSM'] <- 14; prtz_tabs[prtz_tabs$SPL=='vm',        'TransitionsOrigFFSM'] <- 197
-prtz_tabs[prtz_tabs$SPL=='ws',        'StatesOrigFFSM'] <- 13; prtz_tabs[prtz_tabs$SPL=='ws',        'TransitionsOrigFFSM'] <- 112
-
-# calculate model size increment in terms of the maximum size (number of states)
-prtz_tabs$RatioStates<- prtz_tabs$StatesFFSM/apply(prtz_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,sum)
-
-# calculate model size increment in terms of the maximum size (number of transitions)  
-prtz_tabs$RatioTransitions<- prtz_tabs$TransitionsFFSM/apply(prtz_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,sum)
-
-# #  
-summarized_tab <- prtz_tabs %>%
-  group_by(SPL,Prioritization,Criteria,ID) %>%
-  summarize(
-    sum_StatesFFSM = sum(StatesFFSM),
-    sum_TransitionsFFSM = sum(TransitionsFFSM),
-    
-    sum_RatioStates      = sum(RatioStates),
-    sum_RatioTransitions = sum(RatioTransitions),
-    
-    num_FFSMs = length(StatesFFSM),
-    
-    StatesOrigFFSM      = mean(StatesOrigFFSM),
-    TransitionsOrigFFSM = mean(TransitionsOrigFFSM)
-    )
-summarized_df<-data.frame(summarized_tab)
-
-summarized_df$AVG_Transitions <- summarized_df$sum_TransitionsFFSM/summarized_df$num_FFSMs
-summarized_df$AVG_States <- summarized_df$sum_StatesFFSM/summarized_df$num_FFSMs
-
-summarized_df$APFD_RatioTransitions <- summarized_df$sum_RatioTransitions/summarized_df$num_FFSMs
-summarized_df$APFD_RatioStates      <- summarized_df$sum_RatioStates     /summarized_df$num_FFSMs
-
-summarized_df$APFD_StatesOrigFFSM      <- summarized_df$sum_StatesFFSM/(summarized_df$num_FFSMs * summarized_df$StatesOrigFFSM)
-summarized_df$APFD_TransitionsOrigFFSM <- summarized_df$sum_TransitionsFFSM/(summarized_df$num_FFSMs * summarized_df$TransitionsOrigFFSM)
-
-summarized_df$Prioritization<- sub("gmdp","Global",summarized_df$Prioritization)
-summarized_df$Prioritization<- sub("lmdp","Local",summarized_df$Prioritization)
-# summarized_df$Prioritization<- sub("lmdp","Similarity",summarized_df$Prioritization)
-summarized_df$Prioritization<- sub("rndp","Random",summarized_df$Prioritization)
-summarized_df$SPL<-toupper(summarized_df$SPL)
-
-# for (a_metric in c('APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM')) {
-# for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates')) {
-for (a_metric in c('APFD_RatioTransitions', 'APFD_RatioStates','APFD_StatesOrigFFSM', 'APFD_TransitionsOrigFFSM', 'AVG_States', 'AVG_Transitio')) {
+for (a_metric in c('Precision')) {
+# for (a_metric in c('Precision', 'Recall','F.measure')) {
   filename <- paste(a_metric,".pdf",sep="")
-  p1 <- ggplot(data=summarized_df[summarized_df$SPL %in% c("AGM","BCS2","VM","WS"),], aes_string(x="Prioritization",y=a_metric,color="Criteria",fill="Prioritization")) +
-    geom_boxplot(color = "black")+
+  p <- ggplot(data=final_ffsm, aes_string(x="Twise",y=a_metric)) +
+    geom_boxplot(color = "black", outlier.color = "red", outlier.size = .75)+
     stat_boxplot(geom ='errorbar',color = "black")+
+    labs(x=NULL)+
     scale_fill_brewer(palette="Greys") +
-    theme_bw() +facet_wrap(SPL~.,scales = "free", nrow = 1) + 
-    labs(x = NULL)+
-    theme(legend.position = "none")
-  p2 <- ggplot(data=summarized_df[!summarized_df$SPL %in% c("AGM","BCS2","VM","WS"),], aes_string(x="Prioritization",y=a_metric,color="Prioritization",fill="Prioritization")) +
-    geom_boxplot(color = "black")+
-    stat_boxplot(geom ='errorbar',color = "black")+
-    scale_fill_brewer(palette="Greys") +
-    theme_bw() +facet_wrap(SPL~.,scales = "free", nrow = 1) 
-  p<-arrangeGrob(grobs = lapply(
-    list(p1, p2),
-    set_panel_size,
-    width = unit(5, "cm"),
-    height = unit(4, "cm")
-  ))
+    scale_y_continuous(limits = c(NA, 1))+
+    theme_bw() +facet_wrap(SPL~.,scales = "free", nrow = 2) 
   #print(p)
-  ggsave(device=cairo_pdf, filename, width = 9.75, height = 4.5, dpi=320,p)
-  rm(p,p1,p2,filename)
+  ggsave(device=cairo_pdf, filename, width = 8.65, height = 4.5, dpi=320,p)
   
+  filename <- paste(a_metric,"_byIndex.pdf",sep="")
+  p <- ggplot(data=prtz_tabs, aes_string(x="Index",y=a_metric,group="Index")) +
+    geom_boxplot(color = "black", outlier.color = "red", outlier.size = .75)+
+    stat_boxplot(geom ='errorbar',color = "black")+
+    scale_fill_brewer(palette="Greys") +
+    scale_y_continuous(limits = c(NA, 1))+
+    # theme_bw() +
+    facet_grid(SPL~Twise,scales = "free") 
+  # print(p)
+  ggsave(device=cairo_pdf, filename, width = 12, height = 10, dpi=320,p)
+  # rm(p,a_metric,filename)
 }
 
 
-lines <-c()
-for (SPL in unique(summarized_df$SPL)) {
-  lines<-append(lines,paste("#########",SPL))
-  sub_tab<-summarized_df[(summarized_df$SPL ==SPL),]
-  glo_var <- sub_tab[sub_tab$Prioritization=="Global","APFD_TransitionsOrigFFSM"]
-  loc_var <- sub_tab[sub_tab$Prioritization=="Local" ,"APFD_TransitionsOrigFFSM"]
-  rnd_var <- sub_tab[sub_tab$Prioritization=="Random","APFD_TransitionsOrigFFSM"]
-  # global vs random
-  wilc_glo<-wilcox.test(glo_var,rnd_var)
-  vd_glo<-VD.A(glo_var,rnd_var)
-  # local vs random
-  wilc_loc<-wilcox.test(loc_var,rnd_var)
-  vd_loc<-VD.A(loc_var,rnd_var)
-  # global vs local
-  wilc_glc<-wilcox.test(glo_var,loc_var)
-  vd_glc<-VD.A(glo_var,loc_var)
-  lines<-append(lines,"Global vs. Random")
-  lines<-append(lines,paste("\tp-value =", wilc_glo$p.value))
-  lines<-append(lines,paste("\tÂ =",       vd_glo$estimate,"(",vd_glo$magnitude,")"))
-  lines<-append(lines,"Local vs. Random")
-  lines<-append(lines,paste("\tp-value =", wilc_loc$p.value))
-  lines<-append(lines,paste("\tÂ =",       vd_loc$estimate,"(",vd_loc$magnitude,")"))
-  lines<-append(lines,"Global vs. Local")
-  lines<-append(lines,paste("\tp-value =", wilc_glc$p.value))
-  lines<-append(lines,paste("\tÂ =",       vd_glc$estimate,"(",vd_glc$magnitude,")"))
-  lines<-append(lines,"")
+
+final_by_index <- prtz_tabs %>% 
+  group_by(SPL,Twise,Index) %>%
+  summarize(
+    mean   = mean(Precision),
+    # median = median(Precision),
+    sd     = sd(Precision),    
+    min    = min(Precision),
+    max    = max(Precision),
+    count  = length(Precision)
+    
+    # q1     = quantile(Precision,0.25),
+    # q2     = quantile(Precision,0.50),
+    # q3     = quantile(Precision,0.75),
+    # q4     = quantile(Precision,1.00)
+  )
+summarized_final <- summarized_final %>% 
+  mutate_if(is.numeric, round, 2)
+summarized_final<-t(summarized_final)
+write.table(summarized_final,"./summarized_final.tab")
+
+
+cat("",file="statistics.txt",append=FALSE)
+for (an_spl in c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP")) {
+  cat(paste("#########",an_spl),sep = "\n",file="statistics.txt",append=TRUE)
+  
+  wise1 <- final_ffsm[final_ffsm$SPL==an_spl & final_ffsm$Twise=="1wise",]$Precision
+  wise2 <- final_ffsm[final_ffsm$SPL==an_spl & final_ffsm$Twise=="2wise",]$Precision
+  wise3 <- final_ffsm[final_ffsm$SPL==an_spl & final_ffsm$Twise=="3wise",]$Precision
+  wise4 <- final_ffsm[final_ffsm$SPL==an_spl & final_ffsm$Twise=="4wise",]$Precision
+  wisea <- final_ffsm[final_ffsm$SPL==an_spl & final_ffsm$Twise=="all"  ,]$Precision
+  
+  # wilcox test
+  wilc_w12 <-wilcox.test(wise1,wisea)
+  wilc_w23 <-wilcox.test(wise2,wisea)
+  wilc_w34 <-wilcox.test(wise3,wisea)
+  wilc_w4a <-wilcox.test(wise4,wisea)
+  
+  # Vargha-Delaney
+  vd_12 <- VD.A(wise1,wisea)
+  vd_23 <- VD.A(wise2,wisea)
+  vd_34 <- VD.A(wise3,wisea)
+  vd_4a <- VD.A(wise4,wisea)
+  
+  
+  cat("1-wise vs all",file="statistics.txt",sep="\n",append=TRUE)
+  cat(paste("\tp-value =",wilc_w12$p.value),file="statistics.txt",sep="\n",append=TRUE)
+  cat(paste("\tÂ =",vd_12$estimate,"(",vd_12$magnitude,")"),file="statistics.txt",sep="\n",append=TRUE)
+  cat("2-wise vs all",file="statistics.txt",sep="\n",append=TRUE)
+  cat(paste("\tp-value =",wilc_w23$p.value),file="statistics.txt",sep="\n",append=TRUE)
+  cat(paste("\tÂ =",vd_23$estimate,"(",vd_23$magnitude,")"),file="statistics.txt",sep="\n",append=TRUE)
+  cat("3-wise vs all",file="statistics.txt",sep="\n",append=TRUE)
+  cat(paste("\tp-value =",wilc_w34$p.value),file="statistics.txt",sep="\n",append=TRUE)
+  cat(paste("\tÂ =",vd_34$estimate,"(",vd_34$magnitude,")"),file="statistics.txt",sep="\n",append=TRUE)
+  cat("4-wise vs all",file="statistics.txt",sep="\n",append=TRUE)
+  cat(paste("\tp-value =",wilc_w4a$p.value),file="statistics.txt",sep="\n",append=TRUE)
+  cat(paste("\tÂ =",vd_4a$estimate,"(",vd_4a$magnitude,")"),file="statistics.txt",sep="\n",append=TRUE)
 }
-fileConn<-file("statistics.txt")
-writeLines(lines,fileConn)
-close(fileConn)
 
+summarized_final <- final_ffsm %>%
+  group_by(SPL,Twise) %>%
+  summarize(
+    mean   = mean(Precision),
+    # median = median(Precision),
+    sd     = sd(Precision),    
+    min    = min(Precision),
+    max    = max(Precision),
+    count  = length(Precision)
+    
+    # q1     = quantile(Precision,0.25),
+    # q2     = quantile(Precision,0.50),
+    # q3     = quantile(Precision,0.75),
+    # q4     = quantile(Precision,1.00)
+  )
+summarized_final <- summarized_final %>% 
+  mutate_if(is.numeric, round, 2)
+summarized_final<-t(summarized_final)
+write.table(summarized_final,"./summarized_final.tab")
 
-
-for (logId in seq(0,99)) {
-  logId <- str_pad(logId, 2, pad = "0")
-  # for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump")) {
-  for (an_spl in c("agm", "vm", "ws", "bcs2", "cpterminal", "minepump", "aerouc5")) {
-    for (xmdp in c("lmdp", "gmdp", "rndp")) {
-    # for (xmdp in c("lmdp", "rndp")) {
-      # for (tsort in c("dis")) {
-      for (tsort in c("dis", "sim")) {
-        if(xmdp=="rndp" && tsort == "sim"){ next }
-      }
-    }
-  }
-}
