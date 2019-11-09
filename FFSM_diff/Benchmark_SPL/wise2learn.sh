@@ -13,7 +13,7 @@ for an_spl in "minepump" "aerouc5" "cpterminal"; do
 	cd -
 done
 
-for an_spl in "agm" "vm" "ws" "bcs2" ; do
+for an_spl in "agm" "vm" "ws" ; do
 	cd $an_spl/
 	for a_prtz in ./products_*.prtz;do
 		echo $an_spl" - "$a_prtz
@@ -23,14 +23,15 @@ for an_spl in "agm" "vm" "ws" "bcs2" ; do
 done
 
 
-for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump" "aerouc5"; do
-	qsub -N "p_$an_spl" -v "name=emse_pairs_$an_spl" ./emse.sh
+for an_spl in "agm" "vm" "ws" "cpterminal" "minepump" "aerouc5"; do
+	qsub -N "p_$an_spl" -v "name=emse_pairs_$an_spl"  ./emse.sh
+	qsub -N "d_$an_spl" -v "name=emse_dissim_$an_spl" ./emse.sh
 done
 
 
 wait
 
-for an_spl in "agm" "vm" "ws" "bcs2" "cpterminal" "minepump" "aerouc5"; do
+for an_spl in "agm" "vm" "ws" "cpterminal" "minepump" "aerouc5"; do
 	for wise in "1wise" "2wise" "3wise" "4wise" "all";do
 		echo "Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM:Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM" > ./$an_spl/products_$wise/report.tab
 		grep "^Reference/Updated/TotalStatesRef/TotalStatesUpdt/TotalTransitionsRef/TotalTransitionsUpdt/TotalFeaturesRef/TotalFeaturesUpdt/CommonFeatures/RatioFeatures/RatioStates/RatioTransitions/StatesFFSM/TransitionsFFSM" ./$an_spl/products_$wise/report.log >> ./$an_spl/products_$wise/report.tab
