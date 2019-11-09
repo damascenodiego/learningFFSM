@@ -33,27 +33,22 @@ rm(new.packages,list.of.packages)
 # write.table(pair_tabs,"./pair_mdc.tab")
 pair_tabs<-read.table("./pair_mdc.tab")
 pair_tabs$SPL<-toupper(pair_tabs$SPL)
-pair_tabs<-pair_tabs[pair_tabs$SPL!='BCS2',]
 pair_tabs$SPL <- factor(pair_tabs$SPL, levels = c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP"))
 
 # calculate similarity (opposite of dissim)
 pair_tabs$ConfigSim <- 1-pair_tabs$ConfigDissim
 
 # calculate model size increment in terms of the maximum size (number of states)
-pair_tabs$RatioStates<- apply(pair_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,sum)
-pair_tabs$RatioStates<- pair_tabs$StatesFFSM/pair_tabs$RatioStates
+pair_tabs$RatioStates<- pair_tabs$StatesFFSM/apply(pair_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,sum)
 
 # calculate model size increment in terms of the maximum size (number of transitions)  
-pair_tabs$RatioTransitions<- apply(pair_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,sum)
-pair_tabs$RatioTransitions<- pair_tabs$TransitionsFFSM/pair_tabs$RatioTransitions
+pair_tabs$RatioTransitions<- pair_tabs$TransitionsFFSM/apply(pair_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,sum)
 
 # # calculate model size increment in terms of the largest model size (number of states)
-# pair_tabs$RatioStatesMax<- apply(pair_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,max)
-# pair_tabs$RatioStatesMax<- pair_tabs$StatesFFSM/pair_tabs$RatioStatesMax
+# pair_tabs$RatioStatesMax<- pair_tabs$StatesFFSM/apply(pair_tabs[,c("TotalStatesRef","TotalStatesUpdt")],1,max)
 # 
 # # calculate model size increment in terms of the largest model size (number of transitions)  
-# pair_tabs$RatioTransitionsMax<- apply(pair_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,max)
-# pair_tabs$RatioTransitionsMax<- pair_tabs$TransitionsFFSM/pair_tabs$RatioTransitionsMax
+# pair_tabs$RatioTransitionsMax<- pair_tabs$TransitionsFFSM/apply(pair_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,max)
 
 # dissimilarity histogram 
 filename <- "histogram_ConfigSim.pdf"
@@ -216,10 +211,10 @@ final_by_index <- prtz_tabs %>%
     # q3     = quantile(Precision,0.75),
     # q4     = quantile(Precision,1.00)
   )
-summarized_final <- summarized_final %>% 
+summarized_final <- final_by_index %>% 
   mutate_if(is.numeric, round, 2)
 summarized_final<-t(summarized_final)
-write.table(summarized_final,"./summarized_final.tab")
+write.table(summarized_final,"./final_by_index.tab")
 
 
 cat("",file="statistics.txt",append=FALSE)
