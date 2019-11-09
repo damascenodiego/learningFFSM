@@ -32,7 +32,9 @@ rm(new.packages,list.of.packages)
 # }
 # write.table(pair_tabs,"./pair_mdc.tab")
 pair_tabs<-read.table("./pair_mdc.tab")
-pair_tabs<-pair_tabs[pair_tabs$SPL!='bcs2',]
+pair_tabs$SPL<-toupper(pair_tabs$SPL)
+pair_tabs<-pair_tabs[pair_tabs$SPL!='BCS2',]
+pair_tabs$SPL <- factor(pair_tabs$SPL, levels = c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP"))
 
 # calculate similarity (opposite of dissim)
 pair_tabs$ConfigSim <- 1-pair_tabs$ConfigDissim
@@ -53,7 +55,6 @@ pair_tabs$RatioTransitions<- pair_tabs$TransitionsFFSM/pair_tabs$RatioTransition
 # pair_tabs$RatioTransitionsMax<- apply(pair_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,max)
 # pair_tabs$RatioTransitionsMax<- pair_tabs$TransitionsFFSM/pair_tabs$RatioTransitionsMax
 
-pair_tabs$SPL<-toupper(pair_tabs$SPL)
 # dissimilarity histogram 
 filename <- "histogram_ConfigSim.pdf"
 p<-ggplot(pair_tabs, aes(x=ConfigSim)) + 
@@ -66,18 +67,10 @@ p<-ggplot(pair_tabs, aes(x=ConfigSim)) +
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )+facet_wrap(SPL~.,scales = "free_y", nrow = 1)
-p1 <- p %+% subset(pair_tabs, SPL %in% c("AGM","BCS2","VM","WS")) + labs(x = NULL)
-p2 <- p %+% subset(pair_tabs, !SPL %in% c("AGM","BCS2","VM","WS"))
-p<-arrangeGrob(grobs = lapply(
-  list(p1, p2),
-  set_panel_size,
-  width = unit(5, "cm"),
-  height = unit(4, "cm")
-))
+  )+facet_wrap(SPL~.,scales = "free_y", nrow = 2)
 #print(p)
 ggsave(device=cairo_pdf, filename, width = 7.250, height = 4.5, dpi=320,p)
-rm(p,p1,p2,filename)
+rm(p,filename)
 
 # dissimilarity (RatioStates) histogram
 filename <- "histogram_RatioStates.pdf"
@@ -91,18 +84,10 @@ p<-ggplot(pair_tabs, aes(x=RatioStates)) +
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )+facet_wrap(SPL~.,scales = "free_y", nrow = 1)
-p1 <- p %+% subset(pair_tabs, SPL %in% c("AGM","BCS2","VM","WS")) + labs(x = NULL)
-p2 <- p %+% subset(pair_tabs, !SPL %in% c("AGM","BCS2","VM","WS"))
-p<-arrangeGrob(grobs = lapply(
-  list(p1, p2),
-  set_panel_size,
-  width = unit(5, "cm"),
-  height = unit(4, "cm")
-))
+  )+facet_wrap(SPL~.,scales = "free_y", nrow = 2)
 #print(p)
 ggsave(device=cairo_pdf, filename, width = 7.250, height = 4.5, dpi=320,p)
-rm(p,p1,p2,filename)
+rm(p,filename)
 
 # dissimilarity (RatioTransitions) histogram
 filename <- "histogram_RatioTransitions.pdf"
@@ -116,30 +101,22 @@ p<-ggplot(pair_tabs, aes(x=RatioTransitions)) +
     axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
     axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
     axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
-  )+facet_wrap(SPL~.,scales = "free_y", nrow = 1)
-p1 <- p %+% subset(pair_tabs, SPL %in% c("AGM","BCS2","VM","WS")) + labs(x = NULL)
-p2 <- p %+% subset(pair_tabs, !SPL %in% c("AGM","BCS2","VM","WS"))
-p<-arrangeGrob(grobs = lapply(
-  list(p1, p2),
-  set_panel_size,
-  width = unit(5, "cm"),
-  height = unit(4, "cm")
-))
+  )+facet_wrap(SPL~.,scales = "free_y", nrow = 2)
 #print(p)
 ggsave(device=cairo_pdf, filename, width = 7.250, height = 4.5, dpi=320,p)
-rm(p,p1,p2,filename)
+rm(p,filename)
 
 {
   corrMethod<-"pearson"
-  x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
-  # x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
-  # y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
-  y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
+  # x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
+  x_col = "RatioTransitions";     xlab_txt = "Ratio between total sizes of FFSM to products pair (number of transitions)"
+  y_col <- "ConfigSim"; ylab_txt <- "Configuration similarity";
+  # y_col <- "RatioFeatures"; ylab_txt <- "Amount of feature sharing";
   
   y_title <- "Pearson correlation coefficient - Pairwise analysis"
   filename <- paste("correlation_",x_col,"_",y_col,".pdf",sep = "")
   
-  p1 <-ggscatter(subset(pair_tabs, SPL %in% c("AGM","BCS2","VM","WS")),
+  p <-ggscatter(pair_tabs,
                  x = x_col, xlab = NULL,
                  y = y_col, ylab = ylab_txt,
                  title = y_title,
@@ -158,39 +135,10 @@ rm(p,p1,p2,filename)
       axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=15),
       axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=15),
       axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=15)
-    )+ facet_wrap(SPL~.,scales = "free", nrow = 1)  + labs(x = NULL)
-  # facet_wrap(SPL~.,scales = "free_x", nrow = 1)
-  # facet_wrap(SPL~., nrow = 1)
-  
-  p2 <-ggscatter(subset(pair_tabs, !SPL %in% c("AGM","BCS2","VM","WS")),
-                 x = x_col, xlab = xlab_txt,
-                 y = y_col, ylab = ylab_txt,
-                 title = NULL,
-                 add = "reg.line",
-                 cor.coeff.args = list(method = corrMethod, label.x.npc = 0.00, label.y.npc = 0.00),
-                 cor.coef.size = 4,
-                 conf.int = TRUE, # Add confidence interval
-                 cor.coef = TRUE # Add correlation coefficient. see ?stat_cor
-  )+
-    theme_bw()+
-    theme(
-      plot.title = element_text(hjust = 0.5, size=15),
-      strip.text.x = element_text(size = 15),
-      strip.text.y = element_text(size = 15),
-      axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=15),
-      axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=15),
-      axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=15),
-      axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=15)
-    )+ facet_wrap(SPL~.,scales = "free", nrow = 1)
-  p<-arrangeGrob(grobs = lapply(
-    list(p1, p2),
-    set_panel_size,
-    width = unit(9, "cm"),
-    height = unit(5, "cm")
-  ))
+    )+ facet_wrap(SPL~.,scales = "free", nrow = 2)
   #print(p)
   ggsave(device=cairo_pdf, filename, width = 12.5, height = 6, dpi=320,p)
-  rm(p,p1,p2,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
+  rm(p,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
 }
 
 # # Loading report files of recovering FFSMs from prioritized configurations
@@ -236,17 +184,19 @@ for (a_metric in c('Precision')) {
   #print(p)
   ggsave(device=cairo_pdf, filename, width = 8.65, height = 4.5, dpi=320,p)
   
-  filename <- paste(a_metric,"_byIndex.pdf",sep="")
-  p <- ggplot(data=prtz_tabs, aes_string(x="Index",y=a_metric,group="Index")) +
-    geom_boxplot(color = "black", outlier.color = "red", outlier.size = .75)+
-    stat_boxplot(geom ='errorbar',color = "black")+
-    scale_fill_brewer(palette="Greys") +
-    scale_y_continuous(limits = c(NA, 1))+
-    # theme_bw() +
-    facet_grid(SPL~Twise,scales = "free") 
-  # print(p)
-  ggsave(device=cairo_pdf, filename, width = 12, height = 10, dpi=320,p)
-  # rm(p,a_metric,filename)
+  for(an_spl in unique(prtz_tabs$SPL)){
+    filename <- paste(a_metric,"_",an_spl,"_byIndex.pdf",sep="")
+    p <- ggplot(data=prtz_tabs[prtz_tabs$SPL==an_spl,], aes_string(x="Index",y=a_metric,group="Index")) +
+      geom_boxplot(color = "black", outlier.color = "red", outlier.size = .75)+
+      stat_boxplot(geom ='errorbar',color = "black")+
+      scale_fill_brewer(palette="Greys") +
+      scale_y_continuous(limits = c(NA, 1))+
+      theme_bw() +facet_wrap(Twise~.,scales = "free", nrow = 1) 
+    # print(p)
+    ggsave(device=cairo_pdf, filename, width = 15, height = 3, dpi=320,p)
+    # rm(p,a_metric,filename)
+    
+  }
 }
 
 
