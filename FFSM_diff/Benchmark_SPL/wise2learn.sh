@@ -25,6 +25,9 @@ done
 
 for an_spl in "agm" "vm" "ws" "cpterminal" "minepump" "aerouc5"; do
 	qsub -N "p_$an_spl" -v "name=emse_pairs_$an_spl"  ./emse.sh
+done
+
+for an_spl in "agm" "vm" "ws" "cpterminal" "minepump" "aerouc5"; do
 	qsub -N "d_$an_spl" -v "name=emse_dissim_$an_spl" ./emse.sh
 done
 
