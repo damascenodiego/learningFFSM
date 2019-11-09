@@ -39,7 +39,7 @@ for idx_PROD_I in range(len(prodOrder)):
 		PROD_J = prodOrder[idx_PROD_J] 
 		print("Running for "+PROD_I+"_"+PROD_J)
 		# if(PROD_J==PROD_I): continue
-		bashCommand = "java -cp ./learnFFSM.jar uk.le.ac.compare.CompareLanguages ./"+SPL_NAME+"/products_all/"+PROD_I+"_kiss.txt ./"+SPL_NAME+"/products_all/"+PROD_J+"_kiss.txt -fm ./"+SPL_NAME+"/model.xml "+_ktr
+		bashCommand = "java -cp ./learnFFSM.jar uk.le.ac.compare.CompareStructure ./"+SPL_NAME+"/products_all/"+PROD_I+"_kiss.txt ./"+SPL_NAME+"/products_all/"+PROD_J+"_kiss.txt -fm ./"+SPL_NAME+"/model.xml "+_ktr
 
 		_writer.write("#")
 		_writer.write(bashCommand)
