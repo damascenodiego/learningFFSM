@@ -50,6 +50,57 @@ pair_tabs$RatioTransitions<- pair_tabs$TransitionsFFSM/apply(pair_tabs[,c("Total
 # # calculate model size increment in terms of the largest model size (number of transitions)  
 # pair_tabs$RatioTransitionsMax<- pair_tabs$TransitionsFFSM/apply(pair_tabs[,c("TotalTransitionsRef","TotalTransitionsUpdt")],1,max)
 
+
+############################
+# RQ1) Succinctness - plot #
+############################
+
+# boxplot pairs size 
+filename <- "boxplot_pairs_size.pdf"
+tmp_tab <- data.frame(SPL=pair_tabs$SPL,FFSM=pair_tabs$TransitionsFFSM,Pair=pair_tabs$TotalTransitionsRef+pair_tabs$TotalTransitionsUpdt)
+tmp_tab <- melt(tmp_tab, id.vars = "SPL", measure.vars = c("FFSM", "Pair"))
+colnames(tmp_tab) <- c("SPL","Model","Size")
+p<-ggplot(tmp_tab, aes(x=Model,y=Size,shape=Model,fill=Model)) + 
+  geom_boxplot(color = "black")+ 
+  stat_boxplot(geom ='errorbar',color = "black")+
+  labs(x = "Software product line", y = "Number of transitions")+
+  theme_bw()+
+  scale_fill_brewer(palette="Greys") +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, size=10),
+    axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+    axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+    axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
+    axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
+  )+facet_wrap(SPL~.,scales = "free", nrow = 2)
+# print(p)
+ggsave(device=cairo_pdf, filename, width = 6.0, height = 4.5, dpi=320,p)
+rm(p,filename)
+
+######################################
+# RQ1) Succinctness - MW and Â tests #
+######################################
+
+cat("",file="pairs_size.txt",sep="",append=FALSE)
+for(an_spl in c("AGM","VM","WS","CPTERMINAL","MINEPUMP","AEROUC5")){
+# for(an_spl in unique(tmp_tab$SPL)){
+  warning(paste("Calculating statistics for",an_spl,"..."))
+  ffsm_sizes    <- tmp_tab[(tmp_tab$SPL==an_spl & tmp_tab$Model=="FFSM"),"Size"]
+  pairs_totSize <- tmp_tab[(tmp_tab$SPL==an_spl & tmp_tab$Model=="Pair"),"Size"]
+  # wilcox test
+  wilc_test <-wilcox.test(ffsm_sizes,pairs_totSize)
+  
+  # Vargha-Delaney
+  vd_test <- VD.A(ffsm_sizes,pairs_totSize)
+  
+  cat(paste("SPL name:",an_spl),file="pairs_size.txt",sep="\n",append=TRUE)
+  cat(paste("\tp-value =",wilc_test$p.value),file="pairs_size.txt",sep="\n",append=TRUE)
+  cat(paste("\tÂ =",vd_test$estimate,"(",vd_test$magnitude,")"),file="pairs_size.txt",sep="\n",append=TRUE)
+}
+rm(an_spl,tmp_tab,ffsm_sizes,pairs_totSize,wilc_test,vd_test)
+
+
 # dissimilarity histogram 
 filename <- "histogram_ConfigSim.pdf"
 p<-ggplot(pair_tabs, aes(x=ConfigSim)) + 
@@ -101,6 +152,9 @@ p<-ggplot(pair_tabs, aes(x=RatioTransitions)) +
 ggsave(device=cairo_pdf, filename, width = 7.250, height = 4.5, dpi=320,p)
 rm(p,filename)
 
+##########################################
+# RQ1) Pearson's correlation coefficient #
+##########################################
 {
   corrMethod<-"pearson"
   # x_col = "RatioStates";          xlab_txt = "Ratio between total sizes of FFSM to products pair (number of states)"
@@ -136,24 +190,39 @@ rm(p,filename)
   rm(p,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
 }
 
-# # Loading report files of recovering FFSMs from prioritized configurations
-# # Then, combine tables in a single data structure
-# prtz_tabs <- NULL
-# for (an_spl in c("agm", "vm", "ws", "cpterminal", "minepump", "aerouc5")) {
-#   for (wise in c("1wise", "2wise", "3wise", "4wise", "all")) {
-#     # tab_r<-read.table(paste("../",an_spl,"/products_",wise,"/","report.tab",sep = ""),sep="/", header=TRUE)
-#     # tab_prf<-read.table(paste("../",an_spl,"/products_",wise,"/","report_prf.tab",sep = ""),sep="|", header=TRUE)
-#     tab_l<-read.table(paste("../",an_spl,"/products_",wise,"/","report_fmeasure_l.tab",sep = ""),sep="|", header=TRUE)
-#     tab_l$SPL <- an_spl
-#     tab_l$Twise <- wise
-#     if(is.null(prtz_tabs)) prtz_tabs <- tab_l
-#     else{
-#       prtz_tabs <- rbind(prtz_tabs,tab_l)
-#     }
-#     rm(tab_l)
-#   }
-# }
-# write.table(prtz_tabs,"./recov_prtz.tab")
+#######
+# RQ2 #
+#######
+# Loading report files of recovering FFSMs from prioritized configurations
+# Then, combine tables in a single data structure
+prtz_tabs <- NULL
+rprf_tabs <- NULL
+for (an_spl in c("agm", "vm", "ws", "cpterminal", "minepump", "aerouc5")) {
+  for (wise in c("1wise", "2wise", "3wise", "4wise", "all")) {
+    tab_r<-read.table(paste("../",an_spl,"/products_",wise,"/","report.tab",sep = ""),sep="/", header=TRUE)
+    tab_prf<-read.table(paste("../",an_spl,"/products_",wise,"/","report_prf.tab",sep = ""),sep="|", header=TRUE)
+    tab_l<-read.table(paste("../",an_spl,"/products_",wise,"/","report_fmeasure_l.tab",sep = ""),sep="|", header=TRUE)
+    tab_l$SPL   <- an_spl;   tab_l$Twise <- wise;   tab_l$Index <- seq(nrow(tab_l))
+    tab_prf$SPL <- an_spl; tab_prf$Twise <- wise; tab_prf$Index <- seq(nrow(tab_prf))
+
+    if(is.null(prtz_tabs)) {
+      prtz_tabs <- tab_l
+      rprf_tabs <- cbind(tab_r,tab_prf)
+    }else{
+      prtz_tabs <- rbind(prtz_tabs,tab_l)
+      rprf_tabs <- rbind(rprf_tabs,cbind(tab_r,tab_prf))
+    }
+    rm(tab_l,tab_r,tab_prf)
+  }
+}
+rm(an_spl,wise)
+write.table(prtz_tabs,"./recov_prtz.tab")
+write.table(rprf_tabs,"./recov_rprf.tab")
+
+
+##################
+# RQ2) Precision 
+##################
 prtz_tabs<-read.table("./recov_prtz.tab")
 prtz_tabs$Index <-prtz_tabs$Reference
 prtz_tabs$Index<-sub("^ffsm_","",prtz_tabs$Index)
@@ -162,40 +231,65 @@ prtz_tabs$Index<-as.integer(prtz_tabs$Index)
 prtz_tabs$SPL<-toupper(prtz_tabs$SPL)
 prtz_tabs$SPL <- factor(prtz_tabs$SPL, levels = c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP"))
 
+final_ffsm <- prtz_tabs[c("SPL","Twise","Index")] %>% 
+  group_by(SPL, Twise) %>%
+  filter(Index == max(Index))
+final_ffsm <- unique(final_ffsm)
+
+##################
+# RQ2) Precision: T-wise sizes
+##################
+filename <- "twise_sizes.txt"
+write.table(final_ffsm,filename, sep = "\t", row.names = FALSE)
+
+filename <- "twise_sizes.pdf"
+p<-ggplot(final_ffsm,aes(x=Twise,y=Index,fill=Twise))+
+  geom_bar(stat = "identity",position = "dodge2", colour = "black")+
+  labs(x=NULL,y="Number of configurations")+
+  scale_fill_brewer(palette="Greys") +
+  theme_bw() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, size=10),
+    axis.text.x  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+    axis.text.y  = element_text(angle = 0,   hjust = 0.5, vjust = 0.5, size=10),
+    axis.title.x  = element_text(angle = 0,  hjust = 0.5, vjust = 0.5, size=10),
+    axis.title.y  = element_text(angle = 90, hjust = 0.5, vjust = 0.5, size=10)
+  )+facet_wrap(SPL~.,scales = "free", nrow = 2) 
+#print(p)
+ggsave(device=cairo_pdf, filename, width = 8.65, height = 4.5, dpi=320,p)
+
+#########################
+# RQ2) Precision: Final #
+#########################
 final_ffsm <- prtz_tabs %>% 
   group_by(SPL, Twise) %>%
   filter(Index == max(Index))
 
-for (a_metric in c('Precision')) {
-# for (a_metric in c('Precision', 'Recall','F.measure')) {
-  filename <- paste(a_metric,".pdf",sep="")
-  p <- ggplot(data=final_ffsm, aes_string(x="Twise",y=a_metric)) +
-    geom_boxplot(color = "black", outlier.color = "red", outlier.size = .75)+
-    stat_boxplot(geom ='errorbar',color = "black")+
-    labs(x=NULL)+
-    scale_fill_brewer(palette="Greys") +
-    scale_y_continuous(limits = c(NA, 1))+
-    theme_bw() +facet_wrap(SPL~.,scales = "free", nrow = 2) 
-  #print(p)
-  ggsave(device=cairo_pdf, filename, width = 8.65, height = 4.5, dpi=320,p)
-  
-  for(an_spl in unique(prtz_tabs$SPL)){
-    filename <- paste(a_metric,"_",an_spl,"_byIndex.pdf",sep="")
-    p <- ggplot(data=prtz_tabs[prtz_tabs$SPL==an_spl,], aes_string(x="Index",y=a_metric,group="Index")) +
-      geom_boxplot(color = "black", outlier.color = "red", outlier.size = .75)+
-      stat_boxplot(geom ='errorbar',color = "black")+
-      scale_fill_brewer(palette="Greys") +
-      scale_y_continuous(limits = c(NA, 1))+
-      theme_bw() +facet_wrap(Twise~.,scales = "free", nrow = 1) 
-    # print(p)
-    ggsave(device=cairo_pdf, filename, width = 15, height = 3, dpi=320,p)
-    # rm(p,a_metric,filename)
+summarized_final <- final_ffsm %>%
+  group_by(SPL,Twise) %>%
+  summarize(
+    mean   = mean(Precision),
+    # median = median(Precision),
+    sd     = sd(Precision),    
+    min    = min(Precision),
+    max    = max(Precision),
+    count  = length(Precision)
     
-  }
-}
+    # q1     = quantile(Precision,0.25),
+    # q2     = quantile(Precision,0.50),
+    # q3     = quantile(Precision,0.75),
+    # q4     = quantile(Precision,1.00)
+  )
+summarized_final <- summarized_final %>% 
+  mutate_if(is.numeric, round, 2)
+summarized_final<-t(summarized_final)
+write.table(summarized_final,"./precision_final.tab", sep = "\t", col.names = FALSE)
 
 
-
+################################
+# RQ2) Precision: Intermediate #
+################################
 final_by_index <- prtz_tabs %>% 
   group_by(SPL,Twise,Index) %>%
   summarize(
@@ -214,9 +308,47 @@ final_by_index <- prtz_tabs %>%
 summarized_final <- final_by_index %>% 
   mutate_if(is.numeric, round, 2)
 summarized_final<-t(summarized_final)
-write.table(summarized_final,"./final_by_index.tab")
+write.table(summarized_final,"./precision_intermediate.tab", sep = "\t", col.names = FALSE)
 
 
+for (a_metric in c('Precision')) {
+  # for (a_metric in c('Precision', 'Recall','F.measure')) {
+  ###############################
+  # RQ2) Precision (final FFSM) #
+  ###############################
+  filename <- paste(a_metric,".pdf",sep="")
+  p <- ggplot(data=final_ffsm, aes_string(x="Twise",y=a_metric)) +
+    geom_boxplot(color = "black", outlier.color = "red", outlier.size = .75)+
+    stat_boxplot(geom ='errorbar',color = "black")+
+    labs(x=NULL)+
+    scale_fill_brewer(palette="Greys") +
+    scale_y_continuous(limits = c(NA, 1))+
+    theme_bw() +facet_wrap(SPL~.,scales = "free", nrow = 2) 
+  #print(p)
+  ggsave(device=cairo_pdf, filename, width = 8.65, height = 4.5, dpi=320,p)
+  
+  #######################################
+  # RQ2) Precision (intermediate FFSMs) #
+  #######################################
+  for(an_spl in unique(prtz_tabs$SPL)){
+    filename <- paste(a_metric,"_",an_spl,"_byIndex.pdf",sep="")
+    p <- ggplot(data=prtz_tabs[prtz_tabs$SPL==an_spl,], aes_string(x="Index",y=a_metric,group="Index")) +
+      geom_boxplot(color = "black", outlier.color = "red", outlier.size = .75)+
+      stat_boxplot(geom ='errorbar',color = "black")+
+      scale_fill_brewer(palette="Greys") +
+      scale_y_continuous(limits = c(NA, 1))+
+      theme_bw() +facet_wrap(Twise~.,scales = "free", nrow = 1) 
+    # print(p)
+    ggsave(device=cairo_pdf, filename, width = 15, height = 3, dpi=320,p)
+    rm(p,filename)
+  }
+  rm(an_spl)
+}
+rm(a_metric)
+
+###################################
+# RQ2) Precision - MW and Â tests #
+###################################
 cat("",file="statistics.txt",append=FALSE)
 for (an_spl in c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP")) {
   cat(paste("#########",an_spl),sep = "\n",file="statistics.txt",append=TRUE)
@@ -253,24 +385,7 @@ for (an_spl in c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP")) {
   cat(paste("\tp-value =",wilc_w4a$p.value),file="statistics.txt",sep="\n",append=TRUE)
   cat(paste("\tÂ =",vd_4a$estimate,"(",vd_4a$magnitude,")"),file="statistics.txt",sep="\n",append=TRUE)
 }
-
-summarized_final <- final_ffsm %>%
-  group_by(SPL,Twise) %>%
-  summarize(
-    mean   = mean(Precision),
-    # median = median(Precision),
-    sd     = sd(Precision),    
-    min    = min(Precision),
-    max    = max(Precision),
-    count  = length(Precision)
-    
-    # q1     = quantile(Precision,0.25),
-    # q2     = quantile(Precision,0.50),
-    # q3     = quantile(Precision,0.75),
-    # q4     = quantile(Precision,1.00)
-  )
-summarized_final <- summarized_final %>% 
-  mutate_if(is.numeric, round, 2)
-summarized_final<-t(summarized_final)
-write.table(summarized_final,"./summarized_final.tab")
-
+rm(an_spl)
+rm(vd_12,vd_23,vd_34,vd_4a)
+rm(wise1,wise2,wise3,wise4,wisea)
+rm(wilc_w12,wilc_w23,wilc_w34,wilc_w4a)

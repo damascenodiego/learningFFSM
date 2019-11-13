@@ -1,0 +1,18 @@
+SPL name: AGM
+	p-value = 1.73331953995341e-06
+	Â = 0.0748299319727891 ( large )
+SPL name: VM
+	p-value = 6.44470821814976e-31
+	Â = 0.173945578231293 ( large )
+SPL name: WS
+	p-value = 3.54717566401029e-06
+	Â = 0.145659928656361 ( large )
+SPL name: CPTERMINAL
+	p-value = 2.29932709431786e-135
+	Â = 0.0316013411955139 ( large )
+SPL name: MINEPUMP
+	p-value = 1.72613496696276e-101
+	Â = 0.119834710743802 ( large )
+SPL name: AEROUC5
+	p-value = 2.14116655987905e-16
+	Â = 0 ( large )
