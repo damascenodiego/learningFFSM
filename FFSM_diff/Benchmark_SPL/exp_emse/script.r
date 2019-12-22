@@ -52,20 +52,42 @@ pair_tabs$RatioTransitions<- pair_tabs$TransitionsFFSM/apply(pair_tabs[,c("Total
 
 
 ############################
-# RQ1) Succinctness - plot #
+# Succinctness - plot #
 ############################
 
 # boxplot pairs size 
-filename <- "boxplot_pairs_size.pdf"
+filename <- "boxplot_pairs_transitions_size.pdf"
 tmp_tab <- data.frame(SPL=pair_tabs$SPL,FFSM=pair_tabs$TransitionsFFSM,Pair=pair_tabs$TotalTransitionsRef+pair_tabs$TotalTransitionsUpdt)
+# filename <- "boxplot_pairs_states_size.pdf"
+# tmp_tab <- data.frame(SPL=pair_tabs$SPL,FFSM=pair_tabs$StatesFFSM,Pair=pair_tabs$TotalStatesRef+pair_tabs$TotalStatesUpdt)
 tmp_tab <- melt(tmp_tab, id.vars = "SPL", measure.vars = c("FFSM", "Pair"))
 colnames(tmp_tab) <- c("SPL","Model","Size")
+tmp_tab$OriginalSize <- 0
+
+# Original number of transitions
+tmp_tab[tmp_tab$SPL=="AGM","OriginalSize"] <- 35
+tmp_tab[tmp_tab$SPL=="VM","OriginalSize"]  <- 197
+tmp_tab[tmp_tab$SPL=="WS","OriginalSize"]  <- 112
+tmp_tab[tmp_tab$SPL=="AEROUC5","OriginalSize"]    <- 450
+tmp_tab[tmp_tab$SPL=="CPTERMINAL","OriginalSize"] <- 176
+tmp_tab[tmp_tab$SPL=="MINEPUMP","OriginalSize"]   <- 575
+
+# # Original number of states
+# tmp_tab[tmp_tab$SPL=="AGM","OriginalSize"] <- 6
+# tmp_tab[tmp_tab$SPL=="VM","OriginalSize"]  <- 14
+# tmp_tab[tmp_tab$SPL=="WS","OriginalSize"]  <- 13
+# tmp_tab[tmp_tab$SPL=="AEROUC5","OriginalSize"]    <- 25
+# tmp_tab[tmp_tab$SPL=="CPTERMINAL","OriginalSize"] <- 11
+# tmp_tab[tmp_tab$SPL=="MINEPUMP","OriginalSize"]   <- 25
+
 p<-ggplot(tmp_tab, aes(x=Model,y=Size,shape=Model,fill=Model)) + 
   geom_boxplot(color = "black")+ 
   stat_boxplot(geom ='errorbar',color = "black")+
   labs(x = "Software product line", y = "Number of transitions")+
+  # labs(x = "Software product line", y = "Number of states")+
   theme_bw()+
   scale_fill_brewer(palette="Greys") +
+  geom_segment(aes(x = 0.5, y = OriginalSize, xend = 2.5, yend = OriginalSize,colour = "red"),linetype="dashed")+
   theme(
     legend.position = "none",
     plot.title = element_text(hjust = 0.5, size=10),
@@ -78,8 +100,26 @@ p<-ggplot(tmp_tab, aes(x=Model,y=Size,shape=Model,fill=Model)) +
 ggsave(device=cairo_pdf, filename, width = 6.0, height = 4.5, dpi=320,p)
 rm(p,filename)
 
+cat("",file="statistics_pairs_size.txt",append=FALSE)
+for (an_spl in c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP")) {
+  cat(paste("#########",an_spl),sep = "\n",file="statistics_pairs_size.txt",append=TRUE)
+  
+  sz_learnt <- tmp_tab[tmp_tab$SPL==an_spl & tmp_tab$Model=="FFSM",]$Size
+  sz_origin <- tmp_tab[tmp_tab$SPL==an_spl & tmp_tab$Model=="FFSM",]$OriginalSize
+  
+  # wilcox test
+  wilc_sz <-wilcox.test(sz_learnt,sz_origin)
+  
+  # Vargha-Delaney
+  vd_sz <- VD.A(sz_learnt,sz_origin)
+  
+  cat(paste("\tp-value =",wilc_sz$p.value),file="statistics_pairs_size.txt",sep="\n",append=TRUE)
+  cat(paste("\tÂ =",vd_sz$estimate,"(",vd_sz$magnitude,")"),file="statistics_pairs_size.txt",sep="\n",append=TRUE)
+}
+  rm(sz_learnt,sz_origin,wilc_sz,vd_sz)
+
 ######################################
-# RQ1) Succinctness - MW and Â tests #
+# Succinctness - MW and Â tests #
 ######################################
 
 cat("",file="pairs_size.txt",sep="",append=FALSE)
@@ -153,7 +193,7 @@ ggsave(device=cairo_pdf, filename, width = 7.250, height = 4.5, dpi=320,p)
 rm(p,filename)
 
 ##########################################
-# RQ1) Pearson's correlation coefficient #
+# Pearson's correlation coefficient #
 ##########################################
 {
   corrMethod<-"pearson"
@@ -190,38 +230,35 @@ rm(p,filename)
   rm(p,filename,x_col,xlab_txt,y_col,ylab_txt,y_title,corrMethod)
 }
 
-#######
-# RQ2 #
-#######
-# Loading report files of recovering FFSMs from prioritized configurations
-# Then, combine tables in a single data structure
-prtz_tabs <- NULL
-rprf_tabs <- NULL
-for (an_spl in c("agm", "vm", "ws", "cpterminal", "minepump", "aerouc5")) {
-  for (wise in c("1wise", "2wise", "3wise", "4wise", "all")) {
-    tab_r<-read.table(paste("../",an_spl,"/products_",wise,"/","report.tab",sep = ""),sep="/", header=TRUE)
-    tab_prf<-read.table(paste("../",an_spl,"/products_",wise,"/","report_prf.tab",sep = ""),sep="|", header=TRUE)
-    tab_l<-read.table(paste("../",an_spl,"/products_",wise,"/","report_fmeasure_l.tab",sep = ""),sep="|", header=TRUE)
-    tab_l$SPL   <- an_spl;   tab_l$Twise <- wise;   tab_l$Index <- seq(nrow(tab_l))
-    tab_prf$SPL <- an_spl; tab_prf$Twise <- wise; tab_prf$Index <- seq(nrow(tab_prf))
-
-    if(is.null(prtz_tabs)) {
-      prtz_tabs <- tab_l
-      rprf_tabs <- cbind(tab_r,tab_prf)
-    }else{
-      prtz_tabs <- rbind(prtz_tabs,tab_l)
-      rprf_tabs <- rbind(rprf_tabs,cbind(tab_r,tab_prf))
-    }
-    rm(tab_l,tab_r,tab_prf)
-  }
-}
-rm(an_spl,wise)
-write.table(prtz_tabs,"./recov_prtz.tab")
-write.table(rprf_tabs,"./recov_rprf.tab")
+# # Loading report files of recovering FFSMs from prioritized configurations
+# # Then, combine tables in a single data structure
+# prtz_tabs <- NULL
+# rprf_tabs <- NULL
+# for (an_spl in c("agm", "vm", "ws", "cpterminal", "minepump", "aerouc5")) {
+#   for (wise in c("1wise", "2wise", "3wise", "4wise", "all")) {
+#     tab_r<-read.table(paste("../",an_spl,"/products_",wise,"/","report.tab",sep = ""),sep="/", header=TRUE)
+#     tab_prf<-read.table(paste("../",an_spl,"/products_",wise,"/","report_prf.tab",sep = ""),sep="|", header=TRUE)
+#     tab_l<-read.table(paste("../",an_spl,"/products_",wise,"/","report_fmeasure_l.tab",sep = ""),sep="|", header=TRUE)
+#     tab_l$SPL   <- an_spl;   tab_l$Twise <- wise;   tab_l$Index <- seq(nrow(tab_l))
+#     tab_prf$SPL <- an_spl; tab_prf$Twise <- wise; tab_prf$Index <- seq(nrow(tab_prf))
+# 
+#     if(is.null(prtz_tabs)) {
+#       prtz_tabs <- tab_l
+#       rprf_tabs <- cbind(tab_r,tab_prf)
+#     }else{
+#       prtz_tabs <- rbind(prtz_tabs,tab_l)
+#       rprf_tabs <- rbind(rprf_tabs,cbind(tab_r,tab_prf))
+#     }
+#     rm(tab_l,tab_r,tab_prf)
+#   }
+# }
+# rm(an_spl,wise)
+# write.table(prtz_tabs,"./recov_prtz.tab")
+# write.table(rprf_tabs,"./recov_rprf.tab")
 
 
 ##################
-# RQ2) Precision 
+# Precision 
 ##################
 prtz_tabs<-read.table("./recov_prtz.tab")
 prtz_tabs$Index <-prtz_tabs$Reference
@@ -237,7 +274,7 @@ final_ffsm <- prtz_tabs[c("SPL","Twise","Index")] %>%
 final_ffsm <- unique(final_ffsm)
 
 ##################
-# RQ2) Precision: T-wise sizes
+# Precision: T-wise sizes
 ##################
 filename <- "twise_sizes.txt"
 write.table(final_ffsm,filename, sep = "\t", row.names = FALSE)
@@ -259,12 +296,15 @@ p<-ggplot(final_ffsm,aes(x=Twise,y=Index,fill=Twise))+
 #print(p)
 ggsave(device=cairo_pdf, filename, width = 8.65, height = 4.5, dpi=320,p)
 
+
+
 #########################
-# RQ2) Precision: Final #
+# Precision: Final #
 #########################
 final_ffsm <- prtz_tabs %>% 
   group_by(SPL, Twise) %>%
   filter(Index == max(Index))
+
 
 summarized_final <- final_ffsm %>%
   group_by(SPL,Twise) %>%
@@ -288,7 +328,7 @@ write.table(summarized_final,"./precision_final.tab", sep = "\t", col.names = FA
 
 
 ################################
-# RQ2) Precision: Intermediate #
+# Precision: Intermediate #
 ################################
 final_by_index <- prtz_tabs %>% 
   group_by(SPL,Twise,Index) %>%
@@ -314,7 +354,7 @@ write.table(summarized_final,"./precision_intermediate.tab", sep = "\t", col.nam
 for (a_metric in c('Precision')) {
   # for (a_metric in c('Precision', 'Recall','F.measure')) {
   ###############################
-  # RQ2) Precision (final FFSM) #
+  # Precision (final FFSM) #
   ###############################
   filename <- paste(a_metric,".pdf",sep="")
   p <- ggplot(data=final_ffsm, aes_string(x="Twise",y=a_metric)) +
@@ -328,7 +368,7 @@ for (a_metric in c('Precision')) {
   ggsave(device=cairo_pdf, filename, width = 8.65, height = 4.5, dpi=320,p)
   
   #######################################
-  # RQ2) Precision (intermediate FFSMs) #
+  # Precision (intermediate FFSMs) #
   #######################################
   for(an_spl in unique(prtz_tabs$SPL)){
     filename <- paste(a_metric,"_",an_spl,"_byIndex.pdf",sep="")
@@ -347,7 +387,7 @@ for (a_metric in c('Precision')) {
 rm(a_metric)
 
 ###################################
-# RQ2) Precision - MW and Â tests #
+# Precision - MW and Â tests #
 ###################################
 cat("",file="statistics.txt",append=FALSE)
 for (an_spl in c("AGM","VM","WS","AEROUC5","CPTERMINAL","MINEPUMP")) {
