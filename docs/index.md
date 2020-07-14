@@ -3,15 +3,14 @@ layout: default
 title: Home
 logo: images/ffsm_diff.png
 nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+description: "The FFSM_Diff for learning featured finite state machines (FFSM) from product-specific finite state machines."
 permalink: /
-last_modified_date: 2020-04-27T17:54:08+0000
 ---
 
-# The Featured Finite State Machine Difference (FFSM_Diff) project
+# The <i>Featured Finite State Machine Difference</i> project
 {: .fs-9 }
 
-This repository includes the laboratory packages of the studies using the FFSM_Diff algorithm.
+This repository includes the laboratory packages of the studies using the FFSM<sub> Diff</sub> algorithm.
 {: .fs-6 .fw-300 }
 
 [Overall description](#description){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/damascenodiego/learningFFSM){: .btn .fs-5 .mb-4 .mb-md-0 }
@@ -20,7 +19,7 @@ This repository includes the laboratory packages of the studies using the FFSM_D
 
 ## Description
 
-In this repository, we provide the experimental and coding artifacts for the FFSM_Diff algorithm, a technique to learn featured finite state machines (FFSM) from product-specific finite state machines.
+In this repository, we provide the experimental and coding artifacts for the FFSM<sub> Diff</sub> algorithm, a technique to learn featured finite state machines (FFSM) from product-specific finite state machines.
 We hope our artifacts are useful to researchers and practitioners willing to explore related work and should be sufficient to replicate our experiments in our particular setting.
 
 
@@ -36,7 +35,7 @@ The experimental artifacts for this study are available in folder [exp_emse](htt
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change. 
 
-#### Thank you to the contributors of FFSM_Diff!
+#### Thank you to the contributors of FFSM<sub> Diff</sub>!
 
 <ul class="list-style-none">
 {% for contributor in site.github.contributors %}
