@@ -26,9 +26,7 @@ We hope our artifacts are useful to researchers and practitioners willing to exp
 ## Related work and laboratory packages
 
 
-2. 
-
-The experimental artifacts for this study are available in folder [exp_emse](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff/Benchmark_SPL/exp_emse).
+The studies related to this repository are listed in section [Papers](studies/00_papers).
 
 ### Contributing
 
