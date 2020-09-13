@@ -1,0 +1,32 @@
+MinePumpSys, WaterRegulation, High
+MinePumpSys, WaterRegulation, High, Command, Start
+MinePumpSys, WaterRegulation, High, Command, Start, Stop
+MinePumpSys, WaterRegulation, High, Command, Stop
+MinePumpSys, WaterRegulation, High, Command, Stop, MethaneDetect
+MinePumpSys, WaterRegulation, High, MethaneDetect
+MinePumpSys, WaterRegulation, High, Command, Start, MethaneDetect
+MinePumpSys, WaterRegulation, High, Command, Start, Stop, MethaneDetect
+MinePumpSys, WaterRegulation, High, Command, Stop, MethaneDetect, Low
+MinePumpSys, WaterRegulation, High, Low
+MinePumpSys, WaterRegulation, High, Command, Start, Low
+MinePumpSys, WaterRegulation, High, Command, Start, Stop, Low
+MinePumpSys, WaterRegulation, High, Command, Stop, Low
+MinePumpSys, WaterRegulation, High, Command, Start, Stop, MethaneDetect, Low
+MinePumpSys, WaterRegulation, High, MethaneDetect, Low
+MinePumpSys, WaterRegulation, High, Command, Start, MethaneDetect, Low
+MinePumpSys, WaterRegulation, High, Command, Start, Stop, MethaneDetect, Low, Normal
+MinePumpSys, WaterRegulation, High, Normal
+MinePumpSys, WaterRegulation, High, Command, Start, Normal
+MinePumpSys, WaterRegulation, High, Command, Start, Stop, Normal
+MinePumpSys, WaterRegulation, High, Command, Stop, Normal
+MinePumpSys, WaterRegulation, High, Command, Stop, MethaneDetect, Normal
+MinePumpSys, WaterRegulation, High, MethaneDetect, Normal
+MinePumpSys, WaterRegulation, High, Command, Start, MethaneDetect, Normal
+MinePumpSys, WaterRegulation, High, Command, Start, Stop, MethaneDetect, Normal
+MinePumpSys, WaterRegulation, High, Command, Stop, MethaneDetect, Low, Normal
+MinePumpSys, WaterRegulation, High, Low, Normal
+MinePumpSys, WaterRegulation, High, Command, Start, Low, Normal
+MinePumpSys, WaterRegulation, High, Command, Start, Stop, Low, Normal
+MinePumpSys, WaterRegulation, High, Command, Stop, Low, Normal
+MinePumpSys, WaterRegulation, High, Command, Start, MethaneDetect, Low, Normal
+MinePumpSys, WaterRegulation, High, MethaneDetect, Low, Normal

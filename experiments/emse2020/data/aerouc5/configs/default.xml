@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="AeroUc5"/>
+	<feature automatic="selected" name="OWS"/>
+	<feature automatic="selected" name="Display_reference_objects_in_landing_zone"/>
+	<feature automatic="unselected" name="Display_real_reference_objects"/>
+	<feature manual="selected" name="Display_visual_3D_cues"/>
+	<feature automatic="selected" name="Database"/>
+	<feature automatic="selected" name="Mark_landing_position"/>
+	<feature manual="selected" name="Check_for_obstacles"/>
+	<feature automatic="unselected" name="Check_for_no_ground"/>
+	<feature automatic="selected" name="HMS_D"/>
+</configuration>

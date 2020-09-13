@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+    <feature automatic="selected" name="CPTerminal"/>
+    <feature automatic="selected" name="Connectivity"/>
+    <feature automatic="selected" name="Online"/>
+    <feature automatic="selected" name="Identification"/>
+    <feature automatic="selected" name="Signature"/>
+    <feature automatic="selected" name="PaymentSchema"/>
+    <feature automatic="selected" name="DirectDebit"/>
+    <feature manual="selected" name="PrepaidCard"/>
+    <feature automatic="selected" name="CardReader"/>
+    <feature manual="selected" name="Chip"/>
+    <feature manual="selected" name="MagStrip"/>
+    <feature manual="selected" name="NFC"/>
+</configuration>
