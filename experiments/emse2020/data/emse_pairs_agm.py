@@ -1,6 +1,7 @@
 #!/bin/python
 
 import random,subprocess,os
+import datetime
 
 SPL_NAME="agm"
 prodOrder=["{:01d}".format(x) for x in range(1,6+1)]
@@ -26,9 +27,13 @@ for idx_PROD_I in range(len(prodOrder)):
 		_writer.write("#")
 		_writer.write(bashCommand)
 		_writer.write("\n")
+		a = datetime.datetime.now()
 		process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 		output, error = process.communicate()	
+		b = datetime.datetime.now()
+		delta = b - a
 		_writer.write(output)
-		# _writer.write("\n")
+		_writer.write("duration in ms:"+SPL_NAME+"|"+PROD_I+"|"+PROD_J+"|"+str(int(delta.total_seconds() * 1000)))
+		_writer.write("\n")
 	_writer.flush()
 _writer.close()

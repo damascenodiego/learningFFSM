@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <featureModel>
+	<properties>
+		<graphics key="showhiddenfeatures" value="true"/>
+		<graphics key="legendposition" value="703,31"/>
+		<graphics key="legendautolayout" value="false"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
 	<struct>
-		<and mandatory="true" name="AeroUc5">
-			<or mandatory="true" name="Display_reference_objects_in_landing_zone">
+		<and abstract="true" mandatory="true" name="AeroUc5">
+			<or abstract="true" mandatory="true" name="Display_reference_objects_in_landing_zone">
 				<feature name="Display_real_reference_objects"/>
 				<feature name="Display_visual_3D_cues"/>
 			</or>
-			<or mandatory="true" name="Mark_landing_position">
+			<or abstract="true" mandatory="true" name="Mark_landing_position">
 				<feature name="Check_for_obstacles"/>
 				<feature name="Check_for_no_ground"/>
 			</or>
