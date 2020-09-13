@@ -21,6 +21,6 @@ These sub-folders are organized based on the project structure and naming conven
 
 Currently, this project has been used in two studies:
 
-	[Learning from Difference @ SPLC2019](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/splc2019)
+- [Learning from Difference @ SPLC2019](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/splc2019)
 
-	[Learning by Sampling @ EMSE2020](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/emse2020)
+- [Learning by Sampling @ EMSE2020](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/emse2020)
