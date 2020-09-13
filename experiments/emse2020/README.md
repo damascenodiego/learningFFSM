@@ -14,7 +14,7 @@ In **[experiments/emse2020/data](https://github.com/damascenodiego/learningFFSM/
 
 In **[experiments/emse2020/data/exp_emse/learningFFSMs.Rproj](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/emse2020/data/exp_emse/learningFFSMs.Rproj)**, there is a RStudio project for the experiment data.
 
-The **experiments/emse2020/data/wise2learn.sh** script that we designed automate our experiments. 
+The **[experiments/emse2020/data/wise2learn.sh](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/emse2020/data/wise2learn.sh)** script that we designed automate our experiments. 
 
 For more details about the scripts used in this study, please check the folder [experiments/emse2020/analysis_plan](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/emse2020/analysis_plan/). 
 
