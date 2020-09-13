@@ -18,3 +18,9 @@ In folder **[docs](https://github.com/damascenodiego/learningFFSM/tree/master/do
 
 In folder **[experiments](https://github.com/damascenodiego/learningFFSM/tree/master/experiments)**, you find the directories containing the open data artifacts generated from studies using the FFSM_Diff algorithm.
 These sub-folders are organized based on the project structure and naming conventions from https://doi.org/10.1007/978-3-030-32489-6_17.
+
+Currently, this project has been used in two studies:
+
+	- [Learning from Difference @ SPLC2019](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/splc2019)
+
+	- [Learning by Sampling @ EMSE2020](https://github.com/damascenodiego/learningFFSM/tree/master/experiments/emse2020)
