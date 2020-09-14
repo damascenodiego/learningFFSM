@@ -2,6 +2,8 @@
 
 This folder contains the laboratory package from the paper entitled *Learning from difference: An automated approach for learning family models from software product lines* that has been published as full paper in the research track of the [23rd International Systems and Software Product Line Conference (SPLC 2019)](https://splc2019.net).
 
+The paper is available for download at https://doi.org/10.1145/3336294.3336307
+
 This repository is organized as follows:
 
 In the root folder **[FFSM_diff](https://github.com/damascenodiego/learningFFSM/tree/master/FFSM_diff)**, we have a Java project that can be opened using the [Eclipse IDE](https://www.eclipse.org/ide) and [JDK version 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
