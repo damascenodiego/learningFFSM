@@ -40,14 +40,12 @@ import de.ovgu.featureide.fm.core.base.IFeatureModelFactory;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
-import net.automatalib.automata.base.fast.AbstractFastMutableNondet;
-import net.automatalib.automata.transout.impl.compact.CompactMealy;
-import net.automatalib.automata.transout.impl.compact.CompactMealyTransition;
+import net.automatalib.automata.transducers.impl.compact.CompactMealy;
+import net.automatalib.automata.transducers.impl.compact.CompactMealyTransition;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
 import net.automatalib.words.impl.Alphabets;
-import uk.le.ac.fsm.MealyUtils;
 
 public class FeaturedMealyUtils {
 	
@@ -144,7 +142,6 @@ public class FeaturedMealyUtils {
 					statesMap.put(sj,ffsm.addState((sj_c)));
 				}
 				
-				ConditionalTransition newTr = ffsm.addTransition(statesMap.get(si), in, statesMap.get(sj), out, (in_c));
 			}
 			ffsm.setInitialState(s0);
 	

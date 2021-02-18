@@ -8,16 +8,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -34,9 +31,8 @@ import de.ovgu.featureide.fm.core.configuration.Configuration;
 import de.ovgu.featureide.fm.core.configuration.Selection;
 import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;
 import de.ovgu.featureide.fm.core.io.xml.XmlFeatureModelFormat;
-import de.ovgu.featureide.fm.core.job.monitor.NullMonitor;
-import net.automatalib.automata.transout.impl.compact.CompactMealy;
-import net.automatalib.automata.transout.impl.compact.CompactMealyTransition;
+import net.automatalib.automata.transducers.impl.compact.CompactMealy;
+import net.automatalib.automata.transducers.impl.compact.CompactMealyTransition;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
@@ -114,6 +110,7 @@ public class MealyUtils {
 
 			splsWithProds.putIfAbsent(splname, prods);
 		}
+		spls.close();
 		
 		
 		return splsWithProds;
@@ -322,7 +319,7 @@ public class MealyUtils {
 
 		br.close();
 
-		List abc = new ArrayList<>(abcSet);
+		List<String> abc = new ArrayList<>(abcSet);
 		Collections.sort(abc);
 		Alphabet<String> alphabet = Alphabets.fromCollection(abc);
 		CompactMealy<String, Word<String>> mealym = new CompactMealy<String, Word<String>>(alphabet);

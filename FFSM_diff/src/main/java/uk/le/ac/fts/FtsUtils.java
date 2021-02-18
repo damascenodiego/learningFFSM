@@ -5,24 +5,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.prop4j.NodeReader;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.prop4j.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import be.vibes.fexpression.Feature;
 import be.vibes.fexpression.configuration.SimpleConfiguration;
@@ -32,14 +20,9 @@ import be.vibes.ts.Transition;
 import be.vibes.ts.TransitionSystem;
 import be.vibes.ts.exception.TransitionSystemDefinitionException;
 import be.vibes.ts.io.xml.XmlLoaders;
-import be.vibes.ts.io.xml.XmlReader;
-import de.ovgu.featureide.fm.core.base.IConstraint;
-import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.IFeatureModelFactory;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
-import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
-import de.ovgu.featureide.fm.core.configuration.Configuration;
-import net.automatalib.automata.transout.impl.compact.CompactMealy;
+import net.automatalib.automata.transducers.impl.compact.CompactMealy;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.impl.Alphabets;
@@ -93,6 +76,7 @@ public class FtsUtils {
 			
 		}
 		SimpleConfiguration simple_conf = new SimpleConfiguration(feat_set);
+		br.close();
 		
 		return simple_conf;
 	}

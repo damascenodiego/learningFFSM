@@ -1,10 +1,11 @@
 package uk.le.ac.ffsm;
 
+import java.util.Collection;
 import org.prop4j.Node;
 
-import net.automatalib.automata.base.fast.AbstractFastNondetState;
+import net.automatalib.automata.base.fast.AbstractFastState;
 
-public class ConditionalState<T> extends AbstractFastNondetState<T> {
+public class ConditionalState<T> extends AbstractFastState<Collection<T>> {
 
 	private static final long serialVersionUID = 5544896862451159256L;
 	Node condition;

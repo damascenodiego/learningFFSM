@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import org.prop4j.Node;
 
 import de.ovgu.featureide.fm.core.base.IFeature;
@@ -18,7 +16,6 @@ import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import net.automatalib.automata.MutableAutomaton;
 import net.automatalib.automata.base.fast.AbstractFastMutableNondet;
 import net.automatalib.automata.concepts.MutableTransitionOutput;
-import net.automatalib.automata.transout.impl.compact.CompactMealyTransition;
 import net.automatalib.words.Alphabet;
 
 public class FeaturedMealy<I,O> 
@@ -27,6 +24,10 @@ public class FeaturedMealy<I,O>
                 			MutableAutomaton<ConditionalState<ConditionalTransition<I,O>>, I, ConditionalTransition<I,O>, Node, O> ,
                 			IConfigurableFSM<I,O>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final String TRUE_STRING = "TRUE";
 	private IFeatureModel featureModel;
 	private ConditionalState<ConditionalTransition<I,O>> initialState;
