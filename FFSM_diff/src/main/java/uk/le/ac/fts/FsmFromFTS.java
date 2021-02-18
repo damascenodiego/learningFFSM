@@ -1,57 +1,29 @@
 package uk.le.ac.fts;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
-import org.prop4j.And;
-import org.prop4j.Literal;
-import org.prop4j.Node;
-import org.prop4j.Not;
-import org.slf4j.LoggerFactory;
 
-import be.vibes.fexpression.Feature;
 import be.vibes.fexpression.configuration.SimpleConfiguration;
 import be.vibes.ts.FeaturedTransitionSystem;
 import be.vibes.ts.SimpleProjection;
-import be.vibes.ts.State;
-import be.vibes.ts.Transition;
 import be.vibes.ts.TransitionSystem;
 import be.vibes.ts.io.dot.FeaturedTransitionSystemDotPrinter;
 import be.vibes.ts.io.dot.TransitionSystemDotPrinter;
-import be.vibes.ts.io.xml.TransitionSystemHandler;
 import be.vibes.ts.io.xml.XmlLoaders;
-import be.vibes.ts.io.xml.XmlReader;
-import de.ovgu.featureide.fm.core.base.IConstraint;
-import de.ovgu.featureide.fm.core.base.IFeature;
-import de.ovgu.featureide.fm.core.base.IFeatureModel;
-import de.ovgu.featureide.fm.core.configuration.Configuration;
-import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
-import net.automatalib.automata.transout.impl.compact.CompactMealy;
+import net.automatalib.automata.transducers.impl.compact.CompactMealy;
 import net.automatalib.serialization.dot.GraphDOT;
 import net.automatalib.util.automata.Automata;
 import net.automatalib.util.automata.minimizer.hopcroft.HopcroftMinimization;
-import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
-import net.automatalib.words.impl.Alphabets;
 import uk.le.ac.ffsm.FeaturedMealyUtils;
 
 public class FsmFromFTS {

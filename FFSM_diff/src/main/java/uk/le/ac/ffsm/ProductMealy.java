@@ -1,12 +1,5 @@
 package uk.le.ac.ffsm;
 
-import de.ovgu.featureide.fm.core.base.IFeature;
-import de.ovgu.featureide.fm.core.base.IFeatureModel;
-import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
-import net.automatalib.automata.transout.impl.compact.CompactMealy;
-import net.automatalib.automata.transout.impl.compact.CompactMealyTransition;
-import net.automatalib.words.Alphabet;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,7 +9,13 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.prop4j.Node;
-import org.prop4j.NodeReader;
+
+import de.ovgu.featureide.fm.core.base.IFeature;
+import de.ovgu.featureide.fm.core.base.IFeatureModel;
+import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
+import net.automatalib.automata.transducers.impl.compact.CompactMealy;
+import net.automatalib.automata.transducers.impl.compact.CompactMealyTransition;
+import net.automatalib.words.Alphabet;
 
 public class ProductMealy<I,O> extends CompactMealy<I, O> implements IConfigurableFSM<I,O>{
 

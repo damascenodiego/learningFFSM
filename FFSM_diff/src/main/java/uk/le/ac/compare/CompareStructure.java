@@ -11,15 +11,12 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
-import de.learnlib.api.query.DefaultQuery;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 import net.automatalib.words.Word;
-import uk.le.ac.ffsm.FeaturedMealy;
 import uk.le.ac.ffsm.FeaturedMealyUtils;
 import uk.le.ac.ffsm.FfsmDiffUtils;
 import uk.le.ac.ffsm.IConfigurableFSM;
-import uk.le.ac.ffsm.ProductMealy;
 import uk.le.ac.ffsm.SimplifiedTransition;
 
 public class CompareStructure {

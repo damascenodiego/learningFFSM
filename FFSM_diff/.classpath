@@ -8,6 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -24,5 +25,13 @@
 	<classpathentry kind="lib" path="lib/jbool_expressions-1.23.jar"/>
 	<classpathentry kind="lib" path="lib/vibes-core-2.0.5.jar"/>
 	<classpathentry kind="lib" path="lib/vibes-fexpression-2.0.5.jar"/>
+	<classpathentry kind="lib" path="lib/annotations.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-3.4.jar"/>
+	<classpathentry kind="lib" path="lib/de.ovgu.featureide.lib.fm.attributes-v3.5.3.jar"/>
+	<classpathentry kind="lib" path="lib/de.ovgu.featureide.lib.fm-v3.5.3.jar"/>
+	<classpathentry kind="lib" path="lib/guava-r09.jar"/>
+	<classpathentry kind="lib" path="lib/guidsl.jar"/>
+	<classpathentry kind="lib" path="lib/jakarta.jar"/>
+	<classpathentry kind="lib" path="lib/org.sat4j.pb.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

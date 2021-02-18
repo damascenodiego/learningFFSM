@@ -1,7 +1,6 @@
 package uk.le.ac.ffsm;
 
 import org.prop4j.Node;
-import org.prop4j.NodeReader;
 
 public class SimplifiedTransition<I,O> {
 	

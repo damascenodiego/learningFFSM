@@ -3,7 +3,7 @@ package uk.le.ac.ffsm;
 import org.prop4j.Node;
 import org.prop4j.NodeReader;
 
-import net.automatalib.automata.transout.impl.MealyTransition;
+import net.automatalib.automata.transducers.impl.MealyTransition;
 
 public class ConditionalTransition<I,O> extends MealyTransition<ConditionalState<ConditionalTransition<I,O>>, O> {
 

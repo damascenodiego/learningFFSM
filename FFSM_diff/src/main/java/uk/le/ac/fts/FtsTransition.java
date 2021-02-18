@@ -1,10 +1,6 @@
 package uk.le.ac.fts;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.w3c.dom.Node;
-
 
 public class FtsTransition{
 	
