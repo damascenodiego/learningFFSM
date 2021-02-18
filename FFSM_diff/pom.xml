@@ -91,16 +91,6 @@
         <version>0.16.0</version>
       </dependency>
       <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>22.0</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.code.findbugs</groupId>
-        <artifactId>jsr305</artifactId>
-        <version>3.0.2</version>
-      </dependency>
-      <dependency>
         <groupId>com.github.misberner.buildergen</groupId>
         <artifactId>buildergen</artifactId>
         <version>0.1</version>

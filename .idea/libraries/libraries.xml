@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="libraries">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/annotations.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/antlr-3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/antlr4-runtime-4.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/commons-cli-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/de.ovgu.featureide.lib.fm-v3.4.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/de.ovgu.featureide.lib.fm-v3.5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/de.ovgu.featureide.lib.fm.attributes-v3.5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/guava-r09.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/guidsl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/jakarta.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/jbool_expressions-1.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/org.sat4j.core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/org.sat4j.pb.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/sat4j-sat.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/vibes-core-2.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FFSM_diff/lib/vibes-fexpression-2.0.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
