@@ -142,6 +142,7 @@ public class FeaturedMealyUtils {
 					statesMap.put(sj,ffsm.addState((sj_c)));
 				}
 				
+				ConditionalTransition newTr = ffsm.addTransition(statesMap.get(si), in, statesMap.get(sj), out, (in_c));
 			}
 			ffsm.setInitialState(s0);
 	
